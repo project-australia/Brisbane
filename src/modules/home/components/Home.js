@@ -5,7 +5,7 @@ import Config from 'react-native-config'
 import { styles } from './styles/Home.styles'
 import { instructions } from '../constants/instructions'
 
-export default class App extends React.Component<{}> {
+export default class Home extends React.Component<{}> {
   render () {
     return (
       <View style={styles.container}>
