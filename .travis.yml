@@ -1,6 +1,4 @@
 language: javascript
-os: osx
-osx_image: xcode8.3
 branches:
   only:
   - master
