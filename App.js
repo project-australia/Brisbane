@@ -11,6 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
+import Config from 'react-native-config'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -31,6 +32,9 @@ export default class App extends Component<{}> {
         </Text>
         <Text style={styles.instructions}>
           {instructions}
+        </Text>
+        <Text style={styles.instructions}>
+          {`this is a secret: ${Config.TEST}`}
         </Text>
       </View>
     );
