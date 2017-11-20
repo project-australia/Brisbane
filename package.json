@@ -8,7 +8,11 @@
 		"android": "react-native run-android",
 		"ios": "react-native run-ios",
 		"lint:check": "eslint ./src/ ./tests/",
-		"lint:fix": "eslint --fix ./src/ ./tests/"
+		"lint:fix": "eslint --fix ./src/ ./tests/",
+		"release-ios": "react-native run-ios --configuration Release",
+		"bundle-ios": "react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios",
+		"precommit": "echo precommit",
+		"prepush": "echo prepush"
 	},
 	"dependencies": {
 		"react": "16.0.0",
