@@ -7,6 +7,8 @@
 		"test": "jest",
 		"android": "react-native run-android",
 		"ios": "react-native run-ios",
+		"lint:check": "eslint ./src/ ./tests/",
+		"lint:fix": "eslint --fix ./src/ ./tests/",
 		"release-ios": "react-native run-ios --configuration Release",
 		"bundle-ios": "react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios",
 		"precommit": "echo precommit",
@@ -19,6 +21,14 @@
 	"devDependencies": {
 		"babel-jest": "21.2.0",
 		"babel-preset-react-native": "4.0.0",
+		"eslint": "4.11.0",
+		"eslint-config-standard": "10.2.1",
+		"eslint-plugin-flowtype": "2.39.1",
+		"eslint-plugin-import": "2.8.0",
+		"eslint-plugin-node": "5.2.1",
+		"eslint-plugin-promise": "3.6.0",
+		"eslint-plugin-standard": "3.0.1",
+		"husky": "0.14.3",
 		"jest": "21.2.1",
 		"react-test-renderer": "16.0.0"
 	},
