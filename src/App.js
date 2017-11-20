@@ -3,7 +3,7 @@ import Router from './Router'
 
 import Firebase from './config/Firebase'
 
-export default async () => {
-  await Firebase.initialize()
+export default () => {
+  Firebase.initialize()
   return (<Router />)
 }
