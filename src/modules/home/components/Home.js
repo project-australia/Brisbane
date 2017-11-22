@@ -13,9 +13,6 @@ export default class Home extends React.Component<{}> {
           Welcome to Ballard Book!
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
           {instructions}
         </Text>
         <Text style={styles.instructions}>
