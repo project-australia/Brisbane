@@ -1,7 +1,7 @@
 import {StackNavigator} from 'react-navigation'
 
-import Home from './modules/home/components/Home'
-import SignInScreen from './modules/authentication/containers/SignInScreen'
+import Home from './modules/home/components/home'
+import SignInScreen from './modules/authentication/containers/signInScreen'
 
 const stackNavigatorConfig = {
   initialRouteName: 'SignIn'
@@ -16,4 +16,4 @@ const routeConfigs = {
   }
 }
 
-export default StackNavigator(routeConfigs, stackNavigatorConfig)
+export const Router = StackNavigator(routeConfigs, stackNavigatorConfig)

@@ -1,13 +1,13 @@
 import React from 'react'
-import Router from './Router'
-import { Provider } from 'react-redux'
+import {Router} from './router'
+import {Provider} from 'react-redux'
 
-import Firebase from './config/Firebase'
-import Redux from './config/Redux'
+import {initialize} from './config/firebase'
+import {createStore} from './config/redux'
 
 export default () => {
-  const store = Redux.createStore()
-  Firebase.initialize()
+  initialize()
+  const store = createStore()
   return (
     <Provider store={store}>
       <Router/>
