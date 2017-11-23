@@ -23,8 +23,7 @@ export class LoginForm extends React.Component {
       <View style={styles.screen}>
 
         <View style={styles.header}>
-          <Text>Caronaboard</Text>
-          <Text>Awesome Slogan</Text>
+          <Text>Ballard Books</Text>
         </View>
 
         <TextInput
