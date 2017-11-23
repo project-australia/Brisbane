@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native'
+import { Metrics, Colors } from '../../../../constants'
 
-export const styles =StyleSheet.create({
+export const styles = StyleSheet.create({
   screen: {
     flex: 1,
     justifyContent: 'space-between',
-    backgroundColor: theme.colors.screen.base
+    backgroundColor: Colors.background
   },
   image: {
     resizeMode: 'contain'
@@ -23,6 +24,6 @@ export const styles =StyleSheet.create({
     justifyContent: 'space-between'
   },
   loginButton: {
-    marginVertical: 20
+    marginVertical: Metrics.marginVertical
   }
 })
