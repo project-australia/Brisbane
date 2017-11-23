@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { View } from 'react-native'
-import { connect } from 'react-redux'
+import { func, shape, bool, string } from 'prop-types'
+import { View, Text, Button } from 'react-native'
 import { styles } from './styles/SignInScreenStyles'
-import { signInFirebase } from '../../../redux/actions'
 import { LoginForm } from '../components/LoginForm'
 
 export class SignInScreen extends Component {
   static propTypes = {
-    signIn: PropTypes.func.isRequired,
-    alert: PropTypes.shape({
-      showAlert: PropTypes.bool.isRequired,
-      message: PropTypes.string
-    }).isRequired
+    signUp: func,
+    alert: shape({
+      showAlert: bool.isRequired,
+      message: string
+    })
   }
 
   renderFooter = () => {
@@ -20,10 +18,10 @@ export class SignInScreen extends Component {
       <View style={styles.textRow}>
         <Text>Don’t have an account?</Text>
         <Button
+          title='Sign up now'
           onPress={() => this.props.navigator.push({screen: 'carona.signUp'})}
-        >
-          <Text>Sign up now</Text>
-        </Button>
+        />
+        <Text>Topics</Text>
       </View>
     )
   }
@@ -40,10 +38,4 @@ export class SignInScreen extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({alert: state.auth.alert})
-
-const mapDispatchToProps = (dispatch) => ({
-  signIn: (email, password) => dispatch(signInFirebase(email, password))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignInScreen)
+export default SignInScreen

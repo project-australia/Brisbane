@@ -1,14 +1,19 @@
-import React from 'react'
-import { NativeRouter, Route } from 'react-router-native'
+import { StackNavigator } from 'react-navigation'
 
 import Home from './modules/home/components/Home'
+import SignInScreen from './modules/authentication/containers/SignInScreen'
 
-export default class Router extends React.Component<{}> {
-  render () {
-    return (
-      <NativeRouter>
-        <Route exact path="/" component={Home}/>
-      </NativeRouter>
-    )
+const stackNavigatorConfig = {
+  initialRouteName: 'SignIn'
+}
+
+const routeConfigs = {
+  Home: {
+    screen: Home
+  },
+  SignIn: {
+    screen: SignInScreen
   }
 }
+
+export default StackNavigator(routeConfigs, stackNavigatorConfig)
