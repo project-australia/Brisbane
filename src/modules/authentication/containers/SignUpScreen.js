@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { func, shape, bool, string } from 'prop-types'
-import { LoginForm } from '../components/LoginForm'
+import React, {Component} from 'react'
+import {func, shape, bool, string} from 'prop-types'
+import {LoginForm} from '../components/LoginForm'
 
 export class SignUpScreen extends Component {
   static propTypes = {
@@ -11,7 +11,7 @@ export class SignUpScreen extends Component {
     }).isRequired
   }
 
-  render () {
+  render() {
     return (
       <LoginForm
         onButtonPress={this.props.signUp}

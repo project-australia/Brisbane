@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { Metrics, Colors } from '../../../../constants'
+import {StyleSheet} from 'react-native'
+import {Metrics, Colors} from '../../../../constants'
 
 export const styles = StyleSheet.create({
   screen: {

@@ -7,10 +7,16 @@
     "jest": true
   },
   "rules": {
-    "semi": [2, "never"],
+    "semi": [
+      2,
+      "never"
+    ],
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error"
   },
   "extends": "standard",
-  "plugins": [ "flowtype", "react" ]
+  "plugins": [
+    "flowtype",
+    "react"
+  ]
 }
