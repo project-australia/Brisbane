@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Image, Keyboard } from 'react-native'
+import { View, Text, TextInput, Button } from 'react-native'
 import { styles } from './styles/LoginFormStyles'
 
 export class LoginForm extends React.Component {
@@ -23,15 +23,11 @@ export class LoginForm extends React.Component {
       <View style={styles.screen}>
 
         <View style={styles.header}>
-          <Image 
-            style={styles.image}
-            source={require('../../../assets/images/logo.png')}
-          />
           <Text>Caronaboard</Text>
           <Text>Awesome Slogan</Text>
         </View>
 
-        <TextInput 
+        <TextInput
           onChangeText={(email) => { this.setState({email}) }}
           placeholder='Username'
           autoCapitalize='none'
@@ -45,7 +41,7 @@ export class LoginForm extends React.Component {
         <View style={styles.centralized}>
           <Button
             style={styles.loginButton}
-            text={this.props.buttonText}
+            title={this.props.buttonText}
             onPress={this.onButtonPress}
           />
         </View>

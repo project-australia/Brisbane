@@ -5,10 +5,11 @@
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest",
+		"test:watch": "jest --watch",
 		"android": "react-native run-android",
 		"ios": "react-native run-ios",
-		"lint:check": "eslint ./src/ ./tests/",
-		"lint:fix": "eslint --fix ./src/ ./tests/",
+		"lint:check": "eslint ./src/ ./__tests__/",
+		"lint:fix": "eslint --fix ./src/ ./__tests__/",
 		"release-ios": "react-native run-ios --configuration Release",
 		"bundle-ios": "react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios",
 		"precommit": "echo precommit",
@@ -25,6 +26,8 @@
 		"babel-eslint": "8.0.2",
 		"babel-jest": "21.2.0",
 		"babel-preset-react-native": "4.0.0",
+		"enzyme": "3.2.0",
+		"enzyme-adapter-react-16": "1.1.0",
 		"eslint": "4.11.0",
 		"eslint-config-standard": "10.2.1",
 		"eslint-plugin-flowtype": "2.39.1",
@@ -35,9 +38,14 @@
 		"eslint-plugin-standard": "3.0.1",
 		"husky": "0.14.3",
 		"jest": "21.2.1",
+		"react-dom": "16.1.1",
 		"react-test-renderer": "16.0.0"
 	},
 	"jest": {
-		"preset": "react-native"
+		"preset": "react-native",
+		"setupFiles": ["./__tests__/jestSetup.js"],
+		"testMatch": [
+      "**/__tests__/**/*.test.js?(x)"
+    ]
 	}
 }

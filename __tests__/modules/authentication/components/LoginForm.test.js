@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { LoginForm } from '../../../../src/modules/authentication/components/LoginForm'
 
 const props = {
-  foo: 'bar'
+  buttonText: 'foo-bar'
 }
 
 describe('<LoginForm />', () => {

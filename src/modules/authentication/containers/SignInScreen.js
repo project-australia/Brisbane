@@ -17,9 +17,9 @@ export class SignInScreen extends Component {
 
   renderFooter = () => {
     return (
-      <View style={Styles.textRow}>
+      <View style={styles.textRow}>
         <Text>Don’t have an account?</Text>
-        <Button 
+        <Button
           onPress={() => this.props.navigator.push({screen: 'carona.signUp'})}
         >
           <Text>Sign up now</Text>
@@ -43,7 +43,7 @@ export class SignInScreen extends Component {
 const mapStateToProps = (state) => ({alert: state.auth.alert})
 
 const mapDispatchToProps = (dispatch) => ({
-    signIn: (email, password) => dispatch(signInFirebase(email, password))
+  signIn: (email, password) => dispatch(signInFirebase(email, password))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignInScreen)
