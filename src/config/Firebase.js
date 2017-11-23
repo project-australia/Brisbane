@@ -29,4 +29,4 @@ const initialize = async () => {
   }
 }
 
-export default { initialize }
+export default {initialize}

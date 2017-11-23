@@ -1,12 +1,12 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import {Text, View} from 'react-native'
 import Config from 'react-native-config'
 
-import { styles } from './styles/Home.styles'
-import { instructions } from '../constants/instructions'
+import {styles} from './styles/Home.styles'
+import {instructions} from '../constants/instructions'
 
 export default class Home extends React.Component<{}> {
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>

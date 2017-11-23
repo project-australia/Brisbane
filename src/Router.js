@@ -1,4 +1,4 @@
-import { StackNavigator } from 'react-navigation'
+import {StackNavigator} from 'react-navigation'
 
 import Home from './modules/home/components/Home'
 import SignInScreen from './modules/authentication/containers/SignInScreen'

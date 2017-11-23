@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { func, shape, bool, string } from 'prop-types'
-import { View, Text, Button } from 'react-native'
-import { styles } from './styles/SignInScreenStyles'
-import { LoginForm } from '../components/LoginForm'
+import React, {Component} from 'react'
+import {func, shape, bool, string} from 'prop-types'
+import {View, Text, Button} from 'react-native'
+import {styles} from './styles/SignInScreenStyles'
+import {LoginForm} from '../components/LoginForm'
 
 export class SignInScreen extends Component {
   static propTypes = {
@@ -26,7 +26,7 @@ export class SignInScreen extends Component {
     )
   }
 
-  render () {
+  render() {
     return (
       <LoginForm
         buttonText='SIGN IN'

@@ -5,5 +5,5 @@ import Firebase from './config/Firebase'
 
 export default () => {
   Firebase.initialize()
-  return (<Router />)
+  return (<Router/>)
 }
