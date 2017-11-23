@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, Text, TextInput, Button} from 'react-native'
-import {styles} from './styles/LoginFormStyles'
+import {styles} from './styles/loginFormStyles'
 
 export class LoginForm extends React.Component {
   static defaultProps = {

@@ -17,7 +17,7 @@ const firebaseConfig = {
   projectId: Config.PROJECT_ID
 }
 
-const initialize = async () => {
+export const initialize = () => {
   try {
     return Firebase.initializeApp(firebaseConfig)
   } catch (error) {
@@ -28,5 +28,3 @@ const initialize = async () => {
     }
   }
 }
-
-export default {initialize}

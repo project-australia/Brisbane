@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {func, shape, bool, string} from 'prop-types'
 import {View, Text, Button} from 'react-native'
-import {styles} from './styles/SignInScreenStyles'
-import {LoginForm} from '../components/LoginForm'
+import {styles} from './styles/signInScreenStyles'
+import {LoginForm} from '../components/loginForm'
 
 export class SignInScreen extends Component {
   static propTypes = {

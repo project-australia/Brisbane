@@ -2,7 +2,7 @@ import React from 'react'
 import {Text, View} from 'react-native'
 import Config from 'react-native-config'
 
-import {styles} from './styles/Home.styles'
+import {styles} from './styles/home.styles'
 import {instructions} from '../constants/instructions'
 
 export default class Home extends React.Component<{}> {

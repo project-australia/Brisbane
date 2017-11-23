@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { LoginForm } from '../../../../src/modules/authentication/components/LoginForm'
+import { LoginForm } from '../../../../src/modules/authentication/components/loginForm'
 
 const props = {
   buttonText: 'foo-bar'
