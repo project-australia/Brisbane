@@ -1,19 +1,15 @@
-import { RkStyleSheet } from 'react-native-ui-kitten'
-import { scaleVertical } from '../../../../configuration/kitten/scale'
+import { StyleSheet } from 'react-native'
 
-export const styles = RkStyleSheet.create(theme => ({
+export const styles =StyleSheet.create({
   screen: {
-    padding: scaleVertical(16),
     flex: 1,
     justifyContent: 'space-between',
     backgroundColor: theme.colors.screen.base
   },
   image: {
-    height: scaleVertical(77),
     resizeMode: 'contain'
   },
   header: {
-    paddingBottom: scaleVertical(10),
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1
@@ -29,4 +25,4 @@ export const styles = RkStyleSheet.create(theme => ({
   loginButton: {
     marginVertical: 20
   }
-}))
+})

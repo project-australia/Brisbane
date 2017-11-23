@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
-import Styles from './styles/SignInScreenStyles'
+import { styles } from './styles/SignInScreenStyles'
 import { signInFirebase } from '../../../redux/actions'
 import { LoginForm } from '../components/LoginForm'
 
@@ -40,16 +40,10 @@ export class SignInScreen extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    alert: state.auth.alert
-  }
-}
+const mapStateToProps = (state) => ({alert: state.auth.alert})
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = (dispatch) => ({
     signIn: (email, password) => dispatch(signInFirebase(email, password))
-  }
-}
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignInScreen)

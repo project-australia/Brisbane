@@ -24,16 +24,10 @@ export class SignUpScreen extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    alert: state.auth.alert
-  }
-}
+const mapStateToProps = (state) => ({alert: state.auth.alert})
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = (dispatch) => ({
     signUp: (email, password) => dispatch(signUpFirebase(email, password))
-  }
-}
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpScreen)

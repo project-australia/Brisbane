@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Image, Keyboard } from 'react-native'
-import { styles } from '../containers/styles/LoginScreenStyles'
+import { styles } from './styles/LoginFormStyles'
 
 export class LoginForm extends React.Component {
   static defaultProps = {
@@ -23,7 +23,10 @@ export class LoginForm extends React.Component {
       <View style={styles.screen}>
 
         <View style={styles.header}>
-          <Image style={styles.image} source={require('../../../assets/images/logo.png')} />
+          <Image 
+            style={styles.image}
+            source={require('../../../assets/images/logo.png')}
+          />
           <Text>Caronaboard</Text>
           <Text>Awesome Slogan</Text>
         </View>
