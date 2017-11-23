@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import {func, shape, bool, string} from 'prop-types'
-import {View, Text, Button} from 'react-native'
+import {bool, func, shape, string} from 'prop-types'
+import {Button, Text, View} from 'react-native'
 import {styles} from './styles/signInScreenStyles'
 import {LoginForm} from '../components/loginForm'
 
@@ -26,7 +26,7 @@ export class SignInScreen extends Component {
     )
   }
 
-  render() {
+  render () {
     return (
       <LoginForm
         buttonText='SIGN IN'

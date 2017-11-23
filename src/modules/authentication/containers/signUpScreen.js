@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {func, shape, bool, string} from 'prop-types'
+import {bool, func, shape, string} from 'prop-types'
 import {LoginForm} from '../components/loginForm'
 
 export class SignUpScreen extends Component {
@@ -11,7 +11,7 @@ export class SignUpScreen extends Component {
     }).isRequired
   }
 
-  render() {
+  render () {
     return (
       <LoginForm
         onButtonPress={this.props.signUp}

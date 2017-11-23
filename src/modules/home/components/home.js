@@ -6,7 +6,7 @@ import {styles} from './styles/home.styles'
 import {instructions} from '../constants/instructions'
 
 export default class Home extends React.Component<{}> {
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>

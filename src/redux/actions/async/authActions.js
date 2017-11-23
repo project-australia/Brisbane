@@ -8,7 +8,7 @@ export function signUpFirebase (email: string, password: string) {
   }
 }
 
-export function saveProfileFirebase (profile: ProfileType) {
+export function saveProfileFirebase (profile) {
   return async (dispatch) => {
   }
 }

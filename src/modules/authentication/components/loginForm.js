@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, TextInput, Button} from 'react-native'
+import {Button, Text, TextInput, View} from 'react-native'
 import {styles} from './styles/loginFormStyles'
 
 export class LoginForm extends React.Component {
@@ -18,7 +18,7 @@ export class LoginForm extends React.Component {
     this.props.onButtonPress(email, password)
   }
 
-  render() {
+  render () {
     return (
       <View style={styles.screen}>
 
