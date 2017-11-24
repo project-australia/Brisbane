@@ -11,15 +11,17 @@ export class SignUpScreen extends Component {
     }).isRequired
   }
 
+  onSignUp = () => {
+    this.props.navigation.navigate('Home', {})
+  }
+
   render () {
     return (
       <LoginForm
-        onButtonPress={this.props.signUp}
+        onButtonPress={this.onSignUp}
         toast={this.props.alert}
         buttonText='SIGN UP'
       />
     )
   }
 }
-
-export default SignUpScreen
