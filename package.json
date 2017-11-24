@@ -52,6 +52,9 @@
     ],
     "testMatch": [
       "**/__tests__/**/*.test.js?(x)"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation)"
     ]
   }
 }
