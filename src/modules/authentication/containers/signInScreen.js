@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {bool, func, shape, string} from 'prop-types'
 import {Button, Text, View} from 'react-native'
 
-import {styles} from './styles/signInScreenStyles'
+import {styles} from './styles/signInScreen.styles'
 import {LoginForm} from '../components/loginForm'
 
 export class SignInScreen extends Component {
@@ -14,13 +14,7 @@ export class SignInScreen extends Component {
     })
   }
 
-  onSignIn = () => {
-    this.props.navigation.navigate('Home', {})
-  }
-
-  onForgotPassword = () => {
-    this.props.navigation.navigate('Home', {})
-  }
+  onSignIn = () => { alert('Sign in') }
 
   renderFooter = () => {
     return (
@@ -28,7 +22,7 @@ export class SignInScreen extends Component {
         <Text>Don’t have an account?</Text>
         <Button
           title='Sign up now'
-          onPress={() => this.onForgotPassword()}
+          onPress={() => this.props.navigation.navigate('ForgotPassword', {})}
         />
       </View>
     )
