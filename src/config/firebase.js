@@ -1,5 +1,5 @@
-import Firebase from 'firebase'
 import Config from 'react-native-config'
+import {initializeApp} from 'firebase'
 
 const ERROR = {
   duplicatedApp: {
@@ -19,7 +19,7 @@ const firebaseConfig = {
 
 export const initialize = () => {
   try {
-    return Firebase.initializeApp(firebaseConfig)
+    initializeApp(firebaseConfig)
   } catch (error) {
     if (error.code === ERROR.duplicatedApp.code) {
       console.info(ERROR.duplicatedApp.message)
