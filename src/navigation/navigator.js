@@ -1,7 +1,7 @@
 import {StackNavigator as Navigator} from 'react-navigation'
 
 import {Home} from '../modules/home/components/home'
-import {SignInScreen} from '../modules/authentication/containers/signInScreen'
+import {SignInScreen} from '../modules/authentication/containers/signInContainer'
 import {SignUpScreen} from '../modules/authentication/containers/signUpScreen'
 import {ForgotPasswordScreen} from '../modules/authentication/containers/forgotPasswordScreen'
 

@@ -1,8 +1,11 @@
+import { connect } from 'react-redux'
 import React, {Component} from 'react'
 import {bool, func, shape, string} from 'prop-types'
-import {LoginForm} from '../components/loginForm'
 
-export class SignUpScreen extends Component {
+import {LoginForm} from '../components/loginForm'
+import { signUpAction } from '../../../redux/actions/async/authActions'
+
+export class SignUpContainer extends Component {
   static propTypes = {
     signUp: func.isRequired,
     alert: shape({
@@ -25,3 +28,13 @@ export class SignUpScreen extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  alert: state.auth.alert
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  signUp: (email, password) => dispatch(signUpAction(email, password))
+})
+
+export const SignUpScreen = connect(mapStateToProps, mapDispatchToProps)(SignUpContainer)

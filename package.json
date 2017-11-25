@@ -12,6 +12,8 @@
     "lint:fix": "eslint --fix ./src/ ./__tests__/",
     "release-ios": "react-native run-ios --configuration Release",
     "bundle-ios": "react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios",
+    "log:ios": "react-native log-ios",
+    "log:android": "react-native log-android",
     "precommit": "echo precommit",
     "prepush": "echo prepush"
   },
