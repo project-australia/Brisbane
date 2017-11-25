@@ -17,7 +17,7 @@ const firebaseConfig = {
   projectId: Config.PROJECT_ID
 }
 
-export const initialize = () => {
+export const initializeFirebase = () => {
   try {
     initializeApp(firebaseConfig)
   } catch (error) {

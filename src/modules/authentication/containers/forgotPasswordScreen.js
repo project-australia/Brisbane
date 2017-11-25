@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { forgotPasswordFirebase } from '../../../redux/actions'
+
+import { forgotPasswordAction } from '../../../redux/actions'
 import { styles } from '../containers/styles/forgotPasswordScreen.styles'
 import { View, Button, TextInput } from 'react-native'
 
@@ -38,16 +39,12 @@ export class ForgotPasswordContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    alert: state.auth.alert
-  }
-}
+const mapStateToProps = (state) => ({
+  alert: state.auth.alert
+})
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    resetPassword: (email) => dispatch(forgotPasswordFirebase(email))
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  resetPassword: (email) => dispatch(forgotPasswordAction(email))
+})
 
 export const ForgotPasswordScreen = connect(mapStateToProps, mapDispatchToProps)(ForgotPasswordContainer)

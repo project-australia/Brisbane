@@ -16,6 +16,7 @@ export const Metrics = {
   screenHeight: width < height ? height : width,
   navBarHeight: (Platform.OS === 'ios') ? 64 : 54,
   buttonRadius: 4,
+  borderWidth: 1,
   icons: {
     tiny: 15,
     small: 20,

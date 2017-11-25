@@ -1,6 +1,7 @@
 import React from 'react'
-import {Button, Text, TextInput, View} from 'react-native'
-import {styles} from './styles/loginFormStyles'
+import { Button, Text, View } from 'react-native'
+import { styles } from './styles/loginFormStyles'
+import { FormTextInput } from './formTextInput'
 
 export class LoginForm extends React.Component {
   static defaultProps = {
@@ -21,26 +22,19 @@ export class LoginForm extends React.Component {
   render () {
     return (
       <View style={styles.screen}>
-
         <View style={styles.header}>
-          <Text>Ballard Books</Text>
+          <Text style={styles.title}>Ballard Books</Text>
         </View>
-
-        <TextInput
-          onChangeText={(email) => {
-            this.setState({email})
-          }}
+        <FormTextInput
+          onChangeText={(email) => { this.setState({email}) }}
           placeholder='Username'
           autoCapitalize='none'
         />
-        <TextInput
-          onChangeText={(password) => {
-            this.setState({password})
-          }}
+        <FormTextInput
+          onChangeText={(password) => { this.setState({password}) }}
           placeholder='Password'
           secureTextEntry
         />
-
         <View style={styles.centralized}>
           <Button
             style={styles.loginButton}
@@ -48,7 +42,6 @@ export class LoginForm extends React.Component {
             onPress={this.onButtonPress}
           />
         </View>
-
         {this.props.footer}
       </View>
     )
