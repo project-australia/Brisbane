@@ -1,16 +1,10 @@
 import React from 'react'
 
-import {Navigator} from './navigation'
-import {Provider} from 'react-redux'
-import {initialize} from './config/firebase'
+import {initializeFirebase} from './config/firebase'
 import {createStore} from './config/redux'
+import { App } from './app'
 
 export default () => {
-  initialize()
-  const store = createStore()
-  return (
-    <Provider store={store}>
-      <Navigator/>
-    </Provider>
-  )
+  initializeFirebase()
+  return (<App store={createStore()}/>)
 }
