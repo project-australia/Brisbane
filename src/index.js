@@ -4,7 +4,10 @@ import {initializeFirebase} from './config/firebase'
 import {createStore} from './config/redux'
 import { App } from './app'
 
-export default () => {
+export const BallardBooks = () => {
   initializeFirebase()
-  return (<App store={createStore()}/>)
+
+  return (
+    <App store={createStore()}/>
+  )
 }
