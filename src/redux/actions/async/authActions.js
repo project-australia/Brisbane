@@ -8,12 +8,9 @@ import {
 export function signInAction (email, password) {
   return async (dispatch) => {
     try {
-      console.log('Action', email, password)
       const user = await signInWithEmailAndPassword(email, password)
-      console.log('Action', user)
       dispatch(updateUserData(user))
     } catch (error) {
-      console.log(error)
       dispatch(alertAction(error))
     }
   }
