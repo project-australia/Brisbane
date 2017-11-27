@@ -1,4 +1,7 @@
-import { alertAction, signUpSuccess, successRetrievedPassword, updateUserData } from '../sync/authActions'
+import {
+  alertAction, signInSuccess, signUpSuccess, successRetrievedPassword,
+  updateUserData
+} from '../sync/authActions'
 import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
@@ -9,7 +12,7 @@ export function signInAction (email, password) {
   return async (dispatch) => {
     try {
       const user = await signInWithEmailAndPassword(email, password)
-      dispatch(updateUserData(user))
+      dispatch(signInSuccess(user))
     } catch (error) {
       dispatch(alertAction(error))
     }
