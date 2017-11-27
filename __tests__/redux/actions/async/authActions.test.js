@@ -1,5 +1,3 @@
-
-
 import * as FirebaseService from '../../../../src/services/firebase/authentication'
 import {
   alertAction, signInSuccess, signUpSuccess,
