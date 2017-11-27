@@ -1,7 +1,4 @@
-import {
-  alertAction, signInSuccess, signUpSuccess, successRetrievedPassword,
-  updateUserData
-} from '../sync/authActions'
+import { alertAction, signInSuccess, signUpSuccess, successRetrievedPassword } from '../sync/authActions'
 import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
