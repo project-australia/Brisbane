@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
 import { LoginForm } from '../../../../src/modules/authentication/components/loginForm'
 
 const props = {
@@ -9,6 +10,6 @@ const props = {
 describe('<LoginForm />', () => {
   it('should have a snapshot', () => {
     const wrapper = shallow(<LoginForm {...props} />)
-    expect(wrapper).toMatchSnapshot()
+    expect(toJson(wrapper)).toMatchSnapshot()
   })
 })
