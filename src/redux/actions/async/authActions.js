@@ -1,4 +1,4 @@
-import { alertAction, signUpSuccess, succesRetrievedPassword, updateUserData } from '../sync/authActions'
+import { alertAction, signUpSuccess, successRetrievedPassword, updateUserData } from '../sync/authActions'
 import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
@@ -31,7 +31,7 @@ export function forgotPasswordAction (email) {
   return async (dispatch) => {
     try {
       await sendPasswordResetEmail(email)
-      dispatch(succesRetrievedPassword())
+      dispatch(successRetrievedPassword())
     } catch (error) {
       dispatch(alertAction(error))
     }
