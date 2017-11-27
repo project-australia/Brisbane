@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword
 } from '../../../services/firebase/authentication'
+import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../constants/messages'
 
 export function signInAction (email, password) {
   return async (dispatch) => {
@@ -34,7 +35,7 @@ export function forgotPasswordAction (email) {
   return async (dispatch) => {
     try {
       await sendPasswordResetEmail(email)
-      dispatch(successRetrievedPassword())
+      dispatch(successRetrievedPassword(FORGOT_PASSWORD_SUCCESS_MSG))
     } catch (error) {
       dispatch(alertAction(error))
     }

@@ -4,6 +4,7 @@ import {
   successRetrievedPassword
 } from '../../../../src/redux/actions/sync/authActions'
 import { forgotPasswordAction, signInAction, signUpAction } from '../../../../src/redux/actions/async/authActions'
+import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../../src/constants/messages'
 jest.mock('../../../../src/services/firebase/authentication')
 
 describe('Auth async actions', () => {
@@ -50,8 +51,8 @@ describe('Auth async actions', () => {
   it('Should dispatch successfull forgot password action', async () => {
     FirebaseService.sendPasswordResetEmail = jest.fn(() => Promise.resolve())
 
-    const expectedAction = successRetrievedPassword()
-    const thunk = forgotPasswordAction(email, password)
+    const expectedAction = successRetrievedPassword(FORGOT_PASSWORD_SUCCESS_MSG)
+    const thunk = forgotPasswordAction(email)
     await thunk(mockDispatch)
 
     expect(mockDispatch).toHaveBeenCalledWith(expectedAction)

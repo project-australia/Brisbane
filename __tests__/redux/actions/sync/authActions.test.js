@@ -1,20 +1,28 @@
 import {
-  alertAction,
+  alertAction, showAlert,
   signInSuccess,
   signUpSuccess,
   successRetrievedPassword
 } from '../../../../src/redux/actions/sync/authActions'
 import {
-  ALERT_AUTH_FAILED,
-  FORGOT_PASSWORD_SUCCESS,
+  AUTH_FAILED_ALERT,
+  FORGOT_PASSWORD_SUCCESS, SHOW_ALERT,
   SIGN_IN_SUCCESS,
   SIGN_UP_SUCCESS
 } from '../../../../src/redux/types/authTypes'
 
 describe('Auth sync actions', () => {
   it('Should send a sucessfull forgot password action', async () => {
-    const expectedAction = {type: FORGOT_PASSWORD_SUCCESS}
-    const action = successRetrievedPassword()
+    const message = 'successfull message'
+    const expectedAction = {type: FORGOT_PASSWORD_SUCCESS, message}
+    const action = successRetrievedPassword(message)
+    expect(action).toEqual(expectedAction)
+  })
+
+  it('Should create show alert action', async () => {
+    const message = 'successfull message'
+    const expectedAction = {type: SHOW_ALERT, message}
+    const action = showAlert(message)
     expect(action).toEqual(expectedAction)
   })
 
@@ -35,7 +43,7 @@ describe('Auth sync actions', () => {
     const error = {message: 'Error Message'}
     const action = alertAction(error)
     const expectedAction = {
-      type: ALERT_AUTH_FAILED,
+      type: AUTH_FAILED_ALERT,
       message: error.message
     }
 
