@@ -1,7 +1,5 @@
-import {
-  AUTH_INITIAL_STATE, authReducers, NO_ALERTS,
-  USER_NOT_LOGGED_IN
-} from '../../../src/redux/reducers/authReducers'
+import { CONSTANTS, AUTH_INITIAL_STATE } from '../../../src/redux/reducers/authReducers'
+import { reducers } from '../../../src/redux/reducers'
 import * as FirebaseService from '../../../src/services/firebase/authentication'
 import { extractActionFromThunk } from './reduxThunkMock'
 import { signInAction } from '../../../src/redux/actions/async/authActions'
@@ -11,11 +9,12 @@ describe('Authentication reducers', () => {
   const password = 'password'
   const email = 'email@email.com'
   const user = {uid: 'UID', emailVerified: false, phoneNumber: '123-456-7890', email}
+  const authReducers = reducers.auth
 
   it('should initial state be Non Logged in user with no alerts', async () => {
     const expectedInitialState = {
-      user: USER_NOT_LOGGED_IN,
-      alert: NO_ALERTS
+      user: CONSTANTS.NOT_LOGGED_IN,
+      alert: CONSTANTS.NO_ALERTS
     }
     const state = authReducers(undefined, 'ANY_ACTION_I_DO_NOT_CARE')
     expect(state).toEqual(expectedInitialState)

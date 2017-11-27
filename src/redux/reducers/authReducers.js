@@ -1,14 +1,22 @@
 import { SIGN_IN_SUCCESS } from '../types/authTypes'
 
-export const USER_NOT_LOGGED_IN = { uid: '', email: '', phoneNumber: null, emailVerified: false }
-export const NO_ALERTS = { showAlert: false, message: '' }
-export const AUTH_INITIAL_STATE = { user: USER_NOT_LOGGED_IN, alert: NO_ALERTS }
+export const CONSTANTS = {
+  NOT_LOGGED_IN: { uid: null, email: null, phoneNumber: null, emailVerified: false },
+  NO_ALERTS: { showAlert: false, message: '' }
+}
 
-export const authReducers = (state = AUTH_INITIAL_STATE, action) => {
-  switch (action.type) {
-    case SIGN_IN_SUCCESS:
-      return {...AUTH_INITIAL_STATE, user: action.user}
-    default:
-      return state
-  }
+export const AUTH_INITIAL_STATE = {
+  user: CONSTANTS.NOT_LOGGED_IN,
+  alert: CONSTANTS.NO_ALERTS
+}
+
+const signInSuccessHandler = (state, action) => ({...AUTH_INITIAL_STATE, user: action.user})
+
+export const actionHandlers = {
+  [SIGN_IN_SUCCESS]: signInSuccessHandler
+}
+
+export const authReducerConfig = {
+  initialState: AUTH_INITIAL_STATE,
+  actionHandlers: actionHandlers
 }
