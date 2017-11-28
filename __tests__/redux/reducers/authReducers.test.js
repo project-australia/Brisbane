@@ -4,7 +4,7 @@ import * as FirebaseService from '../../../src/services/firebase/authentication'
 import { extractActionFromThunk } from './reduxThunkMock'
 import { signInAction, signUpAction } from '../../../src/redux/actions/async/authActions'
 import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../src/constants/messages'
-import { showAlert, successRetrievedPassword } from '../../../src/redux/actions/sync/authActions'
+import { alertAction, showAlert, successRetrievedPassword } from '../../../src/redux/actions/sync/authActions'
 
 jest.mock('../../../src/services/firebase/authentication')
 
@@ -55,6 +55,18 @@ describe('Authentication reducers', () => {
       alert: {showAlert: true, message}
     }
     const action = showAlert(message)
+    const state = authReducers(AUTH_INITIAL_STATE, action)
+    expect(state).toEqual(expectedState)
+  })
+
+  it('should show alert message when authentication fails', () => {
+    const message = 'A simple message'
+    const error = { error: 'foo', message }
+    const expectedState = {
+      ...AUTH_INITIAL_STATE,
+      alert: {showAlert: true, message}
+    }
+    const action = alertAction(error)
     const state = authReducers(AUTH_INITIAL_STATE, action)
     expect(state).toEqual(expectedState)
   })
