@@ -10,6 +10,7 @@ export class SignIn extends Component {
     onButtonPress: func.isRequired,
     navigateToSignUp: func.isRequired,
     navigateToForgotPassword: func.isRequired,
+    goHome: func,
     alert: shape({
       showAlert: bool.isRequired,
       message: string
@@ -33,6 +34,15 @@ export class SignIn extends Component {
           <Button
             title='Create an Account'
             onPress={this.props.navigateToSignUp}
+          />
+        </View>
+        <View style={styles.textRow}>
+          <Text>TEST AUTHENTICATION</Text>
+        </View>
+        <View style={styles.textRow}>
+          <Button
+            title='TEST AUTHORIZATION'
+            onPress={this.props.goHome}
           />
         </View>
       </View>

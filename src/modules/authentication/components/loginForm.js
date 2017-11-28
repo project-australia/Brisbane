@@ -15,9 +15,10 @@ export class LoginForm extends React.Component {
     }).isRequired
   }
 
+  // FIXME: Test data only
   state = {
-    email: '',
-    password: '',
+    email: 'eduardomoroni@gmail.com',
+    password: '123456',
     loading: false
   }
 

@@ -33,6 +33,7 @@ export class SignInContainer extends Component {
         navigateToForgotPassword={this.navigateToForgotPasswordScreen}
         navigateToSignUp={this.navigateToSignUp}
         alert={this.props.alert}
+        goHome={() => this.props.navigation.navigate('Home', {})}
       />
     )
   }
