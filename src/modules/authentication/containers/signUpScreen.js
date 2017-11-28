@@ -14,8 +14,8 @@ class SignUpContainer extends Component {
     }).isRequired
   }
 
-  onSignUp = () => {
-    this.props.navigation.navigate('Home', {})
+  onSignUp = (email, password) => {
+    this.props.signUp(email, password)
   }
 
   render () {

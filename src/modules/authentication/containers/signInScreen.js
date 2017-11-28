@@ -15,7 +15,6 @@ export class SignInContainer extends Component {
   }
 
   onSignIn = (email, password) => {
-    console.log('APERTEI', email, password)
     this.props.signIn(email, password)
   }
 
