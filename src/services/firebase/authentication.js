@@ -7,7 +7,7 @@ export const signInWithEmailAndPassword = async (email, password) => {
 
 export const createUserWithEmailAndPassword = async (email, password) => {
   const user = await Firebase.auth().createUserWithEmailAndPassword(email, password)
-  await sendEmailVerification(user)
+  return sendEmailVerification(user)
 }
 
 const validatedUser = async (firebaseUser) => {
@@ -20,5 +20,5 @@ const validatedUser = async (firebaseUser) => {
   return {uid, emailVerified, email, phoneNumber}
 }
 
-export const sendEmailVerification = async (user) => { user.sendEmailVerification() }
-export const sendPasswordResetEmail = async (email) => { Firebase.auth().sendPasswordResetEmail(email) }
+export const sendEmailVerification = async (user) => user.sendEmailVerification()
+export const sendPasswordResetEmail = async (email) => Firebase.auth().sendPasswordResetEmail(email)

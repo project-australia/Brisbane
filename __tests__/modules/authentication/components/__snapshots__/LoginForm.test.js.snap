@@ -60,5 +60,6 @@ exports[`<LoginForm /> should have a snapshot 1`] = `
       title="foo-bar"
     />
   </View>
+  <View />
 </View>
 `;

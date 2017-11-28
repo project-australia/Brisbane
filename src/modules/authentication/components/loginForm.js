@@ -1,11 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Button, Text, View } from 'react-native'
 import { styles } from './styles/loginFormStyles'
 import { FormTextInput } from './formTextInput'
 
 export class LoginForm extends React.Component {
-  static defaultProps = {
-    footer: () => <View/>
+  static defaultProps = { footer: <View/> }
+  static propTypes = {
+    footer: PropTypes.object,
+    buttonText: PropTypes.string.isRequired,
+    alert: PropTypes.shape({
+      showAlert: PropTypes.bool.isRequired,
+      message: PropTypes.string
+    }).isRequired
   }
 
   state = {
@@ -17,6 +24,11 @@ export class LoginForm extends React.Component {
   onButtonPress = () => {
     const {email, password} = this.state
     this.props.onButtonPress(email, password)
+  }
+
+  componentWillReceiveProps (nextProps) {
+    const {showAlert, message} = nextProps.alert
+    if (showAlert) { alert(message) }
   }
 
   render () {

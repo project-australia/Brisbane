@@ -13,7 +13,7 @@ export class SignIn extends Component {
     alert: shape({
       showAlert: bool.isRequired,
       message: string
-    })
+    }).isRequired
   }
 
   renderFooter = () => {
@@ -41,6 +41,7 @@ export class SignIn extends Component {
     return (
       <LoginForm
         buttonText='SIGN IN'
+        alert={this.props.alert}
         onButtonPress={this.props.onButtonPress}
         footer={this.renderFooter()}
       />
