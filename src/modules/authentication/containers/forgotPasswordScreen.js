@@ -3,38 +3,23 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { forgotPasswordAction } from '../../../redux/actions'
-import { styles } from '../containers/styles/forgotPasswordScreen.styles'
-import { View, Button, TextInput } from 'react-native'
+import { ForgotPassword } from '../components/forgotPassword'
 
 export class ForgotPasswordContainer extends Component {
-  static defaultProps = {email: ''}
-  static propTypes = {resetPassword: PropTypes.func.isRequired}
-
-  state = {
-    email: '',
-    alert: {
-      showAlert: false,
-      message: ''
-    }
+  static propTypes = {
+    resetPassword: PropTypes.func.isRequired,
+    alert: PropTypes.shape({
+      showAlert: PropTypes.bool.isRequired,
+      message: PropTypes.string
+    }).isRequired
   }
 
   render () {
-    const { resetPassword } = this.props
     return (
-      <View style={styles.screen} >
-        <TextInput
-          onChangeText={(email) => { this.setState({email}) }}
-          autoCapitalize='none'
-          value={this.state.email}
-        />
-        <View style={styles.centralized}>
-          <Button
-            style={styles.loginButton}
-            title='reset password'
-            onPress={() => resetPassword(this.state.email)}
-          />
-        </View>
-      </View>
+      <ForgotPassword
+        resetPassword={this.props.resetPassword}
+        alert={this.props.alert}
+      />
     )
   }
 }
