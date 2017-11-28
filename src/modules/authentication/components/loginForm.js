@@ -39,7 +39,7 @@ export class LoginForm extends React.Component {
         </View>
         <FormTextInput
           onChangeText={(email) => { this.setState({email}) }}
-          placeholder='Username'
+          placeholder='Email Address'
           autoCapitalize='none'
         />
         <FormTextInput

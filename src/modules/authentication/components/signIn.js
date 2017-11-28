@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {bool, func, shape, string} from 'prop-types'
-import {Button, Text, View} from 'react-native'
+import {Button, Text, View, TouchableWithoutFeedback} from 'react-native'
 
 import {styles} from './styles/signInScreen.styles'
 import {LoginForm} from '../components/loginForm'
@@ -20,17 +20,17 @@ export class SignIn extends Component {
     return (
       <View>
         <View style={styles.textRow}>
-          <Text>Don’t have an account?</Text>
-          <Button
-            title='Sign up now'
-            onPress={this.props.navigateToSignUp}
-          />
+          <Text>Forgot your password?</Text>
+          <TouchableWithoutFeedback
+            onPress={this.props.navigateToForgotPassword}
+          >
+            <Text>Recover it here</Text>
+          </TouchableWithoutFeedback>
         </View>
         <View style={styles.textRow}>
-          <Text>Forgot your password?</Text>
           <Button
-            title='Recover it here'
-            onPress={this.props.navigateToForgotPassword}
+            title='Create an Account'
+            onPress={this.props.navigateToSignUp}
           />
         </View>
       </View>
@@ -40,7 +40,7 @@ export class SignIn extends Component {
   render () {
     return (
       <LoginForm
-        buttonText='SIGN IN'
+        buttonText='Log In'
         alert={this.props.alert}
         onButtonPress={this.props.onButtonPress}
         footer={this.renderFooter()}
