@@ -2,8 +2,8 @@ import { connect } from 'react-redux'
 import React, {Component} from 'react'
 import {bool, func, shape, string} from 'prop-types'
 
-import {LoginForm} from '../components/loginForm'
 import { signUpAction } from '../../../redux/actions/async/authActions'
+import { SignUp } from '../components/signUp'
 
 class SignUpContainer extends Component {
   static propTypes = {
@@ -18,11 +18,16 @@ class SignUpContainer extends Component {
     this.props.signUp(email, password)
   }
 
+  navigateToSignInScreen = () => {
+    this.props.navigation.goBack()
+  }
+
   render () {
     return (
-      <LoginForm
+      <SignUp
         onButtonPress={this.onSignUp}
         alert={this.props.alert}
+        navigateToSignIn={this.navigateToSignInScreen}
         buttonText='SIGN UP'
       />
     )

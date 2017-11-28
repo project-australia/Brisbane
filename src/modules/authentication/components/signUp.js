@@ -1,15 +1,14 @@
 import React, {Component} from 'react'
 import {bool, func, shape, string} from 'prop-types'
-import {Button, Text, View, TouchableWithoutFeedback} from 'react-native'
+import {Button, Text, View} from 'react-native'
 
 import {styles} from './styles/signInScreen.styles'
 import {LoginForm} from '../components/loginForm'
 
-export class SignIn extends Component {
+export class SignUp extends Component {
   static propTypes = {
     onButtonPress: func.isRequired,
-    navigateToSignUp: func.isRequired,
-    navigateToForgotPassword: func.isRequired,
+    navigateToSignIn: func.isRequired,
     alert: shape({
       showAlert: bool.isRequired,
       message: string
@@ -20,19 +19,12 @@ export class SignIn extends Component {
     return (
       <View>
         <View style={styles.textRow}>
-          <Text>Forgot your password?</Text>
-          <TouchableWithoutFeedback
-            onPress={this.props.navigateToForgotPassword}
-          >
-            <View>
-              <Text>Recover it here</Text>
-            </View>
-          </TouchableWithoutFeedback>
+          <Text>I'm representant</Text>
         </View>
         <View style={styles.textRow}>
           <Button
-            title='Create an Account'
-            onPress={this.props.navigateToSignUp}
+            title='Log in instead'
+            onPress={this.props.navigateToSignIn}
           />
         </View>
       </View>
@@ -42,7 +34,7 @@ export class SignIn extends Component {
   render () {
     return (
       <LoginForm
-        buttonText='Log In'
+        buttonText='Create Account'
         alert={this.props.alert}
         onButtonPress={this.props.onButtonPress}
         footer={this.renderFooter()}
