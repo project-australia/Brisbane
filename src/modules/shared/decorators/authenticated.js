@@ -1,7 +1,7 @@
 import React from 'react'
-import { AuthenticatedHOC } from './AuthenticatedHOC'
+import { AuthenticatedHOC } from '../containers/authenticatedHOC'
 
-export function AuthenticatedDecorator (Screen) {
+function DecorateScreen (Screen) {
   return props => {
     return (
       <AuthenticatedHOC>
@@ -12,5 +12,5 @@ export function AuthenticatedDecorator (Screen) {
 }
 
 export function authenticated (screen) {
-  return AuthenticatedDecorator(screen)
+  return DecorateScreen(screen)
 }

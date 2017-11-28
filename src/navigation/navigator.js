@@ -4,7 +4,7 @@ import {Home} from '../modules/home/components/home'
 import {SignInScreen} from '../modules/authentication/containers/signInScreen'
 import {SignUpScreen} from '../modules/authentication/containers/signUpScreen'
 import {ForgotPasswordScreen} from '../modules/authentication/containers/forgotPasswordScreen'
-import { authenticated } from '../modules/shared/containers/authenticatedScreen'
+import { authenticated } from '../modules/shared/decorators/authenticated'
 
 export const initialRouteName = 'SignIn'
 const stackNavigatorConfig = {initialRouteName}
