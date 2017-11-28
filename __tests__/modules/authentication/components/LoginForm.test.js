@@ -4,7 +4,8 @@ import toJson from 'enzyme-to-json'
 import { LoginForm } from '../../../../src/modules/authentication/components/loginForm'
 
 const props = {
-  buttonText: 'foo-bar'
+  buttonText: 'foo-bar',
+  alert: { showAlert: false, message: '' }
 }
 
 describe('<LoginForm />', () => {

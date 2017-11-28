@@ -40,7 +40,7 @@ export class ForgotPasswordContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  alert: state.auth.alert
+  alert: state.authentication.alert
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -11,7 +11,7 @@ export class SignInContainer extends Component {
     alert: shape({
       showAlert: bool.isRequired,
       message: string
-    })
+    }).isRequired
   }
 
   onSignIn = (email, password) => {
@@ -27,18 +27,21 @@ export class SignInContainer extends Component {
   }
 
   render () {
+    console.log(this.props.alert)
+
     return (
       <SignIn
         onButtonPress={this.onSignIn}
         navigateToForgotPassword={this.navigateToForgotPasswordScreen}
         navigateToSignUp={this.navigateToSignUp}
+        alert={this.props.alert}
       />
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  alert: state.auth.alert
+  alert: state.authentication.alert
 })
 
 const mapDispatchToProps = (dispatch) => ({

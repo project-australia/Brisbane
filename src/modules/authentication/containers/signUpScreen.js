@@ -5,7 +5,7 @@ import {bool, func, shape, string} from 'prop-types'
 import {LoginForm} from '../components/loginForm'
 import { signUpAction } from '../../../redux/actions/async/authActions'
 
-export class SignUpContainer extends Component {
+class SignUpContainer extends Component {
   static propTypes = {
     signUp: func.isRequired,
     alert: shape({
@@ -22,7 +22,7 @@ export class SignUpContainer extends Component {
     return (
       <LoginForm
         onButtonPress={this.onSignUp}
-        toast={this.props.alert}
+        alert={this.props.alert}
         buttonText='SIGN UP'
       />
     )
@@ -30,7 +30,7 @@ export class SignUpContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  alert: state.auth.alert
+  alert: state.authentication.alert
 })
 
 const mapDispatchToProps = (dispatch) => ({
