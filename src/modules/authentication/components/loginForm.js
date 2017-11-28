@@ -23,6 +23,7 @@ export class LoginForm extends React.Component {
 
   onButtonPress = () => {
     const {email, password} = this.state
+    console.log('loginFOrm', email, password)
     this.props.onButtonPress(email, password)
   }
 

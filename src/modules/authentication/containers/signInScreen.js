@@ -15,6 +15,7 @@ export class SignInContainer extends Component {
   }
 
   onSignIn = (email, password) => {
+    console.log('APERTEI', email, password)
     this.props.signIn(email, password)
   }
 
@@ -27,8 +28,6 @@ export class SignInContainer extends Component {
   }
 
   render () {
-    console.log(this.props.alert)
-
     return (
       <SignIn
         onButtonPress={this.onSignIn}

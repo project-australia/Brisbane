@@ -12,6 +12,7 @@ export function signInAction (email, password) {
       const user = await signInWithEmailAndPassword(email, password)
       dispatch(signInSuccess(user))
     } catch (error) {
+      console.log(error)
       dispatch(alertAction(error))
     }
   }
