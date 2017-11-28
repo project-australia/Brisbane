@@ -14,10 +14,11 @@
     "bundle-ios": "react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios",
     "log:ios": "react-native log-ios",
     "log:android": "react-native log-android",
-    "precommit": "echo precommit",
-    "prepush": "echo prepush"
+    "precommit": "npm run lint:check",
+    "prepush": "npm test"
   },
   "dependencies": {
+    "data.maybe": "1.2.2",
     "firebase": "4.6.2",
     "prop-types": "15.6.0",
     "react": "16.0.0",
@@ -34,6 +35,7 @@
     "babel-preset-react-native": "4.0.0",
     "enzyme": "3.2.0",
     "enzyme-adapter-react-16": "1.1.0",
+    "enzyme-to-json": "3.2.2",
     "eslint": "4.11.0",
     "eslint-config-standard": "10.2.1",
     "eslint-plugin-flowtype": "2.39.1",
@@ -57,6 +59,9 @@
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-navigation)"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
     ]
   }
 }

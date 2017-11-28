@@ -1,9 +1,11 @@
-import {combineReducers} from 'redux'
-import {authReducers} from './authReducers'
-import {navigationReducer} from './reactNavigation'
+import { combineReducers } from 'redux'
 
-const reducers = {
-  auth: authReducers,
+import { authReducerConfig } from './authentication'
+import { navigationReducer } from './nav'
+import { createReducer } from './functionalReducer'
+
+export const reducers = {
+  authentication: createReducer(authReducerConfig),
   nav: navigationReducer
 }
 

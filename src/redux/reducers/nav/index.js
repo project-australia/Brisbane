@@ -1,4 +1,4 @@
-import {StackNavigator, initialRouteName} from '../../navigation/navigator'
+import {StackNavigator, initialRouteName} from '../../../navigation/navigator'
 
 const {getStateForAction, getActionForPathAndParams} = StackNavigator.router
 const initialState = getStateForAction(getActionForPathAndParams(initialRouteName))

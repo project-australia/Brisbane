@@ -1,15 +1,16 @@
-import { alertAction, signUpSuccess, succesRetrievedPassword, updateUserData } from '../sync/authActions'
+import { alertAction, signInSuccess, signUpSuccess, successRetrievedPassword } from '../sync/authActions'
 import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword
 } from '../../../services/firebase/authentication'
+import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../constants/messages'
 
 export function signInAction (email, password) {
   return async (dispatch) => {
     try {
       const user = await signInWithEmailAndPassword(email, password)
-      dispatch(updateUserData(user))
+      dispatch(signInSuccess(user))
     } catch (error) {
       dispatch(alertAction(error))
     }
@@ -31,7 +32,7 @@ export function forgotPasswordAction (email) {
   return async (dispatch) => {
     try {
       await sendPasswordResetEmail(email)
-      dispatch(succesRetrievedPassword())
+      dispatch(successRetrievedPassword(FORGOT_PASSWORD_SUCCESS_MSG))
     } catch (error) {
       dispatch(alertAction(error))
     }
