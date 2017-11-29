@@ -19,5 +19,6 @@ export const Colors = {
   drawer: 'rgba(30, 30, 29, 0.95)',
   black: '#000000',
   gray: 'gray',
+  overlay: 'rgba(0,0,0,0.5)',
   lightblue: '#6296f9'
 }
