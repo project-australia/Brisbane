@@ -6,7 +6,11 @@ import { LoadingOverlay } from '../../../../src/modules/shared/components/loadin
 describe('<LoadingOverlay />', () => {
   it('should pass down style parameter', async () => {
     let style = {flex: 1}
-    const aStyledLoadingOverlay = <LoadingOverlay isLoading style={style} />
+    const aStyledLoadingOverlay = (
+      <LoadingOverlay isLoading style={style} >
+        <View />
+      </LoadingOverlay>
+    )
     const wrapper = shallow(aStyledLoadingOverlay)
 
     expect(wrapper.prop('style')).toEqual(style)
