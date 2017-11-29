@@ -1,5 +1,5 @@
 .env
-*.keystore
+
 # OSX
 #
 .DS_Store
