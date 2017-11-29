@@ -4,6 +4,14 @@ import { shallow } from 'enzyme'
 import { LoadingOverlay } from '../../../../src/modules/shared/components/loadingOverlay'
 
 describe('<LoadingOverlay />', () => {
+  it('should pass down style parameter', async () => {
+    let style = {flex: 1}
+    const aStyledLoadingOverlay = <LoadingOverlay isLoading style={style} />
+    const wrapper = shallow(aStyledLoadingOverlay)
+
+    expect(wrapper.prop('style')).toEqual(style)
+  })
+
   it('should show a overlay if component is loading', async () => {
     const aComponent = <View isLoading={false} />
     const overlayedComponent = (

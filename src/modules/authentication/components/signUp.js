@@ -9,10 +9,7 @@ export class SignUp extends Component {
   static propTypes = {
     onButtonPress: func.isRequired,
     navigateToSignIn: func.isRequired,
-    alert: shape({
-      showAlert: bool.isRequired,
-      message: string
-    }).isRequired
+    alert: shape({showAlert: bool.isRequired, message: string}).isRequired
   }
 
   renderFooter = () => {
@@ -34,10 +31,10 @@ export class SignUp extends Component {
   render () {
     return (
       <LoginForm
-        buttonText='Create Account'
         alert={this.props.alert}
-        onButtonPress={this.props.onButtonPress}
+        buttonText='Create Account'
         footer={this.renderFooter()}
+        onButtonPress={this.props.onButtonPress}
       />
     )
   }
