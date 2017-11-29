@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<LoginForm /> should have a snapshot 1`] = `
-<View
+<LoadingOverlay
+  isLoading={false}
   style={
     Object {
       "backgroundColor": "white",
@@ -35,11 +36,13 @@ exports[`<LoginForm /> should have a snapshot 1`] = `
     autoCapitalize="none"
     onChangeText={[Function]}
     placeholder="Email Address"
+    value="eduardomoroni@gmail.com"
   />
   <FormTextInput
     onChangeText={[Function]}
     placeholder="Password"
     secureTextEntry={true}
+    value="123456"
   />
   <View
     style={
@@ -61,5 +64,5 @@ exports[`<LoginForm /> should have a snapshot 1`] = `
     />
   </View>
   <View />
-</View>
+</LoadingOverlay>
 `;

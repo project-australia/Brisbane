@@ -7,14 +7,11 @@ import {LoginForm} from '../components/loginForm'
 
 export class SignIn extends Component {
   static propTypes = {
+    goHome: func,
     onButtonPress: func.isRequired,
     navigateToSignUp: func.isRequired,
     navigateToForgotPassword: func.isRequired,
-    goHome: func,
-    alert: shape({
-      showAlert: bool.isRequired,
-      message: string
-    }).isRequired
+    alert: shape({showAlert: bool.isRequired, message: string}).isRequired
   }
 
   renderFooter = () => {
@@ -54,8 +51,8 @@ export class SignIn extends Component {
       <LoginForm
         buttonText='Log In'
         alert={this.props.alert}
-        onButtonPress={this.props.onButtonPress}
         footer={this.renderFooter()}
+        onButtonPress={this.props.onButtonPress}
       />
     )
   }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Button, Text, View } from 'react-native'
 import { styles } from './styles/loginFormStyles'
 import { FormTextInput } from './formTextInput'
+import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 
 export class LoginForm extends React.Component {
   static defaultProps = { footer: <View/> }
@@ -22,9 +23,11 @@ export class LoginForm extends React.Component {
     loading: false
   }
 
-  onButtonPress = () => {
+  onButtonPress = async () => {
+    this.setState({loading: true})
     const {email, password} = this.state
-    this.props.onButtonPress(email, password)
+    await this.props.onButtonPress(email, password)
+    this.setState({loading: false})
   }
 
   componentWillReceiveProps (nextProps) {
@@ -34,17 +37,19 @@ export class LoginForm extends React.Component {
 
   render () {
     return (
-      <View style={styles.screen}>
+      <LoadingOverlay style={styles.screen} isLoading={this.state.loading} >
         <View style={styles.header}>
           <Text style={styles.title}>Ballard Books</Text>
         </View>
         <FormTextInput
-          onChangeText={(email) => { this.setState({email}) }}
+          onChangeText={email => { this.setState({email}) }}
+          value={this.state.email}
           placeholder='Email Address'
           autoCapitalize='none'
         />
         <FormTextInput
-          onChangeText={(password) => { this.setState({password}) }}
+          onChangeText={password => { this.setState({password}) }}
+          value={this.state.password}
           placeholder='Password'
           secureTextEntry
         />
@@ -56,7 +61,7 @@ export class LoginForm extends React.Component {
           />
         </View>
         {this.props.footer}
-      </View>
+      </LoadingOverlay>
     )
   }
 }
