@@ -11,6 +11,7 @@ export function signInAction (email, password) {
     try {
       const user = await signInWithEmailAndPassword(email, password)
       dispatch(signInSuccess(user))
+      alert('Sign in success') // TODO: Remove this
     } catch (error) {
       dispatch(alertAction(error))
     }
@@ -22,6 +23,7 @@ export function signUpAction (email, password) {
     try {
       await createUserWithEmailAndPassword(email, password)
       dispatch(signUpSuccess())
+      alert('Sign up success') // TODO: Remove this
     } catch (error) {
       dispatch(alertAction(error))
     }
