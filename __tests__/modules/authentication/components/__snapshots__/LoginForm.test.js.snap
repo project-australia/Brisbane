@@ -34,7 +34,7 @@ exports[`<LoginForm /> should have a snapshot 1`] = `
   <FormTextInput
     autoCapitalize="none"
     onChangeText={[Function]}
-    placeholder="Username"
+    placeholder="Email Address"
   />
   <FormTextInput
     onChangeText={[Function]}
