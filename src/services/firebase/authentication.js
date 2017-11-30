@@ -12,11 +12,6 @@ export const createUserWithEmailAndPassword = async (email, password) => {
 
 const validatedUser = async (firebaseUser) => {
   const {uid, emailVerified, email, phoneNumber} = firebaseUser
-  if (!emailVerified) {
-    await sendEmailVerification(firebaseUser)
-    throw (new Error('Email não verificado'))
-  }
-
   return {uid, emailVerified, email, phoneNumber}
 }
 
