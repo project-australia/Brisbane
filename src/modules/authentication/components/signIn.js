@@ -7,7 +7,6 @@ import {LoginForm} from '../components/loginForm'
 
 export class SignIn extends Component {
   static propTypes = {
-    goHome: func,
     onButtonPress: func.isRequired,
     navigateToSignUp: func.isRequired,
     navigateToForgotPassword: func.isRequired,
@@ -31,15 +30,6 @@ export class SignIn extends Component {
           <Button
             title='Create an Account'
             onPress={this.props.navigateToSignUp}
-          />
-        </View>
-        <View style={styles.textRow}>
-          <Text>TEST AUTHENTICATION</Text>
-        </View>
-        <View style={styles.textRow}>
-          <Button
-            title='TEST AUTHORIZATION'
-            onPress={this.props.goHome}
           />
         </View>
       </View>

@@ -1,16 +1,19 @@
-import {StackNavigator as Navigator} from 'react-navigation'
+import { StackNavigator as Navigator } from 'react-navigation'
 
-import {Home} from '../modules/home/components/home'
-import {SignInScreen} from '../modules/authentication/containers/signInScreen'
-import {SignUpScreen} from '../modules/authentication/containers/signUpScreen'
-import {ForgotPasswordScreen} from '../modules/authentication/containers/forgotPasswordScreen'
+import { TestScreen } from '../modules/test/components/testScreen'
+import { HomeScreen } from '../modules/home/containers/homeScreen'
 import { authenticated } from '../modules/shared/decorators/authenticated'
+import { SignInScreen } from '../modules/authentication/containers/signInScreen'
+import { SignUpScreen } from '../modules/authentication/containers/signUpScreen'
+import { ForgotPasswordScreen } from '../modules/authentication/containers/forgotPasswordScreen'
+import { ProfileScreen } from '../modules/account/containers/profileScreen'
+import { ManageAccountScreen } from '../modules/account/containers/manageAccountScreen'
 
-export const initialRouteName = 'SignIn'
+export const initialRouteName = 'Test'
 const stackNavigatorConfig = {initialRouteName}
 const routeConfigs = {
   Home: {
-    screen: authenticated(Home)
+    screen: HomeScreen
   },
   SignIn: {
     screen: SignInScreen
@@ -20,6 +23,15 @@ const routeConfigs = {
   },
   ForgotPassword: {
     screen: ForgotPasswordScreen
+  },
+  Test: {
+    screen: TestScreen
+  },
+  Profile: {
+    screen: authenticated(ProfileScreen)
+  },
+  ManageAccount: {
+    screen: authenticated(ManageAccountScreen)
   }
 }
 

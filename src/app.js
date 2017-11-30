@@ -1,6 +1,6 @@
 import React from 'react'
-import {Provider} from 'react-redux'
-import {Navigator} from './navigation'
+import { Provider } from 'react-redux'
+import { Navigator } from './navigation'
 
 export const App = ({store}) => {
   return (
