@@ -9,7 +9,7 @@
     "test:update-snapshot": "jest -u -t snapshot",
     "android": "react-native run-android",
     "generate:ipa": "sh ./scripts/generate-ipa.sh",
-    "generate:apk": "sh ./scripts/generate-apk.sh",    
+    "generate:apk": "sh ./scripts/generate-apk.sh",
     "ios": "react-native run-ios",
     "lint:check": "eslint ./src/ ./__tests__/",
     "lint:fix": "eslint --fix ./src/ ./__tests__/",
@@ -17,7 +17,7 @@
     "bundle-ios": "react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios",
     "log:ios": "react-native log-ios",
     "log:android": "react-native log-android",
-    "precommit": "npm run lint:check",
+    "precommit": "lint-staged",
     "prepush": "npm test"
   },
   "dependencies": {
@@ -50,6 +50,7 @@
     "eslint-plugin-standard": "3.0.1",
     "husky": "0.14.3",
     "jest": "21.2.1",
+    "lint-staged": "6.0.0",
     "react-dom": "16.1.1",
     "react-test-renderer": "16.0.0"
   },
