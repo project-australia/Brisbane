@@ -5,7 +5,8 @@ import { Home } from '../../../../src/modules/home/components/home'
 
 const props = {
   userName: 'Patricinha',
-  navigateToProfile: () => null
+  navigateToProfile: () => null,
+  navigateToShoppingBag: () => null
 }
 
 describe('<Home />', () => {

@@ -9,6 +9,7 @@ import { instructions } from '../constants/instructions'
 export class Home extends React.Component<{}> {
   static propTypes = {
     navigateToProfile: PropTypes.func.isRequired,
+    navigateToShoppingBag: PropTypes.func.isRequired,
     userName: PropTypes.string
   }
 
@@ -20,14 +21,16 @@ export class Home extends React.Component<{}> {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          {`Welcome to Ballard Book ${this.props.userName}!`}
+          {`Hi, ${this.props.userName}!`}
         </Text>
-        <View key='profile_icon'>
-          <Button
-            title='PERFIL'
-            onPress={this.props.navigateToProfile}
-          />
-        </View>
+        <Button
+          title='PROFILE'
+          onPress={this.props.navigateToProfile}
+        />
+        <Button
+          title='SHOPPING BAG'
+          onPress={this.props.navigateToShoppingBag}
+        />
         <Text style={styles.instructions}>
           {instructions}
         </Text>

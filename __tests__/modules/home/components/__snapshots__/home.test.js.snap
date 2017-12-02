@@ -23,16 +23,16 @@ exports[`<Home /> should have a snapshot 1`] = `
       }
     }
   >
-    Welcome to Ballard Book Patricinha!
+    Hi, Patricinha!
   </Text>
-  <View
-    key="profile_icon"
-  >
-    <Button
-      onPress={[Function]}
-      title="PERFIL"
-    />
-  </View>
+  <Button
+    onPress={[Function]}
+    title="PROFILE"
+  />
+  <Button
+    onPress={[Function]}
+    title="SHOPPING BAG"
+  />
   <Text
     accessible={true}
     allowFontScaling={true}

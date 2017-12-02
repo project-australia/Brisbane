@@ -7,10 +7,13 @@ class HomeContainer extends Component {
     return (
       <Home
         userName={this.props.displayName}
-        navigateToProfile={() => this.props.navigation.navigate('Profile', {})}
+        navigateToProfile={this.navigateTo('Profile')}
+        navigateToShoppingBag={this.navigateTo('ShoppingCart')}
       />
     )
   }
+
+  navigateTo = screen => () => this.props.navigation.navigate(screen, {})
 }
 
 const mapStateToProps = ({authentication: {user}}) => ({displayName: user.displayName})
