@@ -1,8 +1,9 @@
 import React from 'react'
-import { Button, Text, View } from 'react-native'
 import PropTypes from 'prop-types'
+import { Button, Text, View } from 'react-native'
 
 import { styles } from './styles/home.styles'
+import { SellingBooks } from '../containers/SellingBooksContainer'
 
 export class Home extends React.Component<{}> {
   static propTypes = {
@@ -29,6 +30,7 @@ export class Home extends React.Component<{}> {
           title='SHOPPING BAG'
           onPress={this.props.navigateToShoppingBag}
         />
+        <SellingBooks />
       </View>
     )
   }
