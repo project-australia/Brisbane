@@ -11,8 +11,8 @@ export const createUserWithEmailAndPassword = async (email, password) => {
 }
 
 const validatedUser = async (firebaseUser) => {
-  const {uid, emailVerified, email, phoneNumber} = firebaseUser
-  return {uid, emailVerified, email, phoneNumber}
+  const {uid, emailVerified, email, phoneNumber, displayName} = firebaseUser
+  return {uid, emailVerified, email, phoneNumber, displayName}
 }
 
 export const getUserToker = async () => Firebase.auth().currentUser.getIdToken()

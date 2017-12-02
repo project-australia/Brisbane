@@ -5,12 +5,14 @@ import { Home } from '../components/home'
 class HomeContainer extends Component {
   render () {
     return (
-      <Home />
+      <Home
+        userName={this.props.displayName}
+      />
     )
   }
 }
 
-const mapStateToProps = () => ({})
+const mapStateToProps = ({authentication: {user}}) => ({displayName: user.displayName})
 
 const mapDispatchToProps = () => ({})
 
