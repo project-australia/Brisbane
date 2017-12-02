@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { Button, Text, View } from 'react-native'
 
 import { styles } from './styles/home.styles'
-import { SellingBooks } from '../containers/SellingBooksContainer'
+import { SellingBooks } from '../containers/sellingBooksContainer'
+import { WalletBalanceAmount } from '../containers/walletBalanceContainer'
 
 export class Home extends React.Component<{}> {
   static propTypes = {
@@ -31,6 +32,7 @@ export class Home extends React.Component<{}> {
           onPress={this.props.navigateToShoppingBag}
         />
         <SellingBooks />
+        <WalletBalanceAmount />
       </View>
     )
   }
