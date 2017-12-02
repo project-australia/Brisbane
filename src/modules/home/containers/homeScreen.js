@@ -7,8 +7,10 @@ class HomeContainer extends Component {
     return (
       <Home
         userName={this.props.displayName}
+        searchBook={() => alert('search book')}
         navigateToProfile={this.navigateTo('Profile')}
         navigateToShoppingBag={this.navigateTo('ShoppingCart')}
+        navigateToScan={this.navigateTo('Scanner')}
       />
     )
   }
