@@ -6,6 +6,8 @@ import { styles } from './styles/home.styles'
 import { SellingBooks } from '../containers/sellingBooksContainer'
 import { WalletBalanceAmount } from '../containers/walletBalanceContainer'
 import { BookSearch } from './searchBook'
+import { book } from '../propTypes/book'
+import { HorizontalBookList } from './HorizontalBookList'
 
 export class Home extends React.Component<{}> {
   static propTypes = {
@@ -13,6 +15,8 @@ export class Home extends React.Component<{}> {
     navigateToScan: PropTypes.func.isRequired,
     navigateToShoppingBag: PropTypes.func.isRequired,
     searchBook: PropTypes.func.isRequired,
+    recentlyAddedBooks: PropTypes.arrayOf(book).isRequired,
+    featuredBooks: PropTypes.arrayOf(book).isRequired,
     userName: PropTypes.string
   }
 
@@ -40,6 +44,18 @@ export class Home extends React.Component<{}> {
         />
         <SellingBooks />
         <WalletBalanceAmount />
+        <Text style={styles.welcome}>
+          Recently added
+        </Text>
+        <HorizontalBookList
+          books={this.props.recentlyAddedBooks}
+        />
+        <Text style={styles.welcome}>
+          Recently added
+        </Text>
+        <HorizontalBookList
+          books={this.props.recentlyAddedBooks}
+        />
       </View>
     )
   }
