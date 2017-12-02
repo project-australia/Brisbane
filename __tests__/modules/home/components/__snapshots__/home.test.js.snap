@@ -25,6 +25,14 @@ exports[`<Home /> should have a snapshot 1`] = `
   >
     Welcome to Ballard Book Patricinha!
   </Text>
+  <View
+    key="profile_icon"
+  >
+    <Button
+      onPress={[Function]}
+      title="PERFIL"
+    />
+  </View>
   <Text
     accessible={true}
     allowFontScaling={true}

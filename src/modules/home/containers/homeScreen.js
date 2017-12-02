@@ -7,6 +7,7 @@ class HomeContainer extends Component {
     return (
       <Home
         userName={this.props.displayName}
+        navigateToProfile={() => this.props.navigation.navigate('Profile', {})}
       />
     )
   }

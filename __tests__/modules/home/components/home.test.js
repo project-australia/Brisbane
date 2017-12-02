@@ -4,7 +4,8 @@ import toJson from 'enzyme-to-json'
 import { Home } from '../../../../src/modules/home/components/home'
 
 const props = {
-  userName: 'Patricinha'
+  userName: 'Patricinha',
+  navigateToProfile: () => null
 }
 
 describe('<Home />', () => {
