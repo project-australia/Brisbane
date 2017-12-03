@@ -9,7 +9,7 @@ const props = {
 }
 
 describe('<LoginForm />', () => {
-  it('should have a snapshot', () => {
+  xit('should have a snapshot', () => {
     const wrapper = shallow(<LoginForm {...props} />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
