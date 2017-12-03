@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import {bool, func, shape, string} from 'prop-types'
-import {Button, Text, View, TouchableWithoutFeedback} from 'react-native'
+import {Text, View, TouchableWithoutFeedback} from 'react-native'
 
 import {styles} from './styles/signInScreen.styles'
 import {LoginForm} from '../components/loginForm'
+import { FormOutlineButton } from '../../shared/components/buttons'
 
 export class SignIn extends Component {
   static propTypes = {
@@ -17,21 +18,18 @@ export class SignIn extends Component {
     return (
       <View>
         <View style={styles.textRow}>
-          <Text>Forgot your password?</Text>
-          <TouchableWithoutFeedback
-            onPress={this.props.navigateToForgotPassword}
-          >
+          <Text style={styles.footnote}>Forgot your password?</Text>
+          <TouchableWithoutFeedback onPress={this.props.navigateToForgotPassword}>
             <View>
-              <Text>Recover it here</Text>
+              <Text style={styles.footnoteTextButton}>Recover it here</Text>
             </View>
           </TouchableWithoutFeedback>
         </View>
-        <View style={styles.textRow}>
-          <Button
-            title='Create an Account'
-            onPress={this.props.navigateToSignUp}
-          />
-        </View>
+        <FormOutlineButton
+          title='Create an Account'
+          onPress={this.props.navigateToSignUp}
+          style={styles.lastItemSpacing}
+        />
       </View>
     )
   }
