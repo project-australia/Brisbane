@@ -11,7 +11,7 @@ export const Metrics = {
   smallMargin: 5,
   horizontalLineHeight: 1,
   searchBarHeight: 30,
-  inputHeight: 40,
+  inputHeight: 44,
   screenWidth: width < height ? width : height,
   screenHeight: width < height ? height : width,
   statusBarHeight: (Platform.OS === 'ios') ? 20 : 24,
