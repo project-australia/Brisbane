@@ -11,10 +11,10 @@ const size = {
   h4: 26,
   h5: 20,
   h6: 19,
-  input: 17,
+  input: 15,
   regular: 17,
   medium: 14,
-  small: 12,
+  small: 13,
   tiny: 8.5
 }
 
@@ -54,6 +54,10 @@ const style = {
   input: {
     fontFamily: type.base,
     fontSize: size.input
+  },
+  footnote: {
+    fontFamily: type.base,
+    fontSize: size.small
   }
 }
 
