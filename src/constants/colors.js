@@ -1,4 +1,20 @@
 export const Colors = {
+  // App identity colors
+  primary500: '#FF5746',
+  primary300: '#FF9085',
+  secondary: '#26CBD2',
+
+  // Standard background color
+  screen: '#F2F2F5',
+
+  // Dark colors
+  gray900: '#030303',
+  gray700: '#4A4A4A',
+  gray500: '#9B9B9B',
+  // Light colors
+  gray050: '#FAFAFA',
+
+  // Other colors
   background: 'white',
   clear: 'rgba(0,0,0,0)',
   white: 'white',
