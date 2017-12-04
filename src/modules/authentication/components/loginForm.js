@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import { styles } from './styles/loginFormStyles'
+import { Colors } from '../../../constants'
 import { FormTextInput } from './formTextInput'
+import { FormButton } from '../../shared/components/buttons'
 import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 
 export class LoginForm extends React.Component {
@@ -44,22 +46,24 @@ export class LoginForm extends React.Component {
         <FormTextInput
           onChangeText={email => { this.setState({email}) }}
           value={this.state.email}
-          placeholder='Email Address'
+          placeholder='Email address'
           autoCapitalize='none'
+          selectionColor={Colors.secondary500}
+          style={styles.itemSpacing}
         />
         <FormTextInput
           onChangeText={password => { this.setState({password}) }}
           value={this.state.password}
           placeholder='Password'
           secureTextEntry
+          selectionColor={Colors.secondary500}
+          style={styles.itemSpacing}
         />
-        <View style={styles.centralized}>
-          <Button
-            style={styles.loginButton}
-            title={this.props.buttonText}
-            onPress={this.onButtonPress}
-          />
-        </View>
+        <FormButton
+          title={this.props.buttonText}
+          onPress={this.onButtonPress}
+          style={styles.itemSpacing}
+        />
         {this.props.footer}
       </LoadingOverlay>
     )

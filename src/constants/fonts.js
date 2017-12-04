@@ -5,16 +5,16 @@ const type = {
 }
 
 const size = {
-  h1: 38,
-  h2: 34,
-  h3: 30,
+  h1: 42,
+  h2: 36,
+  h3: 32,
   h4: 26,
   h5: 20,
   h6: 19,
-  input: 18,
+  input: 15,
   regular: 17,
   medium: 14,
-  small: 12,
+  small: 13,
   tiny: 8.5
 }
 
@@ -28,7 +28,7 @@ const style = {
     fontSize: size.h2
   },
   h3: {
-    fontFamily: type.emphasis,
+    fontFamily: type.base,
     fontSize: size.h3
   },
   h4: {
@@ -50,6 +50,14 @@ const style = {
   description: {
     fontFamily: type.base,
     fontSize: size.medium
+  },
+  input: {
+    fontFamily: type.base,
+    fontSize: size.input
+  },
+  footnote: {
+    fontFamily: type.base,
+    fontSize: size.small
   }
 }
 

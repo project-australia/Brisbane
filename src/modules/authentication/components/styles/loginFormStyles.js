@@ -4,27 +4,34 @@ import {Colors, Metrics, Fonts} from '../../../../constants'
 export const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: Colors.background
+    backgroundColor: Colors.screen,
+    justifyContent: 'center'
+  },
+  header: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: Metrics.marginVertical * 3
+  },
+  title: {
+    ...Fonts.style.h3,
+    color: Colors.gray900
   },
   image: {
     resizeMode: 'contain'
   },
-  title: {
-    ...Fonts.style.h4
-  },
-  header: {
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
   centralized: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: 'column',
     justifyContent: 'center'
   },
   content: {
     justifyContent: 'space-between'
   },
+  itemSpacing: {
+    marginHorizontal: Metrics.marginHorizontal * 2,
+    marginBottom: Metrics.marginVertical
+  },
   loginButton: {
+    flex: 1,
     marginVertical: Metrics.marginVertical
   }
 })
