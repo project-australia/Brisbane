@@ -1,4 +1,5 @@
 const type = {
+  kefa: 'kefa',
   base: 'HelveticaNeue',
   bold: 'HelveticaNeue-Bold',
   emphasis: 'HelveticaNeue-Italic'
@@ -19,6 +20,10 @@ const size = {
 }
 
 const style = {
+  title: {
+    fontFamily: type.kefa,
+    fontSize: size.h3
+  },
   h1: {
     fontFamily: type.base,
     fontSize: size.h1

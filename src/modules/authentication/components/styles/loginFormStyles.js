@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     marginBottom: Metrics.marginVertical * 3
   },
   title: {
-    ...Fonts.style.h3,
+    ...Fonts.style.title,
     color: Colors.gray900
   },
   image: {
