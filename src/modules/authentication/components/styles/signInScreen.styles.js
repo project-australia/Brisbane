@@ -16,6 +16,18 @@ export const styles = StyleSheet.create({
     color: Colors.gray900,
     padding: Metrics.smallMargin
   },
+  switchRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: Metrics.marginVertical,
+    marginBottom: Metrics.marginVertical * 2,
+    marginHorizontal: Metrics.marginVertical * 3
+  },
+  switchLabel: {
+    ...Fonts.style.normal,
+    color: Colors.gray900,
+    flex: 1
+  },
   lastItemSpacing: {
     marginHorizontal: Metrics.marginHorizontal * 2
   }

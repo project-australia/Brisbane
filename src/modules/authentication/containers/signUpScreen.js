@@ -6,6 +6,11 @@ import { signUpAction } from '../../../redux/actions/async/authActions'
 import { SignUp } from '../components/signUp'
 
 class SignUpContainer extends Component {
+  static navigationOptions = {
+    title: 'SignUp',
+    header: null
+  }
+
   static propTypes = {
     signUp: func.isRequired,
     alert: shape({
