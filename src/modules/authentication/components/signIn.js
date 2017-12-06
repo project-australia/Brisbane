@@ -4,7 +4,7 @@ import {Text, View, TouchableWithoutFeedback} from 'react-native'
 
 import {styles} from './styles/signInScreen.styles'
 import {LoginForm} from '../components/loginForm'
-import { FormOutlineButton } from '../../shared/components/buttons'
+import {FormOutlineButton} from '../../shared/components/buttons'
 
 export class SignIn extends Component {
   static propTypes = {

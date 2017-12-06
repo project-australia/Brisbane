@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
   },
   darkenOutline: {
     borderColor: Colors.gray200alt,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: Metrics.borderWidth,
     borderRadius: Metrics.buttonRadius
   },
   whiteText: {

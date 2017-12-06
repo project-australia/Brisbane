@@ -5,7 +5,7 @@ import {bool, func, shape, string} from 'prop-types'
 import { signInAction } from '../../../redux/actions/async/authActions'
 import { SignIn } from '../components/signIn'
 
-export class SignInContainer extends Component {
+class SignInContainer extends Component {
   static navigationOptions = {
     title: 'SignIn',
     header: null
