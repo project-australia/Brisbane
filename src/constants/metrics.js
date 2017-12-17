@@ -1,6 +1,8 @@
 import {Dimensions, Platform} from 'react-native'
 
 const {width, height} = Dimensions.get('window')
+const statusBarHeight = (Platform.OS === 'ios') ? 20 : 24
+const navBarHeight = (Platform.OS === 'ios') ? 86 : 80
 
 export const Metrics = {
   marginHorizontal: 12,
@@ -14,16 +16,18 @@ export const Metrics = {
   inputHeight: 44,
   screenWidth: width < height ? width : height,
   screenHeight: width < height ? height : width,
-  statusBarHeight: (Platform.OS === 'ios') ? 20 : 24,
-  navBarHeight: (Platform.OS === 'ios') ? 64 : 56,
+  statusBarHeight,
+  navBarHeight,
+  navBarButtonHeight: navBarHeight - statusBarHeight,
+  backButtonInset: (Platform.OS === 'ios') ? 5 : 8,
   buttonRadius: 4,
   borderWidth: 1,
   icons: {
     tiny: 12,
     small: 18,
     medium: 24,
-    large: 42,
-    xl: 60,
+    large: 32,
+    xl: 42,
     xxl: 72,
     xxxl: 96
   },
