@@ -18,6 +18,7 @@ export const Colors = {
 
   // Grays when the background isn't white
   gray200alt: '#0000001E',
+  statusBar: 'rgba(0, 0, 0, 0.2)',
 
   // Other colors
   background: 'white',
