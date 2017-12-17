@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Text, ScrollView } from 'react-native'
+import { Text, ScrollView, View } from 'react-native'
 
 import { styles } from './styles/home.styles'
 import { AppStatusBar } from '../../shared/components/appStatusBar'
@@ -41,31 +41,33 @@ export class Home extends React.Component<{}> {
 
   render () {
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <AppStatusBar />
         <NavbarMain
           title={`Hi, ${this.props.userName}`}
           rightIcons={this.state.navRightIcons}
         />
-        <BookSearch
-          onSubmit={this.props.searchBook}
-          onScanPress={this.props.navigateToScan}
-        />
-        <SellingBooks />
-        <WalletBalanceAmount />
-        <Text style={styles.welcome}>
-          Recently added
-        </Text>
-        <HorizontalBookList
-          books={this.props.recentlyAddedBooks}
-        />
-        <Text style={styles.welcome}>
-          Recently added
-        </Text>
-        <HorizontalBookList
-          books={this.props.recentlyAddedBooks}
-        />
-      </ScrollView>
+        <ScrollView>
+          <BookSearch
+            onSubmit={this.props.searchBook}
+            onScanPress={this.props.navigateToScan}
+          />
+          <SellingBooks />
+          <WalletBalanceAmount />
+          <Text style={styles.welcome}>
+            Recently added
+          </Text>
+          <HorizontalBookList
+            books={this.props.recentlyAddedBooks}
+          />
+          <Text style={styles.welcome}>
+            Recently added
+          </Text>
+          <HorizontalBookList
+            books={this.props.recentlyAddedBooks}
+          />
+        </ScrollView>
+      </View>
     )
   }
 }
