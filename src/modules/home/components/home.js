@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Text, View } from 'react-native'
+import { Text, ScrollView } from 'react-native'
 
 import { styles } from './styles/home.styles'
 import { AppStatusBar } from '../../shared/components/appStatusBar'
@@ -41,7 +41,7 @@ export class Home extends React.Component<{}> {
 
   render () {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <AppStatusBar />
         <NavbarMain
           title={`Hi, ${this.props.userName}`}
@@ -65,7 +65,7 @@ export class Home extends React.Component<{}> {
         <HorizontalBookList
           books={this.props.recentlyAddedBooks}
         />
-      </View>
+      </ScrollView>
     )
   }
 }
