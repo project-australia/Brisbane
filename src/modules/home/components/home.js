@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 
 import { styles } from './styles/home.styles'
+import { AppStatusBar } from '../../shared/components/appStatusBar'
+import { NavbarMain } from '../../shared/components/navbar'
 import { SellingBooks } from '../containers/sellingBooksContainer'
 import { WalletBalanceAmount } from '../containers/walletBalanceContainer'
 import { BookSearch } from './searchBook'
@@ -24,23 +26,30 @@ export class Home extends React.Component<{}> {
     userName: 'Guest'
   }
 
+  state = {
+    navRightIcons: [
+      {
+        name: 'account-circle',
+        onPress: this.props.navigateToProfile
+      },
+      {
+        name: 'cart-outline',
+        onPress: this.props.navigateToShoppingBag
+      }
+    ]
+  }
+
   render () {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          {`Hi, ${this.props.userName}!`}
-        </Text>
+        <AppStatusBar />
+        <NavbarMain
+          title={`Hi, ${this.props.userName}`}
+          rightIcons={this.state.navRightIcons}
+        />
         <BookSearch
           onSubmit={this.props.searchBook}
           onScanPress={this.props.navigateToScan}
-        />
-        <Button
-          title='PROFILE'
-          onPress={this.props.navigateToProfile}
-        />
-        <Button
-          title='SHOPPING BAG'
-          onPress={this.props.navigateToShoppingBag}
         />
         <SellingBooks />
         <WalletBalanceAmount />

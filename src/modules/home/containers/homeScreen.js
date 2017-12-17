@@ -7,6 +7,11 @@ const aBook = {image: 'bla', title: '', author: 'Talhate', id: '1'}
 const anotherBook = {image: 'bla', title: '', author: 'Porto', id: '2'}
 
 class HomeContainer extends Component<{}> {
+  static navigationOptions = {
+    title: 'Home',
+    header: null
+  }
+
   static propTypes = {
     displayName: PropTypes.string,
     navigation: PropTypes.object.isRequired
