@@ -3,6 +3,7 @@ import {bool, func, shape, string} from 'prop-types'
 import {Text, View, TouchableWithoutFeedback} from 'react-native'
 
 import {styles} from './styles/signInScreen.styles'
+import {AppStatusBar} from '../../shared/components/appStatusBar'
 import {LoginForm} from '../components/loginForm'
 import {FormOutlineButton} from '../../shared/components/buttons'
 
@@ -17,6 +18,7 @@ export class SignIn extends Component {
   renderFooter = () => {
     return (
       <View>
+        <AppStatusBar />
         <View style={styles.textRow}>
           <Text style={styles.footnote}>Forgot your password?</Text>
           <TouchableWithoutFeedback onPress={this.props.navigateToForgotPassword}>
