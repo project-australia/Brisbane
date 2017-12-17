@@ -1,9 +1,12 @@
 import React from 'react'
-import { Button, View } from 'react-native'
+import { TextInput, View } from 'react-native'
 import PropTypes from 'prop-types'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+
+import { Touchable } from '../../shared/components/touchable'
 
 import { styles } from './styles/home.styles'
-import { FormTextInput } from '../../authentication/components/formTextInput'
+import { Colors, Metrics, Values } from '../../../constants'
 
 export class BookSearch extends React.Component<{}> {
   static propTypes = {
@@ -13,14 +16,30 @@ export class BookSearch extends React.Component<{}> {
 
   render () {
     return (
-      <View style={styles.container}>
-        <FormTextInput
+      <View style={styles.searchBarWrap}>
+        <View style={styles.iconWrap}>
+          <Icon
+            name={'magnify'}
+            size={Metrics.icons.small}
+            color={Colors.gray500}
+          />
+        </View>
+        <TextInput
           placeholder='Search book or scan barcode'
+          underlineColorAndroid={'transparent'}
+          style={styles.searchInput}
         />
-        <Button
-          title='SCAN'
+        <Touchable
+          background={Values.BackgroundBorderlessRipple}
           onPress={this.props.onScanPress}
-        />
+          style={styles.iconWrap}
+        >
+          <Icon
+            name={'barcode-scan'}
+            size={Metrics.icons.medium}
+            color={Colors.gray700}
+          />
+        </Touchable>
       </View>
     )
   }
