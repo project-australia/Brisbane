@@ -1,4 +1,4 @@
-import Maybe from 'data.maybe'
+import Maybe from 'folktale/maybe'
 
 export function createReducer (reducerConfig) {
   const { actionHandlers, initialState } = reducerConfig
