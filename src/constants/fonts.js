@@ -52,6 +52,10 @@ const style = {
     fontFamily: type.emphasis,
     fontSize: size.h6
   },
+  normalKefa: {
+    fontFamily: type.kefa,
+    fontSize: size.regular
+  },
   normal: {
     fontFamily: type.base,
     fontSize: size.regular
