@@ -20,6 +20,7 @@ export class TestScreen extends Component {
         {this.navigateTo('Home')}
         {this.navigateTo('Profile')}
         {this.navigateTo('ManageAccount')}
+        {this.navigateTo('BookScanner')}
       </View>
     )
   }
