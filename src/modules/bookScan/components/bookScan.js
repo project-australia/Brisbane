@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import Camera from 'react-native-camera'
 
+import { Scanner } from '../../shared/components/camera'
 import { styles } from './styles/bookScan.style'
 
 export class BookScanner extends Component {
-  onBarCodeRead = (e) => {
-    alert(`Barcode Found! Type: ${e.type} \nData: ${e.dat}`)
-  }
-
   takePicture = () => {
     const options = {}
+    alert('tirou foto')
     this.camera.capture({metadata: options})
       .then((data) => console.log(data))
       .catch(err => console.error(err))
@@ -19,15 +16,11 @@ export class BookScanner extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Camera
-          ref={(cam) => { this.camera = cam }}
-          onBarCodeRead={this.onBarCodeRead}
-          style={styles.preview}
-          aspect={Camera.constants.Aspect.fill}>
+        <Scanner style={styles.preview}>
           <Text style={styles.capture} onPress={this.takePicture}>
-            [CAPTURE]
+            [Scan]
           </Text>
-        </Camera>
+        </Scanner>
       </View>
     )
   }
