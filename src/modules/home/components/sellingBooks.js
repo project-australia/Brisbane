@@ -1,10 +1,15 @@
-import React from 'react'
-import { Button, Text, View } from 'react-native'
+import React, {Component} from 'react'
+import {Text, View} from 'react-native'
 import PropTypes from 'prop-types'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import { styles } from './styles/home.styles'
+import {MenuTitle} from '../../shared/components/menuTitle'
+import {CardFooterButton} from '../../shared/components/buttons'
 
-export class SellingBookAmount extends React.Component<{}> {
+import {styles} from './styles/home.styles'
+import {Colors, Metrics} from '../../../constants'
+
+export class SellingBookAmount extends Component {
   static propTypes = {
     onAddBookPressed: PropTypes.func.isRequired,
     sellingAmount: PropTypes.number.isRequired
@@ -12,14 +17,24 @@ export class SellingBookAmount extends React.Component<{}> {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          {`Selling ${this.props.sellingAmount} books`}
-        </Text>
-        <Button
-          title='ADD'
-          onPress={this.props.onAddBookPressed}
-        />
+      <View>
+        <MenuTitle title={'Sell a book'} />
+        <View style={[styles.card, styles.square]}>
+          <View style={styles.menuColumn}>
+            <View style={styles.featuredIconWrap}>
+              <Icon name={'currency-usd'} color={Colors.gray200} size={Metrics.icons.large} />
+            </View>
+            <Text style={styles.secondaryInput}>Selling</Text>
+            <Text style={styles.primaryText}>
+              {`${this.props.sellingAmount} books`}
+            </Text>
+          </View>
+          <CardFooterButton
+            onPress={this.props.onAddBookPressed}
+            secondary
+            title={'Add'}
+          />
+        </View>
       </View>
     )
   }

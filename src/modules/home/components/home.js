@@ -52,8 +52,14 @@ export class Home extends React.Component<{}> {
             onSubmit={this.props.searchBook}
             onScanPress={this.props.navigateToScan}
           />
-          <SellingBooks />
-          <WalletBalanceAmount />
+          <View style={styles.twoColumnMenuWrap}>
+            <View style={styles.menuColumn}>
+              <SellingBooks />
+            </View>
+            <View style={styles.menuColumn}>
+              <WalletBalanceAmount />
+            </View>
+          </View>
           <Text style={styles.welcome}>
             Recently added
           </Text>

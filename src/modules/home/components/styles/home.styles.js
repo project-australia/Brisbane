@@ -1,6 +1,6 @@
 import {Platform, StyleSheet} from 'react-native'
 
-import {Colors, Fonts, Metrics} from '../../../../constants'
+import {Colors, Fonts, Metrics, Values} from '../../../../constants'
 
 export const styles = StyleSheet.create({
   container: {
@@ -20,18 +20,7 @@ export const styles = StyleSheet.create({
     marginVertical: Metrics.smallMargin,
     paddingRight: Metrics.smallMargin,
     borderRadius: Metrics.buttonRadius,
-    ...Platform.select({
-      android: {
-        elevation: 1
-      },
-      ios: {
-        shadowColor: Colors.gray900,
-        shadowOffset: {width: 0, height: 1},
-        shadowRadius: 0,
-        shadowOpacity: 0.12,
-        overflow: 'visible'
-      }
-    })
+    ...Values.elevation1
   },
   searchInput: {
     flex: 1,
@@ -51,5 +40,37 @@ export const styles = StyleSheet.create({
     aspectRatio: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+
+  twoColumnMenuWrap: {
+    flexDirection: 'row',
+    padding: Metrics.section / 2
+  },
+  menuColumn: {
+    flex: 1,
+    flexDirection: 'column',
+    padding: Metrics.section / 2
+  },
+  card: {
+    backgroundColor: Colors.white,
+    borderRadius: Metrics.buttonRadius * 2,
+    ...Values.elevation1,
+    overflow: 'hidden'
+  },
+  square: {
+    aspectRatio: 1
+  },
+  featuredIconWrap: {
+    alignItems: 'flex-end'
+  },
+  secondaryInput: {
+    ...Fonts.style.input,
+    color: Colors.gray500,
+    lineHeight: Metrics.textLineHeight
+  },
+  primaryText: {
+    ...Fonts.style.normal,
+    color: Colors.gray900,
+    lineHeight: Metrics.textLineHeight
   }
 })

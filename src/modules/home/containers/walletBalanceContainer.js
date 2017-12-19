@@ -6,8 +6,9 @@ class WalletBalanceContainer extends Component {
   render () {
     return (
       <WalletBalance
-        balance={15.5}
-        onWithDrawPressed={() => alert('book added!')}
+        balance={15.50}
+        onWithDrawPressed={() => alert('💸 money gone!')}
+        onWalletViewPressed={() => alert('🛶 navigate to wallet')}
       />
     )
   }
