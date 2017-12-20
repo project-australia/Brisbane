@@ -7,6 +7,7 @@ import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../src/constants/messages'
 import { alertAction, showAlert, successRetrievedPassword } from '../../../src/redux/actions/sync/authActions'
 
 jest.mock('../../../src/services/firebase/authentication')
+jest.mock('react-native-camera', () => require.requireActual('../../__mocks__/react-native-camera').default)
 
 describe('Authentication reducers', () => {
   const password = 'password'
