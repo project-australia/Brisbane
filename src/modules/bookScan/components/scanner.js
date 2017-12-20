@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import Camera from 'react-native-camera'
 import { View } from 'react-native'
 import PropTypes from 'prop-types'
 
-import { styles } from './styles/camera.style'
+import { styles } from './styles/scanner.style'
 
 export class Scanner extends Component {
   static propTypes = {
@@ -13,7 +12,7 @@ export class Scanner extends Component {
   static defaultProps = {
     style: styles.default
   }
-  static aspect = Camera.constants.Aspect.fill
+  static aspect = 'Camera.constants.Aspect.fill'
 
   onBarCodeRead = (e) => {
     alert(`Barcode Found! Type: ${e.type} \nData: ${e.dat}`)
@@ -21,13 +20,13 @@ export class Scanner extends Component {
 
   render () {
     return (
-      <Camera
+      <View
         ref={cam => { this.camera = cam }}
         onBarCodeRead={this.onBarCodeRead}
         style={this.props.style}
         aspect={this.aspect}>
         {this.props.children}
-      </Camera>
+      </View>
     )
   }
 }

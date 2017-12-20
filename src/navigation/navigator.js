@@ -8,8 +8,9 @@ import { SignUpScreen } from '../modules/authentication/containers/signUpScreen'
 import { ForgotPasswordScreen } from '../modules/authentication/containers/forgotPasswordScreen'
 import { ProfileScreen } from '../modules/account/containers/profileScreen'
 import { ManageAccountScreen } from '../modules/account/containers/manageAccountScreen'
+import { BookScanner } from '../modules/bookScan/components/bookScanner'
 
-export const initialRouteName = 'Test'
+export const initialRouteName = 'Home'
 const stackNavigatorConfig = {initialRouteName}
 const routeConfigs = {
   Home: {
@@ -32,6 +33,9 @@ const routeConfigs = {
   },
   ManageAccount: {
     screen: authenticated(ManageAccountScreen)
+  },
+  BookScanner: {
+    screen: BookScanner
   }
 }
 
