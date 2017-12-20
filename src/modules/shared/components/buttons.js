@@ -33,3 +33,19 @@ export const FormOutlineButton = (props) => {
     </TouchableHighlight>
   )
 }
+
+export const CardFooterButton = (props) => {
+  const {bottomRadius, primaryButton, whiteText, secondaryButton} = styles
+
+  const buttonColor = (props.secondary) ? secondaryButton : primaryButton
+  const style = StyleSheet.flatten([bottomRadius, buttonColor, props.style])
+  return (
+    <TouchableHighlight
+      onPress={props.onPress}
+      style={style}
+      underlayColor={Colors.primary700}
+    >
+      <Text style={whiteText}>{props.title}</Text>
+    </TouchableHighlight>
+  )
+}

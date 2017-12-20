@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Button, Text, View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 
-import { styles } from './styles/home.styles'
+import { AppStatusBar } from '../../shared/components/appStatusBar'
+import { BookSearch } from './searchBook'
+import { HorizontalBookList } from './HorizontalBookList'
+import { MenuTitle } from '../../shared/components/menuTitle'
+import { NavbarMain } from '../../shared/components/navbar'
 import { SellingBooks } from '../containers/sellingBooksContainer'
 import { WalletBalanceAmount } from '../containers/walletBalanceContainer'
-import { BookSearch } from './searchBook'
-import { book } from '../propTypes/book'
-import { HorizontalBookList } from './HorizontalBookList'
 
-export class Home extends React.Component<{}> {
+import { book } from '../propTypes/book'
+import { styles } from './styles/home.styles'
+
+export class Home extends Component {
   static propTypes = {
     navigateToProfile: PropTypes.func.isRequired,
     navigateToScan: PropTypes.func.isRequired,
@@ -24,38 +28,50 @@ export class Home extends React.Component<{}> {
     userName: 'Guest'
   }
 
+  state = {
+    navRightIcons: [
+      {
+        name: 'account-circle',
+        onPress: this.props.navigateToProfile
+      },
+      {
+        name: 'cart-outline',
+        onPress: this.props.navigateToShoppingBag
+      }
+    ]
+  }
+
   render () {
+    const recentlyAddedButton = {text: 'View All', onPress: this.props.onRecentlyAddedPressed}
+    const featuredButton = {text: 'View All', onPress: this.props.onFeaturedPressed}
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          {`Hi, ${this.props.userName}!`}
-        </Text>
-        <BookSearch
-          onSubmit={this.props.searchBook}
-          onScanPress={this.props.navigateToScan}
+        <AppStatusBar />
+        <NavbarMain
+          title={`Hi, ${this.props.userName}`}
+          rightIcons={this.state.navRightIcons}
         />
-        <Button
-          title='PROFILE'
-          onPress={this.props.navigateToProfile}
-        />
-        <Button
-          title='SHOPPING BAG'
-          onPress={this.props.navigateToShoppingBag}
-        />
-        <SellingBooks />
-        <WalletBalanceAmount />
-        <Text style={styles.welcome}>
-          Recently added
-        </Text>
-        <HorizontalBookList
-          books={this.props.recentlyAddedBooks}
-        />
-        <Text style={styles.welcome}>
-          Recently added
-        </Text>
-        <HorizontalBookList
-          books={this.props.recentlyAddedBooks}
-        />
+        <ScrollView>
+          <BookSearch
+            onSubmit={this.props.searchBook}
+            onScanPress={this.props.navigateToScan}
+          />
+
+          <View style={styles.twoColumnMenuWrap}>
+            <View style={styles.menuColumn}>
+              <SellingBooks />
+            </View>
+            <View style={styles.menuColumn}>
+              <WalletBalanceAmount />
+            </View>
+          </View>
+
+          <MenuTitle title={'Recently added'} button={recentlyAddedButton} style={styles.titleWrap} />
+          <HorizontalBookList books={this.props.recentlyAddedBooks} />
+          <MenuTitle title={'Featured'} button={featuredButton} style={styles.titleWrap} />
+          <HorizontalBookList books={this.props.recentlyAddedBooks} />
+
+        </ScrollView>
       </View>
     )
   }

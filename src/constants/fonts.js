@@ -20,6 +20,10 @@ const size = {
 }
 
 const style = {
+  navbarTitle: {
+    fontFamily: type.kefa,
+    fontSize: size.h5
+  },
   title: {
     fontFamily: type.kefa,
     fontSize: size.h3
@@ -47,6 +51,10 @@ const style = {
   h6: {
     fontFamily: type.emphasis,
     fontSize: size.h6
+  },
+  normalKefa: {
+    fontFamily: type.kefa,
+    fontSize: size.regular
   },
   normal: {
     fontFamily: type.base,

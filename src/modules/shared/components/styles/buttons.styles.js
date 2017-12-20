@@ -9,6 +9,13 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.primary500,
     height: Metrics.inputHeight
   },
+  secondaryButton: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.secondary500,
+    height: Metrics.inputHeight
+  },
   transparentButton: {
     flexDirection: 'column',
     alignItems: 'center',
@@ -25,6 +32,10 @@ export const styles = StyleSheet.create({
     borderColor: Colors.gray200alt,
     borderWidth: Metrics.borderWidth,
     borderRadius: Metrics.buttonRadius
+  },
+  bottomRadius: {
+    borderBottomRightRadius: Metrics.cardRadius,
+    borderBottomLeftRadius: Metrics.cardRadius
   },
   whiteText: {
     ...Fonts.style.normal,

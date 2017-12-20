@@ -3,6 +3,7 @@ import {bool, func, shape, string} from 'prop-types'
 import {Text, View} from 'react-native'
 
 import {styles} from './styles/signInScreen.styles'
+import {AppStatusBar} from '../../shared/components/appStatusBar'
 import {LoginForm} from '../components/loginForm'
 import {FormSwitch} from '../components/formSwitch'
 import {FormOutlineButton} from '../../shared/components/buttons'
@@ -24,6 +25,7 @@ export class SignUp extends Component {
     const { switchRow, switchLabel, lastItemSpacing } = styles
     return (
       <View>
+        <AppStatusBar />
         <View style={switchRow}>
           <Text style={switchLabel}>I'm representant</Text>
           <FormSwitch
