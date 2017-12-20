@@ -38,7 +38,7 @@ class HomeContainer extends Component {
         recentlyAddedBooks={[aBook, anotherBook]}
         onRecentlyAddedPressed={() => alert('🛶 navigate to recently added books list')}
         onFeaturedPressed={() => alert('🛶 navigate to featured books list')}
-        navigateToScan={this.navigateTo('Scanner')}
+        navigateToScan={this.navigateTo('BookScanner')}
         navigateToProfile={this.navigateTo('Profile')}
         navigateToShoppingBag={this.navigateTo('ShoppingCart')}
       />

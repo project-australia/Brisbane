@@ -3,12 +3,14 @@ import { Text, View } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { NOT_LOGGED_IN } from '../../../redux/reducers/authentication/constants'
+import { SignInScreen } from '../../authentication/containers/signInScreen'
 
 export class AuthenticationFilter extends Component {
   static defaultProps = {
     redirectTo: (
       <View style={{flex: 1}}>
-        <Text>Not Authorized</Text>
+        <Text>ONLY FOR AUTHORIZED USER</Text>
+        <SignInScreen />
       </View>
     )
   }
