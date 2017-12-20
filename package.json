@@ -21,7 +21,7 @@
     "prepush": "npm test"
   },
   "dependencies": {
-    "data.maybe": "^1.2.2",
+    "data.maybe": "1.2.2",
     "firebase": "4.6.2",
     "prop-types": "15.6.0",
     "react": "16.0.0",

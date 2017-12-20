@@ -3,10 +3,10 @@ import { TextInput, View } from 'react-native'
 import PropTypes from 'prop-types'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import { Touchable } from '../../shared/components/touchable'
+// import { Touchable } from '../../shared/components/touchable'
 
 import { styles } from './styles/home.styles'
-import { Colors, Metrics, Values } from '../../../constants'
+import { Colors, Metrics } from '../../../constants'
 
 export class BookSearch extends React.Component<{}> {
   static propTypes = {
@@ -29,17 +29,17 @@ export class BookSearch extends React.Component<{}> {
           underlineColorAndroid={'transparent'}
           style={styles.searchInput}
         />
-        <Touchable
-          background={Values.BackgroundBorderlessRipple}
-          onPress={this.props.onScanPress}
-          style={styles.iconWrap}
-        >
-          <Icon
-            name={'barcode-scan'}
-            size={Metrics.icons.medium}
-            color={Colors.gray700}
-          />
-        </Touchable>
+        {/* <Touchable */}
+        {/* background={Values.BackgroundBorderlessRipple} */}
+        {/* onPress={this.props.onScanPress} */}
+        {/* style={styles.iconWrap} */}
+        {/* > */}
+        {/* <Icon */}
+        {/* name={'barcode-scan'} */}
+        {/* size={Metrics.icons.medium} */}
+        {/* color={Colors.gray700} */}
+        {/* /> */}
+        {/* </Touchable> */}
       </View>
     )
   }
