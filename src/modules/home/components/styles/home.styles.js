@@ -42,9 +42,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
 
+  titleWrap: {
+    marginHorizontal: Metrics.section
+  },
   twoColumnMenuWrap: {
     flexDirection: 'row',
-    padding: Metrics.section / 2
+    paddingHorizontal: Metrics.section / 2
   },
   menuColumn: {
     flex: 1,
@@ -72,5 +75,39 @@ export const styles = StyleSheet.create({
     ...Fonts.style.normal,
     color: Colors.gray900,
     lineHeight: Metrics.textLineHeight
+  },
+
+  listHeaderSpacing: {
+    width: Metrics.section
+  },
+  listFooterSpacing: {
+    width: Metrics.section / 2
+  },
+  bookCard: {
+    flexDirection: 'row',
+    marginBottom: Metrics.section / 2,
+    marginRight: Metrics.section / 2,
+    padding: Metrics.section / 2
+  },
+  bookImage: {
+    aspectRatio: 3 / 4,
+    backgroundColor: Colors.gray200,
+    height: '100%'
+  },
+  bookInfoWrap: {
+    marginLeft: Metrics.section / 2
+  },
+  bookButtonsGroup: {
+    flexDirection: 'row',
+    marginTop: Metrics.baseMargin
+  },
+  buyButton: {
+    height: 36,
+    minWidth: 72,
+    marginRight: Metrics.baseMargin
+  },
+  rentButton: {
+    height: 36,
+    minWidth: 56
   }
 })

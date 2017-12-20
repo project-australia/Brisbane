@@ -1,8 +1,9 @@
-import PropTypes from 'prop-types'
+import {shape, string} from 'prop-types'
 
-export const book = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired
+export const book = shape({
+  id: string.isRequired,
+  image: string.isRequired,
+  title: string.isRequired,
+  author: string.isRequired,
+  edition: string.isRequired
 })

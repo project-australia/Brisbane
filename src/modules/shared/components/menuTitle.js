@@ -18,8 +18,9 @@ const renderButton = (button) => {
 }
 
 export const MenuTitle = (props) => {
+  const wrapStyle = StyleSheet.flatten([styles.wrap, props.style])
   return (
-    <View style={styles.wrap}>
+    <View style={wrapStyle}>
       <Text style={styles.title}>{props.title}</Text>
       {(typeof props.button !== 'undefined') && renderButton(props.button)}
     </View>
