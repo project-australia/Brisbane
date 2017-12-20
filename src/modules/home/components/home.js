@@ -4,7 +4,7 @@ import { ScrollView, View } from 'react-native'
 
 import { AppStatusBar } from '../../shared/components/appStatusBar'
 import { BookSearch } from './searchBook'
-import { HorizontalBookList } from './HorizontalBookList'
+import { HorizontalBookList } from './horizontalBookList'
 import { MenuTitle } from '../../shared/components/menuTitle'
 import { NavbarMain } from '../../shared/components/navbar'
 import { SellingBooks } from '../containers/sellingBooksContainer'
