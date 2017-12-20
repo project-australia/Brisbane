@@ -1,7 +1,6 @@
 import { StackNavigator as Navigator } from 'react-navigation'
 
 import { TestScreen } from '../modules/test/components/testScreen'
-import { HomeScreen } from '../modules/home/containers/homeScreen'
 import { authenticated } from '../modules/shared/decorators/authenticated'
 import { SignInScreen } from '../modules/authentication/containers/signInScreen'
 import { SignUpScreen } from '../modules/authentication/containers/signUpScreen'
@@ -13,9 +12,6 @@ import { BookScanner } from '../modules/bookScan/components/bookScan.js'
 export const initialRouteName = 'Test'
 const stackNavigatorConfig = {initialRouteName}
 const routeConfigs = {
-  Home: {
-    screen: HomeScreen
-  },
   SignIn: {
     screen: SignInScreen
   },
