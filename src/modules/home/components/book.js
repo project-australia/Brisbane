@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { book } from '../propTypes/book'
-import { Text, View } from 'react-native'
+import { Text, View, Image } from 'react-native'
 
 import { Card } from '../../shared/components/card'
 import { FormButton, FormOutlineButton } from '../../shared/components/buttons'
@@ -11,10 +11,13 @@ export class Book extends Component {
   static propTypes = {book: book.isRequired}
 
   render () {
-    const {title, author, edition} = this.props.book
+    const {title, author, edition, imageUri} = this.props.book
     return (
       <Card style={styles.bookCard}>
-        <View style={styles.bookImage} />
+        <Image
+          style={styles.bookImage}
+          source={{uri: imageUri}}
+        />
         <View style={styles.bookInfoWrap}>
           <Text style={styles.primaryText}>{title}</Text>
           <Text style={styles.secondaryInput}>{author}</Text>
