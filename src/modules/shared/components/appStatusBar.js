@@ -3,6 +3,6 @@ import { StatusBar } from 'react-native'
 
 import { Colors } from '../../../constants'
 
-export const AppStatusBar = () => {
-  return <StatusBar translucent backgroundColor={Colors.statusBar} />
-}
+export const AppStatusBar = () => (
+  <StatusBar translucent backgroundColor={Colors.statusBar} />
+)
