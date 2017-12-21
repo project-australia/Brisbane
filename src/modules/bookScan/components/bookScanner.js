@@ -8,11 +8,7 @@ export class BookScanner extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Scanner style={styles.preview}>
-          <Text style={styles.capture}>
-            [INSIRA AQUI CUSTOMIZACOES]
-          </Text>
-        </Scanner>
+        <Scanner style={styles.preview} />
       </View>
     )
   }
