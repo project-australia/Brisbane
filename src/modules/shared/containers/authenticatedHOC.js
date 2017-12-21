@@ -7,7 +7,7 @@ import { SignInScreen } from '../../authentication/containers/signInScreen'
 
 const isUserAuthorized = user => user !== NOT_LOGGED_IN
 
-const AuthenticationFilter = ({ user, children, navigation }) => {
+export const AuthenticationFilter = ({ user, children, navigation }) => {
   const showLoginScreen = <SignInScreen navigation={navigation} />
   return isUserAuthorized(user) ? children : showLoginScreen
 }

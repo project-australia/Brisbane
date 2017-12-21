@@ -1,48 +1,41 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { bool, func, shape, string } from 'prop-types'
 
 import { signInAction } from '../../../redux/actions/async/authActions'
 import { SignIn } from '../components/signIn'
 
-class SignInContainer extends Component {
-  static navigationOptions = {
-    title: 'SignIn',
-    header: null
-  }
+const navigateToSignUp = (navigate) => () => { navigate('SignUp', {}) }
+const navigateToForgotPasswordScreen = (navigate) => () => {
+  navigate('ForgotPassword', {
+    email: 'duduzinhodoarrocha@gmail.com'
+  })
+}
 
-  static propTypes = {
-    signIn: func.isRequired,
-    alert: shape({
-      showAlert: bool.isRequired,
-      message: string
-    }).isRequired
-  }
+const onSignIn = (signIn) => (email, password) => {
+  signIn(email, password)
+}
 
-  onSignIn = (email, password) => {
-    this.props.signIn(email, password)
-  }
+const SignInContainer = (props) => (
+  <SignIn
+    alert={props.alert}
+    onButtonPress={onSignIn(props.signIn)}
+    navigateToSignUp={navigateToSignUp(props.navigation.navigate)}
+    navigateToForgotPassword={navigateToForgotPasswordScreen(props.navigation.navigate)}
+  />
+)
 
-  navigateToForgotPasswordScreen = () => {
-    this.props.navigation.navigate('ForgotPassword', {
-      email: 'duduzinhodoarrocha@gmail.com'
-    })
-  }
+SignInContainer.propTypes = {
+  signIn: func.isRequired,
+  alert: shape({
+    showAlert: bool.isRequired,
+    message: string
+  }).isRequired
+}
 
-  navigateToSignUp = () => {
-    this.props.navigation.navigate('SignUp', {})
-  }
-
-  render () {
-    return (
-      <SignIn
-        onButtonPress={this.onSignIn}
-        navigateToForgotPassword={this.navigateToForgotPasswordScreen}
-        navigateToSignUp={this.navigateToSignUp}
-        alert={this.props.alert}
-      />
-    )
-  }
+SignInContainer.navigationOptions = {
+  title: 'SignIn',
+  header: null
 }
 
 const mapStateToProps = state => ({
