@@ -6,17 +6,9 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-end'
   },
-  preview: {
+  scanner: {
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center'
-  },
-  capture: {
-    flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    color: '#000',
-    padding: 10,
-    margin: 40
   }
 })

@@ -10,7 +10,7 @@ import { ProfileScreen } from '../modules/account/containers/profileScreen'
 import { ManageAccountScreen } from '../modules/account/containers/manageAccountScreen'
 import { BookScanner } from '../modules/bookScan/components/bookScanner'
 
-export const initialRouteName = 'Home'
+export const initialRouteName = __DEV__ ? 'Test' : 'Home'
 const stackNavigatorConfig = {initialRouteName}
 const routeConfigs = {
   Home: {
