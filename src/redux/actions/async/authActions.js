@@ -11,7 +11,6 @@ export function signInAction (email, password) {
     try {
       const user = await signInWithEmailAndPassword(email, password)
       dispatch(signInSuccess(user))
-      alert('Sign in success') // TODO: Remove this
     } catch (error) {
       dispatch(alertAction(error))
     }

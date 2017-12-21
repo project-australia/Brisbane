@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 
-import { Scanner } from '../../shared/components/camera'
-import { styles } from './styles/bookScan.style'
+import { Scanner } from './scanner'
+import { styles } from './styles/bookScanner.style'
 
 export class BookScanner extends Component {
   render () {
