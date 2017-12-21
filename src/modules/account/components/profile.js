@@ -1,8 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Text } from 'react-native'
 
-export class Profile extends Component {
-  render () {
-    return <Text>'Profile Screen'</Text>
-  }
-}
+export const Profile = () => (<Text>'Profile Screen'</Text>)
