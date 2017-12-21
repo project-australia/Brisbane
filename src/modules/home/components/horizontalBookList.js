@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { FlatList, View } from 'react-native'
 
@@ -7,25 +7,21 @@ import { Book } from './book'
 
 import { styles } from './styles/home.styles'
 
-export class HorizontalBookList extends Component {
-  static propTypes = {
-    books: PropTypes.arrayOf(book).isRequired
-  }
+const renderBook = ({ item }) => <Book book={item} />
+const keyExtractor = item => item.id
 
-  renderBook = ({ item }) => <Book book={item} />
-  keyExtractor = item => item.id
+export const HorizontalBookList = props => (
+  <FlatList
+    horizontal
+    showsHorizontalScrollIndicator={false}
+    data={props.books}
+    renderItem={renderBook}
+    keyExtractor={keyExtractor}
+    ListHeaderComponent={<View style={styles.listHeaderSpacing} />}
+    ListFooterComponent={<View style={styles.listFooterSpacing} />}
+  />
+)
 
-  render () {
-    return (
-      <FlatList
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={this.props.books}
-        renderItem={this.renderBook}
-        keyExtractor={this.keyExtractor}
-        ListHeaderComponent={<View style={styles.listHeaderSpacing} />}
-        ListFooterComponent={<View style={styles.listFooterSpacing} />}
-      />
-    )
-  }
+HorizontalBookList.propTypes = {
+  books: PropTypes.arrayOf(book).isRequired
 }
