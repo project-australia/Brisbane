@@ -8,7 +8,6 @@ import { SignInScreen } from '../../authentication/containers/signInScreen'
 export class AuthenticationFilter extends Component {
   static propTypes = {
     children: node.isRequired,
-    redirectTo: node,
     navigation: object
   }
 
