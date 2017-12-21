@@ -4,7 +4,9 @@ import Camera from 'react-native-camera'
 
 import { styles } from './styles/scanner.style'
 
-const onBarCodeRead = e => { alert(`Barcode Found! Type: ${e.type} \nData: ${e.data}`) }
+const onBarCodeRead = e => {
+  alert(`Barcode Found! Type: ${e.type} \nData: ${e.data}`)
+}
 
 export const Scanner = props => (
   <Camera

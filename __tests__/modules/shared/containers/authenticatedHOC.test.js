@@ -12,16 +12,21 @@ describe('Authentication decorator', () => {
 
   const filterProps = {
     user: NOT_LOGGED_IN,
-    redirectTo: <Text/>
+    redirectTo: <Text />
   }
 
-  const LOGGED_IN_USER = {uid: 123, email: 'a@b.c', phoneNumber: '123-456-7890', emailVerified: true}
+  const LOGGED_IN_USER = {
+    uid: 123,
+    email: 'a@b.c',
+    phoneNumber: '123-456-7890',
+    emailVerified: true
+  }
 
   it('should filter unauthenticated user to access screen, redirecting to another screen', async () => {
     const aScreen = <View {...props} />
     const filteredScreen = (
       <AuthenticationFilter {...filterProps}>
-        <aScreen/>
+        <aScreen />
       </AuthenticationFilter>
     )
 

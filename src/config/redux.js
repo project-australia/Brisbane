@@ -1,11 +1,11 @@
 import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
-import {applyMiddleware, createStore as create} from 'redux'
+import { applyMiddleware, createStore as create } from 'redux'
 
-import {rootReducer} from '../redux/reducers'
+import { rootReducer } from '../redux/reducers'
 
-const removeNavField = (state) => {
-  const {nav, ...rest} = state
+const removeNavField = state => {
+  const { nav, ...rest } = state
   return rest
 }
 

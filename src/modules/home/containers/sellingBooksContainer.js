@@ -17,4 +17,6 @@ const mapStateToProps = () => ({})
 
 const mapDispatchToProps = () => ({})
 
-export const SellingBooks = connect(mapStateToProps, mapDispatchToProps)(SellingBooksContainer)
+export const SellingBooks = connect(mapStateToProps, mapDispatchToProps)(
+  SellingBooksContainer
+)

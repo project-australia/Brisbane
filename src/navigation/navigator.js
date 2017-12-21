@@ -11,7 +11,7 @@ import { ManageAccountScreen } from '../modules/account/containers/manageAccount
 import { BookScanner } from '../modules/bookScan/components/bookScanner'
 
 export const initialRouteName = __DEV__ ? 'Test' : 'Home'
-const stackNavigatorConfig = {initialRouteName}
+const stackNavigatorConfig = { initialRouteName }
 const routeConfigs = {
   Home: {
     screen: HomeScreen

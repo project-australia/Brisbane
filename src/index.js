@@ -7,7 +7,5 @@ import { App } from './app'
 export const BallardBooks = () => {
   initializeFirebase()
 
-  return (
-    <App store={createStore()} />
-  )
+  return <App store={createStore()} />
 }

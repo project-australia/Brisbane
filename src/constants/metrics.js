@@ -1,8 +1,8 @@
-import {Dimensions, Platform} from 'react-native'
+import { Dimensions, Platform } from 'react-native'
 
-const {width, height} = Dimensions.get('window')
-const statusBarHeight = (Platform.OS === 'ios') ? 20 : 24
-const navBarHeight = (Platform.OS === 'ios') ? 86 : 80
+const { width, height } = Dimensions.get('window')
+const statusBarHeight = Platform.OS === 'ios' ? 20 : 24
+const navBarHeight = Platform.OS === 'ios' ? 86 : 80
 
 export const Metrics = {
   marginHorizontal: 12,
@@ -21,7 +21,7 @@ export const Metrics = {
   statusBarHeight,
   navBarHeight,
   navBarButtonHeight: navBarHeight - statusBarHeight,
-  backButtonInset: (Platform.OS === 'ios') ? 5 : 8,
+  backButtonInset: Platform.OS === 'ios' ? 5 : 8,
   buttonRadius: 4,
   cardRadius: 8,
   borderWidth: 1,

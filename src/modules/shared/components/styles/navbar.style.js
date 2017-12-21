@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native'
 
-import {Colors, Fonts, Metrics} from '../../../../constants'
+import { Colors, Fonts, Metrics } from '../../../../constants'
 
 export const styles = StyleSheet.create({
   wrap: {

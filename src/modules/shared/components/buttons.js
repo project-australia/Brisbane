@@ -1,11 +1,11 @@
 import React from 'react'
-import {Text, StyleSheet, TouchableHighlight} from 'react-native'
+import { Text, StyleSheet, TouchableHighlight } from 'react-native'
 
-import {styles} from './styles/buttons.styles'
-import {Colors} from '../../../constants'
+import { styles } from './styles/buttons.styles'
+import { Colors } from '../../../constants'
 
-export const FormButton = (props) => {
-  const {primaryButton, darkenOutline, whiteText} = styles
+export const FormButton = props => {
+  const { primaryButton, darkenOutline, whiteText } = styles
 
   const style = StyleSheet.flatten([primaryButton, darkenOutline, props.style])
   return (
@@ -19,10 +19,14 @@ export const FormButton = (props) => {
   )
 }
 
-export const FormOutlineButton = (props) => {
-  const {transparentButton, primaryOutline, primaryText} = styles
+export const FormOutlineButton = props => {
+  const { transparentButton, primaryOutline, primaryText } = styles
 
-  const style = StyleSheet.flatten([transparentButton, primaryOutline, props.style])
+  const style = StyleSheet.flatten([
+    transparentButton,
+    primaryOutline,
+    props.style
+  ])
   return (
     <TouchableHighlight
       onPress={props.onPress}
@@ -34,10 +38,10 @@ export const FormOutlineButton = (props) => {
   )
 }
 
-export const CardFooterButton = (props) => {
-  const {bottomRadius, primaryButton, whiteText, secondaryButton} = styles
+export const CardFooterButton = props => {
+  const { bottomRadius, primaryButton, whiteText, secondaryButton } = styles
 
-  const buttonColor = (props.secondary) ? secondaryButton : primaryButton
+  const buttonColor = props.secondary ? secondaryButton : primaryButton
   const style = StyleSheet.flatten([bottomRadius, buttonColor, props.style])
   return (
     <TouchableHighlight

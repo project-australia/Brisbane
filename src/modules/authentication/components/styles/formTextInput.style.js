@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native'
-import {Metrics, Colors, Fonts} from '../../../../constants'
+import { StyleSheet } from 'react-native'
+import { Metrics, Colors, Fonts } from '../../../../constants'
 
 export const styles = StyleSheet.create({
   textInput: {

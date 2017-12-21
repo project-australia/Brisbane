@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {bool, func, shape, string} from 'prop-types'
+import { bool, func, shape, string } from 'prop-types'
 
 import { signInAction } from '../../../redux/actions/async/authActions'
 import { SignIn } from '../components/signIn'
@@ -9,7 +9,7 @@ class SignInContainer extends Component {
   static navigationOptions = {
     title: 'SignIn',
     header: null
-  };
+  }
 
   static propTypes = {
     signIn: func.isRequired,
@@ -24,7 +24,9 @@ class SignInContainer extends Component {
   }
 
   navigateToForgotPasswordScreen = () => {
-    this.props.navigation.navigate('ForgotPassword', { email: 'duduzinhodoarrocha@gmail.com' })
+    this.props.navigation.navigate('ForgotPassword', {
+      email: 'duduzinhodoarrocha@gmail.com'
+    })
   }
 
   navigateToSignUp = () => {
@@ -43,12 +45,14 @@ class SignInContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   alert: state.authentication.alert
 })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   signIn: (email, password) => dispatch(signInAction(email, password))
 })
 
-export const SignInScreen = connect(mapStateToProps, mapDispatchToProps)(SignInContainer)
+export const SignInScreen = connect(mapStateToProps, mapDispatchToProps)(
+  SignInContainer
+)

@@ -1,6 +1,6 @@
-import {Platform, StyleSheet} from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
 
-import {Colors, Fonts, Metrics, Values} from '../../../../constants'
+import { Colors, Fonts, Metrics, Values } from '../../../../constants'
 
 export const styles = StyleSheet.create({
   container: {

@@ -4,9 +4,7 @@ import { Profile } from '../components/profile'
 
 class ProfileContainer extends Component {
   render () {
-    return (
-      <Profile />
-    )
+    return <Profile />
   }
 }
 
@@ -14,4 +12,6 @@ const mapStateToProps = () => ({})
 
 const mapDispatchToProps = () => ({})
 
-export const ProfileScreen = connect(mapStateToProps, mapDispatchToProps)(ProfileContainer)
+export const ProfileScreen = connect(mapStateToProps, mapDispatchToProps)(
+  ProfileContainer
+)

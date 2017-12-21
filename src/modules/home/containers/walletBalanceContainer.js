@@ -6,7 +6,7 @@ class WalletBalanceContainer extends Component {
   render () {
     return (
       <WalletBalance
-        balance={15.50}
+        balance={15.5}
         onWithDrawPressed={() => alert('💸 money gone!')}
         onWalletViewPressed={() => alert('🛶 navigate to wallet')}
       />
@@ -18,4 +18,6 @@ const mapStateToProps = () => ({})
 
 const mapDispatchToProps = () => ({})
 
-export const WalletBalanceAmount = connect(mapStateToProps, mapDispatchToProps)(WalletBalanceContainer)
+export const WalletBalanceAmount = connect(mapStateToProps, mapDispatchToProps)(
+  WalletBalanceContainer
+)

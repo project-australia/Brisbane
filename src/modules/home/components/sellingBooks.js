@@ -1,13 +1,13 @@
-import React, {Component} from 'react'
-import {Text, View} from 'react-native'
+import React, { Component } from 'react'
+import { Text, View } from 'react-native'
 import PropTypes from 'prop-types'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import {MenuTitle} from '../../shared/components/menuTitle'
-import {CardFooterButton} from '../../shared/components/buttons'
+import { MenuTitle } from '../../shared/components/menuTitle'
+import { CardFooterButton } from '../../shared/components/buttons'
 
-import {styles} from './styles/home.styles'
-import {Colors, Metrics} from '../../../constants'
+import { styles } from './styles/home.styles'
+import { Colors, Metrics } from '../../../constants'
 
 export class SellingBookAmount extends Component {
   static propTypes = {
@@ -22,7 +22,11 @@ export class SellingBookAmount extends Component {
         <View style={[styles.card, styles.square]}>
           <View style={styles.menuColumn}>
             <View style={styles.featuredIconWrap}>
-              <Icon name={'currency-usd'} color={Colors.gray200} size={Metrics.icons.large} />
+              <Icon
+                name={'currency-usd'}
+                color={Colors.gray200}
+                size={Metrics.icons.large}
+              />
             </View>
             <Text style={styles.secondaryInput}>Selling</Text>
             <Text style={styles.primaryText}>

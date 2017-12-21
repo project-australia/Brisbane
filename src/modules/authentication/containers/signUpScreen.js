@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import React, {Component} from 'react'
-import {bool, func, shape, string} from 'prop-types'
+import React, { Component } from 'react'
+import { bool, func, shape, string } from 'prop-types'
 
 import { signUpAction } from '../../../redux/actions/async/authActions'
 import { SignUp } from '../components/signUp'
@@ -33,18 +33,20 @@ class SignUpContainer extends Component {
         onButtonPress={this.onSignUp}
         alert={this.props.alert}
         navigateToSignIn={this.navigateToSignInScreen}
-        buttonText='SIGN UP'
+        buttonText="SIGN UP"
       />
     )
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   alert: state.authentication.alert
 })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   signUp: (email, password) => dispatch(signUpAction(email, password))
 })
 
-export const SignUpScreen = connect(mapStateToProps, mapDispatchToProps)(SignUpContainer)
+export const SignUpScreen = connect(mapStateToProps, mapDispatchToProps)(
+  SignUpContainer
+)

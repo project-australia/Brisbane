@@ -12,8 +12,7 @@
       "never"
     ],
     "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error",
-    "prettier/prettier": "error"
+    "react/jsx-uses-vars": "error"
   },
   "extends": "standard",
   "globals": {
@@ -21,7 +20,6 @@
     "__DEV__": true
   },
   "plugins": [
-    "prettier",
     "flowtype",
     "react"
   ]

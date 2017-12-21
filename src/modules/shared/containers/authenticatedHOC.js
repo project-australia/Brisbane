@@ -6,11 +6,16 @@ import { NOT_LOGGED_IN } from '../../../redux/reducers/authentication/constants'
 import { SignInScreen } from '../../authentication/containers/signInScreen'
 
 export class AuthenticationFilter extends Component {
-  static propTypes = { children: node.isRequired, redirectTo: node, navigation: object }
+  static propTypes = {
+    children: node.isRequired,
+    redirectTo: node,
+    navigation: object
+  }
 
-  showLoginScreen = <SignInScreen navigation={this.props.navigation}/>
+  showLoginScreen = <SignInScreen navigation={this.props.navigation} />
   isUserAuthorized = () => this.props.user !== NOT_LOGGED_IN
-  render = () => this.isUserAuthorized() ? this.props.children : this.showLoginScreen
+  render = () =>
+    this.isUserAuthorized() ? this.props.children : this.showLoginScreen
 }
 
 const mapStateToProps = state => ({ user: state.authentication.user })
