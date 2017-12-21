@@ -42,8 +42,14 @@ export class Home extends Component {
   }
 
   render () {
-    const recentlyAddedButton = {text: 'View All', onPress: this.props.onRecentlyAddedPressed}
-    const featuredButton = {text: 'View All', onPress: this.props.onFeaturedPressed}
+    const recentlyAddedButton = {
+      text: 'View All',
+      onPress: this.props.onRecentlyAddedPressed
+    }
+    const featuredButton = {
+      text: 'View All',
+      onPress: this.props.onFeaturedPressed
+    }
     return (
       <View style={styles.container}>
         <AppStatusBar />
@@ -66,11 +72,18 @@ export class Home extends Component {
             </View>
           </View>
 
-          <MenuTitle title={'Recently added'} button={recentlyAddedButton} style={styles.titleWrap} />
+          <MenuTitle
+            title={'Recently added'}
+            button={recentlyAddedButton}
+            style={styles.titleWrap}
+          />
           <HorizontalBookList books={this.props.recentlyAddedBooks} />
-          <MenuTitle title={'Featured'} button={featuredButton} style={styles.titleWrap} />
+          <MenuTitle
+            title={'Featured'}
+            button={featuredButton}
+            style={styles.titleWrap}
+          />
           <HorizontalBookList books={this.props.recentlyAddedBooks} />
-
         </ScrollView>
       </View>
     )

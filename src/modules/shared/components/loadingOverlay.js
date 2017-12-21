@@ -4,7 +4,7 @@ import { ActivityIndicator, View } from 'react-native'
 import { styles } from './styles/loadingOverlay.style'
 
 export const LoadingOverlay = props => {
-  const {children, style} = props
+  const { children, style } = props
   const overlay = showOverlayCondition(props) ? renderOverlay() : null
 
   return (
@@ -18,10 +18,7 @@ export const LoadingOverlay = props => {
 const renderOverlay = () => {
   return (
     <View style={styles.overlay}>
-      <ActivityIndicator
-        size='large'
-        style={styles.spinner}
-      />
+      <ActivityIndicator size="large" style={styles.spinner} />
     </View>
   )
 }
@@ -35,14 +32,17 @@ LoadingOverlay.defaultProps = {
   isLoading: false
 }
 
-const hasChildLoading = (children) => {
+const hasChildLoading = children => {
   let isLoading = false
 
   React.Children.forEach(children, child => {
-    if (child.props.isLoading) { isLoading = true }
+    if (child.props.isLoading) {
+      isLoading = true
+    }
   })
 
   return isLoading
 }
 
-const showOverlayCondition = (props) => props.isLoading || hasChildLoading(props.children)
+const showOverlayCondition = props =>
+  props.isLoading || hasChildLoading(props.children)

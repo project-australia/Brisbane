@@ -4,9 +4,7 @@ import { ManageAccount } from '../components/manageAccount'
 
 class ManageAccountContainer extends Component {
   render () {
-    return (
-      <ManageAccount />
-    )
+    return <ManageAccount />
   }
 }
 
@@ -14,4 +12,6 @@ const mapStateToProps = () => ({})
 
 const mapDispatchToProps = () => ({})
 
-export const ManageAccountScreen = connect(mapStateToProps, mapDispatchToProps)(ManageAccountContainer)
+export const ManageAccountScreen = connect(mapStateToProps, mapDispatchToProps)(
+  ManageAccountContainer
+)

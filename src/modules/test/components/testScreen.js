@@ -1,27 +1,27 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Button, View } from 'react-native'
 
 import { styles } from './styles/testScreen.test'
 
-export class TestScreen extends Component {
-  navigateTo = (screen) => {
-    return <View style={styles.textRow}>
-      <Button
-        title={screen}
-        onPress={() => this.props.navigation.navigate(screen, {})}
-      />
-    </View>
-  }
-
-  render () {
+export const TestScreen = props => {
+  const navigateTo = screen => {
     return (
-      <View style={{flex: 1}}>
-        {this.navigateTo('SignIn')}
-        {this.navigateTo('Home')}
-        {this.navigateTo('Profile')}
-        {this.navigateTo('ManageAccount')}
-        {this.navigateTo('BookScanner')}
+      <View style={styles.textRow}>
+        <Button
+          title={screen}
+          onPress={() => props.navigation.navigate(screen, {})}
+        />
       </View>
     )
   }
+
+  return (
+    <View style={{ flex: 1 }}>
+      {navigateTo('SignIn')}
+      {navigateTo('Home')}
+      {navigateTo('Profile')}
+      {navigateTo('ManageAccount')}
+      {navigateTo('BookScanner')}
+    </View>
+  )
 }

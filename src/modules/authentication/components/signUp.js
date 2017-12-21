@@ -1,24 +1,24 @@
-import React, {Component} from 'react'
-import {bool, func, shape, string} from 'prop-types'
-import {Text, View} from 'react-native'
+import React, { Component } from 'react'
+import { bool, func, shape, string } from 'prop-types'
+import { Text, View } from 'react-native'
 
-import {styles} from './styles/signInScreen.styles'
-import {AppStatusBar} from '../../shared/components/appStatusBar'
-import {LoginForm} from '../components/loginForm'
-import {FormSwitch} from '../components/formSwitch'
-import {FormOutlineButton} from '../../shared/components/buttons'
+import { styles } from './styles/signInScreen.styles'
+import { AppStatusBar } from '../../shared/components/appStatusBar'
+import { LoginForm } from '../components/loginForm'
+import { FormSwitch } from '../components/formSwitch'
+import { FormOutlineButton } from '../../shared/components/buttons'
 
 export class SignUp extends Component {
   static propTypes = {
     onButtonPress: func.isRequired,
     navigateToSignIn: func.isRequired,
-    alert: shape({showAlert: bool.isRequired, message: string}).isRequired
+    alert: shape({ showAlert: bool.isRequired, message: string }).isRequired
   }
 
-  state = {switch: false}
+  state = { switch: false }
 
-  updateSwitch = (value) => {
-    this.setState({switch: value})
+  updateSwitch = value => {
+    this.setState({ switch: value })
   }
 
   renderFooter = () => {
@@ -34,7 +34,7 @@ export class SignUp extends Component {
           />
         </View>
         <FormOutlineButton
-          title='Log in instead'
+          title="Log in instead"
           onPress={this.props.navigateToSignIn}
           style={lastItemSpacing}
         />
@@ -46,7 +46,7 @@ export class SignUp extends Component {
     return (
       <LoginForm
         alert={this.props.alert}
-        buttonText='Create Account'
+        buttonText="Create Account"
         footer={this.renderFooter()}
         onButtonPress={this.props.onButtonPress}
       />

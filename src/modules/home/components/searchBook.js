@@ -25,7 +25,7 @@ export class BookSearch extends React.Component<{}> {
           />
         </View>
         <TextInput
-          placeholder='Search book or scan barcode'
+          placeholder="Search book or scan barcode"
           underlineColorAndroid={'transparent'}
           style={styles.searchInput}
         />

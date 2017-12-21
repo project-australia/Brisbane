@@ -8,7 +8,7 @@ import { FormButton } from '../../shared/components/buttons'
 import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 
 export class LoginForm extends React.Component {
-  static defaultProps = { footer: <View/> }
+  static defaultProps = { footer: <View /> }
   static propTypes = {
     footer: PropTypes.object,
     buttonText: PropTypes.string.isRequired,
@@ -26,35 +26,41 @@ export class LoginForm extends React.Component {
   }
 
   onButtonPress = async () => {
-    this.setState({loading: true})
-    const {email, password} = this.state
+    this.setState({ loading: true })
+    const { email, password } = this.state
     await this.props.onButtonPress(email, password)
-    this.setState({loading: false})
+    this.setState({ loading: false })
   }
 
   componentWillReceiveProps (nextProps) {
-    const {showAlert, message} = nextProps.alert
-    if (showAlert) { alert(message) }
+    const { showAlert, message } = nextProps.alert
+    if (showAlert) {
+      alert(message)
+    }
   }
 
   render () {
     return (
-      <LoadingOverlay style={styles.screen} isLoading={this.state.loading} >
+      <LoadingOverlay style={styles.screen} isLoading={this.state.loading}>
         <View style={styles.header}>
           <Text style={styles.title}>Ballard Books</Text>
         </View>
         <FormTextInput
-          onChangeText={email => { this.setState({email}) }}
+          onChangeText={email => {
+            this.setState({ email })
+          }}
           value={this.state.email}
-          placeholder='Email address'
-          autoCapitalize='none'
+          placeholder="Email address"
+          autoCapitalize="none"
           selectionColor={Colors.secondary500}
           style={styles.itemSpacing}
         />
         <FormTextInput
-          onChangeText={password => { this.setState({password}) }}
+          onChangeText={password => {
+            this.setState({ password })
+          }}
           value={this.state.password}
-          placeholder='Password'
+          placeholder="Password"
           secureTextEntry
           selectionColor={Colors.secondary500}
           style={styles.itemSpacing}

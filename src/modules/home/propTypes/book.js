@@ -1,4 +1,4 @@
-import {shape, string} from 'prop-types'
+import { shape, string } from 'prop-types'
 
 export const book = shape({
   id: string.isRequired,

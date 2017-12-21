@@ -36,7 +36,9 @@ class HomeContainer extends Component {
         featuredBooks={[aBook, anotherBook]}
         searchBook={() => alert('search book')}
         recentlyAddedBooks={[aBook, anotherBook]}
-        onRecentlyAddedPressed={() => alert('🛶 navigate to recently added books list')}
+        onRecentlyAddedPressed={() =>
+          alert('🛶 navigate to recently added books list')
+        }
         onFeaturedPressed={() => alert('🛶 navigate to featured books list')}
         navigateToScan={this.navigateTo('BookScanner')}
         navigateToProfile={this.navigateTo('Profile')}
@@ -48,8 +50,12 @@ class HomeContainer extends Component {
   navigateTo = screen => () => this.props.navigation.navigate(screen, {})
 }
 
-const mapStateToProps = ({authentication: {user}}) => ({displayName: user.displayName})
+const mapStateToProps = ({ authentication: { user } }) => ({
+  displayName: user.displayName
+})
 
 const mapDispatchToProps = () => ({})
 
-export const HomeScreen = connect(mapStateToProps, mapDispatchToProps)(HomeContainer)
+export const HomeScreen = connect(mapStateToProps, mapDispatchToProps)(
+  HomeContainer
+)

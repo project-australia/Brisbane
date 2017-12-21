@@ -16,7 +16,8 @@
   },
   "extends": "standard",
   "globals": {
-    "alert": true
+    "alert": true,
+    "__DEV__": true
   },
   "plugins": [
     "flowtype",

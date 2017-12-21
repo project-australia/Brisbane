@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -24,12 +24,15 @@ export class ForgotPasswordContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   alert: state.authentication.alert
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  resetPassword: (email) => dispatch(forgotPasswordAction(email))
+const mapDispatchToProps = dispatch => ({
+  resetPassword: email => dispatch(forgotPasswordAction(email))
 })
 
-export const ForgotPasswordScreen = connect(mapStateToProps, mapDispatchToProps)(ForgotPasswordContainer)
+export const ForgotPasswordScreen = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ForgotPasswordContainer)

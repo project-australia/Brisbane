@@ -17,29 +17,28 @@ export class ForgotPassword extends React.Component {
 
   constructor (props) {
     super(props)
-    this.state = {email: props.email, loading: false}
+    this.state = { email: props.email, loading: false }
   }
 
   onButtonPress = async () => {
-    this.setState({loading: true})
+    this.setState({ loading: true })
     await this.props.resetPassword(this.state.email)
-    this.setState({loading: false})
+    this.setState({ loading: false })
   }
 
   render () {
     return (
-      <LoadingOverlay
-        isLoading={this.state.loading}
-        style={styles.screen}
-      >
+      <LoadingOverlay isLoading={this.state.loading} style={styles.screen}>
         <TextInput
-          onChangeText={email => { this.setState({email}) }}
+          onChangeText={email => {
+            this.setState({ email })
+          }}
           value={this.state.email}
-          autoCapitalize='none'
+          autoCapitalize="none"
         />
         <View style={styles.centralized}>
           <Button
-            title='reset password'
+            title="reset password"
             style={styles.loginButton}
             onPress={this.onButtonPress}
           />
