@@ -1,21 +1,18 @@
-import Camera from 'react-native-camera'
-import React, { Component } from 'react'
+import React from 'react'
 import { View } from 'react-native'
+import Camera from 'react-native-camera'
 
-import {styles} from './styles/scanner.style'
+import { styles } from './styles/scanner.style'
 
-export class Scanner extends Component {
-  static propTypes = { style: View.propTypes.style }
-  static defaultProps = { style: styles.scanner }
-  onBarCodeRead = e => { alert(`Barcode Found! Type: ${e.type} \nData: ${e.data}`) }
+const onBarCodeRead = e => { alert(`Barcode Found! Type: ${e.type} \nData: ${e.data}`) }
 
-  render () {
-    return (
-      <Camera
-        style={this.props.style}
-        aspect={Camera.constants.Aspect.fill}
-        onBarCodeRead={this.onBarCodeRead}
-      />
-    )
-  }
-}
+export const Scanner = props => (
+  <Camera
+    style={props.style}
+    aspect={Camera.constants.Aspect.fill}
+    onBarCodeRead={onBarCodeRead}
+  />
+)
+
+Scanner.propTypes = { style: View.propTypes.style }
+Scanner.defaultProps = { style: styles.scanner }
