@@ -54,8 +54,4 @@ const mapStateToProps = ({ authentication: { user } }) => ({
   displayName: user.displayName
 })
 
-const mapDispatchToProps = () => ({})
-
-export const HomeScreen = connect(mapStateToProps, mapDispatchToProps)(
-  HomeContainer
-)
+export const HomeScreen = connect(mapStateToProps)(HomeContainer)
