@@ -2,21 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Home } from '../components/home'
-
-const aBook = {
-  id: '1',
-  imageUri: 'https://images-na.ssl-images-amazon.com/images/I/41ctTkMx6PL.jpg',
-  title: 'Calculus',
-  author: 'Stewart, James',
-  edition: '8th edition'
-}
-const anotherBook = {
-  id: '2',
-  imageUri: 'https://images-na.ssl-images-amazon.com/images/I/51CkDTbuaeL.jpg',
-  title: 'Papercraft',
-  author: 'Bright, Gordon',
-  edition: '2nd edition'
-}
+import { booksStub } from '../../../stubs/books'
 
 class HomeContainer extends Component {
   static navigationOptions = {
@@ -33,16 +19,16 @@ class HomeContainer extends Component {
     return (
       <Home
         userName={this.props.displayName}
-        featuredBooks={[aBook, anotherBook]}
+        featuredBooks={booksStub}
         searchBook={() => alert('search book')}
-        recentlyAddedBooks={[aBook, anotherBook]}
+        recentlyAddedBooks={booksStub}
         onRecentlyAddedPressed={() =>
           alert('🛶 navigate to recently added books list')
         }
         onFeaturedPressed={() => alert('🛶 navigate to featured books list')}
         navigateToScan={this.navigateTo('BookScanner')}
         navigateToProfile={this.navigateTo('Profile')}
-        navigateToShoppingBag={this.navigateTo('ShoppingCart')}
+        navigateToShoppingBag={this.navigateTo('ShoppingBag')}
       />
     )
   }

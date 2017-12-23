@@ -9,7 +9,7 @@ import { CardFooterButton } from '../../shared/components/buttons'
 import { styles } from './styles/home.styles'
 import { Colors, Metrics } from '../../../constants'
 
-export const SellingBookAmount = (props) => (
+export const SellingBookAmount = props => (
   <View>
     <MenuTitle title={'Sell a book'} />
     <View style={[styles.card, styles.square]}>
@@ -22,9 +22,7 @@ export const SellingBookAmount = (props) => (
           />
         </View>
         <Text style={styles.secondaryInput}>Selling</Text>
-        <Text style={styles.primaryText}>
-          {`${props.sellingAmount} books`}
-        </Text>
+        <Text style={styles.primaryText}>{`${props.sellingAmount} books`}</Text>
       </View>
       <CardFooterButton
         onPress={props.onAddBookPressed}
