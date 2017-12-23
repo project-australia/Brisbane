@@ -22,6 +22,7 @@ export const TestScreen = props => {
       {navigateTo('Profile')}
       {navigateTo('ManageAccount')}
       {navigateTo('BookScanner')}
+      {navigateTo('ShoppingBag')}
     </View>
   )
 }

@@ -8,7 +8,7 @@ import { Touchable } from '../../shared/components/touchable'
 import { styles } from './styles/home.styles'
 import { Colors, Metrics, Values } from '../../../constants'
 
-export const BookSearch = (props) => (
+export const BookSearch = props => (
   <View style={styles.searchBarWrap}>
     <View style={styles.iconWrap}>
       <Icon

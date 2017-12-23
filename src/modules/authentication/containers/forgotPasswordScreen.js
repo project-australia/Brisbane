@@ -5,11 +5,8 @@ import { connect } from 'react-redux'
 import { forgotPasswordAction } from '../../../redux/actions'
 import { ForgotPassword } from '../components/forgotPassword'
 
-export const ForgotPasswordContainer = (props) => (
-  <ForgotPassword
-    resetPassword={props.resetPassword}
-    alert={props.alert}
-  />
+export const ForgotPasswordContainer = props => (
+  <ForgotPassword resetPassword={props.resetPassword} alert={props.alert} />
 )
 
 const mapStateToProps = state => ({

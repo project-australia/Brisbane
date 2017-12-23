@@ -5,23 +5,27 @@ import { bool, func, shape, string } from 'prop-types'
 import { signInAction } from '../../../redux/actions/async/authActions'
 import { SignIn } from '../components/signIn'
 
-const navigateToSignUp = (navigate) => () => { navigate('SignUp', {}) }
-const navigateToForgotPasswordScreen = (navigate) => () => {
+const navigateToSignUp = navigate => () => {
+  navigate('SignUp', {})
+}
+const navigateToForgotPasswordScreen = navigate => () => {
   navigate('ForgotPassword', {
     email: 'duduzinhodoarrocha@gmail.com'
   })
 }
 
-const onSignIn = (signIn) => (email, password) => {
+const onSignIn = signIn => (email, password) => {
   signIn(email, password)
 }
 
-const SignInContainer = (props) => (
+const SignInContainer = props => (
   <SignIn
     alert={props.alert}
     onButtonPress={onSignIn(props.signIn)}
     navigateToSignUp={navigateToSignUp(props.navigation.navigate)}
-    navigateToForgotPassword={navigateToForgotPasswordScreen(props.navigation.navigate)}
+    navigateToForgotPassword={navigateToForgotPasswordScreen(
+      props.navigation.navigate
+    )}
   />
 )
 

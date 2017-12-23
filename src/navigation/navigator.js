@@ -9,6 +9,7 @@ import { ForgotPasswordScreen } from '../modules/authentication/containers/forgo
 import { ProfileScreen } from '../modules/account/containers/profileScreen'
 import { ManageAccountScreen } from '../modules/account/containers/manageAccountScreen'
 import { BookScanner } from '../modules/bookScan/components/bookScanner'
+import { ShoppingBagScreen } from '../modules/shoppingBag/containers/shoppingBagScreen'
 
 export const initialRouteName = __DEV__ ? 'Test' : 'Home'
 const stackNavigatorConfig = { initialRouteName }
@@ -36,6 +37,9 @@ const routeConfigs = {
   },
   BookScanner: {
     screen: BookScanner
+  },
+  ShoppingBag: {
+    screen: ShoppingBagScreen
   }
 }
 
