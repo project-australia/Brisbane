@@ -16,7 +16,7 @@ import {
 const { BUY, RENT } = SHOPPING_BAG_TYPES
 
 describe('Shopping bag sync actions', () => {
-  const item = { title: 'Star Wars' }
+  const item = { title: 'Star Wars', id: '987' }
   const shoppingBagItem = new ShoppingBagItem(item, RENT)
 
   it('should only accept ShoppingBagItem objects', () => {

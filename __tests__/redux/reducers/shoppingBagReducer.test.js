@@ -12,8 +12,8 @@ import {
 const shoppingBagReducer = reducers.shoppingBag
 
 describe('Shopping bag reducer', () => {
-  const starWars = { title: 'Star Wars' }
-  const startTrek = { title: 'Star Trek' }
+  const starWars = { title: 'Star Wars', id: '1' }
+  const startTrek = { title: 'Star Trek', id: '2' }
 
   const item = new ShoppingBagItem(
     starWars,

@@ -2,9 +2,10 @@ export const SHOPPING_BAG_TYPES = { BUY: 'BUY', RENT: 'RENT' }
 
 export class ShoppingBagItem {
   constructor (book, type, quantity = 1) {
-    this.item = book
     this.type = SHOPPING_BAG_TYPES[type]
+    this.id = this.type + book.id
     this.quantity = quantity
+    this.book = book
 
     if (!this.type) {
       throw new Error('Invalid Shopping bag item type')
@@ -21,5 +22,5 @@ export class ShoppingBagItem {
 }
 
 ShoppingBagItem.prototype.equals = function (obj) {
-  return this.item.title === obj.item.title && this.type === obj.type
+  return this.id === obj.id && this.type === obj.type
 }
