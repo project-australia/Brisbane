@@ -1,8 +1,15 @@
 import React from 'react'
+import { func } from 'prop-types'
 import { Text, StyleSheet, TouchableHighlight } from 'react-native'
 
 import { styles } from './styles/buttons.styles'
 import { Colors } from '../../../constants'
+
+// TODO: Refactor this
+
+const propTypes = {
+  onPress: func.isRequired
+}
 
 export const FormButton = props => {
   const { primaryButton, darkenOutline, whiteText } = styles
@@ -18,6 +25,8 @@ export const FormButton = props => {
     </TouchableHighlight>
   )
 }
+
+FormButton.propTypes = propTypes
 
 export const FormOutlineButton = props => {
   const { transparentButton, primaryOutline, primaryText } = styles
@@ -38,6 +47,8 @@ export const FormOutlineButton = props => {
   )
 }
 
+FormOutlineButton.propTypes = propTypes
+
 export const CardFooterButton = props => {
   const { bottomRadius, primaryButton, whiteText, secondaryButton } = styles
 
@@ -53,3 +64,5 @@ export const CardFooterButton = props => {
     </TouchableHighlight>
   )
 }
+
+CardFooterButton.propTypes = propTypes

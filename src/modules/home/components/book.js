@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { book } from '../propTypes/book'
 import { Text, View, Image } from 'react-native'
 
@@ -7,7 +8,7 @@ import { FormButton, FormOutlineButton } from '../../shared/components/buttons'
 
 import { styles } from './styles/home.styles'
 
-export const Book = ({ book: { title, author, edition, imageUri } }) => (
+export const Book = ({ onBuyPressed, onRentPressed, book: { title, author, edition, imageUri } }) => (
   <Card style={styles.bookCard}>
     <Image style={styles.bookImage} source={{ uri: imageUri }} />
     <View style={styles.bookInfoWrap}>
@@ -15,11 +16,15 @@ export const Book = ({ book: { title, author, edition, imageUri } }) => (
       <Text style={styles.secondaryInput}>{author}</Text>
       <Text style={styles.secondaryInput}>{edition}</Text>
       <View style={styles.bookButtonsGroup}>
-        <FormButton style={styles.buyButton} title={'Buy'} />
-        <FormOutlineButton style={styles.rentButton} title={'Rent'} />
+        <FormButton style={styles.buyButton} title={'Buy'} onPress={onBuyPressed} />
+        <FormOutlineButton style={styles.rentButton} title={'Rent'} onPress={onRentPressed} />
       </View>
     </View>
   </Card>
 )
 
-Book.propTypes = { book: book.isRequired }
+Book.propTypes = {
+  book: book.isRequired,
+  onBuyPressed: PropTypes.func.isRequired,
+  onRentPressed: PropTypes.func.isRequired
+}

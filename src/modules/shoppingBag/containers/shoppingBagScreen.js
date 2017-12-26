@@ -1,16 +1,21 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { booksStub } from '../../../stubs/books'
 import { ShoppingBag } from '../components/shoppingBag'
+import { book } from '../../home/propTypes/book'
 
 const ShoppingBagContainer = props => (
   <ShoppingBag
-    books={booksStub}
+    books={props.books}
     searchBook={() => alert('search book')}
     onScanPress={() => props.navigation.navigate('BookScanner', {})}
   />
 )
 
-const mapStateToProps = () => ({})
+ShoppingBagContainer.propTypes = {
+  books: PropTypes.arrayOf(book).isRequired
+}
+
+const mapStateToProps = (state) => ({books: state.shoppingBag})
 
 export const ShoppingBagScreen = connect(mapStateToProps)(ShoppingBagContainer)

@@ -7,7 +7,14 @@ import { Book } from './book'
 
 import { styles } from './styles/home.styles'
 
-const renderBook = ({ item }) => <Book book={item} />
+const renderBook = (onBuy, onRent) => ({ item }) => (
+  <Book
+    book={item}
+    onBuyPressed={() => onBuy(item)}
+    onRentPressed={() => onRent(item)}
+  />
+)
+
 const keyExtractor = item => item.id
 
 export const HorizontalBookList = props => (
@@ -15,7 +22,7 @@ export const HorizontalBookList = props => (
     horizontal
     showsHorizontalScrollIndicator={false}
     data={props.books}
-    renderItem={renderBook}
+    renderItem={renderBook(props.onBuyBook, props.onRentBook)}
     keyExtractor={keyExtractor}
     ListHeaderComponent={<View style={styles.listHeaderSpacing} />}
     ListFooterComponent={<View style={styles.listFooterSpacing} />}
@@ -23,5 +30,7 @@ export const HorizontalBookList = props => (
 )
 
 HorizontalBookList.propTypes = {
-  books: PropTypes.arrayOf(book).isRequired
+  books: PropTypes.arrayOf(book).isRequired,
+  onBuyBook: PropTypes.func.isRequired,
+  onRentBook: PropTypes.func.isRequired
 }
