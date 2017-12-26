@@ -4,12 +4,22 @@ import {
   EMPTY_SHOPPING_BAG,
   SHOPPING_BAG_INITIAL_STATE
 } from '../../../src/redux/reducers/shoppingBag/constants'
+import {
+  SHOPPING_BAG_TYPES,
+  ShoppingBagItem
+} from '../../../src/domain/ShoppingBagItem'
 
 const shoppingBagReducer = reducers.shoppingBag
 
 describe('Shopping bag reducer', () => {
-  const item = { title: 'Star Wars' }
-  const anotherItem = { title: 'Star Trek' }
+  const item = new ShoppingBagItem(
+    { title: 'Star Wars' },
+    SHOPPING_BAG_TYPES.BUY
+  )
+  const anotherItem = new ShoppingBagItem(
+    { title: 'Star Trek' },
+    SHOPPING_BAG_TYPES.RENT
+  )
 
   it('should initial state be an empty shopping bag', async () => {
     const expectedInitialState = EMPTY_SHOPPING_BAG
