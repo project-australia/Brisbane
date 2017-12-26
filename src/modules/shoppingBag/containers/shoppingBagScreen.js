@@ -16,6 +16,6 @@ ShoppingBagContainer.propTypes = {
   books: PropTypes.arrayOf(book).isRequired
 }
 
-const mapStateToProps = (state) => ({books: state.shoppingBag})
+const mapStateToProps = state => ({ books: state.shoppingBag })
 
 export const ShoppingBagScreen = connect(mapStateToProps)(ShoppingBagContainer)

@@ -48,4 +48,6 @@ const mapDispatchToProps = dispatch => ({
   addToShoppingCart: item => dispatch(add(item))
 })
 
-export const HomeScreen = connect(mapStateToProps, mapDispatchToProps)(HomeContainer)
+export const HomeScreen = connect(mapStateToProps, mapDispatchToProps)(
+  HomeContainer
+)
