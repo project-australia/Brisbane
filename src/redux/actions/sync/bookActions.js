@@ -1,6 +1,6 @@
 import {
   SHOW_ALERT
-} from '../../types/authTypes'
+} from '../../types/bookTypes'
 
 export const actionCreate = (type, payload) => ({ type, payload })
 

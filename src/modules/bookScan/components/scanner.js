@@ -8,7 +8,7 @@ const Scanner = props => (
   <Camera
     style={props.style}
     aspect={Camera.constants.Aspect.fill}
-    onBarCodeRead={ e => this.props.getQuote(e.data)}
+    onBarCodeRead={ e => props.getQuote(e.data)}
   />
 )
 

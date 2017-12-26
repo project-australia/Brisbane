@@ -8,10 +8,9 @@ import { getQuoteAction } from '../../../redux/actions/async/bookActions'
 import { styles } from './styles/bookScanner.style'
 
 class bookScanner extends Component {
-
   getSellingPrice = (isbn) => {
-    console.log('ISBN', isbn)
     this.props.getQuote(isbn)
+    this.props.navigation.navigate('BookSelling', {})
   }
 
   render () {
@@ -27,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
   getQuote: isbn => dispatch(getQuoteAction(isbn))
 })
 
-export const bookScannerScreen = connect(mapDispatchToProps)(bookScanner)
+export const bookScannerScreen = connect(null, mapDispatchToProps)(bookScanner)

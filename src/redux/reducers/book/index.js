@@ -1,26 +1,19 @@
 import {
-  AUTH_FAILED_ALERT,
-  FORGOT_PASSWORD_SUCCESS,
-  SHOW_ALERT,
-  SIGN_IN_SUCCESS,
-  SIGN_UP_SUCCESS
-} from '../../types/authTypes'
-import { AUTH_INITIAL_STATE } from './constants'
+  GET_BOOK_QUOTE,
+  SHOW_ALERT
+} from '../../types/bookTypes'
+import { BOOK_INITIAL_STATE } from './constants'
 import {
   showAlertHandler,
-  signInSuccessHandler,
-  signUpSuccessHandler
+  getBookQuoteHandler
 } from './handlers'
 
 export const actionHandlers = {
   [SHOW_ALERT]: showAlertHandler,
-  [AUTH_FAILED_ALERT]: showAlertHandler,
-  [SIGN_IN_SUCCESS]: signInSuccessHandler,
-  [SIGN_UP_SUCCESS]: signUpSuccessHandler,
-  [FORGOT_PASSWORD_SUCCESS]: showAlertHandler
+  [GET_BOOK_QUOTE]: getBookQuoteHandler
 }
 
-export const authReducerConfig = {
-  initialState: AUTH_INITIAL_STATE,
+export const bookReducerConfig = {
+  initialState: BOOK_INITIAL_STATE,
   actionHandlers: actionHandlers
 }

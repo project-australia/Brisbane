@@ -1,16 +1,16 @@
 import {
   GET_BOOK_QUOTE
-} from '../../types/authTypes'
+} from '../../types/bookTypes'
 
 import {
   alertAction,
   actionCreate
-} from '../sync/authActions'
+} from '../sync/bookActions'
 
 export function getQuoteAction (isbn) {
   return async dispatch => {
     try {
-      const book = { price: 100 }
+      const book = { price: 100, name: 'Mocked Book' }
       dispatch(actionCreate(
         GET_BOOK_QUOTE,
         book
