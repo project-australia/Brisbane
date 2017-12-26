@@ -1,4 +1,7 @@
-import {SHOPPING_BAG_TYPES, ShoppingBagItem} from '../../src/domain/ShoppingBagItem'
+import {
+  SHOPPING_BAG_TYPES,
+  ShoppingBagItem
+} from '../../src/domain/ShoppingBagItem'
 
 const aBook = {
   id: '8282',

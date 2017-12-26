@@ -15,15 +15,9 @@ describe('Shopping bag reducer', () => {
   const starWars = { title: 'Star Wars', id: '1' }
   const startTrek = { title: 'Star Trek', id: '2' }
 
-  const item = new ShoppingBagItem(
-    starWars,
-    SHOPPING_BAG_TYPES.BUY
-  )
+  const item = new ShoppingBagItem(starWars, SHOPPING_BAG_TYPES.BUY)
 
-  const anotherItem = new ShoppingBagItem(
-    startTrek,
-    SHOPPING_BAG_TYPES.RENT
-  )
+  const anotherItem = new ShoppingBagItem(startTrek, SHOPPING_BAG_TYPES.RENT)
 
   it('should initial state be an empty shopping bag', async () => {
     const expectedInitialState = EMPTY_SHOPPING_BAG

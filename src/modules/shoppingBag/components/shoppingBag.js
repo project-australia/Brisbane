@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { BookSearch } from '../../home/components/searchBook'
 import { ShoppingBagItems } from './shoppingBagItems'
-import {ShoppingBagItemPropType} from '../propTypes/ShoppingBagItem'
+import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 
 export const ShoppingBag = props => (
   <View>

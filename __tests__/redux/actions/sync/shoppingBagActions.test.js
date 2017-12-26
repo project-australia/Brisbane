@@ -27,7 +27,10 @@ describe('Shopping bag sync actions', () => {
   })
 
   it('should wrap book into ShoppingBagItem during removing', () => {
-    const expectedAction = { type: REMOVE_FROM_SHOPPING_BAG, item: shoppingBagItem }
+    const expectedAction = {
+      type: REMOVE_FROM_SHOPPING_BAG,
+      item: shoppingBagItem
+    }
     const action = remove(item)
     expect(action).toEqual(expectedAction)
   })
@@ -51,13 +54,19 @@ describe('Shopping bag sync actions', () => {
   })
 
   it('should create an action to add to shopping cart', async () => {
-    const expectedAction = { type: ADD_TO_SHOPPING_BAG, item: new ShoppingBagItem(item, RENT) }
+    const expectedAction = {
+      type: ADD_TO_SHOPPING_BAG,
+      item: new ShoppingBagItem(item, RENT)
+    }
     const action = add(new ShoppingBagItem(item, RENT))
     expect(action).toEqual(expectedAction)
   })
 
   it('should create an action to remove from shopping cart', async () => {
-    const expectedAction = { type: REMOVE_FROM_SHOPPING_BAG, item: shoppingBagItem }
+    const expectedAction = {
+      type: REMOVE_FROM_SHOPPING_BAG,
+      item: shoppingBagItem
+    }
     const action = remove(shoppingBagItem)
     expect(action).toEqual(expectedAction)
   })
