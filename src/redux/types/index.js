@@ -1,2 +1,2 @@
-export * from './authTypes'
-export * from './shoppingBag.type'
+export * from './authenticationTypes'
+export * from './shoppingBagTypes'

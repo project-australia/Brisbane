@@ -4,12 +4,12 @@ import {
   signInSuccess,
   signUpSuccess,
   successRetrievedPassword
-} from '../../../../src/redux/actions/sync/authActions'
+} from '../../../../src/redux/actions/sync/authenticationActions'
 import {
   forgotPasswordAction,
   signInAction,
   signUpAction
-} from '../../../../src/redux/actions/async/authActions'
+} from '../../../../src/redux/actions/async/authenticationAsyncActions'
 import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../../src/constants/messages'
 jest.mock('../../../../src/services/firebase/authentication')
 

@@ -1,11 +1,11 @@
 import {
   add,
   remove
-} from '../../../../src/redux/actions/sync/shoppingBag.action'
+} from '../../../../src/redux/actions/sync/shoppingBagActions'
 import {
   ADD_TO_SHOPPING_BAG,
   REMOVE_FROM_SHOPPING_BAG
-} from '../../../../src/redux/types/shoppingBag.type'
+} from '../../../../src/redux/types/shoppingBagTypes'
 
 describe('Shopping bag sync actions', () => {
   const item = { title: 'Star Wars' }

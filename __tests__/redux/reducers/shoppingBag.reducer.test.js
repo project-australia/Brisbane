@@ -1,9 +1,9 @@
-import {
-  add,
-  remove
-} from '../../../src/redux/actions/sync/shoppingBag.action'
+import { add, remove } from '../../../src/redux/actions/sync/shoppingBagActions'
 import { reducers } from '../../../src/redux/reducers'
-import { EMPTY_SHOPPING_BAG, SHOPPING_BAG_INITIAL_STATE } from '../../../src/redux/reducers/shoppingBag/constants'
+import {
+  EMPTY_SHOPPING_BAG,
+  SHOPPING_BAG_INITIAL_STATE
+} from '../../../src/redux/reducers/shoppingBag/constants'
 
 const shoppingBagReducer = reducers.shoppingBag
 

@@ -4,4 +4,5 @@ export const addItem = (state, { item }) => {
   return items
 }
 
-export const removeItem = (state, { item }) => state.filter(element => element !== item)
+export const removeItem = (state, { item }) =>
+  state.filter(element => element !== item)

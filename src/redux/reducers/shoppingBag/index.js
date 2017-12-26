@@ -1,12 +1,6 @@
 import { SHOPPING_BAG_INITIAL_STATE } from './constants'
-import {
-  ADD_TO_SHOPPING_BAG,
-  REMOVE_FROM_SHOPPING_BAG
-} from '../../types'
-import {
-  addItem,
-  removeItem
-} from './handlers'
+import { ADD_TO_SHOPPING_BAG, REMOVE_FROM_SHOPPING_BAG } from '../../types'
+import { addItem, removeItem } from './handlers'
 
 const actionHandlers = {
   [ADD_TO_SHOPPING_BAG]: addItem,
