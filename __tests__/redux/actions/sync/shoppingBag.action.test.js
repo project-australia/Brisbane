@@ -7,7 +7,7 @@ import {
   REMOVE_FROM_SHOPPING_BAG
 } from '../../../../src/redux/types/shoppingBag.type'
 
-describe('Auth sync actions', () => {
+describe('Shopping bag sync actions', () => {
   const item = { title: 'Star Wars' }
 
   it('Should create an action to add to shopping cart', async () => {
