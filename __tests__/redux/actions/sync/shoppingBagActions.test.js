@@ -17,6 +17,20 @@ const { BUY, RENT } = SHOPPING_BAG_TYPES
 
 describe('Shopping bag sync actions', () => {
   const item = { title: 'Star Wars' }
+  const shoppingBagItem = new ShoppingBagItem(item, RENT)
+
+  it('should only accept ShoppingBagItem objects', () => {
+    expect(() => {
+      const action = add('INVALID VALUE')
+      expect(action).toEqual(undefined)
+    }).toThrow('Use add with a ShoppingBagItem object')
+  })
+
+  it('should wrap book into ShoppingBagItem during removing', () => {
+    const expectedAction = { type: REMOVE_FROM_SHOPPING_BAG, item: shoppingBagItem }
+    const action = remove(item)
+    expect(action).toEqual(expectedAction)
+  })
 
   it('should create an action to buy an item', async () => {
     const expectedAction = {
@@ -37,14 +51,14 @@ describe('Shopping bag sync actions', () => {
   })
 
   it('should create an action to add to shopping cart', async () => {
-    const expectedAction = { type: ADD_TO_SHOPPING_BAG, item }
-    const action = add(item)
+    const expectedAction = { type: ADD_TO_SHOPPING_BAG, item: new ShoppingBagItem(item, RENT) }
+    const action = add(new ShoppingBagItem(item, RENT))
     expect(action).toEqual(expectedAction)
   })
 
   it('should create an action to remove from shopping cart', async () => {
-    const expectedAction = { type: REMOVE_FROM_SHOPPING_BAG, item }
-    const action = remove(item)
+    const expectedAction = { type: REMOVE_FROM_SHOPPING_BAG, item: shoppingBagItem }
+    const action = remove(shoppingBagItem)
     expect(action).toEqual(expectedAction)
   })
 })
