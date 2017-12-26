@@ -4,7 +4,6 @@ import { ScrollView, View } from 'react-native'
 
 import { AppStatusBar } from '../../shared/components/appStatusBar'
 import { BookSearch } from './searchBook'
-import { HorizontalBookList } from './horizontalBookList'
 import { MenuTitle } from '../../shared/components/menuTitle'
 import { NavbarMain } from '../../shared/components/navbar'
 import { SellingBooks } from '../containers/sellingBooksContainer'
@@ -12,6 +11,7 @@ import { WalletBalanceAmount } from '../containers/walletBalanceContainer'
 
 import { book } from '../propTypes/book'
 import { styles } from './styles/home.styles'
+import { BookList } from '../containers/bookList'
 
 export class Home extends Component {
   static propTypes = {
@@ -21,9 +21,7 @@ export class Home extends Component {
     searchBook: PropTypes.func.isRequired,
     recentlyAddedBooks: PropTypes.arrayOf(book).isRequired,
     featuredBooks: PropTypes.arrayOf(book).isRequired,
-    userName: PropTypes.string,
-    onBuyBook: PropTypes.func.isRequired,
-    onRentBook: PropTypes.func.isRequired
+    userName: PropTypes.string
   }
 
   static defaultProps = {
@@ -77,21 +75,13 @@ export class Home extends Component {
             button={recentlyAddedButton}
             style={styles.titleWrap}
           />
-          <HorizontalBookList
-            books={this.props.recentlyAddedBooks}
-            onBuyBook={this.props.onBuyBook}
-            onRentBook={this.props.onRentBook}
-          />
+          <BookList books={this.props.recentlyAddedBooks} />
           <MenuTitle
             title={'Featured'}
             button={featuredButton}
             style={styles.titleWrap}
           />
-          <HorizontalBookList
-            books={this.props.recentlyAddedBooks}
-            onBuyBook={this.props.onBuyBook}
-            onRentBook={this.props.onRentBook}
-          />
+          <BookList books={this.props.featuredBooks} />
         </ScrollView>
       </View>
     )

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Home } from '../components/home'
 import { booksStub } from '../../../stubs/books'
-import { buy, rent } from '../../../redux/actions'
 
 class HomeContainer extends Component {
   static navigationOptions = {
@@ -13,9 +12,7 @@ class HomeContainer extends Component {
 
   static propTypes = {
     displayName: PropTypes.string,
-    navigation: PropTypes.object.isRequired,
-    buyBook: PropTypes.func.isRequired,
-    rentBook: PropTypes.func.isRequired
+    navigation: PropTypes.object.isRequired
   }
 
   render () {
@@ -32,8 +29,6 @@ class HomeContainer extends Component {
         navigateToScan={this.navigateTo('BookScanner')}
         navigateToProfile={this.navigateTo('Profile')}
         navigateToShoppingBag={this.navigateTo('ShoppingBag')}
-        onBuyBook={this.props.buyBook}
-        onRentBook={this.props.rentBook}
       />
     )
   }
@@ -45,11 +40,4 @@ const mapStateToProps = ({ authentication: { user } }) => ({
   displayName: user.displayName
 })
 
-const mapDispatchToProps = dispatch => ({
-  buyBook: item => dispatch(buy(item)),
-  rentBook: item => dispatch(rent(item))
-})
-
-export const HomeScreen = connect(mapStateToProps, mapDispatchToProps)(
-  HomeContainer
-)
+export const HomeScreen = connect(mapStateToProps)(HomeContainer)
