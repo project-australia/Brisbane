@@ -3,7 +3,7 @@ import {
   signInSuccess,
   signUpSuccess,
   successRetrievedPassword
-} from '../sync/authActions'
+} from '../sync/authenticationActions'
 import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,

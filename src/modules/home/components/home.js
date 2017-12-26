@@ -21,7 +21,9 @@ export class Home extends Component {
     searchBook: PropTypes.func.isRequired,
     recentlyAddedBooks: PropTypes.arrayOf(book).isRequired,
     featuredBooks: PropTypes.arrayOf(book).isRequired,
-    userName: PropTypes.string
+    userName: PropTypes.string,
+    onBuyBook: PropTypes.func.isRequired,
+    onRentBook: PropTypes.func.isRequired
   }
 
   static defaultProps = {
@@ -62,7 +64,6 @@ export class Home extends Component {
             onSubmit={this.props.searchBook}
             onScanPress={this.props.navigateToScan}
           />
-
           <View style={styles.twoColumnMenuWrap}>
             <View style={styles.menuColumn}>
               <SellingBooks />
@@ -71,19 +72,26 @@ export class Home extends Component {
               <WalletBalanceAmount />
             </View>
           </View>
-
           <MenuTitle
             title={'Recently added'}
             button={recentlyAddedButton}
             style={styles.titleWrap}
           />
-          <HorizontalBookList books={this.props.recentlyAddedBooks} />
+          <HorizontalBookList
+            books={this.props.recentlyAddedBooks}
+            onBuyBook={this.props.onBuyBook}
+            onRentBook={this.props.onRentBook}
+          />
           <MenuTitle
             title={'Featured'}
             button={featuredButton}
             style={styles.titleWrap}
           />
-          <HorizontalBookList books={this.props.recentlyAddedBooks} />
+          <HorizontalBookList
+            books={this.props.recentlyAddedBooks}
+            onBuyBook={this.props.onBuyBook}
+            onRentBook={this.props.onRentBook}
+          />
         </ScrollView>
       </View>
     )
