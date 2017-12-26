@@ -11,7 +11,15 @@ export class ShoppingBagItem {
     }
   }
 
-  is (anotherItem) {
-    return this.item.title === anotherItem.item.title
+  increaseQuantity () {
+    this.quantity += 1
   }
+
+  decreaseQuantity () {
+    this.quantity -= 1
+  }
+}
+
+ShoppingBagItem.prototype.equals = function (obj) {
+  return this.item.title === obj.item.title && this.type === obj.type
 }

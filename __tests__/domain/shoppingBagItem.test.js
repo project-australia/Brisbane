@@ -21,6 +21,17 @@ const anotherBook = {
 }
 
 describe('Shopping Bag Domain Object', () => {
+  it('should increase/decrease item quantity', () => {
+    const anItem = new ShoppingBagItem(aBook, SHOPPING_BAG_TYPES.BUY)
+    expect(anItem.quantity).toEqual(1)
+
+    anItem.increaseQuantity()
+    expect(anItem.quantity).toEqual(2)
+
+    anItem.decreaseQuantity()
+    expect(anItem.quantity).toEqual(1)
+  })
+
   it('should raise an error if type is invalid', () => {
     expect(() => {
       const book = new ShoppingBagItem(aBook, 'INVALID')
@@ -28,10 +39,10 @@ describe('Shopping Bag Domain Object', () => {
     }).toThrow('Invalid Shopping bag item type')
   })
 
-  it('should treat same title items as same objects', () => {
+  it('should treat same title and type items as same objects', () => {
     const anItem = new ShoppingBagItem(aBook, SHOPPING_BAG_TYPES.BUY)
     const anotherItem = new ShoppingBagItem(anotherBook, SHOPPING_BAG_TYPES.BUY)
 
-    expect(anItem.is(anotherItem)).toEqual(true)
+    expect(anItem.equals(anotherItem)).toEqual(true)
   })
 })
