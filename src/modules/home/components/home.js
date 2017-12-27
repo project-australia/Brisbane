@@ -38,8 +38,13 @@ export class Home extends Component {
         name: 'cart-outline',
         onPress: this.props.navigateToShoppingBag
       }
-    ]
+    ],
+    bookSearchValue: ''
   }
+
+  updateBookSearchValue = (bookSearchValue) => (
+    this.setState({ bookSearchValue })
+  )
 
   render () {
     const recentlyAddedButton = {
@@ -61,6 +66,8 @@ export class Home extends Component {
           <BookSearch
             onSubmit={this.props.searchBook}
             onScanPress={this.props.navigateToScan}
+            value={this.state.bookSearchValue}
+            onChangeText={this.updateBookSearchValue}
           />
 
           <View style={styles.twoColumnMenuWrap}>
