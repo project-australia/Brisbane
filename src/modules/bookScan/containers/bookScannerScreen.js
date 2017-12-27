@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View } from 'react-native'
 import PropTypes from 'prop-types'
 
-import { getQuoteAction } from '../../../redux/actions/async/bookActions'
-import { styles } from './styles/bookScanner.style'
+import { getQuoteAction } from '../../../redux/actions'
 import { Scanner } from '../components/scanner'
 
 class bookScanner extends Component {
@@ -16,12 +14,10 @@ class bookScanner extends Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Scanner
-          getQuote={this.props.getQuote}
-          showBook={this.navigateToBookSelling}
-        />
-      </View>
+      <Scanner
+        getQuote={this.props.getQuote}
+        showBook={this.navigateToBookSelling}
+      />
     )
   }
 }

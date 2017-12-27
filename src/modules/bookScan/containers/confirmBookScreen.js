@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { View, Text } from 'react-native'
 
-import { styles } from './styles/bookScanner.style'
+import { styles } from '../components/styles/bookScanner.style'
 
 class bookScanner extends Component {
   static propTypes = {

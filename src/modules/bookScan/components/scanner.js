@@ -3,7 +3,7 @@ import Camera from 'react-native-camera'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
 
-import { styles } from '../containers/styles/bookScanner.style'
+import { styles } from './styles/bookScanner.style'
 
 export class Scanner extends Component {
   static propTypes = {
