@@ -1,35 +1,29 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { View } from 'react-native'
-
-import Camera from 'react-native-camera'
+import PropTypes from 'prop-types'
 
 import { getQuoteAction } from '../../../redux/actions/async/bookActions'
-
 import { styles } from './styles/bookScanner.style'
+import { Scanner } from '../components/scanner'
 
 class bookScanner extends Component {
-  getSellingPrice = (isbn) => {
-    this.props.getQuote(isbn)
-    this.props.navigation.navigate('BookSelling', {})
+  static propTypes = {
+    getQuote: PropTypes.func.isRequired
   }
+
+  navigateToBookSelling = () => this.props.navigation.navigate('BookSelling', {})
 
   render () {
     return (
       <View style={styles.container}>
-        <Camera
-          style={styles.scanner}
-          aspect={Camera.constants.Aspect.fill}
-          onBarCodeRead={e => this.getSellingPrice(e.data)}
+        <Scanner
+          getQuote={this.props.getQuote}
+          showBook={this.navigateToBookSelling}
         />
       </View>
     )
   }
-}
-
-bookScanner.propTypes = {
-  getQuote: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => ({
