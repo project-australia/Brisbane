@@ -4,7 +4,7 @@ import {
   SHOW_ALERT,
   SIGN_IN_SUCCESS,
   SIGN_UP_SUCCESS
-} from '../../types/authTypes'
+} from '../../types/authenticationTypes'
 import { AUTH_INITIAL_STATE } from './constants'
 import {
   showAlertHandler,

@@ -4,7 +4,7 @@ import {
   SIGN_UP_SUCCESS,
   SIGN_IN_SUCCESS,
   SHOW_ALERT
-} from '../../types/authTypes'
+} from '../../types/authenticationTypes'
 
 export const signUpSuccess = () => ({ type: SIGN_UP_SUCCESS })
 export const signInSuccess = user => ({ type: SIGN_IN_SUCCESS, user })

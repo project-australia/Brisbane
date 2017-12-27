@@ -8,7 +8,8 @@ import { SignUpScreen } from '../modules/authentication/containers/signUpScreen'
 import { ForgotPasswordScreen } from '../modules/authentication/containers/forgotPasswordScreen'
 import { ProfileScreen } from '../modules/account/containers/profileScreen'
 import { ManageAccountScreen } from '../modules/account/containers/manageAccountScreen'
-import { BookScanner } from '../modules/bookScan/components/bookScanner'
+import { bookScannerScreen } from '../modules/bookScan/containers/bookScannerScreen'
+import { confirmBookScreen } from '../modules/bookScan/containers/confirmBookScreen'
 import { ShoppingBagScreen } from '../modules/shoppingBag/containers/shoppingBagScreen'
 
 export const initialRouteName = __DEV__ ? 'Test' : 'Home'
@@ -36,7 +37,10 @@ const routeConfigs = {
     screen: authenticated(ManageAccountScreen)
   },
   BookScanner: {
-    screen: BookScanner
+    screen: bookScannerScreen
+  },
+  BookSelling: {
+    screen: confirmBookScreen
   },
   ShoppingBag: {
     screen: ShoppingBagScreen

@@ -9,13 +9,13 @@ import { extractActionFromThunk } from './reduxThunkMock'
 import {
   signInAction,
   signUpAction
-} from '../../../src/redux/actions/async/authActions'
+} from '../../../src/redux/actions/async/authenticationAsyncActions'
 import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../src/constants/messages'
 import {
   alertAction,
   showAlert,
   successRetrievedPassword
-} from '../../../src/redux/actions/sync/authActions'
+} from '../../../src/redux/actions/sync/authenticationActions'
 
 jest.mock('../../../src/services/firebase/authentication')
 jest.mock(

@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd android
+cd android || exit
 ./gradlew assembleRelease

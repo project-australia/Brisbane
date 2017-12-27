@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-start'
   },
   scanner: {
     flex: 1,

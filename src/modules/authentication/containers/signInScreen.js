@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bool, func, shape, string } from 'prop-types'
 
-import { signInAction } from '../../../redux/actions/async/authActions'
+import { signInAction } from '../../../redux/actions/async/authenticationAsyncActions'
 import { SignIn } from '../components/signIn'
 
 const navigateToSignUp = navigate => () => {

@@ -4,14 +4,14 @@ import {
   signInSuccess,
   signUpSuccess,
   successRetrievedPassword
-} from '../../../../src/redux/actions/sync/authActions'
+} from '../../../../src/redux/actions/sync/authenticationActions'
 import {
   AUTH_FAILED_ALERT,
   FORGOT_PASSWORD_SUCCESS,
   SHOW_ALERT,
   SIGN_IN_SUCCESS,
   SIGN_UP_SUCCESS
-} from '../../../../src/redux/types/authTypes'
+} from '../../../../src/redux/types/authenticationTypes'
 
 describe('Auth sync actions', () => {
   it('Should send a sucessfull forgot password action', async () => {
