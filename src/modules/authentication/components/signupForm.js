@@ -20,12 +20,12 @@ export class SignupForm extends Component {
 
   // FIXME: Test data only
   state = {
-    userName: 'Eduardo Moroni',
-    school: 'PUC',
-    phoneNumber: '123456789',
-    email: 'eduardomoroni@gmail.com',
-    password: '123456',
-    referralName: 'Hebert Porto',
+    userName: '',
+    school: '',
+    phoneNumber: '',
+    email: '',
+    password: '',
+    referralName: '',
     loading: false
   }
 
@@ -56,7 +56,7 @@ export class SignupForm extends Component {
         <View style={styles.header}>
           <Text style={styles.title}>Ballard Books</Text>
         </View>
-        <FormTextInput
+        {/* <FormTextInput
           onChangeText={this.setUserName}
           value={this.state.userName}
           placeholder="Name"
@@ -80,7 +80,7 @@ export class SignupForm extends Component {
           selectionColor={Colors.secondary500}
           style={styles.itemSpacing}
           keyboardType="phone-pad"
-        />
+        /> */}
         <FormTextInput
           onChangeText={this.setEmail}
           value={this.state.email}
@@ -98,14 +98,14 @@ export class SignupForm extends Component {
           selectionColor={Colors.secondary500}
           style={styles.itemSpacing}
         />
-        <FormTextInput
+        {/* <FormTextInput
           onChangeText={this.setReferralName}
           value={this.state.referralName}
           placeholder="Indicated by someone?"
           autoCapitalize="words"
           selectionColor={Colors.secondary500}
           style={styles.itemSpacing}
-        />
+        /> */}
         <FormButton
           title={this.props.buttonText}
           onPress={this.onButtonPress}
