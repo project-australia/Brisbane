@@ -57,14 +57,21 @@ export class ConfirmBook extends Component {
             style={styles.titleWrap}
           />
           <PriceRow
-            title={'I want to sell my book'}
+            title={{
+              sell: 'I want to sell my book',
+              donate: 'I want to donate my book'
+            }}
             price={sellPrice}
-            button={{ title: 'Sell', onPress: onPressSell }}
-          />
-          <PriceRow
-            title={'I want to donate my book'}
-            price={0.00}
-            button={{ title: 'Donate', onPress: onPressDonate }}
+            button={{
+              title: {
+                sell: 'Sell',
+                donate: 'Donate'
+              },
+              onPress: {
+                sell: onPressSell,
+                donate: onPressDonate
+              }
+            }}
           />
           <Touchable onPress={onPressBallardsClub}>
             <Text style={styles.footnote}>
@@ -77,7 +84,7 @@ export class ConfirmBook extends Component {
             style={styles.titleWrap}
           />
           <GeneralInfoCard style={styles.standardSpacing}>
-            <Text style={[styles.description, styles.bottomSpacing]}>{aboutBook}</Text>
+            {(aboutBook !== null) && <Text style={[styles.description, styles.bottomSpacing]}>{aboutBook}</Text>}
             <Text style={styles.description}>ISBN</Text>
             <Text style={styles.descriptionGray}>{id}</Text>
           </GeneralInfoCard>

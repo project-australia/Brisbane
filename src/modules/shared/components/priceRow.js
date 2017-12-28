@@ -9,16 +9,22 @@ export const PriceRow = ({
   title,
   price,
   button
-}) => (
-  <View style={styles.row}>
-    <View style={styles.rowInfo}>
-      <Text style={styles.description}>{title}</Text>
-      <Text style={styles.title}>{`$${price}`}</Text>
+}) => {
+  const titleToShow = (price !== null) ? title.sell : title.donate
+  const priceToShow = (price !== null) ? price : '0.00'
+  const buttonTitleToShow = (price !== null) ? button.title.sell : button.title.donate
+  const functionToUse = (price !== null) ? button.onPress.sell : button.onPress.donate
+  return (
+    <View style={styles.row}>
+      <View style={styles.rowInfo}>
+        <Text style={styles.description}>{titleToShow}</Text>
+        <Text style={styles.title}>{`$${priceToShow}`}</Text>
+      </View>
+      <FlatButton
+        secondary
+        title={buttonTitleToShow}
+        onPress={functionToUse}
+      />
     </View>
-    <FlatButton
-      secondary
-      title={button.title}
-      onPress={button.onPress}
-    />
-  </View>
-)
+  )
+}
