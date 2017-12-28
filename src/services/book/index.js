@@ -10,5 +10,16 @@ export const searchIsbn = async isbn => {
       'Content-Type': 'application/json'
     }
   })
-  return fetchResponse.json()
+  const backEndBook = await fetchResponse.json()
+  const frontEndbook = {
+    id: isbn,
+    imageUri: backEndBook.images.large,
+    title: backEndBook.title,
+    author: backEndBook.authors.join(' '),
+    edition: backEndBook.edition,
+    aboutBook: backEndBook.description,
+    sellPrice: backEndBook.price
+  }
+
+  return frontEndbook
 }

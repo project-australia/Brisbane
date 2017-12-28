@@ -4,12 +4,12 @@ import { Button, View } from 'react-native'
 import { styles } from './styles/testScreen.test'
 
 export const TestScreen = props => {
-  const navigateTo = screen => {
+  const navigateTo = (screen, screenProps = {}) => {
     return (
       <View style={styles.textRow}>
         <Button
           title={screen}
-          onPress={() => props.navigation.navigate(screen, {})}
+          onPress={() => props.navigation.navigate(screen, screenProps)}
         />
       </View>
     )
@@ -23,7 +23,7 @@ export const TestScreen = props => {
       {navigateTo('ManageAccount')}
       {navigateTo('BookScanner')}
       {navigateTo('ShoppingBag')}
-      {navigateTo('BookSelling')}
+      {navigateTo('BookSelling', {isbn: 9781483358505})}
     </View>
   )
 }
