@@ -14,14 +14,19 @@ const navigateToForgotPasswordScreen = navigate => () => {
   })
 }
 
-const onSignIn = signIn => (email, password) => {
-  signIn(email, password)
+const onSignIn = props => async (email, password) => {
+  try {
+    await props.signIn(email, password)
+    props.navigation.navigate('Home')
+  } catch (error) {
+    alert('Error happened during signin', error)
+  }
 }
 
 const SignInContainer = props => (
   <SignIn
     alert={props.alert}
-    onButtonPress={onSignIn(props.signIn)}
+    onButtonPress={onSignIn(props)}
     navigateToSignUp={navigateToSignUp(props.navigation.navigate)}
     navigateToForgotPassword={navigateToForgotPasswordScreen(
       props.navigation.navigate
