@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { Alert, View } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { ConfirmBook } from '../components/confirmBook'
+import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 import { searchIsbn } from '../../../services/book'
 
 class bookScanner extends Component {
@@ -15,16 +17,8 @@ class bookScanner extends Component {
     isbn: PropTypes.string.isRequired
   }
 
-  state = {
-    book: {
-      id: 0,
-      imageUri: '',
-      title: '',
-      author: '',
-      edition: '',
-      aboutBook: '',
-      sellPrice: 0
-    }
+  state={
+    book: undefined
   }
 
   componentDidMount = async () => {
@@ -34,20 +28,28 @@ class bookScanner extends Component {
       const book = await searchIsbn(isbn)
       this.setState({book})
     } catch (e) {
-      alert(`ISBN ${isbn} Not Found`)
+      Alert.alert(
+        '',
+        'ISBN Not Found',
+        [
+          {text: 'Ok', onPress: this.goBack}
+        ]
+      )
     }
   }
 
   render () {
     return (
-      <ConfirmBook
-        book={this.state.book}
-        navigateBack={this.goBack}
-        navigateToShoppingBag={this.navigateTo('ShoppingBag')}
-        onPressSell={() => console.warn('hello :D')}
-        onPressDonate={() => console.warn('hello :D')}
-        onPressBallardsClub={() => console.warn('hello :D')}
-      />
+      (typeof this.state.book === 'undefined')
+        ? <LoadingOverlay isLoading><View /></LoadingOverlay>
+        : <ConfirmBook
+          book={this.state.book}
+          navigateBack={this.goBack}
+          navigateToShoppingBag={this.navigateTo('ShoppingBag')}
+          onPressSell={() => console.warn('hello :D')}
+          onPressDonate={() => console.warn('hello :D')}
+          onPressBallardsClub={() => console.warn('hello :D')}
+        />
     )
   }
 
