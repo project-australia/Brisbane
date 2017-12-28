@@ -23,6 +23,7 @@ export const TestScreen = props => {
       {navigateTo('ManageAccount')}
       {navigateTo('BookScanner')}
       {navigateTo('ShoppingBag')}
+      {navigateTo('BookSelling')}
     </View>
   )
 }

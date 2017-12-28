@@ -15,6 +15,13 @@ export const styles = StyleSheet.create({
     marginHorizontal: Metrics.section,
     ...Fonts.style.navbarTitle
   },
+  title: {
+    color: Colors.gray900,
+    flex: 1,
+    marginHorizontal: Metrics.marginHorizontal,
+    textAlign: 'center',
+    ...Fonts.style.navbarTitle
+  },
   buttonGroupWrap: {
     marginRight: Metrics.marginHorizontal,
     alignSelf: 'stretch',
@@ -25,7 +32,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    height: 48,
+    height: Metrics.navBarButtonHeight,
     aspectRatio: 1
+  },
+  iosBackButtonAlignment: {
+    backgroundColor: 'transparent',
+    right: Metrics.baseMargin
   }
 })

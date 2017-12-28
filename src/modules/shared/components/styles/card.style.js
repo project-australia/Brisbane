@@ -7,5 +7,10 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderRadius: Metrics.buttonRadius * 2,
     ...Values.elevation1
+  },
+  bleedingCard: {
+    backgroundColor: Colors.white,
+    borderBottomWidth: 1,
+    borderColor: Colors.divider
   }
 })

@@ -6,7 +6,23 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Touchable } from '../../shared/components/touchable'
 
 import { styles } from './styles/home.styles'
-import { Colors, Metrics, Values } from '../../../constants'
+import { Colors, Metrics } from '../../../constants'
+
+const rightIconOnPress = (
+  inputValue,
+  scanFunction,
+  submitFunction
+) => (
+  inputValue === ''
+    ? scanFunction
+    : submitFunction
+)
+
+const rightIconName = (inputValue) => (
+  inputValue === ''
+    ? 'barcode-scan'
+    : 'chevron-right'
+)
 
 export const BookSearch = props => (
   <View style={styles.searchBarWrap}>
@@ -18,17 +34,22 @@ export const BookSearch = props => (
       />
     </View>
     <TextInput
+      keyboardType={'numeric'}
+      onChangeText={props.onChangeText}
+      onSubmitEditing={props.onSubmit}
       placeholder="Search book or scan barcode"
-      underlineColorAndroid={'transparent'}
+      returnKeyType={'search'}
       style={styles.searchInput}
+      underlineColorAndroid={'transparent'}
+      value={props.value}
     />
     <Touchable
-      background={Values.BackgroundBorderlessRipple}
-      onPress={props.onScanPress}
+      borderless
+      onPress={rightIconOnPress(props.value, props.onScanPress, props.onSubmit)}
       style={styles.iconWrap}
     >
       <Icon
-        name={'barcode-scan'}
+        name={rightIconName(props.value)}
         size={Metrics.icons.medium}
         color={Colors.gray700}
       />
@@ -36,7 +57,12 @@ export const BookSearch = props => (
   </View>
 )
 
+BookSearch.defaultProps = {
+  value: ''
+}
 BookSearch.propTypes = {
+  onChangeText: PropTypes.func.isRequired,
   onScanPress: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  value: PropTypes.string
 }

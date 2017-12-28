@@ -19,9 +19,11 @@ export const Colors = {
   // Grays when the background isn't white
   gray200alt: '#0000001E',
   statusBar: 'rgba(0, 0, 0, 0.2)',
+  divider: 'rgba(0, 0, 0, 0.12)',
 
   // Other colors
   background: 'white',
+  lightOverlay: 'rgba(255, 255, 255, 0.3)',
   clear: 'rgba(0,0,0,0)',
   white: 'white',
   transparent: 'rgba(0,0,0,0)',

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Platform, Text, TouchableNativeFeedback, View } from 'react-native'
+import { Platform, StyleSheet, Text, TouchableNativeFeedback, View } from 'react-native'
 
 import { arrayOf, func, shape, string } from 'prop-types'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -10,7 +10,8 @@ import { Colors, Metrics } from '../../../constants'
 
 const defaultProps = {
   rightIcons: undefined,
-  title: ''
+  title: '',
+  onBack: undefined
 }
 const propTypes = {
   rightIcons: arrayOf(
@@ -19,10 +20,18 @@ const propTypes = {
       onPress: func
     })
   ),
-  title: string
+  title: string,
+  onBack: func
 }
 
-const buildIcon = icon => {
+const buildIcon = ({
+  color,
+  name,
+  onPress,
+  size,
+  style,
+  wrapStyle
+}) => {
   const background =
     Platform.OS === 'android'
       ? TouchableNativeFeedback.SelectableBackgroundBorderless()
@@ -30,38 +39,88 @@ const buildIcon = icon => {
   return (
     <Touchable
       background={background}
-      key={icon.name}
-      onPress={icon.onPress}
-      style={styles.buttonTouch}
+      key={name}
+      onPress={onPress}
+      style={wrapStyle || styles.buttonTouch}
     >
       <Icon
-        color={Colors.gray500}
-        name={icon.name}
-        size={Metrics.icons.medium}
+        color={color || Colors.gray500}
+        name={name}
+        size={size || Metrics.icons.medium}
+        style={style}
       />
     </Touchable>
   )
 }
 
-const IconGroup = ({ icons }) => {
-  if (typeof icons !== 'undefined') {
-    const iconGroup = icons.map(icon => {
-      return buildIcon(icon)
-    })
-    return <View style={styles.buttonGroupWrap}>{iconGroup}</View>
-  }
-  return null
+const BuildGroup = (icons) => {
+  const iconGroup = icons.map(icon => {
+    return buildIcon(icon)
+  })
+  return <View style={styles.buttonGroupWrap}>{iconGroup}</View>
 }
 
-export const NavbarMain = props => {
+const IconGroup = ({ icons }) => (
+  (typeof icons !== 'undefined') && BuildGroup(icons)
+)
+
+/**
+|------------------------------------------------|
+| Home screen navigation bar without back button |
+|------------------------------------------------|
+*/
+export const NavbarMain = ({ title, rightIcons }) => (
+  <View style={styles.wrap}>
+    <Text numberOfLines={1} style={styles.titleMain}>
+      {title}
+    </Text>
+    <IconGroup icons={rightIcons} />
+  </View>
+)
+NavbarMain.defaultProps = defaultProps
+NavbarMain.propTypes = propTypes
+
+/**
+|----------------------------------------------------|
+| Navigation bar with back button and centered title |
+|----------------------------------------------------|
+*/
+const getWrapWidth = (rightIconsCount) => (
+  (rightIconsCount >= 2)
+    ? (Metrics.marginHorizontal + (Metrics.navBarButtonHeight * rightIconsCount))
+    : Metrics.singleTitleWrapMargin
+)
+
+export const Navbar = ({ rightIcons, title, onBack }) => {
+  const hasRightIcons = (typeof rightIcons !== 'undefined' && typeof rightIcons === 'object')
+  const rightIconsCount = (hasRightIcons) ? rightIcons.length : 0
+  const iconWrapStyle = StyleSheet.flatten({ width: getWrapWidth(rightIconsCount) })
+
+  const backButton = {
+    color: Colors.gray700,
+    onPress: onBack,
+    ...Platform.select({
+      android: { name: 'arrow-left' },
+      ios: {
+        name: 'chevron-left',
+        size: Metrics.icons.xl,
+        style: styles.iosBackButtonAlignment
+      }
+    })
+  }
   return (
     <View style={styles.wrap}>
-      <Text numberOfLines={1} style={styles.titleMain}>
-        {props.title}
+      <View style={iconWrapStyle}>
+        {buildIcon(backButton)}
+      </View>
+      <Text numberOfLines={1} style={styles.title}>
+        {title}
       </Text>
-      <IconGroup icons={props.rightIcons} />
+      <View style={iconWrapStyle}>
+        <IconGroup icons={rightIcons} />
+      </View>
     </View>
   )
 }
-NavbarMain.defaultProps = defaultProps
-NavbarMain.propTypes = propTypes
+Navbar.defaultProps = defaultProps
+Navbar.propTypes = propTypes
