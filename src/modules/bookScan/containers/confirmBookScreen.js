@@ -13,9 +13,9 @@ class BookScannerContainer extends Component {
     header: null
   }
 
-  static propTypes = {
-    isbn: PropTypes.string.isRequired
-  }
+  // static propTypes = {
+  //   isbn: PropTypes.string.isRequired
+  // }
 
   state={
     book: undefined
