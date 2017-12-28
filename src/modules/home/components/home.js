@@ -64,7 +64,7 @@ export class Home extends Component {
         />
         <ScrollView>
           <BookSearch
-            onSubmit={this.props.searchBook}
+            onSubmit={() => this.props.searchBook(this.state.bookSearchValue)}
             onScanPress={this.props.navigateToScan}
             value={this.state.bookSearchValue}
             onChangeText={this.updateBookSearchValue}
