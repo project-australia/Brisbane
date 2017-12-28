@@ -20,7 +20,7 @@ class HomeContainer extends Component {
       <Home
         userName={this.props.displayName}
         featuredBooks={booksStub}
-        searchBook={() => alert('search book')}
+        searchBook={(isbn) => this.props.navigation.navigate('BookSelling', {isbn})}
         recentlyAddedBooks={booksStub}
         onRecentlyAddedPressed={() =>
           alert('🛶 navigate to recently added books list')
