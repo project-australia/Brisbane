@@ -1,18 +1,17 @@
 import { StyleSheet } from 'react-native'
+
 import { Colors } from '../../../../constants'
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1
+  background: {
+    width: '100%',
+    aspectRatio: 16 / 9
   },
-  overlay: {
+  lightOverlay: {
     ...StyleSheet.absoluteFillObject,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Colors.overlay
+    backgroundColor: Colors.lightOverlay
   },
-  spinner: {
-    width: 200,
-    height: 200
+  mainImage: {
+    height: '100%'
   }
 })

@@ -10,7 +10,8 @@ import { Colors, Metrics } from '../../../constants'
 
 const defaultProps = {
   rightIcons: undefined,
-  title: ''
+  title: '',
+  onBack: undefined
 }
 const propTypes = {
   rightIcons: arrayOf(
@@ -19,10 +20,18 @@ const propTypes = {
       onPress: func
     })
   ),
-  title: string
+  title: string,
+  onBack: func
 }
 
-const buildIcon = icon => {
+const buildIcon = ({
+  color,
+  name,
+  onPress,
+  size,
+  style,
+  wrapStyle
+}) => {
   const background =
     Platform.OS === 'android'
       ? TouchableNativeFeedback.SelectableBackgroundBorderless()
@@ -30,15 +39,15 @@ const buildIcon = icon => {
   return (
     <Touchable
       background={background}
-      key={icon.name}
-      onPress={icon.onPress}
-      style={icon.wrapStyle || styles.buttonTouch}
+      key={name}
+      onPress={onPress}
+      style={wrapStyle || styles.buttonTouch}
     >
       <Icon
-        color={icon.color || Colors.gray500}
-        name={icon.name}
-        size={icon.size || Metrics.icons.medium}
-        style={icon.style}
+        color={color || Colors.gray500}
+        name={name}
+        size={size || Metrics.icons.medium}
+        style={style}
       />
     </Touchable>
   )
@@ -51,25 +60,23 @@ const BuildGroup = (icons) => {
   return <View style={styles.buttonGroupWrap}>{iconGroup}</View>
 }
 
-const IconGroup = ({ icons }) => {
-  return (typeof icons !== 'undefined') && BuildGroup(icons)
-}
+const IconGroup = ({ icons }) => (
+  (typeof icons !== 'undefined') && BuildGroup(icons)
+)
 
 /**
 |------------------------------------------------|
 | Home screen navigation bar without back button |
 |------------------------------------------------|
 */
-export const NavbarMain = ({ title, rightIcons }) => {
-  return (
-    <View style={styles.wrap}>
-      <Text numberOfLines={1} style={styles.titleMain}>
-        {title}
-      </Text>
-      <IconGroup icons={rightIcons} />
-    </View>
-  )
-}
+export const NavbarMain = ({ title, rightIcons }) => (
+  <View style={styles.wrap}>
+    <Text numberOfLines={1} style={styles.titleMain}>
+      {title}
+    </Text>
+    <IconGroup icons={rightIcons} />
+  </View>
+)
 NavbarMain.defaultProps = defaultProps
 NavbarMain.propTypes = propTypes
 
@@ -84,7 +91,7 @@ const getWrapWidth = (rightIconsCount) => (
     : Metrics.singleTitleWrapMargin
 )
 
-export const Navbar = ({ title, rightIcons, onBack }) => {
+export const Navbar = ({ rightIcons, title, onBack }) => {
   const hasRightIcons = (typeof rightIcons !== 'undefined' && typeof rightIcons === 'object')
   const rightIconsCount = (hasRightIcons) ? rightIcons.length : 0
   const iconWrapStyle = StyleSheet.flatten({ width: getWrapWidth(rightIconsCount) })
@@ -93,9 +100,7 @@ export const Navbar = ({ title, rightIcons, onBack }) => {
     color: Colors.gray700,
     onPress: onBack,
     ...Platform.select({
-      android: {
-        name: 'arrow-left'
-      },
+      android: { name: 'arrow-left' },
       ios: {
         name: 'chevron-left',
         size: Metrics.icons.xl,

@@ -37,6 +37,13 @@ export const styles = StyleSheet.create({
     borderBottomRightRadius: Metrics.cardRadius,
     borderBottomLeftRadius: Metrics.cardRadius
   },
+  flat: {
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: Metrics.inputHeight,
+    paddingHorizontal: Metrics.section
+  },
   whiteText: {
     ...Fonts.style.normal,
     color: Colors.white
@@ -44,5 +51,9 @@ export const styles = StyleSheet.create({
   primaryText: {
     ...Fonts.style.normal,
     color: Colors.primary500
+  },
+  secondaryText: {
+    ...Fonts.style.normal,
+    color: Colors.secondary500
   }
 })

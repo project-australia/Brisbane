@@ -37,7 +37,6 @@ export const styles = StyleSheet.create({
   },
   iosBackButtonAlignment: {
     backgroundColor: 'transparent',
-    right: Metrics.baseMargin,
-    top: 3
+    right: Metrics.baseMargin
   }
 })
