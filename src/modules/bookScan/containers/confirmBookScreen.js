@@ -28,6 +28,7 @@ class bookScanner extends Component {
   }
 
   render () {
+    console.log('=>', this.props.book)
     return (
       <ConfirmBook
         book={this.state.book}

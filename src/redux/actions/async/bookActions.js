@@ -2,6 +2,7 @@ import {
   GET_BOOK_QUOTE
 } from '../../types/bookTypes'
 
+import { searchIsbn } from '../../../services/book/'
 import {
   alertAction,
   actionCreate
@@ -10,7 +11,7 @@ import {
 export function getQuoteAction (isbn) {
   return async dispatch => {
     try {
-      const book = { price: 100, name: 'Mocked Book' }
+      const book = await searchIsbn(isbn)
       dispatch(actionCreate(
         GET_BOOK_QUOTE,
         book
