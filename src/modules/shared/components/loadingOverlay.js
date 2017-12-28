@@ -18,7 +18,7 @@ export const LoadingOverlay = props => {
 const renderOverlay = () => {
   return (
     <View style={styles.overlay}>
-      <ActivityIndicator size="large" style={styles.spinner} />
+      <ActivityIndicator size="large" color={'white'} style={styles.spinner} />
     </View>
   )
 }
