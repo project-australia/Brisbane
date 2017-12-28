@@ -9,7 +9,6 @@ import { MenuTitle } from '../../shared/components/menuTitle'
 import { PriceRow } from '../../shared/components/priceRow'
 import { Touchable } from '../../shared/components/touchable'
 import { GeneralInfoCard } from '../../shared/components/generalInfoCard'
-import { TextCropped } from '../../shared/components/textCropped'
 
 import { styles } from './styles/bookScanner.style'
 

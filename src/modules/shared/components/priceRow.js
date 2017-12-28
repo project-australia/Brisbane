@@ -1,8 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-
-
 import { FlatButton } from './buttons'
 
 import { styles } from './styles/priceRow.style'
