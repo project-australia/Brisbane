@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { bool, func, shape, string } from 'prop-types'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 
 import { styles } from './styles/signInScreen.styles'
 import { AppStatusBar } from '../../shared/components/appStatusBar'
 import { LoginForm } from '../components/loginForm'
-import { FormSwitch } from '../components/formSwitch'
 import { FormOutlineButton } from '../../shared/components/buttons'
 
 export class SignUp extends Component {
@@ -22,34 +21,26 @@ export class SignUp extends Component {
   }
 
   renderFooter = () => {
-    const { switchRow, switchLabel, lastItemSpacing } = styles
     return (
-      <View>
-        <AppStatusBar />
-        <View style={switchRow}>
-          <Text style={switchLabel}>I'm representant</Text>
-          <FormSwitch
-            value={this.state.switch}
-            onValueChange={this.updateSwitch}
-          />
-        </View>
-        <FormOutlineButton
-          title="Log in instead"
-          onPress={this.props.navigateToSignIn}
-          style={lastItemSpacing}
-        />
-      </View>
+      <FormOutlineButton
+        title="Log in instead"
+        onPress={this.props.navigateToSignIn}
+        style={styles.lastItemSpacing}
+      />
     )
   }
 
   render () {
     return (
-      <LoginForm
-        alert={this.props.alert}
-        buttonText="Create Account"
-        footer={this.renderFooter()}
-        onButtonPress={this.props.onButtonPress}
-      />
+      <View>
+        <AppStatusBar />
+        <LoginForm
+          alert={this.props.alert}
+          buttonText="Create Account"
+          footer={this.renderFooter()}
+          onButtonPress={this.props.onButtonPress}
+        />
+      </View>
     )
   }
 }
