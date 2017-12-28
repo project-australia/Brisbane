@@ -4,7 +4,7 @@ import { View } from 'react-native'
 
 import { styles } from './styles/signInScreen.styles'
 import { AppStatusBar } from '../../shared/components/appStatusBar'
-import { LoginForm } from '../components/loginForm'
+import { SignupForm } from '../components/signupForm'
 import { FormOutlineButton } from '../../shared/components/buttons'
 
 export class SignUp extends Component {
@@ -32,9 +32,9 @@ export class SignUp extends Component {
 
   render () {
     return (
-      <View>
+      <View style={styles.container}>
         <AppStatusBar />
-        <LoginForm
+        <SignupForm
           alert={this.props.alert}
           buttonText="Create Account"
           footer={this.renderFooter()}

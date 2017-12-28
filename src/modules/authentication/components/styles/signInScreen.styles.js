@@ -2,6 +2,9 @@ import { StyleSheet } from 'react-native'
 import { Metrics, Colors, Fonts } from '../../../../constants'
 
 export const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   textRow: {
     flexDirection: 'row',
     alignItems: 'center',
