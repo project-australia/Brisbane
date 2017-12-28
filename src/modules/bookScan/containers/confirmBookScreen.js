@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { ConfirmBook } from '../components/confirmBook'
 import { searchIsbn } from '../../../services/book'
 
-class bookScanner extends Component {
+class BookScannerContainer extends Component {
   static navigationOptions = {
     title: 'Sell your book',
     header: null
@@ -55,4 +55,4 @@ class bookScanner extends Component {
   goBack = () => this.props.navigation.goBack()
 }
 
-export const confirmBookScreen = connect(null)(bookScanner)
+export const ConfirmBookScreen = connect(null)(BookScannerContainer)

@@ -15,7 +15,7 @@ export const searchIsbn = async isbn => {
     id: isbn,
     imageUri: backEndBook.images.large,
     title: backEndBook.title,
-    author: backEndBook.authors.join(' '),
+    author: backEndBook.authors.join(', '),
     edition: backEndBook.edition,
     aboutBook: backEndBook.description,
     sellPrice: backEndBook.price

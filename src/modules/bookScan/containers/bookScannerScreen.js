@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { getQuoteAction } from '../../../redux/actions'
 import { Scanner } from '../components/scanner'
 
-class bookScanner extends Component {
+class BookScanner extends Component {
   static propTypes = {
     getQuote: PropTypes.func.isRequired
   }
@@ -26,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
   getQuote: isbn => dispatch(getQuoteAction(isbn))
 })
 
-export const bookScannerScreen = connect(null, mapDispatchToProps)(bookScanner)
+export const BookScannerScreen = connect(null, mapDispatchToProps)(BookScanner)

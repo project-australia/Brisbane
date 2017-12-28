@@ -4,12 +4,12 @@ import { Button, View } from 'react-native'
 import { styles } from './styles/testScreen.test'
 
 export const TestScreen = props => {
-  const navigateTo = (screen, screenProps = {}) => {
+  const navigateTo = (routeName, params = {}, action) => {
     return (
       <View style={styles.textRow}>
         <Button
-          title={screen}
-          onPress={() => props.navigation.navigate(screen, screenProps)}
+          title={routeName}
+          onPress={() => props.navigation.navigate(routeName, params, action)}
         />
       </View>
     )
