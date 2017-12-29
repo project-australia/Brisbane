@@ -11,7 +11,6 @@ import {
   signUpAction
 } from '../../../../src/redux/actions/async/authenticationAsyncActions'
 import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../../src/constants/messages'
-import {sendPasswordResetEmail} from "../../../../src/services/firebase/authentication";
 jest.mock('../../../../src/services/firebase/authentication')
 
 describe('Auth async actions', () => {

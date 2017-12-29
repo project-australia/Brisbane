@@ -5,6 +5,7 @@ import {
 } from '../../../src/redux/reducers/authentication/constants'
 import { reducers } from '../../../src/redux/reducers'
 import * as FirebaseService from '../../../src/services/firebase/authentication'
+import * as UserService from '../../../src/services/backend/userService'
 import { extractActionFromThunk } from './reduxThunkMock'
 import {
   signInAction,
@@ -19,6 +20,8 @@ import {
 import { userProfile } from '../../fixtures/userProfile'
 
 jest.mock('../../../src/services/firebase/authentication')
+jest.mock('../../../src/services/backend/userService')
+
 jest.mock(
   'react-native-camera',
   () => require.requireActual('../../__mocks__/react-native-camera').default
@@ -27,7 +30,7 @@ jest.mock(
 describe('Authentication reducers', () => {
   const password = 'password'
   const email = 'email@email.com'
-  const user = {
+  const firebaseUser = {
     uid: 'UID',
     emailVerified: false,
     phoneNumber: '123-456-7890',
@@ -54,14 +57,19 @@ describe('Authentication reducers', () => {
     expect(state).toEqual(expectedInitialState)
   })
 
-  // TODO: After finish backend service I'll handle this
-  xit('should save user on state after sign in', async () => {
+  it('should save user on state after sign in', async () => {
     FirebaseService.signInWithEmailAndPassword = jest.fn(() =>
-      Promise.resolve(user)
+      Promise.resolve(firebaseUser)
+    )
+    UserService.getUserProfile = jest.fn(() =>
+      Promise.resolve(userProfile)
     )
     const action = await extractActionFromThunk(signInAction, email, password)
     const state = authReducers(AUTH_INITIAL_STATE, action)
-    expect(state).toEqual({ ...AUTH_INITIAL_STATE, user })
+
+    expect(FirebaseService.signInWithEmailAndPassword).toHaveBeenCalledWith(email, password)
+    expect(UserService.getUserProfile).toHaveBeenCalledWith(firebaseUser.uid)
+    expect(state).toEqual({ ...AUTH_INITIAL_STATE, user: userProfile })
   })
 
   // TODO: After finish backend service I'll handle this
