@@ -2,6 +2,7 @@ import {
   alertAction,
   signInSuccess,
   signUpSuccess,
+  updateUserProfile,
   successRetrievedPassword
 } from '../sync/authenticationActions'
 import {
@@ -14,20 +15,22 @@ import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../constants/messages'
 export function signInAction (email, password) {
   return async dispatch => {
     try {
-      const user = await signInWithEmailAndPassword(email, password)
-      dispatch(signInSuccess(user))
+      const firebaseUser = await signInWithEmailAndPassword(email, password)
+      // TODO: Call our backend passing firebase ID to get user profile and change line below
+      const user = {id: firebaseUser.uid} // await getUserProfile(firebaseUser.uid)
+      dispatch(updateUserProfile(user))
     } catch (error) {
       dispatch(alertAction(error))
     }
   }
 }
 
-export function signUpAction (email, password) {
+export function signUpAction (signUpForm) {
   return async dispatch => {
     try {
-      await createUserWithEmailAndPassword(email, password)
-      dispatch(signUpSuccess())
-      alert('Sign up success') // TODO: Remove this
+      // TODO: Call our backend passing all signup informations
+      // const user = await signUpUser(signUpForm)
+      // dispatch(updateUserProfile(user))
     } catch (error) {
       dispatch(alertAction(error))
     }
