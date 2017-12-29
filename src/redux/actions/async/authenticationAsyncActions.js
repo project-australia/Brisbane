@@ -7,8 +7,7 @@ import {
 } from '../sync/authenticationActions'
 import {
   sendPasswordResetEmail,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword
+  signInWithEmailAndPassword
 } from '../../../services/firebase/authentication'
 import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../constants/messages'
 

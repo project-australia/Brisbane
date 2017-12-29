@@ -3,24 +3,18 @@ import {
   FORGOT_PASSWORD_SUCCESS,
   SHOW_ALERT,
   UPDATE_USER_INFO,
-  SIGN_IN_SUCCESS,
-  SIGN_UP_SUCCESS
 } from '../../types/authenticationTypes'
 import { AUTH_INITIAL_STATE } from './constants'
 import {
   showAlertHandler,
-  signInSuccessHandler,
-  signUpSuccessHandler,
   updateUserProfileHandler
 } from './handlers'
 
 export const actionHandlers = {
   [SHOW_ALERT]: showAlertHandler,
   [AUTH_FAILED_ALERT]: showAlertHandler,
-  [SIGN_IN_SUCCESS]: signInSuccessHandler,
-  [SIGN_UP_SUCCESS]: signUpSuccessHandler,
-  [UPDATE_USER_INFO]: updateUserProfileHandler,
-  [FORGOT_PASSWORD_SUCCESS]: showAlertHandler
+  [FORGOT_PASSWORD_SUCCESS]: showAlertHandler,
+  [UPDATE_USER_INFO]: updateUserProfileHandler
 }
 
 export const authReducerConfig = {
