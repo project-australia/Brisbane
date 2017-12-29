@@ -2,7 +2,7 @@ import {
   AUTH_FAILED_ALERT,
   FORGOT_PASSWORD_SUCCESS,
   SHOW_ALERT,
-  UPDATE_USER_INFO,
+  UPDATE_USER_INFO
 } from '../../types/authenticationTypes'
 import { AUTH_INITIAL_STATE } from './constants'
 import {

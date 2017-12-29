@@ -8,8 +8,7 @@ import * as FirebaseService from '../../../src/services/firebase/authentication'
 import * as UserService from '../../../src/services/backend/userService'
 import { extractActionFromThunk } from './reduxThunkMock'
 import {
-  signInAction,
-  signUpAction
+  signInAction
 } from '../../../src/redux/actions/async/authenticationAsyncActions'
 import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../src/constants/messages'
 import {
@@ -38,6 +37,19 @@ describe('Authentication reducers', () => {
   }
   const authReducers = reducers.authentication
 
+  beforeEach(() => {
+    FirebaseService.signInWithEmailAndPassword = jest.fn(() =>
+      Promise.resolve(firebaseUser)
+    )
+    UserService.getUserProfile = jest.fn(() =>
+      Promise.resolve(userProfile)
+    )
+    FirebaseService.createUserWithEmailAndPassword = jest.fn(() =>
+      Promise.resolve()
+    )
+    FirebaseService.sendPasswordResetEmail = jest.fn(() => Promise.resolve())
+  })
+
   it('should update user profile info', () => {
     const expectedState = {
       ...AUTH_INITIAL_STATE,
@@ -58,12 +70,6 @@ describe('Authentication reducers', () => {
   })
 
   it('should save user on state after sign in', async () => {
-    FirebaseService.signInWithEmailAndPassword = jest.fn(() =>
-      Promise.resolve(firebaseUser)
-    )
-    UserService.getUserProfile = jest.fn(() =>
-      Promise.resolve(userProfile)
-    )
     const action = await extractActionFromThunk(signInAction, email, password)
     const state = authReducers(AUTH_INITIAL_STATE, action)
 
@@ -72,18 +78,7 @@ describe('Authentication reducers', () => {
     expect(state).toEqual({ ...AUTH_INITIAL_STATE, user: userProfile })
   })
 
-  // TODO: After finish backend service I'll handle this
-  xit('should not signin after signup', async () => {
-    FirebaseService.createUserWithEmailAndPassword = jest.fn(() =>
-      Promise.resolve()
-    )
-    const action = await extractActionFromThunk(signUpAction, email, password)
-    const state = authReducers(AUTH_INITIAL_STATE, action)
-    expect(state).toEqual(AUTH_INITIAL_STATE)
-  })
-
   it('should show a message after successfully recover password', async () => {
-    FirebaseService.sendPasswordResetEmail = jest.fn(() => Promise.resolve())
     const expectedInitialState = {
       user: NOT_LOGGED_IN,
       alert: { showAlert: true, message: FORGOT_PASSWORD_SUCCESS_MSG }

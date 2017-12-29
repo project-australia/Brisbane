@@ -26,7 +26,7 @@ export function signUpAction (signUpForm) {
   return async dispatch => {
     try {
       const user = await signUpUser(signUpForm)
-      dispatch(updateUserProfile(user))
+      return signInAction(user.email, signUpForm.password)
     } catch (error) {
       dispatch(alertAction(error))
     }
