@@ -14,31 +14,12 @@ import {
   SIGN_UP_SUCCESS,
   UPDATE_USER_INFO
 } from '../../../../src/redux/types/authenticationTypes'
-
-const user = {
-  id: '2Cbqh6mjOGUkb9Vsu3M42oPJW5V2',
-  referId: 'HEBERT_BOLADO',
-  referredBy: 'DUDUZINHO',
-  name: 'talhate',
-  email: 't@yahoo.com',
-  birthDate: '2017-12-27T17:00:04.376Z',
-  telephone: '1234567890',
-  school: 'school of life',
-  club: 'NONE',
-  role: 'USER',
-  address: {
-    city: 'viana',
-    street: 'fighter',
-    number: '666',
-    zipCode: 'zip',
-    state: 'es'
-  }
-}
+import { userProfile } from '../../../fixtures/userProfile'
 
 describe('Auth sync actions', () => {
   it('should create an action to update user information', () => {
-    const expectedAction = { type: UPDATE_USER_INFO, user }
-    const action = updateUserProfile(user)
+    const expectedAction = { type: UPDATE_USER_INFO, user: userProfile }
+    const action = updateUserProfile(userProfile)
     expect(action).toEqual(expectedAction)
   })
 

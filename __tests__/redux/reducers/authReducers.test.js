@@ -14,8 +14,9 @@ import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../src/constants/messages'
 import {
   alertAction,
   showAlert,
-  successRetrievedPassword
+  successRetrievedPassword, updateUserProfile
 } from '../../../src/redux/actions/sync/authenticationActions'
+import {userProfile} from "../../fixtures/userProfile";
 
 jest.mock('../../../src/services/firebase/authentication')
 jest.mock(
@@ -33,6 +34,16 @@ describe('Authentication reducers', () => {
     email
   }
   const authReducers = reducers.authentication
+
+  it('should update user profile info', () => {
+    const expectedState = {
+      ...AUTH_INITIAL_STATE,
+      user: { ...userProfile }
+    }
+    const action = updateUserProfile(userProfile)
+    const state = authReducers(AUTH_INITIAL_STATE, action)
+    expect(state).toEqual(expectedState)
+  })
 
   it('should initial state be Non Logged in user with no alerts', async () => {
     const expectedInitialState = {
