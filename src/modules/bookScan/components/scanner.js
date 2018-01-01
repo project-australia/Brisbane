@@ -7,7 +7,6 @@ import { styles } from './styles/bookScanner.style'
 
 export class Scanner extends Component {
   static propTypes = {
-    getQuote: PropTypes.func.isRequired,
     showBook: PropTypes.func.isRequired
   }
 
@@ -22,9 +21,9 @@ export class Scanner extends Component {
   }
 
   getSellingPrice = async (isbn) => {
+    console.log('SIBN', isbn)
     await this.setState({ isReading: true })
-    this.props.getQuote(isbn)
-    this.props.showBook()
+    this.props.showBook(isbn)
   }
 
   render () {
