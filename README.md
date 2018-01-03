@@ -2,5 +2,5 @@
 [![Build Status](https://travis-ci.org/project-australia/Brisbane.svg?branch=master)](https://travis-ci.org/project-australia/Brisbane)
 [![Ebert](https://ebertapp.io/github/project-australia/Brisbane.svg)](https://ebertapp.io/github/project-australia/Brisbane)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
-[![iOS-build](https://dashboard.buddybuild.com/api/statusImage?appID=5a1435f092ae680001a8efbb&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/5a1435f092ae680001a8efbb/build/latest?branch=master)
-[![android-build](https://dashboard.buddybuild.com/api/statusImage?appID=5a11cc9795a02000016a274e&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/5a11cc9795a02000016a274e/build/latest?branch=master)
+[![iOS-build](https://build.appcenter.ms/v0.1/apps/240451e5-e7b0-44ee-a1a3-fb78dbce7a07/branches/master/badge)](https://appcenter.ms)
+[![android-build](https://build.appcenter.ms/v0.1/apps/e75e3886-ffbc-4e00-9c3d-01eab27d8d44/branches/master/badge)](https://appcenter.ms)
