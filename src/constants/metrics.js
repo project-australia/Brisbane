@@ -26,6 +26,8 @@ export const Metrics = {
   buttonRadius: 4,
   cardRadius: 8,
   borderWidth: 1,
+  maxBorderWidth: 4,
+  bookMinHeight: 55,
   icons: {
     tiny: 12,
     small: 18,
