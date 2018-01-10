@@ -5,5 +5,5 @@ export const ShoppingBagItemPropType = shape({
   id: string.isRequired,
   book: book.isRequired,
   quantity: number.isRequired,
-  type: oneOf(['BUY', 'RENT']).isRequired
+  type: oneOf(['BUY', 'RENT', 'SELL', 'DONATE']).isRequired
 })
