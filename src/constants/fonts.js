@@ -56,6 +56,10 @@ const style = {
     fontFamily: type.kefa,
     fontSize: size.regular
   },
+  bold: {
+    fontFamily: type.bold,
+    fontSize: size.regular
+  },
   normal: {
     fontFamily: type.base,
     fontSize: size.regular

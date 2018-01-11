@@ -3,6 +3,9 @@ import { StyleSheet } from 'react-native'
 import { Colors, Fonts, Metrics, Values } from '../../../../constants'
 
 export const styles = StyleSheet.create({
+  itemsWrap: {
+    marginBottom: Metrics.baseMargin
+  },
   titleWrap: {
     marginHorizontal: Metrics.section
   },
@@ -22,7 +25,9 @@ export const styles = StyleSheet.create({
   image: {
     aspectRatio: 3 / 4,
     backgroundColor: Colors.gray200,
-    height: Metrics.bookMinHeight
+    height: Metrics.bookMinHeight,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   detailsWrap: {
     flex: 1,
@@ -32,6 +37,10 @@ export const styles = StyleSheet.create({
     ...Fonts.style.normal,
     color: Colors.gray900
   },
+  titleLight: {
+    ...Fonts.style.normal,
+    color: Colors.gray500
+  },
   subtitle: {
     ...Fonts.style.footnote,
     color: Colors.gray500
@@ -39,5 +48,22 @@ export const styles = StyleSheet.create({
   rightContentWrap: {
     alignItems: 'flex-end',
     marginLeft: Metrics.baseMargin
+  },
+  whiteBackground: {
+    backgroundColor: Colors.white
+  },
+  totalText: {
+    ...Fonts.style.normal,
+    color: Colors.gray900,
+    flex: 1
+  },
+  totalPriceText: {
+    ...Fonts.style.bold
+  },
+  primaryColor: {
+    color: Colors.primary500
+  },
+  secondaryColor: {
+    color: Colors.secondary500
   }
 })

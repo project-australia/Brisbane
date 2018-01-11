@@ -16,12 +16,19 @@ export const ShoppingBag = props => (
       {/* Provavelmente precisaremos criar uma search bar para a shopping bag */}
       {/* <BookSearch onSubmit={props.searchBook} onScanPress={props.onScanPress} /> */}
       <ShoppingBagItems
+        isSellingBooks
         title={'Books you are selling'}
         items={props.booksToSell}
+        addBookTitle={'Sell more Books'}
+        checkoutButtonTitle={'Sell these books'}
+        totalValue={'123.45'}
       />
       <ShoppingBagItems
         title={'Books you are buying'}
         items={props.booksToBuy}
+        addBookTitle={'Buy more Books'}
+        checkoutButtonTitle={'Proceed to checkout'}
+        totalValue={'123.45'}
       />
     </ScrollView>
   </View>
