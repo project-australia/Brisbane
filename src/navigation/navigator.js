@@ -1,6 +1,7 @@
 import { StackNavigator as Navigator } from 'react-navigation'
 
 import { TestScreen } from '../modules/test/components/testScreen'
+import { PayPalCheckout } from '../modules/shoppingBag/components/paypalCheckout'
 import { HomeScreen } from '../modules/home/containers/homeScreen'
 import { authenticated } from '../modules/shared/decorators/authenticated'
 import { SignInScreen } from '../modules/authentication/containers/signInScreen'
@@ -44,6 +45,9 @@ const routeConfigs = {
   },
   ShoppingBag: {
     screen: ShoppingBagScreen
+  },
+  PayPalCheckout: {
+    screen: PayPalCheckout
   }
 }
 
