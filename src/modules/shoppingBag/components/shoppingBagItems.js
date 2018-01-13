@@ -36,7 +36,8 @@ export const ShoppingBagItems = ({
   addBookTitle,
   checkoutButtonTitle,
   isSellingBooks,
-  totalValue
+  totalValue,
+  onPress
 }) => {
   return (typeof items !== 'undefined' && items.length > 0) && (
     <View style={styles.itemsWrap}>
@@ -57,11 +58,16 @@ export const ShoppingBagItems = ({
           {`$${totalValue}`}
         </Text>
       </View>
-      <SolidButton secondary={isSellingBooks} title={checkoutButtonTitle} />
+      <SolidButton
+        onPress={onPress}
+        secondary={isSellingBooks}
+        title={checkoutButtonTitle}
+      />
     </View>
   )
 }
 
 ShoppingBagItems.propTypes = {
-  items: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired
+  items: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
+  onPress: PropTypes.function
 }

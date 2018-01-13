@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { WebView } from 'react-native'
 import PayPalCheckoutButton from '../../../assets/html/paypal-checkout.html'
 
-// TODO: We have to receive this as prop
-const injectFunction = `var paymentTotal = '10.00';`
-
 export class PayPalCheckout extends Component {
   render () {
+    const total = this.props.total || this.props.navigation.state.params.total || '10.00'
+    const injectFunction = `var paymentTotal = ${total};`
+
     return (
       <WebView
         source={PayPalCheckoutButton}
@@ -16,4 +17,8 @@ export class PayPalCheckout extends Component {
       />
     )
   }
+}
+
+PayPalCheckout.propTypes = {
+  total: PropTypes.string.isRequired // TODO: Create a stronger type to total
 }

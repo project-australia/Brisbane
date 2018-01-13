@@ -24,7 +24,7 @@ export const TestScreen = props => {
       {navigateTo('BookScanner')}
       {navigateTo('ShoppingBag')}
       {navigateTo('BookSelling', {isbn: 9781483358505})}
-      {navigateTo('PayPalCheckout')}
+      {navigateTo('PayPalCheckout', {total: '11.50'})}
     </View>
   )
 }

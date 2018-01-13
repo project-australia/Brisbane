@@ -21,7 +21,6 @@ export class Scanner extends Component {
   }
 
   getSellingPrice = async (isbn) => {
-    console.log('SIBN', isbn)
     await this.setState({ isReading: true })
     this.props.showBook(isbn)
   }
