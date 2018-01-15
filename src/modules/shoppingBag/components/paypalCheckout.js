@@ -3,17 +3,43 @@ import PropTypes from 'prop-types'
 import { WebView } from 'react-native'
 import PayPalCheckoutButton from '../../../assets/html/paypal-checkout.html'
 
+const STATUS = {
+  0: 'PENDING',
+  1: 'SUCCESS',
+  2: 'CANCELLED',
+  3: 'ERROR'
+}
+
 export class PayPalCheckout extends Component {
+  state = {
+    status: STATUS[0]
+  }
+
+  onMessage = (message, ...rest) => {
+    console.log('message', message)
+    console.log('rest', rest)
+  }
+
+  onError = (err, ...rest) => {
+    alert(err)
+    alert(rest)
+  }
+
   render () {
-    const total = this.props.total || this.props.navigation.state.params.total || '10.00'
+    const total = this.props.total || this.props.navigation.state.params.total
     const injectFunction = `var paymentTotal = ${total};`
+
+    if (!total) {
+      alert('Show error page, amount to bill not found')
+    }
 
     return (
       <WebView
         source={PayPalCheckoutButton}
         injectedJavaScript={injectFunction}
-        style={{marginTop: 20}}
-        javaScriptEnabled
+        onError={this.onError}
+        onMessage={this.onMessage}
+        mixedContentMode='compatibility'
       />
     )
   }
