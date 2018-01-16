@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { WebView } from 'react-native'
+import PayPal from 'react-native-paypal-wrapper';
+
 import PayPalCheckoutButton from '../../../assets/html/paypal-checkout.html'
 
 const STATUS = {
@@ -26,6 +28,14 @@ export class PayPalCheckout extends Component {
   }
 
   render () {
+
+    PayPal.pay({
+      price: '40.70',
+      currency: 'USD',
+      description: 'Your description goes here',
+    }).then(confirm => console.log(confirm))
+      .catch(error => console.log(error));
+
     const total = this.props.total || this.props.navigation.state.params.total
     const injectFunction = `var paymentTotal = ${total};`
 
@@ -34,13 +44,7 @@ export class PayPalCheckout extends Component {
     }
 
     return (
-      <WebView
-        source={PayPalCheckoutButton}
-        injectedJavaScript={injectFunction}
-        onError={this.onError}
-        onMessage={this.onMessage}
-        mixedContentMode='compatibility'
-      />
+      null
     )
   }
 }
