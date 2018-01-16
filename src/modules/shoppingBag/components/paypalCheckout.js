@@ -44,7 +44,13 @@ export class PayPalCheckout extends Component {
     }
 
     return (
-      null
+      <WebView
+        source={PayPalCheckoutButton}
+        injectedJavaScript={injectFunction}
+        onError={this.onError}
+        onMessage={this.onMessage}
+        mixedContentMode='compatibility'
+      />
     )
   }
 }

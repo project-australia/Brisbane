@@ -29,16 +29,16 @@
   };
   var onAuthorize = function (data, actions) {
     return actions.payment.execute().then(function () {
-      window.postMessage(data, actions);
+      window.postMessage('AUTHORIZED');
       window.alert('Payment Complete!');
     });
   };
   var onError = function(err) {
-    window.postMessage('onError', err);
+    window.postMessage('onError');
     window.alert('onError' + JSON.stringify(err));
   };
   var onCancel = function(data, actions) {
-    window.postMessage('canceled', data, actions);
+    window.postMessage('canceled');
     window.alert('onCancel');
   }
   paypal.Button.render({
