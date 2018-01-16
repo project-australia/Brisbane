@@ -1,3 +1,5 @@
+import { Platform } from 'react-native'
+
 const type = {
   kefa: 'kefa',
   base: 'HelveticaNeue',
@@ -66,6 +68,17 @@ const style = {
   },
   description: {
     fontFamily: type.base,
+    fontSize: size.medium
+  },
+  heavyDescription: {
+    ...Platform.select({
+      android: {
+        fontFamily: 'sans-serif-medium'
+      },
+      ios: {
+        fontWeight: '600'
+      }
+    }),
     fontSize: size.medium
   },
   input: {

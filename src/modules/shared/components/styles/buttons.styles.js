@@ -28,6 +28,11 @@ export const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: Metrics.buttonRadius
   },
+  secondaryOutline: {
+    borderColor: Colors.secondary500,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: Metrics.buttonRadius
+  },
   darkenOutline: {
     borderColor: Colors.gray200alt,
     borderWidth: Metrics.borderWidth,
