@@ -16,11 +16,22 @@ export const styles = StyleSheet.create({
     borderLeftWidth: Metrics.maxBorderWidth,
     marginBottom: 1
   },
+  wrappingCard: {
+    backgroundColor: Colors.white,
+    paddingVertical: Metrics.baseMargin,
+    paddingHorizontal: Metrics.section,
+    borderBottomWidth: Metrics.borderWidth,
+    borderColor: Colors.divider
+  },
   contentWrap: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: Metrics.section,
     paddingVertical: Metrics.baseMargin
+  },
+  rowWrap: {
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   image: {
     aspectRatio: 3 / 4,
@@ -65,5 +76,17 @@ export const styles = StyleSheet.create({
   },
   secondaryColor: {
     color: Colors.secondary500
+  },
+  description: {
+    ...Fonts.style.description,
+    color: Colors.gray700
+  },
+  footnote: {
+    ...Fonts.style.footnote,
+    color: Colors.gray500
+  },
+  inlineButton: {
+    paddingHorizontal: Metrics.marginHorizontal,
+    marginLeft: Metrics.marginHorizontal
   }
 })

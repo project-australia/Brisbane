@@ -5,20 +5,30 @@ import { StyleSheet, TouchableHighlight, Text } from 'react-native'
 import { Colors } from '../../../../constants'
 
 export const FormOutlineButton = props => {
-  const { transparentButton, primaryOutline, primaryText } = styles
+  const {
+    transparentButton,
+    primaryOutline,
+    secondaryOutline,
+    primaryText,
+    secondaryText
+  } = styles
+
+  const underlayColor = (props.secondary) ? Colors.secondary700 : Colors.primary700
+  const outlineStyle = (props.secondary) ? secondaryOutline : primaryOutline
+  const textStyle = (props.secondary) ? secondaryText : primaryText
 
   const style = StyleSheet.flatten([
     transparentButton,
-    primaryOutline,
+    outlineStyle,
     props.style
   ])
   return (
     <TouchableHighlight
       onPress={props.onPress}
       style={style}
-      underlayColor={Colors.primary700}
+      underlayColor={underlayColor}
     >
-      <Text style={primaryText}>{props.title}</Text>
+      <Text style={textStyle}>{props.title}</Text>
     </TouchableHighlight>
   )
 }

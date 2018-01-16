@@ -3,6 +3,7 @@ export const Colors = {
   primary700: '#E63E2D', // darker
   primary500: '#FF5746', // main color
   primary300: '#FF9085', // lighter
+  secondary700: '#00989F',
   secondary500: '#26CBD2',
 
   // Standard background color

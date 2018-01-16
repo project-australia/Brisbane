@@ -34,7 +34,7 @@ export const ShoppingBagItems = ({
   items,
   title,
   addBookTitle,
-  checkoutButtonTitle,
+  checkoutButton,
   isSellingBooks,
   totalValue,
   onPress
@@ -59,9 +59,9 @@ export const ShoppingBagItems = ({
         </Text>
       </View>
       <SolidButton
-        onPress={onPress}
+        onPress={checkoutButton.onPress}
         secondary={isSellingBooks}
-        title={checkoutButtonTitle}
+        title={checkoutButton.title}
       />
     </View>
   )

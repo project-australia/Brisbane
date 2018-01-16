@@ -33,7 +33,7 @@ const booksToBuy = [
     quantity: 2,
     type: 'RENT'
   }
-];
+]
 
 const booksToSell = [
   {
@@ -64,7 +64,7 @@ const booksToSell = [
     quantity: 2,
     type: 'DONATE'
   }
-];
+]
 
 class ShoppingBagContainer extends Component {
   static navigationOptions = {
@@ -84,6 +84,7 @@ class ShoppingBagContainer extends Component {
         booksToSell={this.state.booksToSell}
         navigateBack={this.goBack}
         navigateToCheckout={this.navigateToCheckout}
+        navigateToSellBooksProcess={this.navigateToSellBooksProcess}
         searchBook={() => alert('search book')}
         onScanPress={() => this.props.navigation.navigate('BookScanner', {})}
       />
@@ -92,6 +93,7 @@ class ShoppingBagContainer extends Component {
 
   goBack = () => this.props.navigation.goBack()
   navigateToCheckout = (params) => this.props.navigation.navigate('PayPalCheckout', params)
+  navigateToSellBooksProcess = () => this.props.navigation.navigate('SellBooksProcess')
 }
 
 ShoppingBagContainer.propTypes = {

@@ -17,15 +17,20 @@ export const ShoppingBag = props => (
         title={'Books you are selling'}
         items={props.booksToSell}
         addBookTitle={'Sell more Books'}
-        checkoutButtonTitle={'Sell these books'}
+        checkoutButton={{
+          title: 'Sell these books',
+          onPress: props.navigateToSellBooksProcess
+        }}
         totalValue={'123.45'}
       />
       <ShoppingBagItems
         title={'Books you are buying'}
         items={props.booksToBuy}
         addBookTitle={'Buy more Books'}
-        checkoutButtonTitle={'Proceed to checkout'}
-        onPress={() => props.navigateToCheckout({ total: '123.45' })}
+        checkoutButton={{
+          title: 'Checkout with PayPal',
+          onPress: () => props.navigateToCheckout({ total: '123.45' })
+        }}
         totalValue={'123.45'}
       />
     </ScrollView>
@@ -34,6 +39,7 @@ export const ShoppingBag = props => (
 
 ShoppingBag.propTypes = {
   navigateToCheckout: PropTypes.func.isRequired,
+  navigateToSellBooksProcess: PropTypes.func.isRequired,
   searchBook: PropTypes.func.isRequired,
   onScanPress: PropTypes.func.isRequired,
   booksToSell: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,

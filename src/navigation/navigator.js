@@ -12,6 +12,7 @@ import { ManageAccountScreen } from '../modules/account/containers/manageAccount
 import { BookScannerScreen } from '../modules/bookScan/containers/bookScannerScreen'
 import { ConfirmBookScreen } from '../modules/bookScan/containers/confirmBookScreen'
 import { ShoppingBagScreen } from '../modules/shoppingBag/containers/shoppingBagScreen'
+import { SellBooksProcessScreen } from '../modules/shoppingBag/containers/sellBooksProcessScreen'
 
 export const initialRouteName = __DEV__ ? 'Test' : 'Home'
 const stackNavigatorConfig = { initialRouteName }
@@ -48,6 +49,9 @@ const routeConfigs = {
   },
   PayPalCheckout: {
     screen: PayPalCheckout
+  },
+  SellBooksProcess: {
+    screen: SellBooksProcessScreen
   }
 }
 
