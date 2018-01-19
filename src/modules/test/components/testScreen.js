@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, View } from 'react-native'
+import { payWithPayPal } from '../../../services/paypal'
 
 import { styles } from './styles/testScreen.test'
 
@@ -15,6 +16,17 @@ export const TestScreen = props => {
     )
   }
 
+  const openPayPalScreen = () => {
+    return (
+      <View style={styles.textRow}>
+        <Button
+          title={'PayPal Payment Screen'}
+          onPress={() => payWithPayPal('150.55', 'Testing PayPalPayment', alert, alert)}
+        />
+      </View>
+    )
+  }
+
   return (
     <View style={{ flex: 1 }}>
       {navigateTo('SignIn')}
@@ -24,7 +36,7 @@ export const TestScreen = props => {
       {navigateTo('BookScanner')}
       {navigateTo('ShoppingBag')}
       {navigateTo('BookSelling', {isbn: 9781483358505})}
-      {navigateTo('PayPalCheckout', {total: '11.50'})}
+      {openPayPalScreen()}
     </View>
   )
 }
