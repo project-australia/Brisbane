@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ShoppingBag } from '../components/shoppingBag'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
+import { payWithPayPal } from '../../../services/paypal'
 
 const booksToBuy = [
   {
@@ -92,7 +93,8 @@ class ShoppingBagContainer extends Component {
   }
 
   goBack = () => this.props.navigation.goBack()
-  navigateToCheckout = (params) => this.props.navigation.navigate('PayPalCheckout', params)
+  navigateToCheckout = (price, description, onSuccess, onError) => payWithPayPal('666.66', 'INSERT A DESCRIPTION' +
+    ' HERE', alert, alert)
   navigateToSellBooksProcess = () => this.props.navigation.navigate('SellBooksProcess')
 }
 
