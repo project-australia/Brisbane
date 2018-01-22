@@ -5,19 +5,22 @@ import {
 } from '../../../src/redux/reducers/authentication/constants'
 import { reducers } from '../../../src/redux/reducers'
 import * as FirebaseService from '../../../src/services/firebase/authentication'
+import * as UserService from '../../../src/services/backend/userService'
 import { extractActionFromThunk } from './reduxThunkMock'
 import {
-  signInAction,
-  signUpAction
+  signInAction
 } from '../../../src/redux/actions/async/authenticationAsyncActions'
 import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../src/constants/messages'
 import {
   alertAction,
   showAlert,
-  successRetrievedPassword
+  successRetrievedPassword, updateUserProfile
 } from '../../../src/redux/actions/sync/authenticationActions'
+import { userProfile } from '../../fixtures/userProfile'
 
 jest.mock('../../../src/services/firebase/authentication')
+jest.mock('../../../src/services/backend/userService')
+
 jest.mock(
   'react-native-camera',
   () => require.requireActual('../../__mocks__/react-native-camera').default
@@ -26,13 +29,36 @@ jest.mock(
 describe('Authentication reducers', () => {
   const password = 'password'
   const email = 'email@email.com'
-  const user = {
+  const firebaseUser = {
     uid: 'UID',
     emailVerified: false,
     phoneNumber: '123-456-7890',
     email
   }
   const authReducers = reducers.authentication
+
+  beforeEach(() => {
+    FirebaseService.signInWithEmailAndPassword = jest.fn(() =>
+      Promise.resolve(firebaseUser)
+    )
+    UserService.getUserProfile = jest.fn(() =>
+      Promise.resolve(userProfile)
+    )
+    FirebaseService.createUserWithEmailAndPassword = jest.fn(() =>
+      Promise.resolve()
+    )
+    FirebaseService.sendPasswordResetEmail = jest.fn(() => Promise.resolve())
+  })
+
+  it('should update user profile info', () => {
+    const expectedState = {
+      ...AUTH_INITIAL_STATE,
+      user: { ...userProfile }
+    }
+    const action = updateUserProfile(userProfile)
+    const state = authReducers(AUTH_INITIAL_STATE, action)
+    expect(state).toEqual(expectedState)
+  })
 
   it('should initial state be Non Logged in user with no alerts', async () => {
     const expectedInitialState = {
@@ -44,25 +70,15 @@ describe('Authentication reducers', () => {
   })
 
   it('should save user on state after sign in', async () => {
-    FirebaseService.signInWithEmailAndPassword = jest.fn(() =>
-      Promise.resolve(user)
-    )
     const action = await extractActionFromThunk(signInAction, email, password)
     const state = authReducers(AUTH_INITIAL_STATE, action)
-    expect(state).toEqual({ ...AUTH_INITIAL_STATE, user })
-  })
 
-  it('should not signin after signup', async () => {
-    FirebaseService.createUserWithEmailAndPassword = jest.fn(() =>
-      Promise.resolve()
-    )
-    const action = await extractActionFromThunk(signUpAction, email, password)
-    const state = authReducers(AUTH_INITIAL_STATE, action)
-    expect(state).toEqual(AUTH_INITIAL_STATE)
+    expect(FirebaseService.signInWithEmailAndPassword).toHaveBeenCalledWith(email, password)
+    expect(UserService.getUserProfile).toHaveBeenCalledWith(firebaseUser.uid)
+    expect(state).toEqual({ ...AUTH_INITIAL_STATE, user: userProfile })
   })
 
   it('should show a message after successfully recover password', async () => {
-    FirebaseService.sendPasswordResetEmail = jest.fn(() => Promise.resolve())
     const expectedInitialState = {
       user: NOT_LOGGED_IN,
       alert: { showAlert: true, message: FORGOT_PASSWORD_SUCCESS_MSG }

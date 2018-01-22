@@ -1,9 +1,8 @@
 import { AUTH_INITIAL_STATE } from './constants'
 
-export const signUpSuccessHandler = () => AUTH_INITIAL_STATE
-export const signInSuccessHandler = (state, action) => ({
+export const updateUserProfileHandler = (state, { user }) => ({
   ...AUTH_INITIAL_STATE,
-  user: action.user
+  user
 })
 export const showAlertHandler = (state, { message }) => ({
   ...AUTH_INITIAL_STATE,
