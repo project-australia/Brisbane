@@ -6,7 +6,8 @@ export const styles = StyleSheet.create({
   wrap: {
     alignItems: 'center',
     flexDirection: 'row',
-    height: Metrics.menuHeight
+    height: Metrics.menuHeight,
+    marginHorizontal: Metrics.section
   },
   title: {
     flex: 1,

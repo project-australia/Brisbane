@@ -1,4 +1,56 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { ScrollView, View } from 'react-native'
 
-export const Profile = () => <Text>'Profile Screen'</Text>
+import { Navbar } from '../../shared/components/navbar'
+import { ProfileItem } from './profileItem'
+import { ScreenTitleAndSubtitle } from './screenTitleAndSubtitle'
+
+const getSubscriptionText = (subType) => {
+  switch (subType) {
+    case 'tenPercent':
+      return '10%'
+    case 'twentyPrecent':
+      return '20%'
+    default:
+      return 'Standard'
+  }
+}
+
+export const Profile = ({ onBackPress, user }) => {
+  return (
+    <View>
+      <Navbar onBack={onBackPress} />
+      <ScrollView>
+        <ScreenTitleAndSubtitle
+          title={user.name}
+          subtitle={`${getSubscriptionText(user.subscription)} member`}
+        />
+        <ProfileItem
+          title={'School'}
+          data={user.school}
+          emptyDataLabel={'Add school name'}
+        />
+        <ProfileItem
+          title={'Phone'}
+          data={user.phone}
+          emptyDataLabel={'Add phone number'}
+        />
+        <ProfileItem
+          title={'Birth date'}
+          data={user.birthDate}
+          emptyDataLabel={'Add birth date'}
+        />
+        <ProfileItem
+          title={'Address'}
+          data={user.address}
+          emptyDataLabel={'Add address'}
+        />
+        <ProfileItem
+          title={'PayPal account'}
+          data={user.address}
+          emptyDataLabel={'Add account'}
+        />
+      </ScrollView>
+    </View>
+  )
+}

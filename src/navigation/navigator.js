@@ -32,7 +32,8 @@ const routeConfigs = {
     screen: TestScreen
   },
   Profile: {
-    screen: authenticated(ProfileScreen)
+    // screen: authenticated(ProfileScreen)
+    screen: ProfileScreen
   },
   ManageAccount: {
     screen: authenticated(ManageAccountScreen)
