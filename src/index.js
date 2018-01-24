@@ -1,13 +1,11 @@
 import React from 'react'
 
-import { initializePaypalSDK } from './config/paypal'
-import { initializeFirebase } from './config/firebase'
-import { createStore } from './config/redux'
 import { App } from './app'
+import { setUpConfigs } from './config'
+import { createStore } from './config/redux'
 
 export const BallardBooks = () => {
-  initializePaypalSDK()
-  initializeFirebase()
+  setUpConfigs()
 
   return <App store={createStore()} />
 }
