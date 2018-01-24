@@ -1,5 +1,5 @@
 export class User {
-  constructor(
+  constructor (
     id,
     referredBy,
     name,
