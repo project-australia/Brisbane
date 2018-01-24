@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 import { Scanner } from '../components/scanner'
 
 class BookScanner extends Component {
+  static navigationOptions = {
+    title: 'Book Scan'
+  }
   navigateToBookSelling = isbn => this.props.navigation.navigate('BookSelling', {isbn})
 
   render () {

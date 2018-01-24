@@ -71,7 +71,7 @@ export class Home extends Component {
           />
           <View style={styles.twoColumnMenuWrap}>
             <View style={styles.menuColumn}>
-              <SellingBooks />
+              <SellingBooks navigateToScan={this.props.navigateToScan} />
             </View>
             <View style={styles.menuColumn}>
               <WalletBalanceAmount />
