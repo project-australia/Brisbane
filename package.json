@@ -23,13 +23,14 @@
     "prepush": "npm test"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "data.maybe": "1.2.2",
     "firebase": "4.6.2",
     "lodash": "^4.17.4",
     "prop-types": "15.6.0",
     "react": "16.0.0",
     "react-native": "0.50.3",
-    "react-native-camera": "^0.12.0",
+    "react-native-camera": "^new ApiError(err, status, msg)0.12.0",
     "react-native-config": "0.10.0",
     "react-native-paypal-wrapper": "^1.2.0",
     "react-native-vector-icons": "^4.4.2",

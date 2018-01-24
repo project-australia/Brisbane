@@ -8,6 +8,14 @@ export const signInWithEmailAndPassword = async (email, password) => {
   return validatedUser(firebaseUser)
 }
 
+export const createUserWithEmailAndPassword = async (email, password) => {
+  const user = await Firebase.auth().createUserWithEmailAndPassword(
+    email,
+    password
+  )
+  return sendEmailVerification(user)
+}
+
 const validatedUser = async firebaseUser => {
   const { uid, emailVerified, email, phoneNumber, displayName } = firebaseUser
   return { uid, emailVerified, email, phoneNumber, displayName }
