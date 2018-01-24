@@ -1,33 +1,32 @@
 import {
   alertAction,
-  signInSuccess,
-  signUpSuccess,
+  updateUserProfile,
   successRetrievedPassword
 } from '../sync/authenticationActions'
 import {
   sendPasswordResetEmail,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword
+  signInWithEmailAndPassword
 } from '../../../services/firebase/authentication'
 import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../constants/messages'
+import { signUpUser, getUserProfile } from '../../../services/backend/userService'
 
 export function signInAction (email, password) {
   return async dispatch => {
     try {
-      const user = await signInWithEmailAndPassword(email, password)
-      dispatch(signInSuccess(user))
+      const firebaseUser = await signInWithEmailAndPassword(email, password)
+      const user = await getUserProfile(firebaseUser.uid)
+      dispatch(updateUserProfile(user))
     } catch (error) {
       dispatch(alertAction(error))
     }
   }
 }
 
-export function signUpAction (email, password) {
+export function signUpAction (signUpForm) {
   return async dispatch => {
     try {
-      await createUserWithEmailAndPassword(email, password)
-      dispatch(signUpSuccess())
-      alert('Sign up success') // TODO: Remove this
+      const user = await signUpUser(signUpForm)
+      return signInAction(user.email, signUpForm.password)
     } catch (error) {
       dispatch(alertAction(error))
     }

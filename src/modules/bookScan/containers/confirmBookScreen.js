@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Alert, View } from 'react-native'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { ConfirmBook } from '../components/confirmBook'

@@ -12,6 +12,7 @@ import { BookScannerScreen } from '../modules/bookScan/containers/bookScannerScr
 import { ConfirmBookScreen } from '../modules/bookScan/containers/confirmBookScreen'
 import { ShoppingBagScreen } from '../modules/shoppingBag/containers/shoppingBagScreen'
 import { SellBooksProcessScreen } from '../modules/shoppingBag/containers/sellBooksProcessScreen'
+import { BookListScreen } from '../modules/bookList/containers/bookListScreen'
 
 export const initialRouteName = __DEV__ ? 'Test' : 'Home'
 const stackNavigatorConfig = { initialRouteName }
@@ -49,6 +50,9 @@ const routeConfigs = {
   },
   SellBooksProcess: {
     screen: SellBooksProcessScreen
+  },
+  BookList: {
+    screen: BookListScreen
   }
 }
 

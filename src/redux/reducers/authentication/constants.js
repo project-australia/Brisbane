@@ -1,9 +1,21 @@
 export const NOT_LOGGED_IN = {
-  uid: null,
+  id: null,
+  referId: null,
+  referredBy: null,
+  name: null,
   email: null,
-  phoneNumber: null,
-  emailVerified: false,
-  displayName: undefined
+  birthDate: null,
+  telephone: null,
+  school: null,
+  club: null,
+  role: null,
+  address: {
+    city: null,
+    street: null,
+    number: null,
+    zipCode: null,
+    state: null
+  }
 }
 export const NO_ALERTS = { showAlert: false, message: '' }
 

@@ -16,6 +16,12 @@ export const styles = StyleSheet.create({
     borderLeftWidth: Metrics.maxBorderWidth,
     marginBottom: 1
   },
+  cardWithoutBorder: {
+    backgroundColor: Colors.white,
+    ...Values.elevation1,
+    overflow: 'hidden',
+    marginBottom: 1
+  },
   wrappingCard: {
     backgroundColor: Colors.white,
     paddingVertical: Metrics.baseMargin,

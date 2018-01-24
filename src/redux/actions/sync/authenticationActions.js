@@ -1,13 +1,11 @@
 import {
   AUTH_FAILED_ALERT,
   FORGOT_PASSWORD_SUCCESS,
-  SIGN_UP_SUCCESS,
-  SIGN_IN_SUCCESS,
+  UPDATE_USER_INFO,
   SHOW_ALERT
 } from '../../types/authenticationTypes'
 
-export const signUpSuccess = () => ({ type: SIGN_UP_SUCCESS })
-export const signInSuccess = user => ({ type: SIGN_IN_SUCCESS, user })
+export const updateUserProfile = user => ({ type: UPDATE_USER_INFO, user })
 export const successRetrievedPassword = message => ({
   type: FORGOT_PASSWORD_SUCCESS,
   message

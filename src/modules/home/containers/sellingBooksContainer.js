@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { SellingBookAmount } from '../components/sellingBooks'
 
-const SellingBooksContainer = () => (
+const SellingBooksContainer = (props) => (
   <SellingBookAmount
     sellingAmount={0}
-    onAddBookPressed={() => alert('book added!')}
+    onAddBookPressed={props.navigateToScan}
   />
 )
 
