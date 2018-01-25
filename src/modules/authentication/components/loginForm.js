@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
+import { FormHeader } from './formHeader'
 import { styles } from './styles/loginFormStyles'
 import { Colors } from '../../../constants'
 import { FormTextInput } from './formTextInput'
@@ -45,9 +46,7 @@ export class LoginForm extends Component {
   render () {
     return (
       <LoadingOverlay style={styles.screen} isLoading={this.state.loading}>
-        <View style={styles.header}>
-          <Text style={styles.title}>Ballard Books</Text>
-        </View>
+        <FormHeader />
         <FormTextInput
           onChangeText={this.setEmail}
           value={this.state.email}

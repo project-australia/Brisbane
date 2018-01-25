@@ -17,6 +17,7 @@ export const NOT_LOGGED_IN = {
     state: null
   }
 }
+
 export const NO_ALERTS = { showAlert: false, message: '' }
 
 export const AUTH_INITIAL_STATE = {

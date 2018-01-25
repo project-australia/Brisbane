@@ -1,54 +1,71 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bool, func, shape, string } from 'prop-types'
 
 import { signInAction } from '../../../redux/actions/async/authenticationAsyncActions'
+import { NOT_LOGGED_IN } from '../../../redux/reducers/authentication/constants'
 import { SignIn } from '../components/signIn'
+import { UserPropTypes } from '../propTypes/user'
 
 const navigateToSignUp = navigate => () => {
   navigate('SignUp', {})
 }
 const navigateToForgotPasswordScreen = navigate => () => {
-  navigate('ForgotPassword', {
-    email: 'duduzinhodoarrocha@gmail.com'
-  })
+  navigate('ForgotPassword', {})
 }
 
 const onSignIn = props => async (email, password) => {
   try {
     await props.signIn(email, password)
-    props.navigation.navigate('Home')
   } catch (error) {
-    alert('Error happened during signin', error)
+    alert('Error happened during sign in', error)
   }
 }
 
-const SignInContainer = props => (
-  <SignIn
-    alert={props.alert}
-    onButtonPress={onSignIn(props)}
-    navigateToSignUp={navigateToSignUp(props.navigation.navigate)}
-    navigateToForgotPassword={navigateToForgotPasswordScreen(
-      props.navigation.navigate
-    )}
-  />
-)
+class SignInContainer extends Component {
+  static propTypes = {
+    signIn: func.isRequired,
+    redirectTo: string.isRequired,
+    user: UserPropTypes,
+    alert: shape({
+      showAlert: bool.isRequired,
+      message: string
+    }).isRequired
+  }
 
-SignInContainer.propTypes = {
-  signIn: func.isRequired,
-  alert: shape({
-    showAlert: bool.isRequired,
-    message: string
-  }).isRequired
-}
+  static defaultProps = {
+    redirectTo: 'Home'
+  }
 
-SignInContainer.navigationOptions = {
-  title: 'SignIn',
-  header: null
+  static navigationOptions = {
+    title: 'SignIn',
+    header: null
+  }
+
+  componentWillUpdate (nextProps) {
+    const isUserLoggedIn = nextProps.user && (nextProps.user !== NOT_LOGGED_IN)
+    if (isUserLoggedIn) {
+      nextProps.navigation.navigate(nextProps.redirectTo)
+    }
+  }
+
+  render () {
+    return (
+      <SignIn
+        alert={ this.props.alert }
+        onButtonPress={ onSignIn(this.props) }
+        navigateToSignUp={ navigateToSignUp(this.props.navigation.navigate) }
+        navigateToForgotPassword={ navigateToForgotPasswordScreen(
+          this.props.navigation.navigate
+        ) }
+      />
+    )
+  }
 }
 
 const mapStateToProps = state => ({
-  alert: state.authentication.alert
+  alert: state.authentication.alert,
+  user: state.authentication.user
 })
 
 const mapDispatchToProps = dispatch => ({
