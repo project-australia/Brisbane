@@ -14,7 +14,7 @@
     "reformat-code": "npm run prettify && npm run lint:fix",
     "lint:check": "eslint ./src/ ./__tests__/",
     "lint:fix": "eslint --fix ./src/ ./__tests__/",
-    "prettify": "prettier --single-quote --no-semi --write '{src,__{tests,mocks}__}/**/*.js'",
+    "prettier": "prettier --single-quote --no-semi --write '{src,__{tests,mocks}__}/**/*.js'",
     "release-ios": "react-native run-ios --configuration Release",
     "bundle-ios": "react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios",
     "log:ios": "react-native log-ios",

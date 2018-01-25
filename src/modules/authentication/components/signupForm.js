@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Text, View } from 'react-native'
-import { AppStatusBar } from '../../shared/components/appStatusBar'
+import { View } from 'react-native'
 import { FormHeader } from './formHeader'
 import { styles } from './styles/loginFormStyles'
 import { Colors } from '../../../constants'

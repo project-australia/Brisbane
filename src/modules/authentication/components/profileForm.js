@@ -39,7 +39,7 @@ export class ProfileForm extends Component {
     this.setState({ loading: false })
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { showAlert, message } = nextProps.alert
     if (showAlert) {
       alert(message)
