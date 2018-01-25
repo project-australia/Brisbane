@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import _ from 'lodash'
 import { connect } from 'react-redux'
 import { Home } from '../components/home'
 import { booksStub } from '../../../stubs/books'
@@ -37,7 +38,15 @@ class HomeContainer extends Component {
 }
 
 const mapStateToProps = ({ authentication: { user } }) => ({
-  displayName: user.displayName
+  displayName: capitalize((user.name))
 })
+
+function capitalize(string) {
+  if (!string) {
+    return undefined
+  }
+
+  return _.capitalize(string)
+}
 
 export const HomeScreen = connect(mapStateToProps)(HomeContainer)
