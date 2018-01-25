@@ -41,7 +41,7 @@ const mapStateToProps = ({ authentication: { user } }) => ({
   displayName: capitalize((user.name))
 })
 
-function capitalize(string) {
+function capitalize (string) {
   if (!string) {
     return undefined
   }
