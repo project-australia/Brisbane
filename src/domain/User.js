@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export class User {
   constructor (
     id,
@@ -13,7 +15,7 @@ export class User {
     address) {
     this.id = id
     this.referredBy = referredBy
-    this.name = name
+    this.name = _.capitalize(name)
     this.email = email
     this.birthDate = birthDate
     this.telephone = telephone

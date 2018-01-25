@@ -37,7 +37,7 @@ class HomeContainer extends Component {
 }
 
 const mapStateToProps = ({ authentication: { user } }) => ({
-  displayName: user.displayName
+  displayName: user.name
 })
 
 export const HomeScreen = connect(mapStateToProps)(HomeContainer)

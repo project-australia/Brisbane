@@ -60,7 +60,49 @@ export const signUpUser = async (signUpForm) => {
   }
 }
 
-// TODO: Esse metodo tem que chamar o back end e retornar a representacao de user
+// TODO: Lack testing
 export const getUserProfile = async userId => {
-  return { id: userId }
+  try {
+    const response = await Axios.get(`/users/${userId}/profile`)
+    const {
+      id,
+      referredBy,
+      name,
+      email,
+      birthDate,
+      telephone,
+      school,
+      referId,
+      club,
+      role,
+      address
+    } = response.data
+
+    return new User(
+      id,
+      referredBy,
+      name,
+      email,
+      birthDate,
+      telephone,
+      school,
+      referId,
+      club,
+      role,
+      new Address(
+        address.street,
+        address.city,
+        address.number,
+        address.zipCode,
+        address.state
+      )
+    )
+  } catch (err) {
+    if (err.response) {
+      const { status, data } = err.response
+      throw new Error({ status, data })
+    }
+
+    throw err
+  }
 }
