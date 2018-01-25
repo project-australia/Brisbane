@@ -3,7 +3,6 @@ import { bool, func, shape, string } from 'prop-types'
 import { View } from 'react-native'
 
 import { styles } from './styles/signInScreen.styles'
-import { AppStatusBar } from '../../shared/components/appStatusBar'
 import { SignupForm } from '../components/signupForm'
 import { FormOutlineButton } from '../../shared/components/buttons'
 
@@ -33,7 +32,6 @@ export class SignUp extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <AppStatusBar />
         <SignupForm
           alert={this.props.alert}
           buttonText="Create Account"

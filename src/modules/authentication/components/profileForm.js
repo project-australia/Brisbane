@@ -8,7 +8,7 @@ import { FormTextInput } from './formTextInput'
 import { FormButton } from '../../shared/components/buttons'
 import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 
-export class SignupForm extends Component {
+export class ProfileForm extends Component {
   static defaultProps = { footer: <View /> }
   static propTypes = {
     footer: PropTypes.object,
@@ -20,13 +20,17 @@ export class SignupForm extends Component {
   }
 
   state = {
-    email: '',
-    password: '',
+    userName: '',
+    school: '',
+    phoneNumber: '',
+    referralName: '',
     loading: false
   }
 
-  setEmail = email => this.setState({ email })
-  setPassword = password => this.setState({ password })
+  setUserName = name => this.setState({ name })
+  setSchool = school => this.setState({ school })
+  setPhoneNumber = phoneNumber => this.setState({ phoneNumber })
+  setReferralName = referralName => this.setState({ referralName })
 
   onButtonPress = async () => {
     this.setState({ loading: true })
@@ -47,19 +51,35 @@ export class SignupForm extends Component {
       <LoadingOverlay style={styles.screen} isLoading={this.state.loading}>
         <FormHeader />
         <FormTextInput
-          onChangeText={this.setEmail}
-          value={this.state.email}
-          placeholder="Email address"
+          onChangeText={this.setUserName}
+          value={this.state.userName}
+          placeholder="Name"
+          autoCapitalize="words"
+          selectionColor={Colors.secondary500}
+          style={styles.itemSpacing}
+        />
+        <FormTextInput
+          onChangeText={this.setSchool}
+          value={this.state.school}
+          placeholder="School"
+          autoCapitalize="words"
+          selectionColor={Colors.secondary500}
+          style={styles.itemSpacing}
+        />
+        <FormTextInput
+          onChangeText={this.setPhoneNumber}
+          value={this.state.phoneNumber}
+          placeholder="Phone"
           autoCapitalize="none"
           selectionColor={Colors.secondary500}
           style={styles.itemSpacing}
-          keyboardType="email-address"
+          keyboardType="phone-pad"
         />
         <FormTextInput
-          onChangeText={this.setPassword}
-          value={this.state.password}
-          placeholder="Password"
-          secureTextEntry
+          onChangeText={this.setReferralName}
+          value={this.state.referralName}
+          placeholder="Indicated by someone?"
+          autoCapitalize="words"
           selectionColor={Colors.secondary500}
           style={styles.itemSpacing}
         />
