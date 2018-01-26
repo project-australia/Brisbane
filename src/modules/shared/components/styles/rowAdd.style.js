@@ -11,6 +11,9 @@ export const styles = StyleSheet.create({
     paddingLeft: Metrics.section,
     minHeight: Metrics.inputHeight
   },
+  iconRightPadding: {
+    paddingRight: Metrics.baseMargin
+  },
   icon: {
     aspectRatio: 1
   },

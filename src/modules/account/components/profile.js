@@ -22,7 +22,7 @@ const setUserNetworkNumber = (network) => (
   (network && network.length > 0) && `${network.length} registered members`
 )
 
-export const Profile = ({ onBackPress, user }) => {
+export const Profile = ({ onBackPress, user, navigateToNetwork }) => {
   return (
     <View style={styles.container}>
       <Navbar onBack={onBackPress} />
@@ -59,6 +59,7 @@ export const Profile = ({ onBackPress, user }) => {
         <ProfileRedirectItem
           title={'Network'}
           data={setUserNetworkNumber(user.network)}
+          onPress={navigateToNetwork}
         />
       </ScrollView>
     </View>

@@ -25,11 +25,13 @@ class ProfileContainer extends Component {
         onBackPress={this.goBack}
         user={this.state.user}
         onLogoutPress={() => console.warn('logout function here')}
+        navigateToNetwork={this.navigateToNetwork}
       />
     )
   }
 
   goBack = () => this.props.navigation.goBack()
+  navigateToNetwork = () => this.props.navigation.navigate('NetworkMembers', { network: this.state.user.network })
 }
 
 const mapStateToProps = () => ({})
