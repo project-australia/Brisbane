@@ -4,21 +4,27 @@ import { ScrollView, View } from 'react-native'
 import { Navbar } from '../../shared/components/navbar'
 import { ProfileItem } from './profileItem'
 import { ScreenTitleAndSubtitle } from './screenTitleAndSubtitle'
+import { ProfileRedirectItem } from './profileRedirectItem'
+import { styles } from './styles/profile.style'
 
 const getSubscriptionText = (subType) => {
   switch (subType) {
     case 'tenPercent':
-      return '10%'
+      return '10% off'
     case 'twentyPrecent':
-      return '20%'
+      return '20% off'
     default:
       return 'Standard'
   }
 }
 
+const setUserNetworkNumber = (network) => (
+  (network && network.length > 0) && `${network.length} registered members`
+)
+
 export const Profile = ({ onBackPress, user }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <Navbar onBack={onBackPress} />
       <ScrollView>
         <ScreenTitleAndSubtitle
@@ -49,6 +55,10 @@ export const Profile = ({ onBackPress, user }) => {
           title={'PayPal account'}
           data={user.address}
           emptyDataLabel={'Add account'}
+        />
+        <ProfileRedirectItem
+          title={'Network'}
+          data={setUserNetworkNumber(user.network)}
         />
       </ScrollView>
     </View>

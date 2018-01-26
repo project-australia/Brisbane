@@ -5,12 +5,13 @@ import { Profile } from '../components/profile'
 const user = {
   name: 'Bruno Talhate',
   subscription: null,
-  school: 'University of Boston'
+  school: 'University of Boston',
+  network: ['Arnold Schwazenegger', 'Adam Smith', 'Hebert Porto']
 }
 
 class ProfileContainer extends Component {
   static navigationOptions = {
-    // title: 'Shopping cart',
+    title: 'Profile',
     header: null
   }
 
