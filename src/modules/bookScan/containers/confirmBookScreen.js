@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Alert, View } from 'react-native'
-import { connect } from 'react-redux'
 
 import { ConfirmBook } from '../components/confirmBook'
 import { LoadingOverlay } from '../../shared/components/loadingOverlay'
@@ -56,4 +55,4 @@ class BookScannerContainer extends Component {
   goBack = () => this.props.navigation.goBack()
 }
 
-export const ConfirmBookScreen = connect(null)(BookScannerContainer)
+export const ConfirmBookScreen = BookScannerContainer

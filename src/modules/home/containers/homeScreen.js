@@ -31,6 +31,7 @@ class HomeContainer extends Component {
         navigateToScan={this.navigateTo('BookScanner')}
         navigateToProfile={this.navigateTo('Profile')}
         navigateToShoppingBag={this.navigateTo('ShoppingBag')}
+        navigation={this.props.navigation}
       />
     )
   }
