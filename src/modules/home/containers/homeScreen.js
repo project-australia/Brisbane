@@ -15,7 +15,7 @@ class HomeContainer extends Component {
     navigation: PropTypes.object.isRequired
   }
   handleListBooksToHome = (booksList) => {
-    return booksList.slice(2)
+    return booksList.slice(0, 5)
   }
 
   render () {
@@ -25,7 +25,7 @@ class HomeContainer extends Component {
         userName={userName}
         featuredBooks={this.handleListBooksToHome(this.props.booksLists['featured'])}
         searchBook={(isbn) => this.props.navigation.navigate('BookSelling', {isbn})}
-        recentlyAddedBooks={booksStub}
+        recentlyAddedBooks={this.handleListBooksToHome(this.props.booksLists['recent'])}
         onRecentlyAddedPressed={this.navigateTo('BookList', { typeList: 'recent' })}
         onFeaturedPressed={this.navigateTo('BookList', { typeList: 'featured' })}
         navigateToScan={this.navigateTo('BookScanner')}
