@@ -84,8 +84,9 @@ class ShoppingBagContainer extends Component {
         booksToBuy={this.state.booksToBuy}
         booksToSell={this.state.booksToSell}
         navigateBack={this.goBack}
-        navigateToCheckout={this.navigateToCheckout}
+        navigateToCheckout={this.navigateToBuyBooksProcess}
         navigateToSellBooksProcess={this.navigateToSellBooksProcess}
+        navigateToBuyBooksProcess={this.navigateToBuyBooksProcess}
         searchBook={() => alert('search book')}
         onScanPress={() => this.props.navigation.navigate('BookScanner', {})}
       />
@@ -96,6 +97,7 @@ class ShoppingBagContainer extends Component {
   navigateToCheckout = (price, description, onSuccess, onError) => payWithPayPal('666.66', 'INSERT A DESCRIPTION' +
     ' HERE', alert, alert)
   navigateToSellBooksProcess = () => this.props.navigation.navigate('SellBooksProcess')
+  navigateToBuyBooksProcess = () => this.props.navigation.navigate('BuyBooksProcess')
 }
 
 ShoppingBagContainer.propTypes = {
