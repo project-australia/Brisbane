@@ -23,7 +23,7 @@ export const SellBooksProcess = (props) => {
           total={props.totalPrice}
         />
 
-        <MenuTitle title={'Shipping'} style={styles.titleWrap} />
+        {/* <MenuTitle title={'Shipping'} style={styles.titleWrap} />
         <View style={styles.wrappingCard}>
           <Text style={styles.footnote}>
             Books will be shipped to the following address:
@@ -31,9 +31,9 @@ export const SellBooksProcess = (props) => {
           <Text style={styles.description}>
             12870 Interurban Avenue South, Seattle, WA 98168
           </Text>
-        </View>
+        </View> */}
 
-        <MenuTitle title={'Tracking number'} style={styles.titleWrap} />
+        {/* <MenuTitle title={'Tracking number'} style={styles.titleWrap} />
         <View style={styles.wrappingCard}>
           <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
             Type the tracking number below, so we can track the shipping
@@ -50,16 +50,23 @@ export const SellBooksProcess = (props) => {
               onPress={() => alert('Tracking number saved')}
             />
           </View>
-        </View>
+        </View> */}
 
-        <MenuTitle title={'Payment'} style={styles.titleWrap} />
+        <MenuTitle title={'Checkout'} style={styles.titleWrap} />
         <View style={styles.wrappingCard}>
           <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
-            Your payment will be available at your wallet as soon as we receive the books
+            Choose a method to finalize your selling
           </Text>
           <FormOutlineButton
             secondary
-            title={'Update payment method'}
+            title={'Delivery in Person'}
+            // style={styles.inlineButton}
+            onPress={() => alert('Go to add payment method on profile')}
+          />
+          <View style={{ height: 15 }} />
+          <FormOutlineButton
+            secondary
+            title={'Get a label to send it'}
             // style={styles.inlineButton}
             onPress={() => alert('Go to add payment method on profile')}
           />
