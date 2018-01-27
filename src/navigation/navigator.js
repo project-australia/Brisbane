@@ -13,6 +13,7 @@ import { ConfirmBookScreen } from '../modules/bookScan/containers/confirmBookScr
 import { ShoppingBagScreen } from '../modules/shoppingBag/containers/shoppingBagScreen'
 import { BuyBooksProcessScreen } from '../modules/shoppingBag/containers/buyBooksProcessScreen'
 import { ConfirmationScreen } from '../modules/shoppingBag/containers/confirmationScreen'
+import { BuyBooksProcessScreen } from '../modules/shoppingBag/containers/buyBooksProcessScreen'
 import { BookListScreen } from '../modules/bookList/containers/bookListScreen'
 
 export const initialRouteName = __DEV__ ? 'Test' : 'Home'
