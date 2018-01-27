@@ -30,8 +30,8 @@ export const ShoppingBag = props => (
         addBookTitle={'Buy more Books'}
         onPressMoreBooks={props.navigateToHome}
         checkoutButton={{
-          title: 'Proceed to checkout',
-          onPress: () => props.navigateToCheckout({ total: '123.45' })
+          title: 'Buy these books',
+          onPress: props.navigateToBuyBooksProcess
         }}
         totalValue={'123.45'}
       />
