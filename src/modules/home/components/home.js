@@ -21,11 +21,7 @@ export class Home extends Component {
     searchBook: PropTypes.func.isRequired,
     recentlyAddedBooks: PropTypes.arrayOf(book).isRequired,
     featuredBooks: PropTypes.arrayOf(book).isRequired,
-    userName: PropTypes.string
-  }
-
-  static defaultProps = {
-    userName: 'Guest'
+    userName: PropTypes.string.isRequired
   }
 
   state = {
