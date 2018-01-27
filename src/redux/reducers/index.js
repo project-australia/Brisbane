@@ -9,7 +9,7 @@ import { bookReducerConfig } from './book'
 export const reducers = {
   authentication: createReducer(authReducerConfig),
   shoppingBag: createReducer(shoppingBagReducerConfig),
-  book: createReducer(bookReducerConfig),
+  books: createReducer(bookReducerConfig),
   nav: navigationReducer
 }
 
