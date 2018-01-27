@@ -109,10 +109,6 @@ class ShoppingBagContainer extends Component {
   navigateToHome = () => this.props.navigation.navigate('Home')
   navigateToSellBooksProcess = () => this.props.navigation.navigate('SellBooksProcess')
   navigateToBuyBooksProcess = () => this.props.navigation.navigate('BuyBooksProcess')
-  navigateToSellConfirmation = () => this.props.navigation.navigate('ConfirmationScreen')
-  navigateToHome = () => this.props.navigation.navigate('Home')
-  navigateToSellBooksProcess = () => this.props.navigation.navigate('SellBooksProcess')
-  navigateToBuyBooksProcess = () => this.props.navigation.navigate('BuyBooksProcess')
 }
 
 ShoppingBagContainer.propTypes = {
