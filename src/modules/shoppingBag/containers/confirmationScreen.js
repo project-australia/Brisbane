@@ -35,7 +35,7 @@ const booksToSell = [
   }
 ]
 
-class SellBooksProcessContainer extends Component {
+class ConfirmationScreenContainer extends Component {
   static navigationOptions = {
     title: 'Sell Books',
     header: null
@@ -59,10 +59,10 @@ class SellBooksProcessContainer extends Component {
   goBack = () => this.props.navigation.goBack()
 }
 
-SellBooksProcessContainer.propTypes = {
+ConfirmationScreenContainer.propTypes = {
   items: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired
 }
 
 const mapStateToProps = state => ({ items: state.shoppingBag })
 
-export const SellBooksProcessScreen = connect(mapStateToProps)(SellBooksProcessContainer)
+export const ConfirmationScreen = connect(mapStateToProps)(ConfirmationScreenContainer)
