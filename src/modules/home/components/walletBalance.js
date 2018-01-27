@@ -10,11 +10,9 @@ import { styles } from './styles/home.styles'
 import { Colors, Metrics } from '../../../constants'
 
 export const WalletBalance = props => {
-  const titleButton = { text: 'View', onPress: props.onWalletViewPressed }
-
   return (
     <View>
-      <MenuTitle title={'My Wallet'} button={titleButton} />
+      <MenuTitle title={'My Wallet'} />
       <View style={[styles.card, styles.square]}>
         <View style={styles.menuColumn}>
           <View style={styles.featuredIconWrap}>
