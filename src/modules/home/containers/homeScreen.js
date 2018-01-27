@@ -14,17 +14,20 @@ class HomeContainer extends Component {
     displayName: PropTypes.string,
     navigation: PropTypes.object.isRequired
   }
+  handleListBooksToHome = (booksList) => {
+    return booksList.slice(2)
+  }
 
   render () {
     const userName = this.props.displayName || 'Guest'
     return (
       <Home
         userName={userName}
-        featuredBooks={booksStub}
+        featuredBooks={this.handleListBooksToHome(this.props.booksLists['featured'])}
         searchBook={(isbn) => this.props.navigation.navigate('BookSelling', {isbn})}
         recentlyAddedBooks={booksStub}
-        onRecentlyAddedPressed={this.navigateTo('BookList')}
-        onFeaturedPressed={this.navigateTo('BookList')}
+        onRecentlyAddedPressed={this.navigateTo('BookList', { typeList: 'recent' })}
+        onFeaturedPressed={this.navigateTo('BookList', { typeList: 'featured' })}
         navigateToScan={this.navigateTo('BookScanner')}
         navigateToProfile={this.navigateTo('Profile')}
         navigateToShoppingBag={this.navigateTo('ShoppingBag')}
@@ -32,11 +35,12 @@ class HomeContainer extends Component {
     )
   }
 
-  navigateTo = screen => () => this.props.navigation.navigate(screen, {})
+  navigateTo = (screen, param = {}) => () => this.props.navigation.navigate(screen, param)
 }
 
-const mapStateToProps = ({ authentication: { user } }) => ({
-  displayName: user.name
+const mapStateToProps = ({ authentication: { user }, books }) => ({
+  displayName: user.name,
+  booksLists: books
 })
 
 export const HomeScreen = connect(mapStateToProps)(HomeContainer)

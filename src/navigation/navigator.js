@@ -54,9 +54,6 @@ const routeConfigs = {
   BuyBooksProcess: {
     screen: BuyBooksProcessScreen
   },
-  BuyBooksProcess: {
-    screen: BuyBooksProcessScreen
-  },
   BookList: {
     screen: BookListScreen
   }
