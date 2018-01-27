@@ -5,7 +5,6 @@ import { featuredBooks, recentlyAddedBooks } from './services/backend/bookServic
 import { updateFeaturedBooks, updateRecentlyAddedBooks } from './redux/actions/sync/bookActions'
 
 export class App extends React.Component {
-
   async componentDidMount () {
     const [recently, featured] = await Promise.all([recentlyAddedBooks(), featuredBooks()])
     const { dispatch } = this.props.store
