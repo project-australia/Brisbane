@@ -11,9 +11,9 @@ import { styles } from './styles/home.styles'
 export const Book = ({
   onBuyPressed,
   onRentPressed,
-  book: { title, author, edition, imageUri }
+  book: { title, author, edition, images }
 }) => {
-  const imageSource = imageUri ? { uri: imageUri } : require('../../../assets/images/book-placeholder.png')
+  const imageSource = images ? { uri: images.small } : require('../../../assets/images/book-placeholder.png')
 
   return (
     <Card style={ styles.bookCard }>
