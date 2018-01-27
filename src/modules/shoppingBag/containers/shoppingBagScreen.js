@@ -87,6 +87,9 @@ class ShoppingBagContainer extends Component {
         navigateToCheckout={this.navigateToCheckout}
         navigateToHome={this.navigateToHome}
         navigateToSellConfirmation={this.navigateToSellConfirmation}
+        navigateToCheckout={this.navigateToBuyBooksProcess}
+        navigateToSellBooksProcess={this.navigateToSellBooksProcess}
+        navigateToBuyBooksProcess={this.navigateToBuyBooksProcess}
         searchBook={() => alert('search book')}
         onScanPress={() => this.props.navigation.navigate('BookScanner', {})}
       />
@@ -98,6 +101,8 @@ class ShoppingBagContainer extends Component {
     ' HERE', alert, alert)
   navigateToSellConfirmation = () => this.props.navigation.navigate('ConfirmationScreen')
   navigateToHome = () => this.props.navigation.navigate('Home')
+  navigateToSellBooksProcess = () => this.props.navigation.navigate('SellBooksProcess')
+  navigateToBuyBooksProcess = () => this.props.navigation.navigate('BuyBooksProcess')
 }
 
 ShoppingBagContainer.propTypes = {

@@ -11,6 +11,7 @@ import { ManageAccountScreen } from '../modules/account/containers/manageAccount
 import { BookScannerScreen } from '../modules/bookScan/containers/bookScannerScreen'
 import { ConfirmBookScreen } from '../modules/bookScan/containers/confirmBookScreen'
 import { ShoppingBagScreen } from '../modules/shoppingBag/containers/shoppingBagScreen'
+import { BuyBooksProcessScreen } from '../modules/shoppingBag/containers/buyBooksProcessScreen'
 import { ConfirmationScreen } from '../modules/shoppingBag/containers/confirmationScreen'
 import { BookListScreen } from '../modules/bookList/containers/bookListScreen'
 
@@ -49,6 +50,9 @@ const routeConfigs = {
   },
   ConfirmationScreen: {
     screen: ConfirmationScreen
+  },
+  BuyBooksProcess: {
+    screen: BuyBooksProcessScreen
   },
   BookList: {
     screen: BookListScreen
