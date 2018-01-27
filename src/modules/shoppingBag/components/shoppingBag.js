@@ -17,9 +17,10 @@ export const ShoppingBag = props => (
         title={'Books you are selling'}
         items={props.booksToSell}
         addBookTitle={'Sell more Books'}
+        onPressMoreBooks={props.navigateToHome}
         checkoutButton={{
           title: 'Sell these books',
-          onPress: props.navigateToSellBooksProcess
+          onPress: props.navigateToSellConfirmation
         }}
         totalValue={'123.45'}
       />
@@ -27,8 +28,9 @@ export const ShoppingBag = props => (
         title={'Books you are buying'}
         items={props.booksToBuy}
         addBookTitle={'Buy more Books'}
+        onPressMoreBooks={props.navigateToHome}
         checkoutButton={{
-          title: 'Checkout with PayPal',
+          title: 'Proceed to checkout',
           onPress: () => props.navigateToCheckout({ total: '123.45' })
         }}
         totalValue={'123.45'}
@@ -39,9 +41,10 @@ export const ShoppingBag = props => (
 
 ShoppingBag.propTypes = {
   navigateToCheckout: PropTypes.func.isRequired,
-  navigateToSellBooksProcess: PropTypes.func.isRequired,
+  navigateToSellConfirmation: PropTypes.func.isRequired,
   searchBook: PropTypes.func.isRequired,
   onScanPress: PropTypes.func.isRequired,
+  navigateToHome: PropTypes.func.isRequired,
   booksToSell: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
   booksToBuy: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired
 }

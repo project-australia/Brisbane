@@ -35,6 +35,7 @@ export const TestScreen = props => {
       {navigateTo('ManageAccount')}
       {navigateTo('BookScanner')}
       {navigateTo('ShoppingBag')}
+      {navigateTo('ConfirmationScreen')}
       {navigateTo('BookSelling', {isbn: 9781483358505})}
       {navigateTo('BookList')}
       {openPayPalScreen()}
