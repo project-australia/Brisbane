@@ -30,6 +30,7 @@ export const TestScreen = props => {
   return (
     <View style={{ flex: 1 }}>
       {navigateTo('SignIn')}
+      {navigateTo('SignUp')}
       {navigateTo('Home')}
       {navigateTo('Profile')}
       {navigateTo('ManageAccount')}

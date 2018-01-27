@@ -1,43 +1,60 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import PropTypes, { string, number } from 'prop-types'
 import { View } from 'react-native'
 import { FormHeader } from './formHeader'
 import { styles } from './styles/loginFormStyles'
-import { Colors } from '../../../constants'
 import { FormTextInput } from './formTextInput'
 import { FormButton } from '../../shared/components/buttons'
 import { LoadingOverlay } from '../../shared/components/loadingOverlay'
+
+const alertType = PropTypes.shape({
+  showAlert: PropTypes.bool.isRequired,
+  message: PropTypes.string
+}).isRequired
+
+const addressType = PropTypes.shape({
+  city: string.isRequired,
+  street: string.isRequired,
+  number: number.isRequired,
+  zipCode: string.isRequired,
+  state: string.isRequired
+}).isRequired
+
+const signupFormType = PropTypes.shape({
+  referredBy: string,
+  name: string.isRequired,
+  birthDate: string.isRequired,
+  telephone: string.isRequired,
+  school: string.isRequired,
+  address: addressType
+}).isRequired
 
 export class ProfileForm extends Component {
   static defaultProps = { footer: <View /> }
   static propTypes = {
     footer: PropTypes.object,
-    buttonText: PropTypes.string.isRequired,
-    alert: PropTypes.shape({
-      showAlert: PropTypes.bool.isRequired,
-      message: PropTypes.string
-    }).isRequired
+    alert: alertType,
+    signUpForm: signupFormType
   }
 
   state = {
-    userName: '',
+    name: '',
     school: '',
     phoneNumber: '',
     referralName: '',
-    loading: false
+    street: '',
+    number: '',
+    zipCode: '',
+    state: ''
   }
 
-  setUserName = name => this.setState({ name })
   setSchool = school => this.setState({ school })
   setPhoneNumber = phoneNumber => this.setState({ phoneNumber })
   setReferralName = referralName => this.setState({ referralName })
-
-  onButtonPress = async () => {
-    this.setState({ loading: true })
-    const { email, password } = this.state
-    await this.props.onButtonPress(email, password)
-    this.setState({ loading: false })
-  }
+  setStreet = street => this.setState({ street })
+  setNumber = number => this.setState({ number })
+  setZipCode = zipCode => this.setState({ zipCode })
+  setAddressState = state => this.setState({ state })
 
   componentWillReceiveProps (nextProps) {
     const { showAlert, message } = nextProps.alert
@@ -48,44 +65,53 @@ export class ProfileForm extends Component {
 
   render () {
     return (
-      <LoadingOverlay style={styles.screen} isLoading={this.state.loading}>
+      <LoadingOverlay
+        style={styles.screen}
+        isLoading={this.state.loading}
+      >
         <FormHeader />
         <FormTextInput
-          onChangeText={this.setUserName}
-          value={this.state.userName}
-          placeholder="Name"
-          autoCapitalize="words"
-          selectionColor={Colors.secondary500}
-          style={styles.itemSpacing}
+          onChangeText={this.setReferralName}
+          value={this.state.referralName}
+          placeholder="Indicated by someone?"
         />
         <FormTextInput
           onChangeText={this.setSchool}
           value={this.state.school}
           placeholder="School"
-          autoCapitalize="words"
-          selectionColor={Colors.secondary500}
-          style={styles.itemSpacing}
         />
         <FormTextInput
           onChangeText={this.setPhoneNumber}
           value={this.state.phoneNumber}
           placeholder="Phone"
           autoCapitalize="none"
-          selectionColor={Colors.secondary500}
-          style={styles.itemSpacing}
           keyboardType="phone-pad"
         />
         <FormTextInput
-          onChangeText={this.setReferralName}
-          value={this.state.referralName}
-          placeholder="Indicated by someone?"
-          autoCapitalize="words"
-          selectionColor={Colors.secondary500}
-          style={styles.itemSpacing}
+          onChangeText={this.setStreet}
+          value={this.state.street}
+          placeholder="Street"
+        />
+        <FormTextInput
+          onChangeText={this.setNumber}
+          value={this.state.number}
+          placeholder="Number"
+          keyboardType="phone-pad"
+        />
+        <FormTextInput
+          onChangeText={this.setZipCode}
+          value={this.state.zipCode}
+          placeholder="Zip Code"
+          keyboardType="phone-pad"
+        />
+        <FormTextInput
+          onChangeText={this.setAddressState}
+          value={this.state.state}
+          placeholder="State"
         />
         <FormButton
-          title={this.props.buttonText}
-          onPress={this.onButtonPress}
+          title={'Finish your registration'}
+          onPress={() => this.props.onButtonPress()}
           style={styles.itemSpacing}
         />
         {this.props.footer}

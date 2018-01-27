@@ -22,8 +22,11 @@ export class SignupForm extends Component {
   state = {
     email: '',
     password: '',
+    name: '',
     loading: false
   }
+
+  setUserName = name => this.setState({ name })
 
   setEmail = email => this.setState({ email })
   setPassword = password => this.setState({ password })
@@ -44,14 +47,21 @@ export class SignupForm extends Component {
 
   render () {
     return (
-      <LoadingOverlay style={styles.screen} isLoading={this.state.loading}>
+      <LoadingOverlay
+        style={styles.screen}
+        isLoading={this.state.loading}
+      >
         <FormHeader />
+        <FormTextInput
+          onChangeText={this.setUserName}
+          value={this.state.name}
+          placeholder="Name"
+        />
         <FormTextInput
           onChangeText={this.setEmail}
           value={this.state.email}
           placeholder="Email address"
           autoCapitalize="none"
-          selectionColor={Colors.secondary500}
           style={styles.itemSpacing}
           keyboardType="email-address"
         />
@@ -60,8 +70,6 @@ export class SignupForm extends Component {
           value={this.state.password}
           placeholder="Password"
           secureTextEntry
-          selectionColor={Colors.secondary500}
-          style={styles.itemSpacing}
         />
         <FormButton
           title={this.props.buttonText}

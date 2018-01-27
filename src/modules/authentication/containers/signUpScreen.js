@@ -19,21 +19,21 @@ class SignUpContainer extends Component {
     }).isRequired
   }
 
-  onSignUp = (email, password) => {
-    this.props.signUp(email, password)
+  onSignUp = (signUpForm) => {
+    this.props.signUp(signUpForm)
   }
 
   navigateToSignInScreen = () => {
-    this.props.navigation.goBack()
+    this.props.navigation.navigate('SignIn')
   }
 
   render () {
     return (
       <SignUp
-        onButtonPress={this.onSignUp}
-        alert={this.props.alert}
-        navigateToSignIn={this.navigateToSignInScreen}
         buttonText="SIGN UP"
+        alert={this.props.alert}
+        signUpUser={this.onSignUp}
+        navigateToSignIn={this.navigateToSignInScreen}
       />
     )
   }
