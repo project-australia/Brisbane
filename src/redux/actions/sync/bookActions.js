@@ -1,7 +1,4 @@
-import {
-  SHOW_ALERT
-} from '../../types/bookTypes'
+import { UPDATE_RECENTLY_ADDED_BOOKS, UPDATE_FEATURED_BOOKS } from '../../types/bookTypes'
 
-export const actionCreate = (type, payload) => ({ type, payload })
-
-export const showAlert = message => ({ type: SHOW_ALERT, message })
+export const updateRecentlyAddedBooks = recent => ({ type: UPDATE_RECENTLY_ADDED_BOOKS, recent })
+export const updateFeaturedBooks = featured => ({ type: UPDATE_FEATURED_BOOKS, featured })

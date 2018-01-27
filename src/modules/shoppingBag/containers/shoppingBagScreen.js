@@ -84,6 +84,15 @@ class ShoppingBagContainer extends Component {
         booksToBuy={this.state.booksToBuy}
         booksToSell={this.state.booksToSell}
         navigateBack={this.goBack}
+        navigateToCheckout={this.navigateToCheckout}
+        navigateToHome={this.navigateToHome}
+        navigateToSellConfirmation={this.navigateToSellConfirmation}
+        navigateToCheckout={this.navigateToBuyBooksProcess}
+        navigateToSellBooksProcess={this.navigateToSellBooksProcess}
+        navigateToBuyBooksProcess={this.navigateToBuyBooksProcess}
+        navigateToCheckout={this.navigateToCheckout}
+        navigateToHome={this.navigateToHome}
+        navigateToSellConfirmation={this.navigateToSellConfirmation}
         navigateToCheckout={this.navigateToBuyBooksProcess}
         navigateToSellBooksProcess={this.navigateToSellBooksProcess}
         navigateToBuyBooksProcess={this.navigateToBuyBooksProcess}
@@ -96,6 +105,8 @@ class ShoppingBagContainer extends Component {
   goBack = () => this.props.navigation.goBack()
   navigateToCheckout = (price, description, onSuccess, onError) => payWithPayPal('666.66', 'INSERT A DESCRIPTION' +
     ' HERE', alert, alert)
+  navigateToSellConfirmation = () => this.props.navigation.navigate('ConfirmationScreen')
+  navigateToHome = () => this.props.navigation.navigate('Home')
   navigateToSellBooksProcess = () => this.props.navigation.navigate('SellBooksProcess')
   navigateToBuyBooksProcess = () => this.props.navigation.navigate('BuyBooksProcess')
 }

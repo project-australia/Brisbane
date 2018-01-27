@@ -106,3 +106,5 @@ export const getUserProfile = async userId => {
     throw err
   }
 }
+
+export const wakeUpBackEnd = () => Axios.get('/health').catch(console.info)

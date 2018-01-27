@@ -16,9 +16,10 @@ class HomeContainer extends Component {
   }
 
   render () {
+    const userName = this.props.displayName || 'Guest'
     return (
       <Home
-        userName={this.props.displayName}
+        userName={userName}
         featuredBooks={booksStub}
         searchBook={(isbn) => this.props.navigation.navigate('BookSelling', {isbn})}
         recentlyAddedBooks={booksStub}

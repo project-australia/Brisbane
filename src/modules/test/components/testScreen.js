@@ -34,6 +34,8 @@ export const TestScreen = props => {
       {navigateTo('Profile')}
       {navigateTo('ManageAccount')}
       {navigateTo('BookScanner')}
+      {navigateTo('ShoppingBag')}
+      {navigateTo('ConfirmationScreen')}
       {navigateTo('BookSelling', {isbn: 9781483358505})}
       {navigateTo('BookList')}
       {navigateTo('ShoppingBag')}
