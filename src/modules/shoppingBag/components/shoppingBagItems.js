@@ -37,7 +37,8 @@ export const ShoppingBagItems = ({
   checkoutButton,
   isSellingBooks,
   totalValue,
-  onPress
+  onPress,
+  onPressMoreBooks
 }) => {
   return (typeof items !== 'undefined' && items.length > 0) && (
     <View style={styles.itemsWrap}>
@@ -46,7 +47,10 @@ export const ShoppingBagItems = ({
         style={styles.titleWrap}
       />
       {items.map(renderBook)}
-      <AddBookRow title={setAddBookTitle(isSellingBooks)} />
+      <AddBookRow
+        title={setAddBookTitle(isSellingBooks)}
+        onPress={onPressMoreBooks}
+      />
       <View style={StyleSheet.flatten([styles.contentWrap, styles.whiteBackground])}>
         <Text style={styles.totalText}>Total</Text>
         <Text
@@ -69,5 +73,6 @@ export const ShoppingBagItems = ({
 
 ShoppingBagItems.propTypes = {
   items: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
-  onPress: PropTypes.function
+  onPress: PropTypes.func,
+  onPressMoreBooks: PropTypes.func.isRequired
 }

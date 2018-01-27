@@ -9,12 +9,12 @@ import { FormOutlineButton } from '../../shared/components/buttons'
 
 import { styles } from './styles/shoppingBagItems.style'
 
-export const SellBooksProcess = (props) => {
+export const BuyBooksProcess = (props) => {
   const booksLength = props.booksToSell.length
   return (
     <View>
       <Navbar
-        title={`Selling ${booksLength} Books`}
+        title={`Buying ${booksLength} Books`}
         onBack={props.navigateBack}
       />
       <ScrollView>
@@ -23,7 +23,7 @@ export const SellBooksProcess = (props) => {
           total={props.totalPrice}
         />
 
-        {/* <MenuTitle title={'Shipping'} style={styles.titleWrap} />
+        <MenuTitle title={'Shipping'} style={styles.titleWrap} />
         <View style={styles.wrappingCard}>
           <Text style={styles.footnote}>
             Books will be shipped to the following address:
@@ -31,7 +31,22 @@ export const SellBooksProcess = (props) => {
           <Text style={styles.description}>
             12870 Interurban Avenue South, Seattle, WA 98168
           </Text>
-        </View> */}
+        </View>
+
+        <MenuTitle title={'Address Options'} style={styles.titleWrap} />
+        <View style={styles.wrappingCard}>
+          <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
+            Use another address to receive the books
+          </Text>
+          <View style={styles.rowWrap}>
+            <FormOutlineButton
+              secondary
+              title={'Switch Address'}
+              style={styles.inlineButton}
+              onPress={() => alert('Tracking number saved')}
+            />
+          </View>
+        </View>
 
         {/* <MenuTitle title={'Tracking number'} style={styles.titleWrap} />
         <View style={styles.wrappingCard}>
@@ -59,14 +74,14 @@ export const SellBooksProcess = (props) => {
           </Text>
           <FormOutlineButton
             secondary
-            title={'Delivery in Person'}
+            title={'Pay localy'}
             // style={styles.inlineButton}
             onPress={() => alert('Go to add payment method on profile')}
           />
           <View style={{ height: 15 }} />
           <FormOutlineButton
             secondary
-            title={'Get a label to send it'}
+            title={'Checkout with Paypal'}
             // style={styles.inlineButton}
             onPress={() => alert('Go to add payment method on profile')}
           />

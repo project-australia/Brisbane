@@ -16,16 +16,15 @@ class HomeContainer extends Component {
   }
 
   render () {
+    const userName = this.props.displayName || 'Guest'
     return (
       <Home
-        userName={this.props.displayName}
+        userName={userName}
         featuredBooks={booksStub}
         searchBook={(isbn) => this.props.navigation.navigate('BookSelling', {isbn})}
         recentlyAddedBooks={booksStub}
-        onRecentlyAddedPressed={() =>
-          alert('🛶 navigate to recently added books list')
-        }
-        onFeaturedPressed={() => alert('🛶 navigate to featured books list')}
+        onRecentlyAddedPressed={this.navigateTo('BookList')}
+        onFeaturedPressed={this.navigateTo('BookList')}
         navigateToScan={this.navigateTo('BookScanner')}
         navigateToProfile={this.navigateTo('Profile')}
         navigateToShoppingBag={this.navigateTo('ShoppingBag')}
