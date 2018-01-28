@@ -8,7 +8,7 @@ import { Colors, Metrics } from '../../../constants'
 import { styles } from './styles/rowAdd.style'
 
 export const RowAdd = ({ title, onPress }) => (
-  <Touchable style={styles.wrap}>
+  <Touchable style={styles.wrap} onPress={onPress}>
     <Icon
       color={Colors.gray500}
       name={'plus'}
