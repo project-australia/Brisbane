@@ -15,6 +15,7 @@ import { BookList } from '../containers/bookList'
 
 export class Home extends Component {
   static propTypes = {
+    navigation: PropTypes.object.isRequired,
     navigateToProfile: PropTypes.func.isRequired,
     navigateToScan: PropTypes.func.isRequired,
     navigateToShoppingBag: PropTypes.func.isRequired,
@@ -58,7 +59,9 @@ export class Home extends Component {
           title={`Hi, ${this.props.userName}`}
           rightIcons={this.state.navRightIcons}
         />
-        <ScrollView>
+        <ScrollView
+          bounces={false}
+        >
           <BookSearch
             onSubmit={() => this.props.searchBook(this.state.bookSearchValue)}
             onScanPress={this.props.navigateToScan}
@@ -78,13 +81,19 @@ export class Home extends Component {
             button={recentlyAddedButton}
             style={styles.titleWrap}
           />
-          <BookList books={this.props.recentlyAddedBooks} />
+          <BookList
+            navigation={this.props.navigation}
+            books={this.props.recentlyAddedBooks}
+          />
           <MenuTitle
             title={'Featured'}
             button={featuredButton}
             style={styles.titleWrap}
           />
-          <BookList books={this.props.featuredBooks} />
+          <BookList
+            books={this.props.featuredBooks}
+            navigation={this.props.navigation}
+          />
         </ScrollView>
       </View>
     )

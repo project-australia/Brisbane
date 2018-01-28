@@ -92,7 +92,7 @@ export const styles = StyleSheet.create({
   bookImage: {
     aspectRatio: 3 / 4,
     backgroundColor: Colors.gray200,
-    height: '100%'
+    width: 78
   },
   bookInfoWrap: {
     marginLeft: Metrics.section / 2

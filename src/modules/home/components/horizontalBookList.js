@@ -31,6 +31,6 @@ export const HorizontalBookList = props => (
 
 HorizontalBookList.propTypes = {
   books: PropTypes.arrayOf(book).isRequired,
-  onBuyBook: PropTypes.func.isRequired,
-  onRentBook: PropTypes.func.isRequired
+  onRentBook: PropTypes.func.isRequired,
+  onBuyBook: PropTypes.func.isRequired
 }

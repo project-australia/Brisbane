@@ -11,29 +11,33 @@ import { styles } from './styles/home.styles'
 export const Book = ({
   onBuyPressed,
   onRentPressed,
-  book: { title, author, edition, imageUri }
-}) => (
-  <Card style={styles.bookCard}>
-    <Image style={styles.bookImage} source={{ uri: imageUri }} />
-    <View style={styles.bookInfoWrap}>
-      <Text style={styles.primaryText}>{title}</Text>
-      <Text style={styles.secondaryInput}>{author}</Text>
-      <Text style={styles.secondaryInput}>{edition}</Text>
-      <View style={styles.bookButtonsGroup}>
-        <FormButton
-          style={styles.buyButton}
-          title={'Buy'}
-          onPress={onBuyPressed}
-        />
-        <FormOutlineButton
-          style={styles.rentButton}
-          title={'Rent'}
-          onPress={onRentPressed}
-        />
+  book: { title, author, edition, images }
+}) => {
+  const imageSource = images ? { uri: images.small } : require('../../../assets/images/book-placeholder.png')
+
+  return (
+    <Card style={ styles.bookCard }>
+      <Image style={ styles.bookImage } source={imageSource}/>
+      <View style={ styles.bookInfoWrap }>
+        <Text style={ styles.primaryText }>{ title }</Text>
+        <Text style={ styles.secondaryInput }>{ author }</Text>
+        <Text style={ styles.secondaryInput }>{ edition }</Text>
+        <View style={ styles.bookButtonsGroup }>
+          <FormButton
+            style={ styles.buyButton }
+            title={ 'Buy' }
+            onPress={ onBuyPressed }
+          />
+          <FormOutlineButton
+            style={ styles.rentButton }
+            title={ 'Rent' }
+            onPress={ onRentPressed }
+          />
+        </View>
       </View>
-    </View>
-  </Card>
-)
+    </Card>
+  )
+}
 
 Book.propTypes = {
   book: book.isRequired,
