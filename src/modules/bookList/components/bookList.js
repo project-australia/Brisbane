@@ -6,17 +6,17 @@ import { Navbar } from '../../shared/components/navbar'
 
 import { styles } from '../../shoppingBag/components/styles/shoppingBagItems.style'
 
-const renderBook = ({ id, imageUri, title, author, edition, sellPrice }) => (
+const renderBook = ({ id, images, title, author, edition, sellingPrice }) => (
   <Touchable onPress={() => console.warn('Go to book: ', title)} key={id} style={styles.cardWithoutBorder}>
     <View style={styles.contentWrap}>
-      <Image style={styles.image} source={{ uri: imageUri }} />
+      <Image style={styles.image} source={{ uri: images.small }} />
       <View style={styles.detailsWrap}>
         <Text numberOfLines={1} style={styles.title}>{title}</Text>
         <Text numberOfLines={1} style={styles.subtitle}>{author}</Text>
         <Text numberOfLines={1} style={styles.subtitle}>{edition}</Text>
       </View>
       <View style={styles.rightContentWrap}>
-        {(sellPrice !== 0) && <Text style={styles.title}>{`$${sellPrice}`}</Text>}
+        {(sellingPrice !== 0) && <Text style={styles.title}>{`$${sellingPrice}`}</Text>}
       </View>
     </View>
   </Touchable>
