@@ -1,10 +1,13 @@
 import React from 'react'
 import { ScrollView, View } from 'react-native'
 
+import { ModalWithInput } from '../../shared/components/modals/modalWithInput'
 import { Navbar } from '../../shared/components/navbar'
 import { ProfileItem } from './profileItem'
 import { ScreenTitleAndSubtitle } from './screenTitleAndSubtitle'
 import { ProfileRedirectItem } from './profileRedirectItem'
+import { ProfileButtonItem } from './profileButtonItem'
+
 import { styles } from './styles/profile.style'
 
 const getSubscriptionText = (subType) => {
@@ -22,7 +25,18 @@ const setUserNetworkNumber = (network) => (
   (network && network.length > 0) && `${network.length} registered members`
 )
 
-export const Profile = ({ onBackPress, user, navigateToNetwork }) => {
+export const Profile = ({
+  onBackPress,
+  user,
+  modalTitle,
+  navigateToNetwork,
+  navigateToWallet,
+  onLogoutPress,
+  showEditModal,
+  isEditModalOpen,
+  onConfirmModal,
+  onDismissModal
+}) => {
   return (
     <View style={styles.container}>
       <Navbar onBack={onBackPress} />
@@ -35,33 +49,54 @@ export const Profile = ({ onBackPress, user, navigateToNetwork }) => {
           title={'School'}
           data={user.school}
           emptyDataLabel={'Add school name'}
+          onPress={() => showEditModal('School')}
         />
         <ProfileItem
           title={'Phone'}
           data={user.phone}
           emptyDataLabel={'Add phone number'}
+          onPress={() => showEditModal('Phone')}
         />
         <ProfileItem
           title={'Birth date'}
           data={user.birthDate}
           emptyDataLabel={'Add birth date'}
+          onPress={() => showEditModal('Birth date')}
         />
         <ProfileItem
           title={'Address'}
           data={user.address}
           emptyDataLabel={'Add address'}
+          onPress={() => showEditModal('Address')}
         />
         <ProfileItem
           title={'PayPal account'}
           data={user.address}
           emptyDataLabel={'Add account'}
+          onPress={() => showEditModal('PayPal account')}
         />
         <ProfileRedirectItem
           title={'Network'}
           data={setUserNetworkNumber(user.network)}
           onPress={navigateToNetwork}
         />
+        <ProfileButtonItem
+          secondary
+          title={'My Wallet'}
+          buttonTitle={'View my Wallet'}
+          onPress={navigateToWallet}
+        />
+        <ProfileButtonItem
+          buttonTitle={'Logout'}
+          onPress={onLogoutPress}
+        />
       </ScrollView>
+      <ModalWithInput
+        visible={isEditModalOpen}
+        title={modalTitle}
+        onConfirm={onConfirmModal}
+        onDismiss={onDismissModal}
+      />
     </View>
   )
 }

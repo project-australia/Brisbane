@@ -51,7 +51,7 @@ const style = {
     fontSize: size.h5
   },
   h6: {
-    fontFamily: type.emphasis,
+    fontFamily: type.bold,
     fontSize: size.h6
   },
   normalKefa: {

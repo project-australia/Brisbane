@@ -16,7 +16,25 @@ class ProfileContainer extends Component {
   }
 
   state = {
-    user
+    user,
+    isEditModalOpen: false,
+    isModalInputMultiline: false,
+    modalTitle: ''
+  }
+
+  showEditModal = (modalTitle) => this.setState({
+    modalTitle,
+    isEditModalOpen: true,
+    isModalInputMultiline: (modalTitle === 'Address')
+  })
+  hideEditModal = () => this.setState({
+    modalTitle: '',
+    isEditModalOpen: false,
+    isModalInputMultiline: false
+  })
+  updateData = () => {
+    console.warn('update user data')
+    this.hideEditModal()
   }
 
   render () {
@@ -26,12 +44,19 @@ class ProfileContainer extends Component {
         user={this.state.user}
         onLogoutPress={() => console.warn('logout function here')}
         navigateToNetwork={this.navigateToNetwork}
+        navigateToWallet={this.navigateToWallet}
+        showEditModal={this.showEditModal}
+        isEditModalOpen={this.state.isEditModalOpen}
+        modalTitle={this.state.modalTitle}
+        onConfirmModal={this.updateData}
+        onDismissModal={this.hideEditModal}
       />
     )
   }
 
   goBack = () => this.props.navigation.goBack()
   navigateToNetwork = () => this.props.navigation.navigate('NetworkMembers', { network: this.state.user.network })
+  navigateToWallet = () => alert('navigate to my wallet')
 }
 
 const mapStateToProps = () => ({})
