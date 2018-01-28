@@ -14,6 +14,7 @@ import { ShoppingBagScreen } from '../modules/shoppingBag/containers/shoppingBag
 import { BuyBooksProcessScreen } from '../modules/shoppingBag/containers/buyBooksProcessScreen'
 import { ConfirmationScreen } from '../modules/shoppingBag/containers/confirmationScreen'
 import { BookListScreen } from '../modules/bookList/containers/bookListScreen'
+import { NetworkMembersScreen } from '../modules/account/containers/networkMembersScreen'
 
 export const initialRouteName = __DEV__ ? 'Test' : 'Home'
 const stackNavigatorConfig = { initialRouteName }
@@ -34,7 +35,8 @@ const routeConfigs = {
     screen: TestScreen
   },
   Profile: {
-    screen: authenticated(ProfileScreen)
+    // screen: authenticated(ProfileScreen)
+    screen: ProfileScreen
   },
   ManageAccount: {
     screen: authenticated(ManageAccountScreen)
@@ -56,6 +58,9 @@ const routeConfigs = {
   },
   BookList: {
     screen: BookListScreen
+  },
+  NetworkMembers: {
+    screen: NetworkMembersScreen
   }
 }
 

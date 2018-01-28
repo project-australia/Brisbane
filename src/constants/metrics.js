@@ -16,6 +16,7 @@ export const Metrics = {
   searchBarHeight: 30,
   menuHeight: 40,
   inputHeight: 44,
+  inputMultilineHeight: 132,
   screenWidth: width < height ? width : height,
   screenHeight: width < height ? height : width,
   statusBarHeight,
