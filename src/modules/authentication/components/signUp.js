@@ -1,23 +1,98 @@
-import React, { Component } from 'react'
 import { bool, func, shape, string } from 'prop-types'
-import { View } from 'react-native'
+import React, { Component } from 'react'
+import { Address } from '../../../domain/Address'
+import { SignUp } from '../../../domain/SignUp'
+import { User } from '../../../domain/User'
+import { FormOutlineButton } from '../../shared/components/buttons'
+import { LoadingOverlay } from '../../shared/components/loadingOverlay'
+import { EmailPasswordForm } from '../components/signupForm'
 import { ProfileForm } from './profileForm'
 
 import { styles } from './styles/signInScreen.styles'
-import { SignupForm } from '../components/signupForm'
-import { FormOutlineButton } from '../../shared/components/buttons'
 
-export class SignUp extends Component {
+const extractSignUpFormFromState = form => {
+  const {
+    name,
+    school,
+    telephone,
+    referredBy,
+    street,
+    number,
+    zipCode,
+    state,
+    city,
+    email,
+    password
+  } = form
+
+  const address = new Address(
+    street,
+    city,
+    number,
+    zipCode,
+    state
+  )
+
+  const user = new User(
+    undefined,
+    referredBy,
+    name,
+    email,
+    new Date(),
+    telephone,
+    school,
+    undefined,
+    undefined,
+    undefined,
+    address
+  )
+
+  return new SignUp(email, password, user)
+}
+
+export class SignUpForm extends Component {
   static propTypes = {
     signUpUser: func.isRequired,
     navigateToSignIn: func.isRequired,
     alert: shape({ showAlert: bool.isRequired, message: string }).isRequired
   }
 
-  state = { switch: true }
+  state = {
+    switch: true,
+    name: '',
+    school: '',
+    telephone: '',
+    referredBy: '',
+    street: '',
+    number: '',
+    zipCode: '',
+    state: '',
+    email: '',
+    password: '',
+    city: '',
+    loading: false
+  }
 
-  updateSwitch = () => {
+  onFormChange = (value) => {
+    this.setState(value)
+  }
+
+  switchForm = () => {
+    console.log('this.state', extractSignUpFormFromState(this.state))
     this.setState({ switch: !this.state.switch })
+  }
+
+  doSignUp = async () => {
+    this.setState({ loading: true })
+
+    try {
+      const form = extractSignUpFormFromState(this.state)
+      await this.props.signUpUser(form)
+    } catch (err) {
+      console.log('err', err)
+    } finally {
+      this.setState({ loading: false })
+    }
   }
 
   renderFooter = () => {
@@ -30,30 +105,41 @@ export class SignUp extends Component {
     )
   }
 
+  componentWillReceiveProps (nextProps) {
+    const { showAlert, message } = nextProps.alert
+    if (showAlert) {
+      alert(message)
+    }
+  }
+
   userProfileForm = () => (
     <ProfileForm
-      alert={this.props.alert}
-      buttonText="Create Account"
       footer={this.renderFooter()}
-      onButtonPress={this.updateSwitch}
+      onChange={this.onFormChange}
+      form={this.state}
+      onButtonPress={this.switchForm}
     />
   )
 
   userPasswordForm = () => (
-    <SignupForm
-      alert={this.props.alert}
+    <EmailPasswordForm
       buttonText="Create Account"
       footer={this.renderFooter()}
-      onButtonPress={this.updateSwitch}
+      onChange={this.onFormChange}
+      form={this.state}
+      onButtonPress={this.doSignUp}
     />
   )
 
   render () {
     const formToRender = this.state.switch ? this.userProfileForm() : this.userPasswordForm()
     return (
-      <View style={styles.container}>
+      <LoadingOverlay
+        style={styles.container}
+        isLoading={this.state.loading}
+      >
         { formToRender }
-      </View>
+      </LoadingOverlay>
     )
   }
 }

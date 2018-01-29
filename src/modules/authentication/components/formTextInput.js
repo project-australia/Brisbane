@@ -5,7 +5,6 @@ import { Colors } from '../../../constants'
 import { styles } from './styles/formTextInput.style'
 import { styles as loginStyles } from './styles/loginFormStyles'
 
-
 export const FormTextInput = props => {
   const style = StyleSheet.flatten([styles.textInput, props.style])
   return (

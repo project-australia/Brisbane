@@ -1,65 +1,37 @@
-import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import { View } from 'react-native'
-import { FormHeader } from './formHeader'
-import { styles } from './styles/loginFormStyles'
-import { Colors } from '../../../constants'
-import { FormTextInput } from './formTextInput'
 import { FormButton } from '../../shared/components/buttons'
-import { LoadingOverlay } from '../../shared/components/loadingOverlay'
+import { FormHeader } from './formHeader'
+import { FormTextInput } from './formTextInput'
+import { signupFormType } from './profileForm'
+import { styles } from './styles/loginFormStyles'
 
-export class SignupForm extends Component {
+export class EmailPasswordForm extends Component {
   static defaultProps = { footer: <View /> }
   static propTypes = {
     footer: PropTypes.object,
-    buttonText: PropTypes.string.isRequired,
-    alert: PropTypes.shape({
-      showAlert: PropTypes.bool.isRequired,
-      message: PropTypes.string
-    }).isRequired
+    onButtonPress: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    form: signupFormType
   }
 
-  state = {
-    email: '',
-    password: '',
-    name: '',
-    loading: false
-  }
-
-  setUserName = name => this.setState({ name })
-
-  setEmail = email => this.setState({ email })
-  setPassword = password => this.setState({ password })
-
-  onButtonPress = async () => {
-    this.setState({ loading: true })
-    const { email, password } = this.state
-    await this.props.onButtonPress(email, password)
-    this.setState({ loading: false })
-  }
-
-  componentWillReceiveProps (nextProps) {
-    const { showAlert, message } = nextProps.alert
-    if (showAlert) {
-      alert(message)
-    }
-  }
+  setUserName = name => this.props.onChange({ name })
+  setEmail = email => this.props.onChange({ email })
+  setPassword = password => this.props.onChange({ password })
 
   render () {
     return (
-      <LoadingOverlay
-        style={styles.screen}
-        isLoading={this.state.loading}
-      >
+      <View style={styles.screen} >
         <FormHeader />
         <FormTextInput
           onChangeText={this.setUserName}
-          value={this.state.name}
+          value={this.props.form.name}
           placeholder="Name"
         />
         <FormTextInput
           onChangeText={this.setEmail}
-          value={this.state.email}
+          value={this.props.form.email}
           placeholder="Email address"
           autoCapitalize="none"
           style={styles.itemSpacing}
@@ -67,17 +39,17 @@ export class SignupForm extends Component {
         />
         <FormTextInput
           onChangeText={this.setPassword}
-          value={this.state.password}
+          value={this.props.form.password}
           placeholder="Password"
           secureTextEntry
         />
         <FormButton
-          title={this.props.buttonText}
-          onPress={this.onButtonPress}
+          title={'Create Account'}
+          onPress={this.props.onButtonPress}
           style={styles.itemSpacing}
         />
         {this.props.footer}
-      </LoadingOverlay>
+      </View>
     )
   }
 }

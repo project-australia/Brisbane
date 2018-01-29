@@ -3,11 +3,11 @@ import React, { Component } from 'react'
 import { bool, func, shape, string } from 'prop-types'
 
 import { signUpAction } from '../../../redux/actions/async/authenticationAsyncActions'
-import { SignUp } from '../components/signUp'
+import { SignUpForm } from '../components/signUp'
 
 class SignUpContainer extends Component {
   static navigationOptions = {
-    title: 'SignUp',
+    title: 'SignUpForm',
     header: null
   }
 
@@ -29,7 +29,7 @@ class SignUpContainer extends Component {
 
   render () {
     return (
-      <SignUp
+      <SignUpForm
         buttonText="SIGN UP"
         alert={this.props.alert}
         signUpUser={this.onSignUp}
