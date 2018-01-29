@@ -1,4 +1,4 @@
-import PropTypes, { number, string } from 'prop-types'
+import PropTypes, { string } from 'prop-types'
 import React, { Component } from 'react'
 import { View } from 'react-native'
 import { FormButton } from '../../shared/components/buttons'
