@@ -18,27 +18,17 @@ export class ConfirmBook extends Component {
   }
 
   state = {
-    navRightIcons: [{
-      name: 'cart-outline',
-      onPress: this.props.navigateToShoppingBag
-    }]
+    navRightIcons: [
+      {
+        name: 'cart-outline',
+        onPress: this.props.navigateToShoppingBag
+      }
+    ]
   }
 
   render () {
-    const {
-      book,
-      onPressSell,
-      onPressDonate,
-      onPressBallardsClub
-    } = this.props
-    const {
-      aboutBook,
-      author,
-      id,
-      imageUri,
-      sellPrice,
-      title
-    } = book
+    const { book, onPressSell, onPressDonate, onPressBallardsClub } = this.props
+    const { aboutBook, author, id, imageUri, sellPrice, title } = book
     return (
       <View style={styles.container}>
         <Navbar
@@ -48,14 +38,8 @@ export class ConfirmBook extends Component {
         />
         <ScrollView>
           <CoverImage source={{ uri: imageUri }} />
-          <BookTitleAndAuthor
-            title={title}
-            author={author}
-          />
-          <MenuTitle
-            title={'Selling Options'}
-            style={styles.titleWrap}
-          />
+          <BookTitleAndAuthor title={title} author={author} />
+          <MenuTitle title={'Selling Options'} style={styles.titleWrap} />
           <PriceRow
             title={{
               sell: 'I want to sell my book',
@@ -79,12 +63,13 @@ export class ConfirmBook extends Component {
               <Text style={styles.textAccent}> LEARN MORE</Text>
             </Text>
           </Touchable>
-          <MenuTitle
-            title={'Details'}
-            style={styles.titleWrap}
-          />
+          <MenuTitle title={'Details'} style={styles.titleWrap} />
           <GeneralInfoCard style={styles.standardSpacing}>
-            {(aboutBook !== null) && <Text style={[styles.description, styles.bottomSpacing]}>{aboutBook}</Text>}
+            {aboutBook !== null && (
+              <Text style={[styles.description, styles.bottomSpacing]}>
+                {aboutBook}
+              </Text>
+            )}
             <Text style={styles.description}>ISBN</Text>
             <Text style={styles.descriptionGray}>{id}</Text>
           </GeneralInfoCard>

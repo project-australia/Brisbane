@@ -43,7 +43,7 @@ class BuyBooksProcessContainer extends Component {
 
   state = {
     booksToSell: booksToSell,
-    totalPrice: 230.00
+    totalPrice: 230.0
   }
 
   render () {
@@ -65,4 +65,6 @@ BuyBooksProcessContainer.propTypes = {
 
 const mapStateToProps = state => ({ items: state.shoppingBag })
 
-export const BuyBooksProcessScreen = connect(mapStateToProps)(BuyBooksProcessContainer)
+export const BuyBooksProcessScreen = connect(mapStateToProps)(
+  BuyBooksProcessContainer
+)

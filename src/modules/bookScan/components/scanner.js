@@ -14,13 +14,13 @@ export class Scanner extends Component {
     isReading: false
   }
 
-  onRead = (isbn) => {
+  onRead = isbn => {
     if (!this.state.isReading) {
       this.getSellingPrice(isbn)
     }
   }
 
-  getSellingPrice = async (isbn) => {
+  getSellingPrice = async isbn => {
     await this.setState({ isReading: true })
     this.props.showBook(isbn)
   }

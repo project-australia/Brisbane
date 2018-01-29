@@ -12,7 +12,7 @@ import {
   signUpAction
 } from '../../../../src/redux/actions/async/authenticationAsyncActions'
 import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../../src/constants/messages'
-import {userProfile} from '../../../fixtures/userProfile'
+import { userProfile } from '../../../fixtures/userProfile'
 jest.mock('../../../../src/services/firebase/authentication')
 jest.mock('../../../../src/services/backend/userService')
 
@@ -36,12 +36,8 @@ describe('Auth async actions', () => {
     FirebaseService.createUserWithEmailAndPassword = jest.fn(() =>
       Promise.resolve(fireBaseUser)
     )
-    UserService.signUpUser = jest.fn(() =>
-      Promise.resolve(userProfile)
-    )
-    UserService.getUserProfile = jest.fn(() =>
-      Promise.resolve(userProfile)
-    )
+    UserService.signUpUser = jest.fn(() => Promise.resolve(userProfile))
+    UserService.getUserProfile = jest.fn(() => Promise.resolve(userProfile))
   })
 
   it('Should handle any exception as a failure action', async () => {
@@ -63,7 +59,10 @@ describe('Auth async actions', () => {
     const thunk = signUpAction(email, password)
     await thunk(mockDispatch)
 
-    expect(FirebaseService.signInWithEmailAndPassword).toHaveBeenCalledWith(email, password)
+    expect(FirebaseService.signInWithEmailAndPassword).toHaveBeenCalledWith(
+      email,
+      password
+    )
     expect(UserService.getUserProfile).toHaveBeenCalledWith(fireBaseUser.uid)
     expect(mockDispatch).toHaveBeenCalledWith(expectedAction)
   })
@@ -73,7 +72,10 @@ describe('Auth async actions', () => {
     const thunk = signInAction(email, password)
     await thunk(mockDispatch)
 
-    expect(FirebaseService.signInWithEmailAndPassword).toHaveBeenCalledWith(email, password)
+    expect(FirebaseService.signInWithEmailAndPassword).toHaveBeenCalledWith(
+      email,
+      password
+    )
     expect(UserService.getUserProfile).toHaveBeenCalledWith(fireBaseUser.uid)
     expect(mockDispatch).toHaveBeenCalledWith(expectedAction)
   })

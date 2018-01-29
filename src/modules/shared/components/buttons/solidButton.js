@@ -5,9 +5,8 @@ import { Touchable } from '../touchable'
 
 import { styles } from '../styles/buttons.styles'
 
-const getButtonStyle = isSecondary => (
+const getButtonStyle = isSecondary =>
   isSecondary ? styles.secondaryButton : styles.primaryButton
-)
 
 export const SolidButton = ({ title, onPress, secondary }) => (
   <Touchable borderless style={getButtonStyle(secondary)} onPress={onPress}>

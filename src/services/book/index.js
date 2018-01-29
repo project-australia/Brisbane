@@ -1,6 +1,4 @@
-import {
-  GET_BOOK_EVALUATION
-} from '../../constants/routes'
+import { GET_BOOK_EVALUATION } from '../../constants/routes'
 
 export const searchIsbn = async isbn => {
   const fetchResponse = await fetch(`${GET_BOOK_EVALUATION(isbn)}`, {

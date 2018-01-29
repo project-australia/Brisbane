@@ -7,10 +7,7 @@ import { Navbar } from '../../shared/components/navbar'
 
 export const ShoppingBag = props => (
   <View style={{ flex: 1 }}>
-    <Navbar
-      title={'Shopping Cart'}
-      onBack={props.navigateBack}
-    />
+    <Navbar title={'Shopping Cart'} onBack={props.navigateBack} />
     <ScrollView>
       <ShoppingBagItems
         isSellingBooks

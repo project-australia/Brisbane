@@ -13,9 +13,11 @@ export const FormOutlineButton = props => {
     secondaryText
   } = styles
 
-  const underlayColor = (props.secondary) ? Colors.secondary700 : Colors.primary700
-  const outlineStyle = (props.secondary) ? secondaryOutline : primaryOutline
-  const textStyle = (props.secondary) ? secondaryText : primaryText
+  const underlayColor = props.secondary
+    ? Colors.secondary700
+    : Colors.primary700
+  const outlineStyle = props.secondary ? secondaryOutline : primaryOutline
+  const textStyle = props.secondary ? secondaryText : primaryText
 
   const style = StyleSheet.flatten([
     transparentButton,

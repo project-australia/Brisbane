@@ -43,7 +43,7 @@ class SignInContainer extends Component {
   }
 
   componentWillUpdate (nextProps) {
-    const isUserLoggedIn = nextProps.user && (nextProps.user !== NOT_LOGGED_IN)
+    const isUserLoggedIn = nextProps.user && nextProps.user !== NOT_LOGGED_IN
     if (isUserLoggedIn) {
       nextProps.navigation.navigate(nextProps.redirectTo)
     }
@@ -52,12 +52,12 @@ class SignInContainer extends Component {
   render () {
     return (
       <SignIn
-        alert={ this.props.alert }
-        onButtonPress={ onSignIn(this.props) }
-        navigateToSignUp={ navigateToSignUp(this.props.navigation.navigate) }
-        navigateToForgotPassword={ navigateToForgotPasswordScreen(
+        alert={this.props.alert}
+        onButtonPress={onSignIn(this.props)}
+        navigateToSignUp={navigateToSignUp(this.props.navigation.navigate)}
+        navigateToForgotPassword={navigateToForgotPasswordScreen(
           this.props.navigation.navigate
-        ) }
+        )}
       />
     )
   }

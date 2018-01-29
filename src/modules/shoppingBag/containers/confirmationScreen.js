@@ -43,7 +43,7 @@ class ConfirmationScreenContainer extends Component {
 
   state = {
     booksToSell: booksToSell,
-    totalPrice: 230.00
+    totalPrice: 230.0
   }
 
   render () {
@@ -65,4 +65,6 @@ ConfirmationScreenContainer.propTypes = {
 
 const mapStateToProps = state => ({ items: state.shoppingBag })
 
-export const ConfirmationScreen = connect(mapStateToProps)(ConfirmationScreenContainer)
+export const ConfirmationScreen = connect(mapStateToProps)(
+  ConfirmationScreenContainer
+)

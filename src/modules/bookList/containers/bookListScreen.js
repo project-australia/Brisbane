@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { BookList } from '../components/bookList'
@@ -9,7 +9,7 @@ class BookListContainer extends Component {
     header: null
   }
 
-  selectBookList = (typeList) => this.props.items[typeList]
+  selectBookList = typeList => this.props.items[typeList]
 
   render () {
     const { typeList } = this.props.navigation.state.params

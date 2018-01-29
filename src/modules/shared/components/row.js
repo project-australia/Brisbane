@@ -5,16 +5,12 @@ import { styles } from './styles/row.style'
 
 const renderLeft = ({ title, style }) => {
   const titleStyle = StyleSheet.flatten([styles.leftTitle, style])
-  return (
-    <Text style={titleStyle}>{title}</Text>
-  )
+  return <Text style={titleStyle}>{title}</Text>
 }
 
 const renderRight = ({ title, style }) => {
   const titleStyle = StyleSheet.flatten([styles.rightTitle, style])
-  return (
-    <Text style={titleStyle}>{title}</Text>
-  )
+  return <Text style={titleStyle}>{title}</Text>
 }
 
 export const Row = ({ left, right }) => (

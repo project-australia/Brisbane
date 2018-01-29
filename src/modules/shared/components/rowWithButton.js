@@ -8,10 +8,6 @@ import { styles } from './styles/rowWithButton.style'
 export const RowWithButton = ({ title, buttonTitle, onPress }) => (
   <View style={styles.wrap}>
     <Text style={styles.title}>{title}</Text>
-    <FlatButton
-      secondary
-      title={buttonTitle}
-      onPress={onPress}
-    />
+    <FlatButton secondary title={buttonTitle} onPress={onPress} />
   </View>
 )

@@ -1,7 +1,7 @@
 import { bool, func, shape, string } from 'prop-types'
 import React, { Component } from 'react'
 import { Address } from '../../../domain/Address'
-import { SignUpRequest } from '../../../domain/SignUp'
+import { SignUpRequest } from '../../../domain/SignUpRequest'
 import { User } from '../../../domain/User'
 import { FormOutlineButton } from '../../shared/components/buttons'
 import { LoadingOverlay } from '../../shared/components/loadingOverlay'
@@ -25,13 +25,7 @@ const extractSignUpFormFromState = form => {
     password
   } = form
 
-  const address = new Address(
-    street,
-    city,
-    number,
-    zipCode,
-    state
-  )
+  const address = new Address(street, city, number, zipCode, state)
 
   const user = new User(
     undefined,
@@ -73,7 +67,7 @@ export class SignUpForm extends Component {
     loading: false
   }
 
-  onFormChange = (value) => {
+  onFormChange = value => {
     this.setState(value)
   }
 
@@ -132,13 +126,12 @@ export class SignUpForm extends Component {
   )
 
   render () {
-    const formToRender = this.state.switch ? this.userProfileForm() : this.userPasswordForm()
+    const formToRender = this.state.switch
+      ? this.userProfileForm()
+      : this.userPasswordForm()
     return (
-      <LoadingOverlay
-        style={styles.container}
-        isLoading={this.state.loading}
-      >
-        { formToRender }
+      <LoadingOverlay style={styles.container} isLoading={this.state.loading}>
+        {formToRender}
       </LoadingOverlay>
     )
   }

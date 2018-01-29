@@ -8,7 +8,10 @@ import { Colors, Metrics } from '../../../constants'
 import { styles } from './styles/rowAdd.style'
 
 export const RowWithIconButton = ({ title, iconName, onPress }) => (
-  <Touchable onPress={onPress} style={StyleSheet.flatten([styles.wrap, styles.iconRightPadding])}>
+  <Touchable
+    onPress={onPress}
+    style={StyleSheet.flatten([styles.wrap, styles.iconRightPadding])}
+  >
     <Text style={styles.title}>{title}</Text>
     <Icon
       color={Colors.gray500}

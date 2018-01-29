@@ -21,7 +21,9 @@ export const TestScreen = props => {
       <View style={styles.textRow}>
         <Button
           title={'PayPal Payment Screen'}
-          onPress={() => payWithPayPal('150.55', 'Testing PayPalPayment', alert, alert)}
+          onPress={() =>
+            payWithPayPal('150.55', 'Testing PayPalPayment', alert, alert)
+          }
         />
       </View>
     )
@@ -37,7 +39,7 @@ export const TestScreen = props => {
       {navigateTo('BookScanner')}
       {navigateTo('ShoppingBag')}
       {navigateTo('ConfirmationScreen')}
-      {navigateTo('BookSelling', {isbn: 9781483358505})}
+      {navigateTo('BookSelling', { isbn: 9781483358505 })}
       {navigateTo('BookList')}
       {navigateTo('ShoppingBag')}
       {navigateTo('BuyBooksProcess')}

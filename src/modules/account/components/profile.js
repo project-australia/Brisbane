@@ -10,7 +10,7 @@ import { ProfileButtonItem } from './profileButtonItem'
 
 import { styles } from './styles/profile.style'
 
-const getSubscriptionText = (subType) => {
+const getSubscriptionText = subType => {
   switch (subType) {
     case 'tenPercent':
       return '10% off'
@@ -21,9 +21,8 @@ const getSubscriptionText = (subType) => {
   }
 }
 
-const setUserNetworkNumber = (network) => (
-  (network && network.length > 0) && `${network.length} registered members`
-)
+const setUserNetworkNumber = network =>
+  network && network.length > 0 && `${network.length} registered members`
 
 export const Profile = ({
   onBackPress,
@@ -86,10 +85,7 @@ export const Profile = ({
           buttonTitle={'View my Wallet'}
           onPress={navigateToWallet}
         />
-        <ProfileButtonItem
-          buttonTitle={'Logout'}
-          onPress={onLogoutPress}
-        />
+        <ProfileButtonItem buttonTitle={'Logout'} onPress={onLogoutPress} />
       </ScrollView>
       <ModalWithInput
         visible={isEditModalOpen}

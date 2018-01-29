@@ -22,16 +22,18 @@ class ProfileContainer extends Component {
     modalTitle: ''
   }
 
-  showEditModal = (modalTitle) => this.setState({
-    modalTitle,
-    isEditModalOpen: true,
-    isModalInputMultiline: (modalTitle === 'Address')
-  })
-  hideEditModal = () => this.setState({
-    modalTitle: '',
-    isEditModalOpen: false,
-    isModalInputMultiline: false
-  })
+  showEditModal = modalTitle =>
+    this.setState({
+      modalTitle,
+      isEditModalOpen: true,
+      isModalInputMultiline: modalTitle === 'Address'
+    })
+  hideEditModal = () =>
+    this.setState({
+      modalTitle: '',
+      isEditModalOpen: false,
+      isModalInputMultiline: false
+    })
   updateData = () => {
     console.warn('update user data')
     this.hideEditModal()
@@ -55,7 +57,10 @@ class ProfileContainer extends Component {
   }
 
   goBack = () => this.props.navigation.goBack()
-  navigateToNetwork = () => this.props.navigation.navigate('NetworkMembers', { network: this.state.user.network })
+  navigateToNetwork = () =>
+    this.props.navigation.navigate('NetworkMembers', {
+      network: this.state.user.network
+    })
   navigateToWallet = () => alert('navigate to my wallet')
 }
 

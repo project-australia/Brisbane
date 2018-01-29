@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { NetworkMembers } from '../components/networkMembers'
@@ -15,10 +15,7 @@ class NetworkMembersContainer extends Component {
 
   render () {
     return (
-      <NetworkMembers
-        network={this.state.network}
-        navigateBack={this.goBack}
-      />
+      <NetworkMembers network={this.state.network} navigateBack={this.goBack} />
     )
   }
 
@@ -27,4 +24,6 @@ class NetworkMembersContainer extends Component {
 
 const mapStateToProps = state => ({ items: state.books })
 
-export const NetworkMembersScreen = connect(mapStateToProps)(NetworkMembersContainer)
+export const NetworkMembersScreen = connect(mapStateToProps)(
+  NetworkMembersContainer
+)

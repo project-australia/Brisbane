@@ -7,14 +7,11 @@ class BookScanner extends Component {
   static navigationOptions = {
     title: 'Book Scan'
   }
-  navigateToBookSelling = isbn => this.props.navigation.navigate('BookSelling', {isbn})
+  navigateToBookSelling = isbn =>
+    this.props.navigation.navigate('BookSelling', { isbn })
 
   render () {
-    return (
-      <Scanner
-        showBook={this.navigateToBookSelling}
-      />
-    )
+    return <Scanner showBook={this.navigateToBookSelling} />
   }
 }
 

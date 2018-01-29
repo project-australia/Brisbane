@@ -7,14 +7,13 @@ import { reducers } from '../../../src/redux/reducers'
 import * as FirebaseService from '../../../src/services/firebase/authentication'
 import * as UserService from '../../../src/services/backend/userService'
 import { extractActionFromThunk } from './reduxThunkMock'
-import {
-  signInAction
-} from '../../../src/redux/actions/async/authenticationAsyncActions'
+import { signInAction } from '../../../src/redux/actions/async/authenticationAsyncActions'
 import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../src/constants/messages'
 import {
   alertAction,
   showAlert,
-  successRetrievedPassword, updateUserProfile
+  successRetrievedPassword,
+  updateUserProfile
 } from '../../../src/redux/actions/sync/authenticationActions'
 import { userProfile } from '../../fixtures/userProfile'
 
@@ -41,9 +40,7 @@ describe('Authentication reducers', () => {
     FirebaseService.signInWithEmailAndPassword = jest.fn(() =>
       Promise.resolve(firebaseUser)
     )
-    UserService.getUserProfile = jest.fn(() =>
-      Promise.resolve(userProfile)
-    )
+    UserService.getUserProfile = jest.fn(() => Promise.resolve(userProfile))
     FirebaseService.createUserWithEmailAndPassword = jest.fn(() =>
       Promise.resolve()
     )
@@ -73,7 +70,10 @@ describe('Authentication reducers', () => {
     const action = await extractActionFromThunk(signInAction, email, password)
     const state = authReducers(AUTH_INITIAL_STATE, action)
 
-    expect(FirebaseService.signInWithEmailAndPassword).toHaveBeenCalledWith(email, password)
+    expect(FirebaseService.signInWithEmailAndPassword).toHaveBeenCalledWith(
+      email,
+      password
+    )
     expect(UserService.getUserProfile).toHaveBeenCalledWith(firebaseUser.uid)
     expect(state).toEqual({ ...AUTH_INITIAL_STATE, user: userProfile })
   })

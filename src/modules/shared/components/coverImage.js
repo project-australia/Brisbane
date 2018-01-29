@@ -11,10 +11,6 @@ export const CoverImage = props => (
     {...props}
   >
     <View style={styles.lightOverlay} />
-    <Image
-      resizeMode={'contain'}
-      style={styles.mainImage}
-      {...props}
-    />
+    <Image resizeMode={'contain'} style={styles.mainImage} {...props} />
   </ImageBackground>
 )

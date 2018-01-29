@@ -8,7 +8,10 @@ import {
   signInWithEmailAndPassword
 } from '../../../services/firebase/authentication'
 import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../constants/messages'
-import { signUpUser, getUserProfile } from '../../../services/backend/userService'
+import {
+  signUpUser,
+  getUserProfile
+} from '../../../services/backend/userService'
 
 export function signInAction (email, password) {
   return async dispatch => {

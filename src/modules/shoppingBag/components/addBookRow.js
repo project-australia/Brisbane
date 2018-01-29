@@ -12,10 +12,16 @@ export const AddBookRow = ({ title, onPress }) => {
     <TouchableOpacity onPress={onPress} style={cardStyle}>
       <View style={styles.contentWrap}>
         <View style={styles.image}>
-          <Icon name={'plus'} size={Metrics.icons.small} color={Colors.gray500} />
+          <Icon
+            name={'plus'}
+            size={Metrics.icons.small}
+            color={Colors.gray500}
+          />
         </View>
         <View style={styles.detailsWrap}>
-          <Text numberOfLines={1} style={styles.titleLight}>{title}</Text>
+          <Text numberOfLines={1} style={styles.titleLight}>
+            {title}
+          </Text>
         </View>
       </View>
     </TouchableOpacity>

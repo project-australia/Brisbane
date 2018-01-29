@@ -8,21 +8,11 @@ import { Touchable } from '../../shared/components/touchable'
 import { styles } from './styles/home.styles'
 import { Colors, Metrics } from '../../../constants'
 
-const rightIconOnPress = (
-  inputValue,
-  scanFunction,
-  submitFunction
-) => (
-  inputValue === ''
-    ? scanFunction
-    : submitFunction
-)
+const rightIconOnPress = (inputValue, scanFunction, submitFunction) =>
+  inputValue === '' ? scanFunction : submitFunction
 
-const rightIconName = (inputValue) => (
-  inputValue === ''
-    ? 'barcode-scan'
-    : 'chevron-right'
-)
+const rightIconName = inputValue =>
+  inputValue === '' ? 'barcode-scan' : 'chevron-right'
 
 export const BookSearch = props => (
   <View style={styles.searchBarWrap}>

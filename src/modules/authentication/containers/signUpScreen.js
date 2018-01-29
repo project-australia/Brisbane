@@ -19,7 +19,7 @@ class SignUpContainer extends Component {
     }).isRequired
   }
 
-  onSignUp = (signUpForm) => {
+  onSignUp = signUpForm => {
     this.props.signUp(signUpForm)
   }
 

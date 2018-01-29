@@ -7,7 +7,8 @@ export const InputMultiline = props => {
   const style = StyleSheet.flatten([styles.multilineInput, props.style])
   return (
     <TextInput
-      multiline {...props}
+      multiline
+      {...props}
       style={style}
       underlineColorAndroid={'transparent'}
     />

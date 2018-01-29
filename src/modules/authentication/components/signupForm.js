@@ -22,7 +22,7 @@ export class EmailPasswordForm extends Component {
 
   render () {
     return (
-      <View style={styles.screen} >
+      <View style={styles.screen}>
         <FormHeader />
         <FormTextInput
           onChangeText={this.setUserName}

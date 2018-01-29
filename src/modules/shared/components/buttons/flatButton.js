@@ -5,9 +5,8 @@ import { Touchable } from '../touchable'
 
 import { styles } from '../styles/buttons.styles'
 
-const getTextStyle = isSecondary => (
+const getTextStyle = isSecondary =>
   isSecondary ? styles.secondaryText : styles.primaryText
-)
 
 export const FlatButton = ({ title, onPress, secondary, containerStyle }) => (
   <Touchable

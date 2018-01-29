@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Platform, Modal, Keyboard, StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native'
+import { Platform, Modal, Keyboard, StyleSheet, View, Text } from 'react-native'
 import { Fonts, Colors, Metrics } from '../../../../constants'
 import { FormTextInput } from '../../../authentication/components/formTextInput'
 import { InputMultiline } from '../inputs/inputMultiline'
@@ -10,8 +10,14 @@ export class ModalWithInput extends Component {
 
   componentWillMount () {
     if (Platform.OS === 'ios') {
-      this.keyboardWillShowListener = Keyboard.addListener('keyboardWillShow', this.keyboardShow)
-      this.keyboardWillHideListener = Keyboard.addListener('keyboardWillHide', this.keyboardHide)
+      this.keyboardWillShowListener = Keyboard.addListener(
+        'keyboardWillShow',
+        this.keyboardShow
+      )
+      this.keyboardWillHideListener = Keyboard.addListener(
+        'keyboardWillHide',
+        this.keyboardHide
+      )
     }
   }
 
@@ -22,17 +28,24 @@ export class ModalWithInput extends Component {
     }
   }
 
-  keyboardShow = (keyboardData) => this.setState({
-    keyboardHeight: keyboardData.endCoordinates.height
-  })
+  keyboardShow = keyboardData =>
+    this.setState({
+      keyboardHeight: keyboardData.endCoordinates.height
+    })
   keyboardHide = () => this.setState({ keyboardHeight: 0 })
 
-  renderInput = (inputType) => {
+  renderInput = inputType => {
     const { multiline } = this.props
     const placeholder = 'Insert your data here'
-    return (multiline)
-      ? <InputMultiline autoFocus style={styles.input} placeholder={placeholder} />
-      : <FormTextInput autoFocus style={styles.input} placeholder={placeholder} />
+    return multiline ? (
+      <InputMultiline
+        autoFocus
+        style={styles.input}
+        placeholder={placeholder}
+      />
+    ) : (
+      <FormTextInput autoFocus style={styles.input} placeholder={placeholder} />
+    )
   }
 
   render () {

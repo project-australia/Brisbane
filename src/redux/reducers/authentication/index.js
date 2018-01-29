@@ -5,10 +5,7 @@ import {
   UPDATE_USER_INFO
 } from '../../types/authenticationTypes'
 import { AUTH_INITIAL_STATE } from './constants'
-import {
-  showAlertHandler,
-  updateUserProfileHandler
-} from './handlers'
+import { showAlertHandler, updateUserProfileHandler } from './handlers'
 
 export const actionHandlers = {
   [SHOW_ALERT]: showAlertHandler, // FIXME: All these handlers are the same,

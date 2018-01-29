@@ -17,20 +17,9 @@ const createUserFromBackEndResponse = response => {
     role
   } = response.data
 
-  const
-    { city,
-      street,
-      number,
-      zipCode,
-      state } = address
+  const { city, street, number, zipCode, state } = address
 
-  const userAddress = new Address(
-    street,
-    city,
-    number,
-    zipCode,
-    state
-  )
+  const userAddress = new Address(street, city, number, zipCode, state)
 
   return new User(
     id,
@@ -43,10 +32,11 @@ const createUserFromBackEndResponse = response => {
     referId,
     club,
     role,
-    userAddress)
+    userAddress
+  )
 }
 
-export const signUpUser = async (signUpForm) => {
+export const signUpUser = async signUpForm => {
   try {
     const response = await Axios.post('/users', signUpForm)
     return createUserFromBackEndResponse(response)

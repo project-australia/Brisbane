@@ -103,12 +103,15 @@ class ShoppingBagContainer extends Component {
   }
 
   goBack = () => this.props.navigation.goBack()
-  navigateToCheckout = (price, description, onSuccess, onError) => payWithPayPal('666.66', 'INSERT A DESCRIPTION' +
-    ' HERE', alert, alert)
-  navigateToSellConfirmation = () => this.props.navigation.navigate('ConfirmationScreen')
+  navigateToCheckout = (price, description, onSuccess, onError) =>
+    payWithPayPal('666.66', 'INSERT A DESCRIPTION' + ' HERE', alert, alert)
+  navigateToSellConfirmation = () =>
+    this.props.navigation.navigate('ConfirmationScreen')
   navigateToHome = () => this.props.navigation.navigate('Home')
-  navigateToSellBooksProcess = () => this.props.navigation.navigate('SellBooksProcess')
-  navigateToBuyBooksProcess = () => this.props.navigation.navigate('BuyBooksProcess')
+  navigateToSellBooksProcess = () =>
+    this.props.navigation.navigate('SellBooksProcess')
+  navigateToBuyBooksProcess = () =>
+    this.props.navigation.navigate('BuyBooksProcess')
 }
 
 ShoppingBagContainer.propTypes = {

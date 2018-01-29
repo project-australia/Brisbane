@@ -39,9 +39,7 @@ export class Home extends Component {
     bookSearchValue: ''
   }
 
-  updateBookSearchValue = (bookSearchValue) => (
-    this.setState({ bookSearchValue })
-  )
+  updateBookSearchValue = bookSearchValue => this.setState({ bookSearchValue })
 
   render () {
     const recentlyAddedButton = {
@@ -59,9 +57,7 @@ export class Home extends Component {
           title={`Hi, ${this.props.userName}`}
           rightIcons={this.state.navRightIcons}
         />
-        <ScrollView
-          bounces={false}
-        >
+        <ScrollView bounces={false}>
           <BookSearch
             onSubmit={() => this.props.searchBook(this.state.bookSearchValue)}
             onScanPress={this.props.navigateToScan}

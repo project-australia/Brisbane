@@ -8,7 +8,7 @@ import { FormOutlineButton } from '../../shared/components/buttons'
 
 import { styles } from './styles/shoppingBagItems.style'
 
-export const BuyBooksProcess = (props) => {
+export const BuyBooksProcess = props => {
   const booksLength = props.booksToSell.length
   return (
     <View>
@@ -17,10 +17,7 @@ export const BuyBooksProcess = (props) => {
         onBack={props.navigateBack}
       />
       <ScrollView>
-        <OrderSummaryList
-          orders={props.booksToSell}
-          total={props.totalPrice}
-        />
+        <OrderSummaryList orders={props.booksToSell} total={props.totalPrice} />
 
         <MenuTitle title={'Shipping'} style={styles.titleWrap} />
         <View style={styles.wrappingCard}>

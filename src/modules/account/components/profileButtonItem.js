@@ -6,7 +6,12 @@ import { FlatButton } from '../../shared/components/buttons'
 
 import { styles } from './styles/profileItem.style'
 
-export const ProfileButtonItem = ({ title, buttonTitle, onPress, secondary }) => {
+export const ProfileButtonItem = ({
+  title,
+  buttonTitle,
+  onPress,
+  secondary
+}) => {
   return (
     <View style={styles.wrap}>
       <MenuTitle title={title} />

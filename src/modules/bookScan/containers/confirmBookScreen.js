@@ -15,7 +15,7 @@ class BookScannerContainer extends Component {
   //   isbn: PropTypes.string.isRequired
   // }
 
-  state={
+  state = {
     book: undefined
   }
 
@@ -24,30 +24,26 @@ class BookScannerContainer extends Component {
     const isbn = this.props.isbn || this.props.navigation.state.params.isbn
     try {
       const book = await searchIsbn(isbn)
-      this.setState({book})
+      this.setState({ book })
     } catch (e) {
-      Alert.alert(
-        '',
-        'ISBN Not Found',
-        [
-          {text: 'Ok', onPress: this.goBack}
-        ]
-      )
+      Alert.alert('', 'ISBN Not Found', [{ text: 'Ok', onPress: this.goBack }])
     }
   }
 
   render () {
-    return (
-      (typeof this.state.book === 'undefined')
-        ? <LoadingOverlay isLoading><View /></LoadingOverlay>
-        : <ConfirmBook
-          book={this.state.book}
-          navigateBack={this.goBack}
-          navigateToShoppingBag={this.navigateTo('ShoppingBag')}
-          onPressSell={() => console.warn('hello :D')}
-          onPressDonate={() => console.warn('hello :D')}
-          onPressBallardsClub={() => console.warn('hello :D')}
-        />
+    return typeof this.state.book === 'undefined' ? (
+      <LoadingOverlay isLoading>
+        <View />
+      </LoadingOverlay>
+    ) : (
+      <ConfirmBook
+        book={this.state.book}
+        navigateBack={this.goBack}
+        navigateToShoppingBag={this.navigateTo('ShoppingBag')}
+        onPressSell={() => console.warn('hello :D')}
+        onPressDonate={() => console.warn('hello :D')}
+        onPressBallardsClub={() => console.warn('hello :D')}
+      />
     )
   }
 

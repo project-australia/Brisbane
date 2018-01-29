@@ -20,8 +20,12 @@ class BookListContainer extends React.PureComponent {
     return (
       <HorizontalBookList
         books={this.props.books}
-        onBuyBook={(book) => this.props.navigation.navigate('BookSelling', { isbn: book.isbn })}
-        onRentBook={(book) => this.props.navigation.navigate('BookSelling', { isbn: book.isbn })}
+        onBuyBook={book =>
+          this.props.navigation.navigate('BookSelling', { isbn: book.isbn })
+        }
+        onRentBook={book =>
+          this.props.navigation.navigate('BookSelling', { isbn: book.isbn })
+        }
       />
     )
   }

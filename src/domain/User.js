@@ -12,7 +12,8 @@ export class User {
     referId,
     club,
     role,
-    address) {
+    address
+  ) {
     this.id = id
     this.referredBy = referredBy
     this.name = _.capitalize(name)

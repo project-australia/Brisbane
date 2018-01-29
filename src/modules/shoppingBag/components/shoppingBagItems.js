@@ -22,13 +22,11 @@ const renderBook = ({ book, type, quantity, id }) => (
   />
 )
 
-const setAddBookTitle = (isSelling) => (
-  (isSelling) ? 'Sell more books' : 'Buy more books'
-)
+const setAddBookTitle = isSelling =>
+  isSelling ? 'Sell more books' : 'Buy more books'
 
-const setTotalPriceColor = (isSelling) => (
-  (isSelling) ? styles.secondaryColor : styles.primaryColor
-)
+const setTotalPriceColor = isSelling =>
+  isSelling ? styles.secondaryColor : styles.primaryColor
 
 export const ShoppingBagItems = ({
   items,
@@ -40,34 +38,39 @@ export const ShoppingBagItems = ({
   onPress,
   onPressMoreBooks
 }) => {
-  return (typeof items !== 'undefined' && items.length > 0) && (
-    <View style={styles.itemsWrap}>
-      <MenuTitle
-        title={title}
-        style={styles.titleWrap}
-      />
-      {items.map(renderBook)}
-      <AddBookRow
-        title={setAddBookTitle(isSellingBooks)}
-        onPress={onPressMoreBooks}
-      />
-      <View style={StyleSheet.flatten([styles.contentWrap, styles.whiteBackground])}>
-        <Text style={styles.totalText}>Total</Text>
-        <Text
+  return (
+    typeof items !== 'undefined' &&
+    items.length > 0 && (
+      <View style={styles.itemsWrap}>
+        <MenuTitle title={title} style={styles.titleWrap} />
+        {items.map(renderBook)}
+        <AddBookRow
+          title={setAddBookTitle(isSellingBooks)}
+          onPress={onPressMoreBooks}
+        />
+        <View
           style={StyleSheet.flatten([
-            styles.totalPriceText,
-            setTotalPriceColor(isSellingBooks)
+            styles.contentWrap,
+            styles.whiteBackground
           ])}
         >
-          {`$${totalValue}`}
-        </Text>
+          <Text style={styles.totalText}>Total</Text>
+          <Text
+            style={StyleSheet.flatten([
+              styles.totalPriceText,
+              setTotalPriceColor(isSellingBooks)
+            ])}
+          >
+            {`$${totalValue}`}
+          </Text>
+        </View>
+        <SolidButton
+          onPress={checkoutButton.onPress}
+          secondary={isSellingBooks}
+          title={checkoutButton.title}
+        />
       </View>
-      <SolidButton
-        onPress={checkoutButton.onPress}
-        secondary={isSellingBooks}
-        title={checkoutButton.title}
-      />
-    </View>
+    )
   )
 }
 
