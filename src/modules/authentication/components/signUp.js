@@ -1,7 +1,7 @@
 import { bool, func, shape, string } from 'prop-types'
 import React, { Component } from 'react'
 import { Address } from '../../../domain/Address'
-import { SignUp } from '../../../domain/SignUp'
+import { SignUpRequest } from '../../../domain/SignUp'
 import { User } from '../../../domain/User'
 import { FormOutlineButton } from '../../shared/components/buttons'
 import { LoadingOverlay } from '../../shared/components/loadingOverlay'
@@ -47,7 +47,7 @@ const extractSignUpFormFromState = form => {
     address
   )
 
-  return new SignUp(email, password, user)
+  return new SignUpRequest(email, password, user)
 }
 
 export class SignUpForm extends Component {
