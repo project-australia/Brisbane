@@ -1,6 +1,5 @@
 import { number, shape, string } from 'prop-types'
 
-
 // FIXME: This representation is not right
 export const book = shape({
   id: string.isRequired,

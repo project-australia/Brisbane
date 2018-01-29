@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Home } from '../components/home'
-import { booksStub } from '../../../stubs/books'
 
 class HomeContainer extends Component {
   static navigationOptions = {

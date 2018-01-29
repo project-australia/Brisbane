@@ -4,7 +4,6 @@ import { StyleSheet, ScrollView, Text, View } from 'react-native'
 import { Navbar } from '../../shared/components/navbar'
 import { OrderSummaryList } from './orderSummaryList'
 import { MenuTitle } from '../../shared/components/menuTitle'
-import { FormTextInput } from '../../authentication/components/formTextInput'
 import { FormOutlineButton } from '../../shared/components/buttons'
 
 import { styles } from './styles/shoppingBagItems.style'
