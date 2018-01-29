@@ -11,18 +11,18 @@ import { styles } from './styles/home.styles'
 export const Book = ({
   onBuyPressed,
   onRentPressed,
-  book: { title, author, edition, images }
+  book: { title, authors, edition, images }
 }) => {
   const imageSource = images
     ? { uri: images.small }
     : require('../../../assets/images/book-placeholder.png')
-
+  const groupAuthors = authors.join(', ')
   return (
     <Card style={styles.bookCard}>
       <Image style={styles.bookImage} source={imageSource} />
       <View style={styles.bookInfoWrap}>
         <Text style={styles.primaryText}>{title}</Text>
-        <Text style={styles.secondaryInput}>{author}</Text>
+        <Text style={styles.secondaryInput}>{groupAuthors}</Text>
         <Text style={styles.secondaryInput}>{edition}</Text>
         <View style={styles.bookButtonsGroup}>
           <FormButton
