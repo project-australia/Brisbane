@@ -22,7 +22,7 @@ export class LoginForm extends Component {
   // FIXME: Test data only
   state = {
     email: 'eduardomoroni@gmail.com',
-    password: '123456',
+    password: '123123',
     loading: false
   }
 
