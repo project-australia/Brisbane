@@ -14,7 +14,7 @@ export const Book = ({
   book: { title, authors, edition, images }
 }) => {
   const imageSource = images
-    ? { uri: images.small }
+    ? { uri: images.medium }
     : require('../../../assets/images/book-placeholder.png')
   const groupAuthors = authors.join(', ')
   return (
