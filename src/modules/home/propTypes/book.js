@@ -6,7 +6,7 @@ export const book = shape({
   images: arrayOf.isRequired,
   title: string.isRequired,
   authors: arrayOf.isRequired,
-  edition: string.isRequired,
+  edition: string,
   aboutBook: string,
   sellPrice: number
 })

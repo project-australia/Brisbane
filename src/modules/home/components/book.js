@@ -23,7 +23,7 @@ export const Book = ({
       <View style={styles.bookInfoWrap}>
         <Text style={styles.primaryText}>{title}</Text>
         <Text style={styles.secondaryInput}>{groupAuthors}</Text>
-        <Text style={styles.secondaryInput}>{edition}</Text>
+        <Text style={styles.secondaryInput}>{edition || 'First'}</Text>
         <View style={styles.bookButtonsGroup}>
           <FormButton
             style={styles.buyButton}
