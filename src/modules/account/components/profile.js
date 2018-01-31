@@ -1,9 +1,11 @@
 import React from 'react'
 import { ScrollView, View } from 'react-native'
+import moment from 'moment'
 
 import { ModalWithInput } from '../../shared/components/modals/modalWithInput'
 import { Navbar } from '../../shared/components/navbar'
 import { ProfileItem } from './profileItem'
+import { ProfileItemAddress } from './profileItemAddress'
 import { ScreenTitleAndSubtitle } from './screenTitleAndSubtitle'
 import { ProfileRedirectItem } from './profileRedirectItem'
 import { ProfileButtonItem } from './profileButtonItem'
@@ -52,17 +54,17 @@ export const Profile = ({
         />
         <ProfileItem
           title={'Phone'}
-          data={user.phone}
+          data={user.telephone}
           emptyDataLabel={'Add phone number'}
           onPress={() => showEditModal('Phone')}
         />
         <ProfileItem
           title={'Birth date'}
-          data={user.birthDate}
+          data={moment(user.birthDate).format('MMM Do YYYY')}
           emptyDataLabel={'Add birth date'}
           onPress={() => showEditModal('Birth date')}
         />
-        <ProfileItem
+        <ProfileItemAddress
           title={'Address'}
           data={user.address}
           emptyDataLabel={'Add address'}
