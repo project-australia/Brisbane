@@ -72,7 +72,6 @@ export class SignUpForm extends Component {
   }
 
   switchForm = () => {
-    console.log('this.state', extractSignUpFormFromState(this.state))
     this.setState({ switch: !this.state.switch })
   }
 
@@ -111,24 +110,23 @@ export class SignUpForm extends Component {
       footer={this.renderFooter()}
       onChange={this.onFormChange}
       form={this.state}
-      onButtonPress={this.switchForm}
+      onButtonPress={this.doSignUp}
     />
   )
 
   userPasswordForm = () => (
     <EmailPasswordForm
-      buttonText="Create Account"
       footer={this.renderFooter()}
       onChange={this.onFormChange}
       form={this.state}
-      onButtonPress={this.doSignUp}
+      onButtonPress={this.switchForm}
     />
   )
 
   render () {
     const formToRender = this.state.switch
-      ? this.userProfileForm()
-      : this.userPasswordForm()
+      ? this.userPasswordForm()
+      : this.userProfileForm()
     return (
       <LoadingOverlay style={styles.container} isLoading={this.state.loading}>
         {formToRender}

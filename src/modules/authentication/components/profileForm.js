@@ -87,7 +87,7 @@ export class ProfileForm extends Component {
           placeholder="State"
         />
         <FormButton
-          title={'Finish your registration'}
+          title={'Create your account'}
           onPress={() => this.props.onButtonPress()}
           style={styles.itemSpacing}
         />
