@@ -44,7 +44,7 @@ export class EmailPasswordForm extends Component {
           secureTextEntry
         />
         <FormButton
-          title={'Create Account'}
+          title={'Finish your registration'}
           onPress={this.props.onButtonPress}
           style={styles.itemSpacing}
         />

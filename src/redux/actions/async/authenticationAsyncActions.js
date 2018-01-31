@@ -29,9 +29,11 @@ export function signUpAction (signUpForm) {
   return async dispatch => {
     try {
       const user = await signUpUser(signUpForm)
-      return signInAction(user.email, signUpForm.password)
+      console.log(user)
+      dispatch(signInAction(signUpForm.email, signUpForm.password))
     } catch (error) {
       // TODO: this method is receiving an object, it should've a string
+      console.log(error)
       dispatch(alertAction(error))
     }
   }

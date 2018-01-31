@@ -8,7 +8,7 @@ import { SignIn } from '../components/signIn'
 import { UserPropTypes } from '../propTypes/user'
 
 const navigateToSignUp = navigate => () => {
-  navigate('SignUpForm', {})
+  navigate('SignUp', {})
 }
 const navigateToForgotPasswordScreen = navigate => () => {
   navigate('ForgotPassword', {})

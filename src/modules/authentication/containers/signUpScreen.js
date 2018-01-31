@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { bool, func, shape, string } from 'prop-types'
 
 import { signUpAction } from '../../../redux/actions/async/authenticationAsyncActions'
+import { NOT_LOGGED_IN } from '../../../redux/reducers/authentication/constants'
 import { SignUpForm } from '../components/signUp'
 
 class SignUpContainer extends Component {
@@ -17,6 +18,13 @@ class SignUpContainer extends Component {
       showAlert: bool.isRequired,
       message: string
     }).isRequired
+  }
+
+  componentWillUpdate (nextProps) {
+    const isUserLoggedIn = nextProps.user && nextProps.user !== NOT_LOGGED_IN
+    if (isUserLoggedIn) {
+      nextProps.navigation.navigate('Home')
+    }
   }
 
   onSignUp = signUpForm => {
@@ -40,7 +48,8 @@ class SignUpContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  alert: state.authentication.alert
+  alert: state.authentication.alert,
+  user: state.authentication.user
 })
 
 const mapDispatchToProps = dispatch => ({
