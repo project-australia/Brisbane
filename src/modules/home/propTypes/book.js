@@ -1,12 +1,12 @@
-import { number, shape, string } from 'prop-types'
+import { number, shape, string, arrayOf } from 'prop-types'
 
 // FIXME: This representation is not right
 export const book = shape({
   id: string.isRequired,
-  imageUri: string.isRequired,
+  images: arrayOf.isRequired,
   title: string.isRequired,
-  author: string.isRequired,
-  edition: string.isRequired,
+  authors: arrayOf.isRequired,
+  edition: string,
   aboutBook: string,
   sellPrice: number
 })

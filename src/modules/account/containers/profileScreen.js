@@ -40,10 +40,11 @@ class ProfileContainer extends Component {
   }
 
   render () {
+    console.log('AAAAA', this.props.user)
     return (
       <Profile
         onBackPress={this.goBack}
-        user={this.state.user}
+        user={this.props.user}
         onLogoutPress={() => console.warn('logout function here')}
         navigateToNetwork={this.navigateToNetwork}
         navigateToWallet={this.navigateToWallet}
@@ -64,9 +65,11 @@ class ProfileContainer extends Component {
   navigateToWallet = () => alert('navigate to my wallet')
 }
 
-const mapStateToProps = () => ({})
-
 const mapDispatchToProps = () => ({})
+
+const mapStateToProps = ({ authentication: { user } }) => ({
+  user
+})
 
 export const ProfileScreen = connect(mapStateToProps, mapDispatchToProps)(
   ProfileContainer
