@@ -5,6 +5,7 @@ import { Touchable } from '../../shared/components/touchable'
 import { Navbar } from '../../shared/components/navbar'
 
 import { styles } from '../../shoppingBag/components/styles/shoppingBagItems.style'
+import { FlatButton } from '../../shared/components/buttons/index';
 
 const renderBook = ({ id, images, title, author, edition, sellingPrice }) => {
   const imageSource = images
@@ -31,9 +32,16 @@ const renderBook = ({ id, images, title, author, edition, sellingPrice }) => {
           </Text>
         </View>
         <View style={styles.rightContentWrap}>
-          {sellingPrice !== 0 && (
-            <Text style={styles.title}>{`$${sellingPrice}`}</Text>
-          )}
+          <FlatButton
+            title={'Rent'}
+            onPress={() => console.warn('👋 Pariu RentScreen')}
+            containerStyle={styles.rightContentButton}
+          />
+          <FlatButton
+            title={'Sell'}
+            onPress={() => console.warn('👋 Pariu SellScreen')}
+            containerStyle={styles.rightContentButton}
+          />
         </View>
       </View>
     </Touchable>
