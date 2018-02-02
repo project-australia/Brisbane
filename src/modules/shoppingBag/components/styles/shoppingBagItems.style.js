@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
   contentWrap: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: Metrics.section,
+    paddingLeft: Metrics.section,
     paddingVertical: Metrics.baseMargin
   },
   rowWrap: {
@@ -63,8 +63,12 @@ export const styles = StyleSheet.create({
     color: Colors.gray500
   },
   rightContentWrap: {
-    alignItems: 'flex-end',
-    marginLeft: Metrics.baseMargin
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingRight: Metrics.baseMargin
+  },
+  rightContentButton: {
+    paddingHorizontal: Metrics.marginHorizontal
   },
   whiteBackground: {
     backgroundColor: Colors.white
