@@ -2,6 +2,9 @@ import Axios from 'axios'
 import { Address } from '../../domain/Address'
 import { User } from '../../domain/User'
 
+const SIGNUP_ERROR_MESSAGE = 'Something wrong has happened on your sign up, please try it again in a few minutes'
+const SIGNUP_BAD_REQUEST_MESSAGE = 'Please Check your form inputs'
+
 const createUserFromBackEndResponse = response => {
   const {
     id,
@@ -41,16 +44,20 @@ export const signUpUser = async signUpForm => {
     const response = await Axios.post('/users', signUpForm)
     return createUserFromBackEndResponse(response)
   } catch (err) {
-    if (err.response) {
-      const { status, data } = err.response
-      throw new Error({ status, data })
+    if(!err.response) {
+      throw new Error(SIGNUP_ERROR_MESSAGE)
     }
 
-    throw err
+    const { data, status } = err.response
+
+    if (status === 400) {
+      throw new Error(SIGNUP_BAD_REQUEST_MESSAGE)
+    }
+
+    throw new Error(data)
   }
 }
 
-// TODO: Lack testing
 export const getUserProfile = async userId => {
   try {
     const response = await Axios.get(`/users/${userId}/profile`)
