@@ -44,7 +44,9 @@ export class ProfileForm extends Component {
       <ScrollView
         contentContainerStyle={styles.screen}
       >
-        <FormHeader />
+        <FormHeader
+          title='Almost there...'
+        />
         <FormTextInput
           onChangeText={this.setReferredBy}
           value={this.props.form.referredBy}
