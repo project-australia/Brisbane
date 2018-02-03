@@ -1,6 +1,6 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
 import PropTypes from 'prop-types'
+import { StyleSheet, Text, View } from 'react-native'
 
 import { MenuTitle } from '../../shared/components/menuTitle'
 import { ShoppingBagBook } from './shoppingBagBook'
@@ -13,11 +13,12 @@ import { styles } from './styles/shoppingBagItems.style'
 const renderBook = ({ book, type, quantity, id }) => (
   <ShoppingBagBook
     key={id}
-    image={book.imageUri}
+    image={book.images && book.images.medium}
     title={book.title}
+    quantity={quantity}
     subtitleOne={book.author}
     subtitleTwo={book.edition}
-    price={book.sellPrice}
+    price={book.sellPrice || book.buyingPrice}
     type={type}
   />
 )

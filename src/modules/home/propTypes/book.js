@@ -1,7 +1,7 @@
 import { number, shape, string, arrayOf, bool, oneOf } from 'prop-types'
 
 export const book = shape({
-  updatedAt: string.isRequired,
+  updatedAt: string,
   createdAt: string.isRequired,
   title: string.isRequired,
   images: shape({

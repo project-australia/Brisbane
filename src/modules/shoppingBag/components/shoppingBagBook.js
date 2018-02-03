@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Image, Text, View } from 'react-native'
 
 import { styles } from './styles/shoppingBagItems.style'
@@ -48,9 +49,19 @@ export const ShoppingBagBook = ({
         </View>
         <View style={styles.rightContentWrap}>
           <Text style={styles.subtitle}>{renderType(type)}</Text>
-          {price !== 0 && <Text style={styles.title}>{`$${price}`}</Text>}
+          {price && <Text style={styles.title}>{`$${price}`}</Text>}
         </View>
       </View>
     </View>
   )
+}
+
+ShoppingBagBook.propTypes = {
+  type: PropTypes.oneOf(['BUY', 'RENT', 'SELL']).isRequired,
+  quantity: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitleOne: PropTypes.string,
+  subtitleTwo: PropTypes.string,
+  price: PropTypes.number.isRequired
 }
