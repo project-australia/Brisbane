@@ -1,6 +1,6 @@
 import PropTypes, { string } from 'prop-types'
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import { FormButton } from '../../shared/components/buttons'
 import { FormHeader } from './formHeader'
 import { FormTextInput } from './formTextInput'
@@ -26,6 +26,7 @@ export class ProfileForm extends Component {
     footer: PropTypes.object,
     onChange: PropTypes.func.isRequired,
     onButtonPress: PropTypes.func.isRequired,
+    navigateBack: PropTypes.func.isRequired,
     form: signupFormType
   }
 
@@ -40,7 +41,9 @@ export class ProfileForm extends Component {
 
   render () {
     return (
-      <View style={styles.screen}>
+      <ScrollView
+        contentContainerStyle={styles.screen}
+      >
         <FormHeader />
         <FormTextInput
           onChangeText={this.setReferredBy}
@@ -91,8 +94,13 @@ export class ProfileForm extends Component {
           onPress={() => this.props.onButtonPress()}
           style={styles.itemSpacing}
         />
+        <FormButton
+          title={'Return to previous Screen'}
+          onPress={() => this.props.navigateBack()}
+          style={styles.itemSpacing}
+        />
         {this.props.footer}
-      </View>
+      </ScrollView>
     )
   }
 }

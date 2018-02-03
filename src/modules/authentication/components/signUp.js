@@ -111,6 +111,7 @@ export class SignUpForm extends Component {
       onChange={this.onFormChange}
       form={this.state}
       onButtonPress={this.doSignUp}
+      navigateBack={this.switchForm}
     />
   )
 
