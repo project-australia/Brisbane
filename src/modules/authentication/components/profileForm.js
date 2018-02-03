@@ -17,7 +17,10 @@ export const signupFormType = PropTypes.shape({
   state: string.isRequired,
   email: string.isRequired,
   password: string.isRequired,
-  city: string.isRequired
+  city: string.isRequired,
+  birthDateDay: string.isRequired,
+  birthDateMonth: string.isRequired,
+  birthDateYear: string.isRequired
 }).isRequired
 
 export class ProfileForm extends Component {
@@ -30,14 +33,17 @@ export class ProfileForm extends Component {
     form: signupFormType
   }
 
+  setCity = city => this.props.onChange({ city })
   setSchool = school => this.props.onChange({ school })
-  setTelephone = telephone => this.props.onChange({ telephone })
-  setReferredBy = referredBy => this.props.onChange({ referredBy })
   setStreet = street => this.props.onChange({ street })
   setNumber = number => this.props.onChange({ number })
   setZipCode = zipCode => this.props.onChange({ zipCode })
   setAddressState = state => this.props.onChange({ state })
-  setCity = city => this.props.onChange({ city })
+  setTelephone = telephone => this.props.onChange({ telephone })
+  setReferredBy = referredBy => this.props.onChange({ referredBy })
+  setBirthDateDay = birthDateDay => this.props.onChange({ birthDateDay })
+  setBirthDateYear = birthDateYear => this.props.onChange({ birthDateYear })
+  setBirthDateMonth = birthDateMonth => this.props.onChange({ birthDateMonth })
 
   render () {
     return (
@@ -46,6 +52,24 @@ export class ProfileForm extends Component {
       >
         <FormHeader
           title='Almost there...'
+        />
+        <FormTextInput
+          onChangeText={this.setBirthDateDay}
+          value={this.props.form.birthDateDay}
+          placeholder="Day"
+          keyboardType="phone-pad"
+        />
+        <FormTextInput
+          onChangeText={this.setBirthDateMonth}
+          value={this.props.form.birthDateMonth}
+          placeholder="Month"
+          keyboardType="phone-pad"
+        />
+        <FormTextInput
+          onChangeText={this.setBirthDateYear}
+          value={this.props.form.birthDateYear}
+          placeholder="Year"
+          keyboardType="phone-pad"
         />
         <FormTextInput
           onChangeText={this.setReferredBy}
