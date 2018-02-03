@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Image, Text, View } from 'react-native'
 
 import { styles } from './styles/shoppingBagItems.style'
@@ -7,13 +8,13 @@ import { Colors } from '../../../constants'
 const renderType = type => {
   switch (type) {
     case 'BUY':
-      return 'Buy for'
+      return 'Buying '
     case 'RENT':
-      return 'Rent for'
+      return 'Renting '
     case 'SELL':
-      return 'Sell for'
+      return 'Selling '
     case 'DONATE':
-      return 'Donation'
+      return 'Donating '
     default:
       return ''
   }
@@ -28,6 +29,7 @@ export const ShoppingBagBook = ({
   subtitleOne,
   subtitleTwo,
   price,
+  quantity,
   type
 }) => {
   const cardStyle = [styles.card, { borderColor: setLeftBorderColor(type) }]
@@ -48,9 +50,20 @@ export const ShoppingBagBook = ({
         </View>
         <View style={styles.rightContentWrap}>
           <Text style={styles.subtitle}>{renderType(type)}</Text>
-          {price !== 0 && <Text style={styles.title}>{`$${price}`}</Text>}
+          {quantity > 1 && <Text style={styles.title}>{`${quantity} x `}</Text>}
+          {price && <Text style={styles.title}>{`$${price}`}</Text>}
         </View>
       </View>
     </View>
   )
+}
+
+ShoppingBagBook.propTypes = {
+  type: PropTypes.oneOf(['BUY', 'RENT', 'SELL']).isRequired,
+  quantity: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitleOne: PropTypes.string,
+  subtitleTwo: PropTypes.string,
+  price: PropTypes.number.isRequired
 }

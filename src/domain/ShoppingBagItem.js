@@ -1,4 +1,4 @@
-export const SHOPPING_BAG_TYPES = { BUY: 'BUY', RENT: 'RENT' }
+export const SHOPPING_BAG_TYPES = { BUY: 'BUY', RENT: 'RENT', SELL: 'SELL' }
 
 export class ShoppingBagItem {
   constructor (book, type, quantity = 1) {
