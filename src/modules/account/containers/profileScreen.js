@@ -28,19 +28,20 @@ class ProfileContainer extends Component {
       isEditModalOpen: true,
       isModalInputMultiline: modalTitle === 'Address'
     })
+
   hideEditModal = () =>
     this.setState({
       modalTitle: '',
       isEditModalOpen: false,
       isModalInputMultiline: false
     })
-  updateData = () => {
-    console.warn('update user data')
+
+  updateData = (data) => {
+    console.log('update user data', data)
     this.hideEditModal()
   }
 
   render () {
-    console.log('AAAAA', this.props.user)
     return (
       <Profile
         onBackPress={this.goBack}

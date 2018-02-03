@@ -9,7 +9,6 @@ import { styles } from './styles/profileItemAddress.style'
 
 export const ProfileItemAddress = ({ title, data, emptyDataLabel, onPress }) => {
   const { street, state, number, zipCode, city } = data
-  console.log('data length', data)
   return (
     <View style={styles.wrap}>
       <MenuTitle title={title} />
