@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { Alert, View } from 'react-native'
+import { connect } from 'react-redux'
+import { buyBook, rentBook, sellBook } from '../../../redux/actions'
 import { book } from '../../home/propTypes/book'
 
-import { ConfirmBook } from '../components/confirmBook'
-import { LoadingOverlay } from '../../shared/components/loadingOverlay'
-import { searchIsbn } from '../../../services/book'
+import { BookDetails } from '../components/confirmBook'
 
 class BookScannerContainer extends Component {
   static navigationOptions = {
@@ -14,35 +13,27 @@ class BookScannerContainer extends Component {
   }
 
   static defaultProps = {
-    screenType: 'SELL'
+    screenType: 'BUY'
   }
 
   static propTypes = {
     book: book,
-    screenType: PropTypes.oneOf(['SELL', 'BUY']).isRequired
+    screenType: PropTypes.oneOf(['SELL', 'BUY', 'RENT']).isRequired
   }
-
-  // componentDidMount = async () => {
-  //   // FIXME: Refactor this, this is a workaround-ZAO
-  //   const isbn = this.props.isbn || this.props.navigation.state.params.isbn
-  //   try {
-  //     const book = await searchIsbn(isbn)
-  //     this.setState({ book })
-  //   } catch (e) {
-  //     Alert.alert('', 'ISBN Not Found', [{ text: 'Ok', onPress: this.goBack }])
-  //   }
-  // }
 
   render () {
     const book = this.props.book || this.props.navigation.state.params.book
+    const screenType = this.props.screenType || this.props.navigation.state.params.screenType
+
     return (
-      <ConfirmBook
+      <BookDetails
         book={book}
+        screenType={screenType}
         navigateBack={this.goBack}
-        screenType={this.props.screenType}
-        onPressSell={() => console.warn('hello :D')}
-        onPressDonate={() => console.warn('hello :D')}
-        onPressBallardsClub={() => console.warn('hello :D')}
+        onPressSell={(book) => this.props.sellBook(book)}
+        onPressBuy={(book) => this.props.buyBook(book)}
+        onPressDonate={(book) => this.props.rentBook(book)}
+        onPressBallardsClub={() => console.warn('Ballards club :D')}
         navigateToShoppingBag={this.navigateTo('ShoppingBag')}
       />
     )
@@ -52,4 +43,12 @@ class BookScannerContainer extends Component {
   goBack = () => this.props.navigation.goBack()
 }
 
-export const BookDetails = BookScannerContainer
+const mapStateToProps = (state) => ({})
+const mapDispatchToProps = (dispatch) => {
+  return {
+    buyBook: (book) => dispatch(buyBook(book)),
+    rentBook: (book) => dispatch(rentBook(book)),
+    sellBook: (book) => dispatch(sellBook(sellBook))
+  }
+}
+export const BookDetailsScreen = connect(mapStateToProps, mapDispatchToProps)(BookScannerContainer)

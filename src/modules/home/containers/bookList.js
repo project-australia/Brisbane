@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { buy, rent } from '../../../redux/actions'
+import { buyBook, rentBook } from '../../../redux/actions'
 import { book } from '../propTypes/book'
 import { HorizontalBookList } from '../components/horizontalBookList'
 
@@ -13,18 +13,15 @@ class BookListContainer extends React.PureComponent {
     books: PropTypes.arrayOf(book).isRequired
   }
 
-  // TODO: Navigation to book is not working
-  // Need to create another screen
-  // Need to use real book isbn or maybe pass the book object itself
   render () {
     return (
       <HorizontalBookList
         books={this.props.books}
         onBuyBook={book =>
-          this.props.navigation.navigate('BookDetails', { isbn: book.isbn })
+          this.props.navigation.navigate('BookDetails', { book, screenType: 'BUY' })
         }
         onRentBook={book =>
-          this.props.navigation.navigate('BookDetails', { isbn: book.isbn })
+          this.props.navigation.navigate('BookDetails', { book, screenType: 'RENT' })
         }
       />
     )
@@ -36,8 +33,8 @@ const mapStateToProps = ({ authentication: { user } }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onBuyBook: item => dispatch(buy(item)),
-  onRentBook: item => dispatch(rent(item))
+  onBuyBook: item => dispatch(buyBook(item)),
+  onRentBook: item => dispatch(rentBook(item))
 })
 
 export const BookList = connect(mapStateToProps, mapDispatchToProps)(

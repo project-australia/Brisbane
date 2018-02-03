@@ -10,7 +10,11 @@ export const book = shape({
     large: string.isRequired,
   }),
   authors: arrayOf(string).isRequired,
+  edition: string,
   id: string.isRequired,
   featured: bool,
-  status: oneOf(['UNAVAILABLE'])
+  status: oneOf(['RENTED', 'AVAILABLE', 'SOLD', 'UNAVAILABLE']),
+  bookCondition: oneOf(['Used – Acceptable', 'Used – Good', 'Used – Very Good', 'Used – Like New', 'New']),
+  sellPrice: number,
+  buyingPrice: number
 })

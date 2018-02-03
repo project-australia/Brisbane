@@ -6,20 +6,21 @@ import {
   SHOPPING_BAG_TYPES,
   ShoppingBagItem
 } from '../../../domain/ShoppingBagItem'
-const { BUY, RENT } = SHOPPING_BAG_TYPES
+const { BUY, RENT, SELL } = SHOPPING_BAG_TYPES
 
-export const buy = item => add(new ShoppingBagItem(item, BUY))
-export const rent = item => add(new ShoppingBagItem(item, RENT))
+export const buyBook = book => addToShoppingBag(new ShoppingBagItem(book, BUY))
+export const rentBook = book => addToShoppingBag(new ShoppingBagItem(book, RENT))
+export const sellBook = book => addToShoppingBag(new ShoppingBagItem(book, SELL))
 
-export const add = item => {
+export const addToShoppingBag = item => {
   if (item instanceof ShoppingBagItem) {
     return { type: ADD_TO_SHOPPING_BAG, item }
   }
 
-  throw new Error('Use add with a ShoppingBagItem object')
+  throw new Error('Use addToShoppingBag with a ShoppingBagItem object')
 }
 
-export const remove = item => {
+export const removeFromShoppingBag = item => {
   const action = { type: REMOVE_FROM_SHOPPING_BAG, item }
 
   if (!(item instanceof ShoppingBagItem)) {

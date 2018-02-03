@@ -8,5 +8,5 @@ export const initializeAxios = () => {
   Axios.defaults.headers.post['Content-Type'] = 'application/json'
   Axios.defaults.headers.post['Accept'] = 'application/json'
 
-  wakeUpBackEnd() // TODO: remove this before publish app
+  wakeUpBackEnd() // TODO: removeFromShoppingBag this before publish app
 }

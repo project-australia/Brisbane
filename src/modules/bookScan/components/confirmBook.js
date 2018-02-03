@@ -13,10 +13,13 @@ import { GeneralInfoCard } from '../../shared/components/generalInfoCard'
 
 import { styles } from './styles/bookScanner.style'
 
-export class ConfirmBook extends Component {
+export class BookDetails extends Component {
   static propTypes = {
     book: book,
-    screenType: PropTypes.oneOf(['SELL', 'BUY']).isRequired
+    screenType: PropTypes.oneOf(['SELL', 'BUY', 'RENT']).isRequired,
+    onPressDonate: PropTypes.func,
+    onPressSell: PropTypes.func,
+    onPressBuy: PropTypes.func
   }
 
   state = {
@@ -28,37 +31,74 @@ export class ConfirmBook extends Component {
     ]
   }
 
+  buyPriceRow() {
+    const { book, onPressBuy, screenType } = this.props
+    const { buyingPrice } = book
+
+    return (
+      <PriceRow
+        book={book}
+        screenType={screenType}
+        title={{
+          buy: 'I want to buy this book'
+        }}
+        price={buyingPrice}
+        button={{
+          title: {
+            buy: 'buy'
+          },
+          onPress: {
+            buy: (book) => onPressBuy(book)
+          }
+        }}
+      />
+    )
+  }
+
+  sellPriceRow () {
+    const { book, onPressSell, onPressDonate } = this.props
+    const { sellPrice } = book
+
+    return (
+      <PriceRow
+        title={{
+          sell: 'I want to sellBook my book',
+          donate: 'I want to donate my book'
+        }}
+        price={sellPrice}
+        button={{
+          title: {
+            sell: 'Sell',
+            donate: 'Donate'
+          },
+          onPress: {
+            sell: onPressSell,
+            donate: onPressDonate
+          }
+        }}
+      />
+    )
+  }
+
   render () {
-    const { book, onPressSell, onPressDonate, onPressBallardsClub } = this.props
-    const { aboutBook, author, isbn, images, sellPrice, title } = book
+    const isSelling = this.props.screenType === 'SELL'
+    const { book, onPressBallardsClub } = this.props
+    const { aboutBook, author, isbn, images, title } = book
+
     return (
       <View style={styles.container}>
         <Navbar
-          title={'Sell your book'}
+          title={isSelling ? 'Sell your book' : 'Buy a book'}
           rightIcons={this.state.navRightIcons}
           onBack={this.props.navigateBack}
         />
         <ScrollView>
           <CoverImage source={{ uri: images.large }} />
           <BookTitleAndAuthor title={title} author={author} />
-          <MenuTitle title={'Selling Options'} style={styles.titleWrap} />
-          <PriceRow
-            title={{
-              sell: 'I want to sell my book',
-              donate: 'I want to donate my book'
-            }}
-            price={sellPrice}
-            button={{
-              title: {
-                sell: 'Sell',
-                donate: 'Donate'
-              },
-              onPress: {
-                sell: onPressSell,
-                donate: onPressDonate
-              }
-            }}
-          />
+          {isSelling && (
+            <MenuTitle title={'Selling Options'} style={styles.titleWrap} />
+          )}
+          {isSelling ? this.sellPriceRow() : this.buyPriceRow()}
           <Touchable onPress={onPressBallardsClub}>
             <Text style={styles.footnote}>
               Ballards club members gets 10% more money selling books.
