@@ -8,13 +8,13 @@ import { Colors } from '../../../constants'
 const renderType = type => {
   switch (type) {
     case 'BUY':
-      return 'Buy for'
+      return 'Buying '
     case 'RENT':
-      return 'Rent for'
+      return 'Renting '
     case 'SELL':
-      return 'Sell for'
+      return 'Selling '
     case 'DONATE':
-      return 'Donation'
+      return 'Donating '
     default:
       return ''
   }
@@ -29,6 +29,7 @@ export const ShoppingBagBook = ({
   subtitleOne,
   subtitleTwo,
   price,
+  quantity,
   type
 }) => {
   const cardStyle = [styles.card, { borderColor: setLeftBorderColor(type) }]
@@ -49,6 +50,7 @@ export const ShoppingBagBook = ({
         </View>
         <View style={styles.rightContentWrap}>
           <Text style={styles.subtitle}>{renderType(type)}</Text>
+          {quantity > 1 && <Text style={styles.title}>{`${quantity} x `}</Text>}
           {price && <Text style={styles.title}>{`$${price}`}</Text>}
         </View>
       </View>
