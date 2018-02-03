@@ -12,7 +12,7 @@ export const ProfileItem = ({ title, data, emptyDataLabel, onPress }) => {
     <View style={styles.wrap}>
       <MenuTitle title={title} />
       {typeof data === 'string' && data !== '' ? (
-        <RowWithButton title={data} buttonTitle={'Edit'} onPress={onPress} />
+        <RowWithButton title={data} />
       ) : (
         <RowAdd title={emptyDataLabel} onPress={onPress} />
       )}

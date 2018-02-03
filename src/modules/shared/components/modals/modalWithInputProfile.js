@@ -67,16 +67,19 @@ export class ModalWithInputProfile extends Component {
   }
 
   handleConfirm = () => {
-    const { onConfirm } = this.props
-    const user = {}
-    user.school = this.state.school
-    user.telephone = this.state.telephone
-    // user.address.street = this.address.street
-    // user.address.number = this.address.number
-    // user.address.zipCode = this.address.zipCode
-    // user.address.state = this.address.state
-    // user.address.city = this.address.city
-    return onConfirm(user)
+    const { onConfirm, user } = this.props
+    const profile = {
+      address: {}
+    }
+    profile.id = user.id
+    profile.school = this.state.school
+    profile.telephone = this.state.telephone
+    profile.address.street = this.state.street
+    profile.address.number = this.state.number
+    profile.address.zipCode = this.state.zipCode
+    profile.address.state = this.state.state
+    profile.address.city = this.state.city
+    return onConfirm(profile)
   }
   render () {
     const { onDismiss, visible } = this.props
@@ -96,11 +99,11 @@ export class ModalWithInputProfile extends Component {
             <Text style={styles.title}>Edit your Profile</Text>
             <FormTextInput style={styles.input} value={this.state.school} onChangeText={(value) => this.setSchool(value)} placeholder='School' />
             <FormTextInput style={styles.input} value={this.state.telephone} onChangeText={(value) => this.setTelephone(value)} placeholder='Phone' />
-            <FormTextInput style={styles.input} onChangeText={(value) => this.setStreet(value)} placeholder='Street' />
-            <FormTextInput style={styles.input} onChangeText={(value) => this.setNumber(value)} placeholder='Number' />
-            <FormTextInput style={styles.input} onChangeText={(value) => this.setZipCode(value)} placeholder='Zipcode' />
-            <FormTextInput style={styles.input} onChangeText={(value) => this.setCity(value)} placeholder='City' />
-            <FormTextInput style={styles.input} onChangeText={(value) => this.setAddressState(value)} placeholder='State' />
+            <FormTextInput style={styles.input} value={this.state.street} onChangeText={(value) => this.setStreet(value)} placeholder='Street' />
+            <FormTextInput style={styles.input} value={this.state.number} onChangeText={(value) => this.setNumber(value)} placeholder='Number' />
+            <FormTextInput style={styles.input} value={this.state.zipCode} onChangeText={(value) => this.setZipCode(value)} placeholder='Zipcode' />
+            <FormTextInput style={styles.input} value={this.state.city} onChangeText={(value) => this.setCity(value)} placeholder='City' />
+            <FormTextInput style={styles.input} value={this.state.state} onChangeText={(value) => this.setAddressState(value)} placeholder='State' />
             <View style={styles.buttonGroup}>
               <FlatButton
                 secondary

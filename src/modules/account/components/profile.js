@@ -70,12 +70,6 @@ export const Profile = ({
           emptyDataLabel={'Add address'}
           onPress={() => showEditModal('Address')}
         />
-        <ProfileItem
-          title={'PayPal account'}
-          data={user.address}
-          emptyDataLabel={'Add account'}
-          onPress={() => showEditModal('PayPal account')}
-        />
         <ProfileRedirectItem
           title={'Network'}
           data={setUserNetworkNumber(user.network)}
