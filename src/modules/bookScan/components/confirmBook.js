@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Text, ScrollView, View } from 'react-native'
 import PropTypes from 'prop-types'
+import { book } from '../../home/propTypes/book'
 
 import { Navbar } from '../../shared/components/navbar'
 import { CoverImage } from '../../shared/components/coverImage'
@@ -14,7 +15,8 @@ import { styles } from './styles/bookScanner.style'
 
 export class ConfirmBook extends Component {
   static propTypes = {
-    book: PropTypes.object
+    book: book,
+    screenType: PropTypes.oneOf(['SELL', 'BUY']).isRequired
   }
 
   state = {
@@ -28,7 +30,7 @@ export class ConfirmBook extends Component {
 
   render () {
     const { book, onPressSell, onPressDonate, onPressBallardsClub } = this.props
-    const { aboutBook, author, id, imageUri, sellPrice, title } = book
+    const { aboutBook, author, isbn, images, sellPrice, title } = book
     return (
       <View style={styles.container}>
         <Navbar
@@ -37,7 +39,7 @@ export class ConfirmBook extends Component {
           onBack={this.props.navigateBack}
         />
         <ScrollView>
-          <CoverImage source={{ uri: imageUri }} />
+          <CoverImage source={{ uri: images.large }} />
           <BookTitleAndAuthor title={title} author={author} />
           <MenuTitle title={'Selling Options'} style={styles.titleWrap} />
           <PriceRow
@@ -71,7 +73,7 @@ export class ConfirmBook extends Component {
               </Text>
             )}
             <Text style={styles.description}>ISBN</Text>
-            <Text style={styles.descriptionGray}>{id}</Text>
+            <Text style={styles.descriptionGray}>{isbn}</Text>
           </GeneralInfoCard>
         </ScrollView>
       </View>

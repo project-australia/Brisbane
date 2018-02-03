@@ -9,7 +9,7 @@ import { ForgotPasswordScreen } from '../modules/authentication/containers/forgo
 import { ProfileScreen } from '../modules/account/containers/profileScreen'
 import { ManageAccountScreen } from '../modules/account/containers/manageAccountScreen'
 import { BookScannerScreen } from '../modules/bookScan/containers/bookScannerScreen'
-import { ConfirmBookScreen } from '../modules/bookScan/containers/confirmBookScreen'
+import { BookDetails } from '../modules/bookScan/containers/bookDetailsScreen'
 import { ShoppingBagScreen } from '../modules/shoppingBag/containers/shoppingBagScreen'
 import { BuyBooksProcessScreen } from '../modules/shoppingBag/containers/buyBooksProcessScreen'
 import { ConfirmationScreen } from '../modules/shoppingBag/containers/confirmationScreen'
@@ -43,8 +43,8 @@ const routeConfigs = {
   BookScanner: {
     screen: BookScannerScreen
   },
-  BookSelling: {
-    screen: ConfirmBookScreen
+  BookDetails: {
+    screen: BookDetails
   },
   ShoppingBag: {
     screen: ShoppingBagScreen

@@ -4,6 +4,24 @@ import { payWithPayPal } from '../../../services/paypal'
 
 import { styles } from './styles/testScreen.test'
 
+const aBook = {
+  'updatedAt': '2018-01-29T22:57:43.999Z',
+  'createdAt': '2018-01-29T22:57:43.999Z',
+  'title': 'the king',
+  'images': {
+    'small': 'https://images-na.ssl-images-amazon.com/images/I/51lMZ7YiDXL._SL75_.jpg',
+    'medium': 'https://images-na.ssl-images-amazon.com/images/I/51lMZ7YiDXL._SL160_.jpg',
+    'large': 'https://images-na.ssl-images-amazon.com/images/I/51lMZ7YiDXL.jpg'
+  },
+  'authors': [
+    'rich koslowski'
+  ],
+  'featured': false,
+  'status': 'UNAVAILABLE',
+  'id': '5a6fa6e71438d000141fc922',
+  'isbn': '9780261102941'
+}
+
 export const TestScreen = props => {
   const navigateTo = (routeName, params = {}, action) => {
     return (
@@ -39,7 +57,7 @@ export const TestScreen = props => {
       {navigateTo('BookScanner')}
       {navigateTo('ShoppingBag')}
       {navigateTo('ConfirmationScreen')}
-      {navigateTo('BookSelling', { isbn: 9781483358505 })}
+      {navigateTo('BookDetails', { book: aBook })}
       {navigateTo('BookList')}
       {navigateTo('ShoppingBag')}
       {navigateTo('BuyBooksProcess')}
