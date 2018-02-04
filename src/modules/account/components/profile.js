@@ -2,7 +2,7 @@ import React from 'react'
 import { ScrollView, View } from 'react-native'
 import moment from 'moment'
 
-import { ModalWithInput } from '../../shared/components/modals/modalWithInput'
+import { ModalWithInputProfile } from '../../shared/components/modals/modalWithInputProfile'
 import { Navbar } from '../../shared/components/navbar'
 import { ProfileItem } from './profileItem'
 import { ProfileItemAddress } from './profileItemAddress'
@@ -70,12 +70,6 @@ export const Profile = ({
           emptyDataLabel={'Add address'}
           onPress={() => showEditModal('Address')}
         />
-        <ProfileItem
-          title={'PayPal account'}
-          data={user.address}
-          emptyDataLabel={'Add account'}
-          onPress={() => showEditModal('PayPal account')}
-        />
         <ProfileRedirectItem
           title={'Network'}
           data={setUserNetworkNumber(user.network)}
@@ -89,9 +83,10 @@ export const Profile = ({
         />
         <ProfileButtonItem buttonTitle={'Logout'} onPress={onLogoutPress} />
       </ScrollView>
-      <ModalWithInput
+      <ModalWithInputProfile
         visible={isEditModalOpen}
         title={modalTitle}
+        user={user}
         onConfirm={onConfirmModal}
         onDismiss={onDismissModal}
       />

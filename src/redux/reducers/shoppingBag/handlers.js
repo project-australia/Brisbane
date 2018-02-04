@@ -1,7 +1,7 @@
 import _ from 'lodash'
 const sameItem = item => element => element.equals(item)
 
-export const addItem = (state, { item }) => {
+export const addShoppingBagItem = (state, { item }) => {
   const items = _.cloneDeep(state)
   const existingItem = items.find(sameItem(item))
 
@@ -14,7 +14,7 @@ export const addItem = (state, { item }) => {
   return items
 }
 
-export const removeItem = (state, { item }) => {
+export const removeShoppingBagItem = (state, { item }) => {
   const items = _.cloneDeep(state)
   const existingItem = items.find(sameItem(item))
 

@@ -1,20 +1,20 @@
 import { StackNavigator as Navigator } from 'react-navigation'
 
-import { TestScreen } from '../modules/test/components/testScreen'
-import { HomeScreen } from '../modules/home/containers/homeScreen'
 import { authenticated } from '../modules/shared/decorators/authenticated'
-import { SignInScreen } from '../modules/authentication/containers/signInScreen'
-import { SignUpScreen } from '../modules/authentication/containers/signUpScreen'
-import { ForgotPasswordScreen } from '../modules/authentication/containers/forgotPasswordScreen'
-import { ProfileScreen } from '../modules/account/containers/profileScreen'
-import { ManageAccountScreen } from '../modules/account/containers/manageAccountScreen'
+import { BookDetailsScreen } from '../modules/bookScan/containers/bookDetailsScreen'
+import { BookListScreen } from '../modules/bookList/containers/bookListScreen'
 import { BookScannerScreen } from '../modules/bookScan/containers/bookScannerScreen'
-import { ConfirmBookScreen } from '../modules/bookScan/containers/confirmBookScreen'
-import { ShoppingBagScreen } from '../modules/shoppingBag/containers/shoppingBagScreen'
 import { BuyBooksProcessScreen } from '../modules/shoppingBag/containers/buyBooksProcessScreen'
 import { ConfirmationScreen } from '../modules/shoppingBag/containers/confirmationScreen'
-import { BookListScreen } from '../modules/bookList/containers/bookListScreen'
+import { ForgotPasswordScreen } from '../modules/authentication/containers/forgotPasswordScreen'
+import { HomeScreen } from '../modules/home/containers/homeScreen'
+import { ManageAccountScreen } from '../modules/account/containers/manageAccountScreen'
 import { NetworkMembersScreen } from '../modules/account/containers/networkMembersScreen'
+import { ProfileScreen } from '../modules/account/containers/profileScreen'
+import { ShoppingBagScreen } from '../modules/shoppingBag/containers/shoppingBagScreen'
+import { SignInScreen } from '../modules/authentication/containers/signInScreen'
+import { SignUpScreen } from '../modules/authentication/containers/signUpScreen'
+import { TestScreen } from '../modules/test/components/testScreen'
 
 export const initialRouteName = __DEV__ ? 'Test' : 'Home'
 const stackNavigatorConfig = { initialRouteName }
@@ -43,8 +43,8 @@ const routeConfigs = {
   BookScanner: {
     screen: BookScannerScreen
   },
-  BookSelling: {
-    screen: ConfirmBookScreen
+  BookDetails: {
+    screen: BookDetailsScreen
   },
   ShoppingBag: {
     screen: ShoppingBagScreen
@@ -53,7 +53,7 @@ const routeConfigs = {
     screen: ConfirmationScreen
   },
   BuyBooksProcess: {
-    screen: BuyBooksProcessScreen
+    screen: authenticated(BuyBooksProcessScreen)
   },
   BookList: {
     screen: BookListScreen

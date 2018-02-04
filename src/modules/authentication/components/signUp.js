@@ -22,7 +22,10 @@ const extractSignUpFormFromState = form => {
     state,
     city,
     email,
-    password
+    password,
+    birthDateDay,
+    birthDateMonth,
+    birthDateYear
   } = form
 
   const address = new Address(street, city, number, zipCode, state)
@@ -32,7 +35,11 @@ const extractSignUpFormFromState = form => {
     referredBy,
     name,
     email,
-    new Date(),
+    new Date(
+      Number(birthDateDay),
+      Number(birthDateMonth),
+      Number(birthDateYear)
+    ),
     telephone,
     school,
     undefined,
@@ -64,7 +71,10 @@ export class SignUpForm extends Component {
     email: '',
     password: '',
     city: '',
-    loading: false
+    loading: false,
+    birthDateDay: '',
+    birthDateMonth: '',
+    birthDateYear: ''
   }
 
   onFormChange = value => {
@@ -80,6 +90,7 @@ export class SignUpForm extends Component {
 
     try {
       const form = extractSignUpFormFromState(this.state)
+      console.log('Signup Form', form)
       await this.props.signUpUser(form)
     } catch (err) {
       console.log('err', err)
@@ -111,6 +122,7 @@ export class SignUpForm extends Component {
       onChange={this.onFormChange}
       form={this.state}
       onButtonPress={this.doSignUp}
+      navigateBack={this.switchForm}
     />
   )
 

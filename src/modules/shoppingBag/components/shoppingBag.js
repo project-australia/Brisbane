@@ -10,6 +10,17 @@ export const ShoppingBag = props => (
     <Navbar title={'Shopping Cart'} onBack={props.navigateBack} />
     <ScrollView>
       <ShoppingBagItems
+        title={'Books you are buying'}
+        items={props.booksToBuy}
+        addBookTitle={'Buy more Books'}
+        onPressMoreBooks={props.navigateToHome}
+        checkoutButton={{
+          title: 'Buy these books',
+          onPress: props.navigateToBuyBooksProcess
+        }}
+        totalValue={'123.45'}
+      />
+      <ShoppingBagItems
         isSellingBooks
         title={'Books you are selling'}
         items={props.booksToSell}
@@ -18,17 +29,6 @@ export const ShoppingBag = props => (
         checkoutButton={{
           title: 'Sell these books',
           onPress: props.navigateToSellConfirmation
-        }}
-        totalValue={'123.45'}
-      />
-      <ShoppingBagItems
-        title={'Books you are buying'}
-        items={props.booksToBuy}
-        addBookTitle={'Buy more Books'}
-        onPressMoreBooks={props.navigateToHome}
-        checkoutButton={{
-          title: 'Buy these books',
-          onPress: props.navigateToBuyBooksProcess
         }}
         totalValue={'123.45'}
       />

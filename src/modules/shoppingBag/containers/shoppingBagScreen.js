@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { SHOPPING_BAG_TYPES } from '../../../domain/ShoppingBagItem'
 import { ShoppingBag } from '../components/shoppingBag'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { payWithPayPal } from '../../../services/paypal'
@@ -81,7 +82,7 @@ class ShoppingBagContainer extends Component {
   render () {
     return (
       <ShoppingBag
-        booksToBuy={this.state.booksToBuy}
+        booksToBuy={this.props.booksToBuy}
         booksToSell={this.state.booksToSell}
         navigateBack={this.goBack}
         navigateToCheckout={this.navigateToCheckout}
@@ -115,9 +116,15 @@ class ShoppingBagContainer extends Component {
 }
 
 ShoppingBagContainer.propTypes = {
-  items: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired
+  booksToBuy: PropTypes.arrayOf(ShoppingBagItemPropType)
 }
 
-const mapStateToProps = state => ({ items: state.shoppingBag })
+const mapStateToProps = state => {
+  const booksToBuy = state.shoppingBag.filter(item => item.type === SHOPPING_BAG_TYPES.BUY)
+  console.log('booksToBuy', booksToBuy)
+  return {
+    booksToBuy
+  }
+}
 
 export const ShoppingBagScreen = connect(mapStateToProps)(ShoppingBagContainer)

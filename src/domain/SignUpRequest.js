@@ -8,7 +8,7 @@ export class SignUpRequest {
     this.telephone = user.telephone
     this.school = user.school
     this.address = user.address
-    this.birthDate = new Date()
+    this.birthDate = user.birthDate || new Date()
   }
 
   referredBy
