@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, View } from 'react-native'
+import { Button, ScrollView, View } from 'react-native'
 import { payWithPayPal } from '../../../services/paypal'
 
 import { styles } from './styles/testScreen.test'
@@ -48,7 +48,7 @@ export const TestScreen = props => {
   }
 
   return (
-    <View style={{ flex: 1 }}>
+    <ScrollView>
       {navigateTo('SignIn')}
       {navigateTo('SignUp')}
       {navigateTo('Home')}
@@ -63,6 +63,6 @@ export const TestScreen = props => {
       {navigateTo('BuyBooksProcess')}
       {navigateTo('SellBooksProcess')}
       {openPayPalScreen()}
-    </View>
+    </ScrollView>
   )
 }
