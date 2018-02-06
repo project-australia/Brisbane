@@ -21,7 +21,6 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		156E0A75202289D500F7E722 /* ballard icon ios ballard logo vertical BT.png in Resources */ = {isa = PBXBuildFile; fileRef = 156E0A74202289D500F7E722 /* ballard icon ios ballard logo vertical BT.png */; };
 		3AA345F2F9004717963E689E /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1EB7142E606A4A3787BC4C18 /* Feather.ttf */; };
 		46D762950AFC47C39A716356 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17FA0E15323846F78820195B /* EvilIcons.ttf */; };
 		47B331F1DB3340D984A7EFB6 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 400D5D73A1024D329FFF3EE4 /* Entypo.ttf */; };
@@ -346,7 +345,6 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = brisbane/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = brisbane/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		156E0A74202289D500F7E722 /* ballard icon ios ballard logo vertical BT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ballard icon ios ballard logo vertical BT.png"; path = "../../../OneDrive/Mini/projetos/Ballard Books/logo/1x/ballard icon ios ballard logo vertical BT.png"; sourceTree = "<group>"; };
 		17FA0E15323846F78820195B /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		1EB7142E606A4A3787BC4C18 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		2E4A0E2DE72E493A9498353D /* libRNPaypalWrapper.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNPaypalWrapper.a; sourceTree = "<group>"; };
@@ -523,7 +521,6 @@
 		4D0DAE3FF8E0475EA1BF64FD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				156E0A74202289D500F7E722 /* ballard icon ios ballard logo vertical BT.png */,
 				BA9B3FCB21D74342854B0CC6 /* kefa.ttf */,
 				400D5D73A1024D329FFF3EE4 /* Entypo.ttf */,
 				17FA0E15323846F78820195B /* EvilIcons.ttf */,
@@ -1107,7 +1104,6 @@
 				4B05DCAC58A2458783C203E1 /* Ionicons.ttf in Resources */,
 				CADF07FFFB804FDF8A3F9E59 /* MaterialCommunityIcons.ttf in Resources */,
 				A96C0956996545D3886D06EC /* MaterialIcons.ttf in Resources */,
-				156E0A75202289D500F7E722 /* ballard icon ios ballard logo vertical BT.png in Resources */,
 				E0C4FE7922BF4A7ABF6AA4DA /* Octicons.ttf in Resources */,
 				97009CAA96B243E6B3C1C6D6 /* SimpleLineIcons.ttf in Resources */,
 				925AA91A6ADC458C8994B128 /* Zocial.ttf in Resources */,
