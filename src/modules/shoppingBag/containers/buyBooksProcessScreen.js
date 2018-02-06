@@ -1,39 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { SHOPPING_BAG_TYPES } from '../../../domain/ShoppingBagItem'
+import { payWithPayPal } from '../../../services/paypal'
 import { BuyBooksProcess } from '../components/buyBooksProcess'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
-
-const booksToSell = [
-  {
-    id: '12347',
-    book: {
-      id: '345345',
-      imageUri: 'https://www.fillmurray.com/200/300',
-      title: 'Book Name 1',
-      author: 'Book Author',
-      edition: '3rd edition',
-      aboutBook: '',
-      sellPrice: 12.97
-    },
-    quantity: 1,
-    type: 'SELL'
-  },
-  {
-    id: '12348',
-    book: {
-      id: '3445',
-      imageUri: 'https://www.fillmurray.com/100/150',
-      title: 'Book with a really big name that will extrapolate the title line',
-      author: 'Book Author also with a big name that should break line',
-      edition: '3rd edition',
-      aboutBook: '',
-      sellPrice: 0
-    },
-    quantity: 2,
-    type: 'DONATE'
-  }
-]
 
 class BuyBooksProcessContainer extends Component {
   static navigationOptions = {
@@ -41,29 +12,35 @@ class BuyBooksProcessContainer extends Component {
     header: null
   }
 
-  state = {
-    booksToSell: booksToSell,
-    totalPrice: 230.0
-  }
-
   render () {
+    const totalPrice = this.props.booksToBuy.reduce((total, item) => {
+      return total + item.quantity * (item.book.buyingPrice || item.book.sellPrice)
+    }, 0)
+
     return (
       <BuyBooksProcess
-        booksToSell={this.state.booksToSell}
+        booksToSell={this.props.booksToBuy}
+        checkoutWithPayPal={this.checkoutWithPaypal(totalPrice)}
         navigateBack={this.goBack}
-        totalPrice={this.state.totalPrice}
+        totalPrice={totalPrice}
       />
     )
   }
 
   goBack = () => this.props.navigation.goBack()
+  onPayPalError = (...params) => console.log(...params)
+  onPayPalOnSuccess = (...params) => console.log(...params)
+  checkoutWithPaypal = price => () => payWithPayPal(price.toString(), 'Buying books', this.onPayPalError, this.onPayPalOnSuccess)
 }
 
 BuyBooksProcessContainer.propTypes = {
   items: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired
 }
 
-const mapStateToProps = state => ({ items: state.shoppingBag })
+const mapStateToProps = state => {
+  const booksToBuy = state.shoppingBag.filter(item => item.type === SHOPPING_BAG_TYPES.BUY)
+  return { booksToBuy }
+}
 
 export const BuyBooksProcessScreen = connect(mapStateToProps)(
   BuyBooksProcessContainer
