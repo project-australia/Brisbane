@@ -5,6 +5,6 @@ export const initializePaypalSDK = () => {
   PayPal.initialize(
     PayPal.SANDBOX,
     Config.PAYPAY_CLIENT_ID ||
-      'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R'
+      'ATKvHVVQj35FwyW2jo60NFB8lq1VKaEjUUzJ8bWIolLnH9VpvYtP_4s2tmeuet1QcH2UjlLuyglPGalD'
   )
 }
