@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, ScrollView, Text, View } from 'react-native'
+import { book } from '../../home/propTypes/book'
 
 import { Navbar } from '../../shared/components/navbar'
 import { OrderSummaryList } from './orderSummaryList'
@@ -10,7 +11,7 @@ import { FormOutlineButton } from '../../shared/components/buttons'
 import { styles } from './styles/shoppingBagItems.style'
 
 export const BuyBooksProcess = props => {
-  const booksLength = props.booksToSell.length
+  const booksLength = props.books.length
   return (
     <View>
       <Navbar
@@ -18,19 +19,9 @@ export const BuyBooksProcess = props => {
         onBack={props.navigateBack}
       />
       <ScrollView>
-        <OrderSummaryList orders={props.booksToSell} total={props.totalPrice} />
+        <OrderSummaryList orders={props.books} total={props.totalPrice} />
 
         <MenuTitle title={'Shipping'} style={styles.titleWrap} />
-        <View style={styles.wrappingCard}>
-          <Text style={styles.footnote}>
-            Books will be shipped to the following address:
-          </Text>
-          <Text style={styles.description}>
-            12870 Interurban Avenue South, Seattle, WA 98168
-          </Text>
-        </View>
-
-        <MenuTitle title={'Address Options'} style={styles.titleWrap} />
         <View style={styles.wrappingCard}>
           <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
             Use another address to receive the books
@@ -44,26 +35,6 @@ export const BuyBooksProcess = props => {
             />
           </View>
         </View>
-
-        {/* <MenuTitle title={'Tracking number'} style={styles.titleWrap} />
-        <View style={styles.wrappingCard}>
-          <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
-            Type the tracking number below, so we can track the shipping
-          </Text>
-          <View style={styles.rowWrap}>
-            <FormTextInput
-              style={{ flex: 1 }}
-              placeholder={'Insert tracking number'}
-            />
-            <FormOutlineButton
-              secondary
-              title={'Send'}
-              style={styles.inlineButton}
-              onPress={() => alert('Tracking number saved')}
-            />
-          </View>
-        </View> */}
-
         <MenuTitle title={'Checkout'} style={styles.titleWrap} />
         <View style={styles.wrappingCard}>
           <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
@@ -88,6 +59,12 @@ export const BuyBooksProcess = props => {
   )
 }
 
+BuyBooksProcess.navigationOptions = {
+  title: 'Buy Books',
+  header: null
+}
+
 BuyBooksProcess.propTypes = {
-  checkoutWithPayPal: PropTypes.func.isRequired
+  checkoutWithPayPal: PropTypes.func.isRequired,
+  books: PropTypes.arrayOf(book).isRequired,
 }

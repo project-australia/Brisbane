@@ -2,7 +2,7 @@ import { number, shape, string, arrayOf, bool, oneOf } from 'prop-types'
 
 export const book = shape({
   updatedAt: string,
-  createdAt: string.isRequired,
+  createdAt: string,
   title: string.isRequired,
   images: shape({
     small: string.isRequired,
@@ -14,7 +14,7 @@ export const book = shape({
   id: string.isRequired,
   featured: bool,
   status: oneOf(['RENTED', 'AVAILABLE', 'SOLD', 'UNAVAILABLE']),
-  bookCondition: oneOf(['Used – Acceptable', 'Used – Good', 'Used – Very Good', 'Used – Like New', 'New']),
+  condition: oneOf(['Used – Acceptable', 'Used – Good', 'Used – Very Good', 'Used – Like New', 'New']),
   sellPrice: number,
   buyingPrice: number
 })

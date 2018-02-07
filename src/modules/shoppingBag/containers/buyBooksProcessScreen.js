@@ -19,7 +19,7 @@ class BuyBooksProcessContainer extends Component {
 
     return (
       <BuyBooksProcess
-        booksToSell={this.props.booksToBuy}
+        books={this.props.booksToBuy}
         checkoutWithPayPal={this.checkoutWithPaypal(totalPrice)}
         navigateBack={this.goBack}
         totalPrice={totalPrice}
