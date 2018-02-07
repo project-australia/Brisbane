@@ -1,13 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Profile } from '../components/profile'
-
-const user = {
-  name: 'Bruno Talhate',
-  subscription: null,
-  school: 'University of Boston',
-  network: ['Arnold Schwazenegger', 'Adam Smith', 'Hebert Porto']
-}
+import { updateProfileAction, logOutAction } from '../../../redux/actions/async/authenticationAsyncActions'
 
 class ProfileContainer extends Component {
   static navigationOptions = {
@@ -16,7 +10,6 @@ class ProfileContainer extends Component {
   }
 
   state = {
-    user,
     isEditModalOpen: false,
     isModalInputMultiline: false,
     modalTitle: ''
@@ -37,7 +30,7 @@ class ProfileContainer extends Component {
     })
 
   updateData = (data) => {
-    console.log('update user data', data)
+    this.props.updateProfile(data)
     this.hideEditModal()
   }
 
@@ -46,7 +39,7 @@ class ProfileContainer extends Component {
       <Profile
         onBackPress={this.goBack}
         user={this.props.user}
-        onLogoutPress={() => console.warn('logout function here')}
+        onLogoutPress={this.props.logOut}
         navigateToNetwork={this.navigateToNetwork}
         navigateToWallet={this.navigateToWallet}
         showEditModal={this.showEditModal}
@@ -66,7 +59,10 @@ class ProfileContainer extends Component {
   navigateToWallet = () => alert('navigate to my wallet')
 }
 
-const mapDispatchToProps = () => ({})
+const mapDispatchToProps = (dispatch) => ({
+  updateProfile: (form) => dispatch(updateProfileAction(form)),
+  logOut: () => dispatch(logOutAction())
+})
 
 const mapStateToProps = ({ authentication: { user } }) => ({
   user

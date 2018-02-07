@@ -16,6 +16,8 @@ export const createUserWithEmailAndPassword = async (email, password) => {
   return sendEmailVerification(user)
 }
 
+export const logOut = async () => Firebase.auth().signOut()
+
 const validatedUser = async firebaseUser => {
   const { uid, emailVerified, email, phoneNumber, displayName } = firebaseUser
   return { uid, emailVerified, email, phoneNumber, displayName }

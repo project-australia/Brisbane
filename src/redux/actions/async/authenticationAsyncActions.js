@@ -7,13 +7,15 @@ import {
 } from '../sync/authenticationActions'
 import {
   sendPasswordResetEmail,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  logOut
 } from '../../../services/firebase/authentication'
 import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../constants/messages'
 import {
   signUpUser,
   getUserProfile
 } from '../../../services/backend/userService'
+import { NOT_LOGGED_IN } from '../../reducers/authentication/constants'
 
 export function signInAction (email, password) {
   return async dispatch => {
@@ -32,6 +34,17 @@ export function signUpAction (signUpForm) {
     try {
       const user = await signUpUser(signUpForm)
       dispatch(signInAction(user.email, signUpForm.password))
+    } catch (error) {
+      dispatch(alertAction(error))
+    }
+  }
+}
+
+export function logOutAction (signUpForm) {
+  return async dispatch => {
+    try {
+      await logOut(signUpForm)
+      dispatch(updateUserProfile(NOT_LOGGED_IN))
     } catch (error) {
       dispatch(alertAction(error))
     }
