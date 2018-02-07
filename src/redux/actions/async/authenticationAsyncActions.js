@@ -1,3 +1,5 @@
+import Axios from 'axios'
+
 import {
   alertAction,
   updateUserProfile,
@@ -30,6 +32,17 @@ export function signUpAction (signUpForm) {
     try {
       const user = await signUpUser(signUpForm)
       dispatch(signInAction(user.email, signUpForm.password))
+    } catch (error) {
+      dispatch(alertAction(error))
+    }
+  }
+}
+
+export function updateProfileAction (userProfile) {
+  return async dispatch => {
+    try {
+      const user = await Axios.put(`/users/${userProfile.id}`, userProfile)
+      dispatch(updateUserProfile(user))
     } catch (error) {
       dispatch(alertAction(error))
     }

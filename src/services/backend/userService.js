@@ -44,7 +44,7 @@ export const signUpUser = async signUpForm => {
     const response = await Axios.post('/users', signUpForm)
     return createUserFromBackEndResponse(response)
   } catch (err) {
-    if(!err.response) {
+    if (!err.response) {
       throw new Error(SIGNUP_ERROR_MESSAGE)
     }
 
