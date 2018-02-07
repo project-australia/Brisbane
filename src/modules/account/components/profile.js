@@ -38,9 +38,13 @@ export const Profile = ({
   onConfirmModal,
   onDismissModal
 }) => {
+  const rightIcon = [{
+    name: 'pencil',
+    onPress: () => showEditModal('Address')
+  }]
   return (
     <View style={styles.container}>
-      <Navbar onBack={onBackPress} />
+      <Navbar onBack={onBackPress} rightIcons={rightIcon}/>
       <ScrollView>
         <ScreenTitleAndSubtitle
           title={user.name}
@@ -68,7 +72,6 @@ export const Profile = ({
           title={'Address'}
           data={user.address}
           emptyDataLabel={'Add address'}
-          onPress={() => showEditModal('Address')}
         />
         <ProfileRedirectItem
           title={'Network'}

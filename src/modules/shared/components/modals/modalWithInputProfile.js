@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Platform, Modal, Keyboard, StyleSheet, View, Text } from 'react-native'
+import { Platform, Modal, Keyboard, StyleSheet, View, Text, ScrollView } from 'react-native'
 import { Fonts, Colors, Metrics } from '../../../../constants'
 import { FormTextInput } from '../../../authentication/components/formTextInput'
 import { FlatButton } from '../buttons/index'
@@ -29,6 +29,10 @@ export class ModalWithInputProfile extends Component {
     }
   }
 
+  componentDidMount () {
+    this.fillForm()
+  }
+
   componentWillUnmount () {
     if (Platform.OS === 'ios') {
       this.keyboardWillShowListener.remove()
@@ -36,9 +40,12 @@ export class ModalWithInputProfile extends Component {
     }
   }
 
-  componentDidMount () {
-    this.fillForm()
-  }
+  keyboardShow = keyboardData =>
+    this.setState({
+      keyboardHeight: keyboardData.endCoordinates.height
+    })
+
+  keyboardHide = () => this.setState({ keyboardHeight: 0 })
 
   setSchool = school => this.setState({ school })
   setTelephone = telephone => this.setState({ telephone })
@@ -47,13 +54,6 @@ export class ModalWithInputProfile extends Component {
   setZipCode = zipCode => this.setState({ zipCode })
   setAddressState = state => this.setState({ state })
   setCity = city => this.setState({ city })
-
-  keyboardShow = keyboardData =>
-    this.setState({
-      keyboardHeight: keyboardData.endCoordinates.height
-    })
-
-  keyboardHide = () => this.setState({ keyboardHeight: 0 })
 
   fillForm = () => {
     const { user } = this.props
@@ -97,13 +97,50 @@ export class ModalWithInputProfile extends Component {
         <View style={overlayStyle}>
           <View style={styles.card}>
             <Text style={styles.title}>Edit your Profile</Text>
-            <FormTextInput style={styles.input} value={this.state.school} onChangeText={(value) => this.setSchool(value)} placeholder='School' />
-            <FormTextInput style={styles.input} value={this.state.telephone} onChangeText={(value) => this.setTelephone(value)} placeholder='Phone' />
-            <FormTextInput style={styles.input} value={this.state.street} onChangeText={(value) => this.setStreet(value)} placeholder='Street' />
-            <FormTextInput style={styles.input} value={this.state.number} onChangeText={(value) => this.setNumber(value)} placeholder='Number' />
-            <FormTextInput style={styles.input} value={this.state.zipCode} onChangeText={(value) => this.setZipCode(value)} placeholder='Zipcode' />
-            <FormTextInput style={styles.input} value={this.state.city} onChangeText={(value) => this.setCity(value)} placeholder='City' />
-            <FormTextInput style={styles.input} value={this.state.state} onChangeText={(value) => this.setAddressState(value)} placeholder='State' />
+            <ScrollView>
+              <FormTextInput
+                style={styles.input}
+                value={this.state.school}
+                onChangeText={(value) => this.setSchool(value)}
+                placeholder='School'
+              />
+              <FormTextInput
+                style={styles.input}
+                value={this.state.telephone}
+                onChangeText={(value) => this.setTelephone(value)}
+                placeholder='Phone'
+              />
+              <FormTextInput
+                style={styles.input}
+                value={this.state.street}
+                onChangeText={(value) => this.setStreet(value)}
+                placeholder='Street'
+              />
+              <FormTextInput
+                style={styles.input}
+                value={this.state.number}
+                onChangeText={(value) => this.setNumber(value)}
+                placeholder='Number'
+              />
+              <FormTextInput
+                style={styles.input}
+                value={this.state.zipCode}
+                onChangeText={(value) => this.setZipCode(value)}
+                placeholder='Zipcode'
+              />
+              <FormTextInput
+                style={styles.input}
+                value={this.state.city}
+                onChangeText={(value) => this.setCity(value)}
+                placeholder='City'
+              />
+              <FormTextInput
+                style={styles.input}
+                value={this.state.state}
+                onChangeText={(value) => this.setAddressState(value)}
+                placeholder='State'
+              />
+            </ScrollView>
             <View style={styles.buttonGroup}>
               <FlatButton
                 secondary
@@ -132,9 +169,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   card: {
+    flex: 1,
     backgroundColor: Colors.white,
     borderRadius: Metrics.cardRadius,
-    marginHorizontal: Metrics.section
+    marginHorizontal: Metrics.section,
+    marginTop: 40,
+    marginBottom: 25
   },
   title: {
     ...Fonts.style.normal,
