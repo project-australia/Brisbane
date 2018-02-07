@@ -19,8 +19,7 @@
     "bundle-ios": "react-native bundle --dev false --entry-file index.js --bundle-output ios/main.jsbundle --platform ios",
     "log:ios": "react-native log-ios",
     "log:android": "react-native log-android",
-    "precommit": "lint-staged",
-    "prepush": "npm test"
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "axios": "^0.17.1",
