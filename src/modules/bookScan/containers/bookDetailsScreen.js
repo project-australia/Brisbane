@@ -31,16 +31,21 @@ class BookScannerContainer extends Component {
         screenType={screenType}
         navigateBack={this.goBack}
         onPressSell={(book) => this.props.sellBook(book)}
-        onPressBuy={(book) => this.props.buyBook(book)}
+        onPressBuy={() => this.toShoppingBag(this.props.buyBook)}
         onPressDonate={(book) => this.props.rentBook(book)}
         onPressBallardsClub={() => console.warn('Ballards club :D')}
-        navigateToShoppingBag={this.navigateTo('ShoppingBag')}
+        navigateToShoppingBag={() => this.navigateToShoppingBag()}
       />
     )
   }
 
-  navigateTo = screen => () => this.props.navigation.navigate(screen, {})
   goBack = () => this.props.navigation.goBack()
+  navigateToShoppingBag = () => { this.props.navigation.navigate('ShoppingBag', {}) }
+  toShoppingBag = (callback) => {
+    const book = this.props.book || this.props.navigation.state.params.book
+    callback(book)
+    this.navigateToShoppingBag()
+  }
 }
 
 const mapStateToProps = (state) => ({})

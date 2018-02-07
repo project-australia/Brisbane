@@ -18,7 +18,6 @@ export const ShoppingBag = props => (
           title: 'Buy these books',
           onPress: props.navigateToBuyBooksProcess
         }}
-        totalValue={'123.45'}
       />
       <ShoppingBagItems
         isSellingBooks

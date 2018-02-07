@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { StyleSheet, ScrollView, Text, View } from 'react-native'
 
 import { Navbar } from '../../shared/components/navbar'
@@ -79,10 +80,14 @@ export const BuyBooksProcess = props => {
             secondary
             title={'Checkout with Paypal'}
             // style={styles.inlineButton}
-            onPress={() => alert('Go to add payment method on profile')}
+            onPress={props.checkoutWithPayPal}
           />
         </View>
       </ScrollView>
     </View>
   )
+}
+
+BuyBooksProcess.propTypes = {
+  checkoutWithPayPal: PropTypes.func.isRequired
 }
