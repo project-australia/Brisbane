@@ -109,5 +109,8 @@ export const styles = StyleSheet.create({
   rentButton: {
     height: 36,
     minWidth: 56
+  },
+  flatTitle: {
+    marginHorizontal: 0
   }
 })
