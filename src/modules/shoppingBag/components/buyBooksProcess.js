@@ -21,7 +21,7 @@ export const BuyBooksProcess = props => {
       <ScrollView>
         <OrderSummaryList orders={props.books} total={props.totalPrice} />
 
-        <MenuTitle title={'Shipping'} style={styles.titleWrap} />
+        {/* <MenuTitle title={'Shipping'} style={styles.titleWrap} />
         <View style={styles.wrappingCard}>
           <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
             Use another address to receive the books
@@ -34,7 +34,7 @@ export const BuyBooksProcess = props => {
               onPress={() => alert('Tracking number saved')}
             />
           </View>
-        </View>
+        </View> */}
         <MenuTitle title={'Checkout'} style={styles.titleWrap} />
         <View style={styles.wrappingCard}>
           <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
