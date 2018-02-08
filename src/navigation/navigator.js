@@ -41,7 +41,6 @@ const routeConfigs = {
   ManageAccount: {
     screen: authenticated(ManageAccountScreen),
     navigationOptions: { header: null }
-
   },
   BookScanner: {
     screen: BookScannerScreen
