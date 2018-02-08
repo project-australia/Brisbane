@@ -9,6 +9,11 @@ export const styles = StyleSheet.create({
     height: Metrics.navBarHeight,
     paddingTop: Metrics.statusBarHeight
   },
+  wrapWithoutAndroidStatusbar: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    height: Metrics.navBarWithoutAndroidStatusbar
+  },
   titleMain: {
     color: Colors.gray900,
     flex: 1,

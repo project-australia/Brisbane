@@ -1,8 +1,14 @@
 import React from 'react'
 import { Button, ScrollView, View } from 'react-native'
+
 import { payWithPayPal } from '../../../services/paypal'
 
 import { styles } from './styles/testScreen.test'
+
+// REMOVE BELOW
+import { ModalWithTextAndButton } from '../../shared/components/modals/modalWithTextAndButton'
+import { RENT_CONDITIONS } from '../../../constants/messages'
+// REMOVE ABOVE
 
 const aBook = {
   'updatedAt': '2018-01-29T22:57:43.999Z',
@@ -63,6 +69,14 @@ export const TestScreen = props => {
       {navigateTo('BuyBooksProcess')}
       {navigateTo('SellBooksProcess')}
       {openPayPalScreen()}
+      <ModalWithTextAndButton // DUMMY DATA
+        isVisible
+        onCancel={() => alert('fechando o modal')}
+        title={'Rent conditions'}
+        paragraphs={RENT_CONDITIONS}
+        buttonTitle={'Accept conditions'}
+        onPressButton={() => alert('❤️ thank you')}
+      />
     </ScrollView>
   )
 }

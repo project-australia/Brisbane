@@ -11,8 +11,8 @@ import { Colors, Metrics } from '../../../constants'
 
 export const SellingBookAmount = props => (
   <View>
-    <MenuTitle title={'Sell a book'} />
-    <View style={[styles.card, styles.square]}>
+    <MenuTitle title={'Sell a book'} style={styles.flatTitle} />
+    <View style={styles.card}>
       <View style={styles.menuColumn}>
         <View style={styles.featuredIconWrap}>
           <Icon
