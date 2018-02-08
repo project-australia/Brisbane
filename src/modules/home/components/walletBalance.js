@@ -12,8 +12,8 @@ import { Colors, Metrics } from '../../../constants'
 export const WalletBalance = props => {
   return (
     <View>
-      <MenuTitle title={'My Wallet'} />
-      <View style={[styles.card, styles.square]}>
+      <MenuTitle title={'My Wallet'} style={styles.flatTitle} />
+      <View style={styles.card}>
         <View style={styles.menuColumn}>
           <View style={styles.featuredIconWrap}>
             <Icon
