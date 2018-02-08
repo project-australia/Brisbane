@@ -35,10 +35,12 @@ const routeConfigs = {
     screen: TestScreen
   },
   Profile: {
-    screen: authenticated(ProfileScreen)
+    screen: authenticated(ProfileScreen),
+    navigationOptions: { header: null }
   },
   ManageAccount: {
-    screen: authenticated(ManageAccountScreen)
+    screen: authenticated(ManageAccountScreen),
+    navigationOptions: { header: null }
   },
   BookScanner: {
     screen: BookScannerScreen
@@ -53,7 +55,8 @@ const routeConfigs = {
     screen: ConfirmationScreen
   },
   BuyBooksProcess: {
-    screen: authenticated(BuyBooksProcessScreen)
+    screen: authenticated(BuyBooksProcessScreen),
+    navigationOptions: { header: null }
   },
   BookList: {
     screen: BookListScreen
