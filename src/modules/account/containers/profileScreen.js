@@ -29,8 +29,8 @@ class ProfileContainer extends Component {
       isModalInputMultiline: false
     })
 
-  updateData = (data) => {
-    this.props.updateProfile(data)
+  updateData = (userId, data) => {
+    this.props.updateProfile(userId, data)
     this.hideEditModal()
   }
 
@@ -60,7 +60,7 @@ class ProfileContainer extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  updateProfile: (form) => dispatch(updateProfileAction(form)),
+  updateProfile: (userId, form) => dispatch(updateProfileAction(userId, form)),
   logOut: () => dispatch(logOutAction())
 })
 

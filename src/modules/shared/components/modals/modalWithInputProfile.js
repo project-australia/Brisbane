@@ -71,7 +71,6 @@ export class ModalWithInputProfile extends Component {
     const profile = {
       address: {}
     }
-    profile.id = user.id
     profile.school = this.state.school
     profile.telephone = this.state.telephone
     profile.address.street = this.state.street
@@ -79,7 +78,7 @@ export class ModalWithInputProfile extends Component {
     profile.address.zipCode = this.state.zipCode
     profile.address.state = this.state.state
     profile.address.city = this.state.city
-    return onConfirm(profile)
+    return onConfirm(user.id, profile)
   }
   render () {
     const { onDismiss, visible } = this.props

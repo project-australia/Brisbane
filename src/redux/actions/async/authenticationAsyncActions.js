@@ -51,11 +51,11 @@ export function logOutAction (signUpForm) {
   }
 }
 
-export function updateProfileAction (userProfile) {
+export function updateProfileAction (id, userProfile) {
   return async dispatch => {
     try {
-      const user = await Axios.put(`/users/${userProfile.id}`, userProfile)
-      dispatch(updateUserProfile(user))
+      const response = await Axios.put(`/users/${id}/profile`, userProfile)
+      dispatch(updateUserProfile(response.data))
     } catch (error) {
       dispatch(alertAction(error))
     }
