@@ -69,14 +69,14 @@ export const TestScreen = props => {
       {navigateTo('BuyBooksProcess')}
       {navigateTo('SellBooksProcess')}
       {openPayPalScreen()}
-      <ModalWithTextAndButton // DUMMY DATA
+      {/* <ModalWithTextAndButton // DUMMY DATA
         isVisible
         onCancel={() => alert('fechando o modal')}
         title={'Rent conditions'}
         paragraphs={RENT_CONDITIONS}
         buttonTitle={'Accept conditions'}
         onPressButton={() => alert('❤️ thank you')}
-      />
+      /> */}
     </ScrollView>
   )
 }

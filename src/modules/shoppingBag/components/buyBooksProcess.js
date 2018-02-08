@@ -44,7 +44,7 @@ export const BuyBooksProcess = props => {
             secondary
             title={'Pay localy'}
             // style={styles.inlineButton}
-            onPress={() => alert('Go to add payment method on profile')}
+            onPress={() => alert('Create Order With Payment in Person')}
           />
           <View style={{ height: 15 }} />
           <FormOutlineButton
@@ -66,5 +66,5 @@ BuyBooksProcess.navigationOptions = {
 
 BuyBooksProcess.propTypes = {
   checkoutWithPayPal: PropTypes.func.isRequired,
-  books: PropTypes.arrayOf(book).isRequired,
+  books: PropTypes.arrayOf(book).isRequired
 }
