@@ -88,7 +88,7 @@ const getWrapWidth = rightIconsCount =>
     ? Metrics.marginHorizontal + Metrics.navBarButtonHeight * rightIconsCount
     : Metrics.singleTitleWrapMargin
 
-export const Navbar = ({ rightIcons, title, onBack }) => {
+export const Navbar = ({ rightIcons, title, onBack, ignoreAndroidStatusBar }) => {
   const hasRightIcons =
     typeof rightIcons !== 'undefined' && typeof rightIcons === 'object'
   const rightIconsCount = hasRightIcons ? rightIcons.length : 0
@@ -108,8 +108,12 @@ export const Navbar = ({ rightIcons, title, onBack }) => {
       }
     })
   }
+
+  const wrapStyle = (ignoreAndroidStatusBar)
+    ? styles.wrapWithoutAndroidStatusbar
+    : styles.wrap
   return (
-    <View style={styles.wrap}>
+    <View style={wrapStyle}>
       <View style={iconWrapStyle}>{buildIcon(backButton)}</View>
       <Text numberOfLines={1} style={styles.title}>
         {title}
