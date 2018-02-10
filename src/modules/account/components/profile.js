@@ -38,13 +38,15 @@ export const Profile = ({
   onConfirmModal,
   onDismissModal
 }) => {
-  const rightIcon = [{
-    name: 'pencil',
-    onPress: () => showEditModal('Address')
-  }]
+  const rightIcon = [
+    {
+      name: 'pencil',
+      onPress: () => showEditModal('Address')
+    }
+  ]
   return (
     <View style={styles.container}>
-      <Navbar onBack={onBackPress} rightIcons={rightIcon}/>
+      <Navbar onBack={onBackPress} rightIcons={rightIcon} />
       <ScrollView>
         <ScreenTitleAndSubtitle
           title={user.name}

@@ -7,14 +7,20 @@ export const book = shape({
   images: shape({
     small: string.isRequired,
     medium: string.isRequired,
-    large: string.isRequired,
+    large: string.isRequired
   }),
   authors: arrayOf(string).isRequired,
   edition: string,
   id: string.isRequired,
   featured: bool,
   status: oneOf(['RENTED', 'AVAILABLE', 'SOLD', 'UNAVAILABLE']),
-  condition: oneOf(['Used – Acceptable', 'Used – Good', 'Used – Very Good', 'Used – Like New', 'New']),
+  condition: oneOf([
+    'Used – Acceptable',
+    'Used – Good',
+    'Used – Very Good',
+    'Used – Like New',
+    'New'
+  ]),
   sellPrice: number,
   buyingPrice: number
 })

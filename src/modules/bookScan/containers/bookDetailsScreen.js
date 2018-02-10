@@ -23,16 +23,17 @@ class BookScannerContainer extends Component {
 
   render () {
     const book = this.props.book || this.props.navigation.state.params.book
-    const screenType = this.props.screenType || this.props.navigation.state.params.screenType
+    const screenType =
+      this.props.screenType || this.props.navigation.state.params.screenType
 
     return (
       <BookDetails
         book={book}
         screenType={screenType}
         navigateBack={this.goBack}
-        onPressSell={(book) => this.props.sellBook(book)}
+        onPressSell={book => this.props.sellBook(book)}
         onPressBuy={() => this.toShoppingBag(this.props.buyBook)}
-        onPressDonate={(book) => this.props.rentBook(book)}
+        onPressDonate={book => this.props.rentBook(book)}
         onPressBallardsClub={() => console.warn('Ballards club :D')}
         navigateToShoppingBag={() => this.navigateToShoppingBag()}
       />
@@ -40,20 +41,24 @@ class BookScannerContainer extends Component {
   }
 
   goBack = () => this.props.navigation.goBack()
-  navigateToShoppingBag = () => { this.props.navigation.navigate('ShoppingBag', {}) }
-  toShoppingBag = (callback) => {
+  navigateToShoppingBag = () => {
+    this.props.navigation.navigate('ShoppingBag', {})
+  }
+  toShoppingBag = callback => {
     const book = this.props.book || this.props.navigation.state.params.book
     callback(book)
     this.navigateToShoppingBag()
   }
 }
 
-const mapStateToProps = (state) => ({})
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => {
   return {
-    buyBook: (book) => dispatch(buyBook(book)),
-    rentBook: (book) => dispatch(rentBook(book)),
-    sellBook: (book) => dispatch(sellBook(sellBook))
+    buyBook: book => dispatch(buyBook(book)),
+    rentBook: book => dispatch(rentBook(book)),
+    sellBook: book => dispatch(sellBook(sellBook))
   }
 }
-export const BookDetailsScreen = connect(mapStateToProps, mapDispatchToProps)(BookScannerContainer)
+export const BookDetailsScreen = connect(mapStateToProps, mapDispatchToProps)(
+  BookScannerContainer
+)

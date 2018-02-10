@@ -2,7 +2,8 @@ import Axios from 'axios'
 import { Address } from '../../domain/Address'
 import { User } from '../../domain/User'
 
-const SIGNUP_ERROR_MESSAGE = 'Something wrong has happened on your sign up, please try it again in a few minutes'
+const SIGNUP_ERROR_MESSAGE =
+  'Something wrong has happened on your sign up, please try it again in a few minutes'
 const SIGNUP_BAD_REQUEST_MESSAGE = 'Please Check your form inputs'
 
 const createUserFromBackEndResponse = response => {

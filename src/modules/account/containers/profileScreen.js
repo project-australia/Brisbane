@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Profile } from '../components/profile'
-import { updateProfileAction, logOutAction } from '../../../redux/actions/async/authenticationAsyncActions'
+import {
+  updateProfileAction,
+  logOutAction
+} from '../../../redux/actions/async/authenticationAsyncActions'
 
 class ProfileContainer extends Component {
   static navigationOptions = {
@@ -59,7 +62,7 @@ class ProfileContainer extends Component {
   navigateToWallet = () => alert('navigate to my wallet')
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   updateProfile: (userId, form) => dispatch(updateProfileAction(userId, form)),
   logOut: () => dispatch(logOutAction())
 })

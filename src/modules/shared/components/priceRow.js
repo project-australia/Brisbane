@@ -47,12 +47,12 @@ PriceRow.propsType = {
   title: PropTypes.shape({
     buy: PropTypes.string,
     sell: PropTypes.string,
-    donate: PropTypes.string,
+    donate: PropTypes.string
   }).isRequired,
   onPress: PropTypes.shape({
     buy: PropTypes.func,
     sell: PropTypes.func,
-    donate: PropTypes.func,
+    donate: PropTypes.func
   }).isRequired
 }
 

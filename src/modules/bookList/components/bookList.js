@@ -5,7 +5,7 @@ import { Touchable } from '../../shared/components/touchable'
 import { Navbar } from '../../shared/components/navbar'
 
 import { styles } from '../../shoppingBag/components/styles/shoppingBagItems.style'
-import { FlatButton } from '../../shared/components/buttons/index';
+import { FlatButton } from '../../shared/components/buttons/index'
 
 const renderBook = ({ id, images, title, author, edition, sellingPrice }) => {
   const imageSource = images

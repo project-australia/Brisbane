@@ -1,6 +1,11 @@
 import PayPal from 'react-native-paypal-wrapper'
 
-export const payWithPayPal = async (amount, description, onSuccess, onError) => {
+export const payWithPayPal = async (
+  amount,
+  description,
+  onSuccess,
+  onError
+) => {
   const price = amount.toString()
   if (!price) {
     throw new Error('Attemptive to pay with PayPal without any price')

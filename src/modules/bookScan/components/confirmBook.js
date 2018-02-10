@@ -31,7 +31,7 @@ export class BookDetails extends Component {
     ]
   }
 
-  buyPriceRow() {
+  buyPriceRow () {
     const { book, onPressBuy, screenType } = this.props
     const { buyingPrice } = book
 
@@ -48,7 +48,7 @@ export class BookDetails extends Component {
             buy: 'buy'
           },
           onPress: {
-            buy: (book) => onPressBuy(book)
+            buy: book => onPressBuy(book)
           }
         }}
       />

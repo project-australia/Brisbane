@@ -53,7 +53,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  signUp: (form) => dispatch(signUpAction(form))
+  signUp: form => dispatch(signUpAction(form))
 })
 
 export const SignUpScreen = connect(mapStateToProps, mapDispatchToProps)(

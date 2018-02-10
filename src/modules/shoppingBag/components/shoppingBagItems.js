@@ -43,7 +43,9 @@ export const ShoppingBagItems = ({
   }
 
   const totalPrice = items.reduce((total, item) => {
-    return total + item.quantity * (item.book.buyingPrice || item.book.sellPrice)
+    return (
+      total + item.quantity * (item.book.buyingPrice || item.book.sellPrice)
+    )
   }, 0)
 
   return (

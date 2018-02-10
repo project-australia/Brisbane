@@ -7,13 +7,19 @@ import { RowAdd } from '../../shared/components/rowAdd'
 import { styles } from './styles/profileItemAddress.style'
 import { Colors } from '../../../constants'
 
-const setEditButton = (onPress, hasStreet) => (
-  (onPress && hasStreet) ? { text: 'Edit', onPress, color: Colors.secondary500 } : undefined
-)
+const setEditButton = (onPress, hasStreet) =>
+  onPress && hasStreet
+    ? { text: 'Edit', onPress, color: Colors.secondary500 }
+    : undefined
 
-export const ProfileItemAddress = ({ title, data, emptyDataLabel, onPress }) => {
+export const ProfileItemAddress = ({
+  title,
+  data,
+  emptyDataLabel,
+  onPress
+}) => {
   const { street, state, number, zipCode, city } = data
-  const hasStreet = (typeof street === 'string' && street !== '')
+  const hasStreet = typeof street === 'string' && street !== ''
   return (
     <View style={styles.wrap}>
       <MenuTitle title={title} button={setEditButton(onPress, hasStreet)} />

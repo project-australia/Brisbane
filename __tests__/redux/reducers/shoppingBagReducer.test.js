@@ -1,4 +1,7 @@
-import { addToShoppingBag, removeFromShoppingBag } from '../../../src/redux/actions/sync/shoppingBagActions'
+import {
+  addToShoppingBag,
+  removeFromShoppingBag
+} from '../../../src/redux/actions/sync/shoppingBagActions'
 import { reducers } from '../../../src/redux/reducers'
 import {
   EMPTY_SHOPPING_BAG,
@@ -40,12 +43,18 @@ describe('Shopping bag reducer', () => {
       2
     )
     const initialState = [multipleQuantityItem]
-    const firstState = shoppingBagReducer(initialState, removeFromShoppingBag(item))
+    const firstState = shoppingBagReducer(
+      initialState,
+      removeFromShoppingBag(item)
+    )
 
     expect(firstState).toHaveLength(1)
     expect(firstState[0].quantity).toEqual(1)
 
-    const secondState = shoppingBagReducer(firstState, removeFromShoppingBag(item))
+    const secondState = shoppingBagReducer(
+      firstState,
+      removeFromShoppingBag(item)
+    )
     expect(secondState).toHaveLength(0)
   })
 
@@ -53,7 +62,10 @@ describe('Shopping bag reducer', () => {
     const firstState = [item]
     const secondState = [item, anotherItem]
 
-    let state = shoppingBagReducer(SHOPPING_BAG_INITIAL_STATE, addToShoppingBag(item))
+    let state = shoppingBagReducer(
+      SHOPPING_BAG_INITIAL_STATE,
+      addToShoppingBag(item)
+    )
     expect(state).toEqual(firstState)
 
     state = shoppingBagReducer(state, addToShoppingBag(anotherItem))

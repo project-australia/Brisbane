@@ -11,7 +11,7 @@
     "generate:ipa": "sh ./scripts/generate-ipa.sh",
     "generate:apk": "sh ./scripts/generate-apk.sh",
     "ios": "react-native run-ios",
-    "reformat-code": "npm run prettify && npm run lint:fix",
+    "reformat-code": "npm run prettier && npm run lint:fix",
     "lint:check": "eslint ./src/ ./__tests__/",
     "lint:fix": "eslint --fix ./src/ ./__tests__/",
     "prettier": "prettier --single-quote --no-semi --write '{src,__{tests,mocks}__}/**/*.js'",

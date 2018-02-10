@@ -18,10 +18,16 @@ class BookListContainer extends React.PureComponent {
       <HorizontalBookList
         books={this.props.books}
         onBuyBook={book =>
-          this.props.navigation.navigate('BookDetails', { book, screenType: 'BUY' })
+          this.props.navigation.navigate('BookDetails', {
+            book,
+            screenType: 'BUY'
+          })
         }
         onRentBook={book =>
-          this.props.navigation.navigate('BookDetails', { book, screenType: 'RENT' })
+          this.props.navigation.navigate('BookDetails', {
+            book,
+            screenType: 'RENT'
+          })
         }
       />
     )

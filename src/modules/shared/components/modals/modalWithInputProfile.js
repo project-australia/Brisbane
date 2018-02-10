@@ -1,5 +1,13 @@
 import React, { Component } from 'react'
-import { Platform, Modal, Keyboard, StyleSheet, View, Text, ScrollView } from 'react-native'
+import {
+  Platform,
+  Modal,
+  Keyboard,
+  StyleSheet,
+  View,
+  Text,
+  ScrollView
+} from 'react-native'
 import { Fonts, Colors, Metrics } from '../../../../constants'
 import { FormTextInput } from '../../../authentication/components/formTextInput'
 import { FlatButton } from '../buttons/index'
@@ -100,44 +108,44 @@ export class ModalWithInputProfile extends Component {
               <FormTextInput
                 style={styles.input}
                 value={this.state.school}
-                onChangeText={(value) => this.setSchool(value)}
-                placeholder='School'
+                onChangeText={value => this.setSchool(value)}
+                placeholder="School"
               />
               <FormTextInput
                 style={styles.input}
                 value={this.state.telephone}
-                onChangeText={(value) => this.setTelephone(value)}
-                placeholder='Phone'
+                onChangeText={value => this.setTelephone(value)}
+                placeholder="Phone"
               />
               <FormTextInput
                 style={styles.input}
                 value={this.state.street}
-                onChangeText={(value) => this.setStreet(value)}
-                placeholder='Street'
+                onChangeText={value => this.setStreet(value)}
+                placeholder="Street"
               />
               <FormTextInput
                 style={styles.input}
                 value={this.state.number}
-                onChangeText={(value) => this.setNumber(value)}
-                placeholder='Number'
+                onChangeText={value => this.setNumber(value)}
+                placeholder="Number"
               />
               <FormTextInput
                 style={styles.input}
                 value={this.state.zipCode}
-                onChangeText={(value) => this.setZipCode(value)}
-                placeholder='Zipcode'
+                onChangeText={value => this.setZipCode(value)}
+                placeholder="Zipcode"
               />
               <FormTextInput
                 style={styles.input}
                 value={this.state.city}
-                onChangeText={(value) => this.setCity(value)}
-                placeholder='City'
+                onChangeText={value => this.setCity(value)}
+                placeholder="City"
               />
               <FormTextInput
                 style={styles.input}
                 value={this.state.state}
-                onChangeText={(value) => this.setAddressState(value)}
-                placeholder='State'
+                onChangeText={value => this.setAddressState(value)}
+                placeholder="State"
               />
             </ScrollView>
             <View style={styles.buttonGroup}>

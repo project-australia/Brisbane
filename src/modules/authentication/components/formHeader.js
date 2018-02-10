@@ -4,7 +4,7 @@ import { Text, View } from 'react-native'
 import { AppStatusBar } from '../../shared/components/appStatusBar'
 import { styles } from './styles/loginFormStyles'
 
-export const FormHeader = (props) => (
+export const FormHeader = props => (
   <View>
     <AppStatusBar />
     <View style={styles.header}>

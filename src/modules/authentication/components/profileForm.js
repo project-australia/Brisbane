@@ -47,12 +47,8 @@ export class ProfileForm extends Component {
 
   render () {
     return (
-      <ScrollView
-        contentContainerStyle={styles.screen}
-      >
-        <FormHeader
-          title='Almost there...'
-        />
+      <ScrollView contentContainerStyle={styles.screen}>
+        <FormHeader title="Almost there..." />
         <FormTextInput
           onChangeText={this.setBirthDateDay}
           value={this.props.form.birthDateDay}

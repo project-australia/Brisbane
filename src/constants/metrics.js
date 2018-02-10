@@ -21,11 +21,8 @@ export const Metrics = {
   screenHeight: width < height ? height : width,
   statusBarHeight,
   navBarHeight,
-  navBarWithoutAndroidStatusbar: (
-    Platform.OS === 'ios'
-      ? navBarHeight
-      : navBarHeight - statusBarHeight
-  ),
+  navBarWithoutAndroidStatusbar:
+    Platform.OS === 'ios' ? navBarHeight : navBarHeight - statusBarHeight,
   navBarButtonHeight: 48,
   singleTitleWrapMargin: 60,
   backButtonInset: Platform.OS === 'ios' ? 5 : 8,

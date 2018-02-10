@@ -6,8 +6,10 @@ import { Navbar } from '../navbar'
 import { SolidButton } from '../buttons'
 import { Colors, Fonts, Metrics } from '../../../../constants'
 
-const buildParagraph = (paragraph) => (
-  <Text style={styles.text} key={paragraph}>{paragraph}</Text>
+const buildParagraph = paragraph => (
+  <Text style={styles.text} key={paragraph}>
+    {paragraph}
+  </Text>
 )
 
 export const ModalWithTextAndButton = ({
@@ -18,22 +20,12 @@ export const ModalWithTextAndButton = ({
   buttonTitle,
   onPressButton
 }) => (
-  <Modal
-    visible={isVisible}
-    onRequestClose={onCancel}
-    animationType={'slide'}
-  >
+  <Modal visible={isVisible} onRequestClose={onCancel} animationType={'slide'}>
     <Navbar title={title} onBack={onCancel} ignoreAndroidStatusBar />
-    <ScrollView>
-      {paragraphs.map(buildParagraph)}
-    </ScrollView>
-    {
-      (onPressButton) &&
-      <SolidButton
-        title={buttonTitle}
-        onPress={onPressButton}
-      />
-    }
+    <ScrollView>{paragraphs.map(buildParagraph)}</ScrollView>
+    {onPressButton && (
+      <SolidButton title={buttonTitle} onPress={onPressButton} />
+    )}
   </Modal>
 )
 
