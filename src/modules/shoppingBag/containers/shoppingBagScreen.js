@@ -6,84 +6,17 @@ import { ShoppingBag } from '../components/shoppingBag'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { payWithPayPal } from '../../../services/paypal'
 
-const booksToBuy = [
-  {
-    id: '12345',
-    book: {
-      id: '345345',
-      imageUri: 'https://www.fillmurray.com/200/300',
-      title: 'Book Name 1',
-      author: 'Book Author',
-      edition: '3rd edition',
-      aboutBook: '',
-      sellPrice: 12.97
-    },
-    quantity: 1,
-    type: 'BUY'
-  },
-  {
-    id: '12346',
-    book: {
-      id: '3445',
-      imageUri: 'https://www.fillmurray.com/100/150',
-      title: 'Book with a really big name that will extrapolate the title line',
-      author: 'Book Author also with a big name that should break line',
-      edition: '3rd edition',
-      aboutBook: '',
-      sellPrice: 33.55
-    },
-    quantity: 2,
-    type: 'RENT'
-  }
-]
-
-const booksToSell = [
-  {
-    id: '12347',
-    book: {
-      id: '345345',
-      imageUri: 'https://www.fillmurray.com/200/300',
-      title: 'Book Name 1',
-      author: 'Book Author',
-      edition: '3rd edition',
-      aboutBook: '',
-      sellPrice: 12.97
-    },
-    quantity: 1,
-    type: 'SELL'
-  },
-  {
-    id: '12348',
-    book: {
-      id: '3445',
-      imageUri: 'https://www.fillmurray.com/100/150',
-      title: 'Book with a really big name that will extrapolate the title line',
-      author: 'Book Author also with a big name that should break line',
-      edition: '3rd edition',
-      aboutBook: '',
-      sellPrice: 0
-    },
-    quantity: 2,
-    type: 'DONATE'
-  }
-]
-
 class ShoppingBagContainer extends Component {
   static navigationOptions = {
     title: 'Shopping cart',
     header: null
   }
 
-  state = {
-    booksToBuy: booksToBuy,
-    booksToSell: booksToSell
-  }
-
-  render () {
+  render() {
     return (
       <ShoppingBag
         booksToBuy={this.props.booksToBuy}
-        booksToSell={this.state.booksToSell}
+        booksToSell={this.props.booksToSell}
         navigateBack={this.goBack}
         navigateToCheckout={this.navigateToCheckout}
         navigateToHome={this.navigateToHome}
@@ -119,11 +52,16 @@ ShoppingBagContainer.propTypes = {
   booksToBuy: PropTypes.arrayOf(ShoppingBagItemPropType)
 }
 
-const mapStateToProps = state => {
-  const booksToBuy = state.shoppingBag.filter(item => item.type === SHOPPING_BAG_TYPES.BUY)
-  console.log('booksToBuy', booksToBuy)
+const mapStateToProps = ({ shoppingBag }) => {
+  const booksToBuy = shoppingBag.filter(
+    item => item.type === SHOPPING_BAG_TYPES.BUY
+  )
+  const booksToSell = shoppingBag.filter(
+    item => item.type === SHOPPING_BAG_TYPES.SELL
+  )
   return {
-    booksToBuy
+    booksToBuy,
+    booksToSell
   }
 }
 

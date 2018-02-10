@@ -3,7 +3,7 @@ export const SHOPPING_BAG_TYPES = { BUY: 'BUY', RENT: 'RENT', SELL: 'SELL' }
 export class ShoppingBagItem {
   constructor (book, type, quantity = 1) {
     this.type = SHOPPING_BAG_TYPES[type]
-    this.id = this.type + book.id
+    this.id = book.id
     this.quantity = quantity
     this.book = book
 
@@ -13,11 +13,11 @@ export class ShoppingBagItem {
   }
 
   increaseQuantity () {
-    this.quantity += 1
+    // TODO: REMOVE THIS BEHAVIOUR
   }
 
   decreaseQuantity () {
-    this.quantity -= 1
+    // TODO: REMOVE THIS BEHAVIOUR
   }
 }
 

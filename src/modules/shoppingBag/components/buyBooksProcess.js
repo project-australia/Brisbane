@@ -20,21 +20,6 @@ export const BuyBooksProcess = props => {
       />
       <ScrollView>
         <OrderSummaryList orders={props.books} total={props.totalPrice} />
-
-        {/* <MenuTitle title={'Shipping'} style={styles.titleWrap} />
-        <View style={styles.wrappingCard}>
-          <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
-            Use another address to receive the books
-          </Text>
-          <View style={styles.rowWrap}>
-            <FormOutlineButton
-              secondary
-              title={'Switch Address'}
-              style={styles.inlineButton}
-              onPress={() => alert('Tracking number saved')}
-            />
-          </View>
-        </View> */}
         <MenuTitle title={'Checkout'} style={styles.titleWrap} />
         <View style={styles.wrappingCard}>
           <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
@@ -43,14 +28,12 @@ export const BuyBooksProcess = props => {
           <FormOutlineButton
             secondary
             title={'Pay localy'}
-            // style={styles.inlineButton}
             onPress={() => alert('Create Order With Payment in Person')}
           />
           <View style={{ height: 15 }} />
           <FormOutlineButton
             secondary
             title={'Checkout with Paypal'}
-            // style={styles.inlineButton}
             onPress={props.checkoutWithPayPal}
           />
         </View>
