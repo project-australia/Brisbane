@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { SHOPPING_BAG_TYPES } from '../../../domain/ShoppingBagItem'
-import { createOrder } from '../../../services/backend/orderService'
+import {
+  createOrder,
+  updateOrder
+} from '../../../services/backend/orderService'
 import { payWithPayPal } from '../../../services/paypal'
 import { BuyBooksProcess } from '../components/buyBooksProcess'
-import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 
 class BuyBooksProcessContainer extends Component {
   static navigationOptions = {
@@ -13,7 +14,7 @@ class BuyBooksProcessContainer extends Component {
     header: null
   }
 
-  render () {
+  render() {
     const totalPrice = this.props.booksToBuy.reduce((total, item) => {
       return (
         total + item.quantity * (item.book.buyingPrice || item.book.sellPrice)
@@ -35,41 +36,21 @@ class BuyBooksProcessContainer extends Component {
   checkoutWithPaypal = price => async () => {
     const { user, booksToBuy } = this.props
     try {
-      const order = await createOrder('BUY', 'SHIPPED', booksToBuy, user)
       await payWithPayPal(
         price,
         'Buying books',
-        this.onPayPalOnSuccess(order),
-        this.onPayPalError(order)
+        this.onPayPalOnSuccess(booksToBuy, user)
       )
     } catch (error) {
-      console.log('deu ruim o checkout com paypal', error)
+      console.log('Paypal checkout failed', JSON.stringify(error))
     }
   }
 
-  onPayPalError = order => paypalResponse => {
+  onPayPalOnSuccess = (books, user) => async paypalResponse => {
     const transactionId = paypalResponse.response.id
-    console.log('PRECISAMOS ATUALIZAR A ORDER', order)
-    return console.log(
-      `Transaction #${transactionId} failed`,
-      paypalResponse,
-      order
-    )
+    const order = await createOrder('BUY', 'SHIPPED', books, user, transactionId)
+    console.log('Paypall Payment confirmed, order generated', order)
   }
-
-  onPayPalOnSuccess = order => paypalResponse => {
-    const transactionId = paypalResponse.response.id
-    console.log('PRECISAMOS ATUALIZAR A ORDER')
-    return console.log(
-      `Transaction #${transactionId} successfull`,
-      paypalResponse,
-      order
-    )
-  }
-}
-
-BuyBooksProcessContainer.propTypes = {
-  items: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired
 }
 
 const mapStateToProps = ({ authentication: { user }, shoppingBag }) => {

@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, ScrollView, Text, View } from 'react-native'
-import { book } from '../../home/propTypes/book'
 
 import { Navbar } from '../../shared/components/navbar'
+import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { OrderSummaryList } from './orderSummaryList'
 import { MenuTitle } from '../../shared/components/menuTitle'
 import { FormOutlineButton } from '../../shared/components/buttons'
@@ -49,5 +49,7 @@ BuyBooksProcess.navigationOptions = {
 
 BuyBooksProcess.propTypes = {
   checkoutWithPayPal: PropTypes.func.isRequired,
-  books: PropTypes.arrayOf(book).isRequired
+  books: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
+  navigateBack: PropTypes.func.isRequired,
+  totalPrice: PropTypes.number.isRequired
 }

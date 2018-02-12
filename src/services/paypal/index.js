@@ -1,10 +1,15 @@
 import PayPal from 'react-native-paypal-wrapper'
 
+const defaultErrorCallback = paypalResponse => {
+  console.log(`Transaction failed`, paypalResponse)
+  return paypalResponse
+}
+
 export const payWithPayPal = async (
   amount,
   description,
   onSuccess,
-  onError
+  onError = defaultErrorCallback
 ) => {
   const price = amount.toString()
   if (!price) {
@@ -19,10 +24,10 @@ export const payWithPayPal = async (
     return onSuccess(response)
   } catch (err) {
     if (err.code === 'USER_CANCELLED') {
-      console.log('usuario cancelou')
+      console.log('User has cancelled')
+    } else {
+      console.log('PAYPAL FAILED', JSON.stringify(err))
+      onError(err)
     }
-
-    console.log('PAYPAL FAILED', JSON.stringify(err))
-    onError(err)
   }
 }
