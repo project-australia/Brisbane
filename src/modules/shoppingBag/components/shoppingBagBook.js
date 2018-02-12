@@ -29,7 +29,6 @@ export const ShoppingBagBook = ({
   subtitleOne,
   subtitleTwo,
   price,
-  quantity,
   type
 }) => {
   const cardStyle = [styles.card, { borderColor: setLeftBorderColor(type) }]
@@ -50,7 +49,6 @@ export const ShoppingBagBook = ({
         </View>
         <View style={styles.rightContentWrap}>
           <Text style={styles.subtitle}>{renderType(type)}</Text>
-          {quantity > 1 && <Text style={styles.title}>{`${quantity} x `}</Text>}
           {price && <Text style={styles.title}>{`$${price}`}</Text>}
         </View>
       </View>
@@ -60,7 +58,6 @@ export const ShoppingBagBook = ({
 
 ShoppingBagBook.propTypes = {
   type: PropTypes.oneOf(['BUY', 'RENT', 'SELL']).isRequired,
-  quantity: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   subtitleOne: PropTypes.string,

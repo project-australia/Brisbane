@@ -15,19 +15,20 @@ export const sellBook = book =>
   addToShoppingBag(new ShoppingBagItem(book, SELL))
 
 export const addToShoppingBag = item => {
-  if (item instanceof ShoppingBagItem) {
-    return { type: ADD_TO_SHOPPING_BAG, item }
+  if (!(item instanceof ShoppingBagItem)) {
+    throw new Error('Use addToShoppingBag with a ShoppingBagItem object')
   }
 
-  throw new Error('Use addToShoppingBag with a ShoppingBagItem object')
+  return { type: ADD_TO_SHOPPING_BAG, item }
 }
 
-export const removeFromShoppingBag = item => {
-  const action = { type: REMOVE_FROM_SHOPPING_BAG, item }
-
-  if (!(item instanceof ShoppingBagItem)) {
-    action.item = new ShoppingBagItem(item, RENT)
+export const removeFromShoppingBag = (item, type) => {
+  if (item instanceof ShoppingBagItem) {
+    return { type: REMOVE_FROM_SHOPPING_BAG, item }
+  } else {
+    return {
+      type: REMOVE_FROM_SHOPPING_BAG,
+      item: new ShoppingBagItem(item, type)
+    }
   }
-
-  return action
 }

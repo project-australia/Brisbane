@@ -41,13 +41,6 @@ export const ShoppingBagItems = ({
   if (items.length === 0) {
     return null
   }
-
-  const totalPrice = items.reduce((total, item) => {
-    return (
-      total + item.quantity * (item.book.buyingPrice || item.book.sellPrice)
-    )
-  }, 0)
-
   return (
     <View style={styles.itemsWrap}>
       <MenuTitle title={title} style={styles.titleWrap} />
@@ -66,7 +59,7 @@ export const ShoppingBagItems = ({
             setTotalPriceColor(isSellingBooks)
           ])}
         >
-          {`$${totalPrice}`}
+          {`$${items.total('BUY')}`}
         </Text>
       </View>
       <SolidButton

@@ -17,7 +17,7 @@ const { BUY, RENT } = SHOPPING_BAG_TYPES
 
 describe('Shopping bag sync actions', () => {
   const item = { title: 'Star Wars', id: '987' }
-  const shoppingBagItem = new ShoppingBagItem(item, RENT)
+  const shoppingBagItem = new ShoppingBagItem(item, 'RENT')
 
   it('should only accept ShoppingBagItem objects', () => {
     expect(() => {
@@ -31,7 +31,8 @@ describe('Shopping bag sync actions', () => {
       type: REMOVE_FROM_SHOPPING_BAG,
       item: shoppingBagItem
     }
-    const action = removeFromShoppingBag(item)
+
+    const action = removeFromShoppingBag(item, RENT)
     expect(action).toEqual(expectedAction)
   })
 

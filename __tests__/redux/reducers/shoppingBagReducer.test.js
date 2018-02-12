@@ -28,34 +28,10 @@ describe('Shopping bag reducer', () => {
     expect(state).toEqual(expectedInitialState)
   })
 
-  it('should increase item quantity number during addToShoppingBag an existing item', () => {
+  it('should not increase item quantity during adding existing item to shopping bag', () => {
     const initialState = [item]
     const state = shoppingBagReducer(initialState, addToShoppingBag(item))
-
-    expect(state).toHaveLength(1)
-    expect(state[0].quantity).toEqual(2)
-  })
-
-  it('should decrease item quantity number during removing a repeated item', () => {
-    const multipleQuantityItem = new ShoppingBagItem(
-      starWars,
-      SHOPPING_BAG_TYPES.BUY,
-      2
-    )
-    const initialState = [multipleQuantityItem]
-    const firstState = shoppingBagReducer(
-      initialState,
-      removeFromShoppingBag(item)
-    )
-
-    expect(firstState).toHaveLength(1)
-    expect(firstState[0].quantity).toEqual(1)
-
-    const secondState = shoppingBagReducer(
-      firstState,
-      removeFromShoppingBag(item)
-    )
-    expect(secondState).toHaveLength(0)
+    expect(state).toEqual(state)
   })
 
   it('should addToShoppingBag items to shopping bag', async () => {

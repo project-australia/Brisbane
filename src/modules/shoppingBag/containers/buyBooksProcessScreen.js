@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { SHOPPING_BAG_TYPES } from '../../../domain/ShoppingBagItem'
-import {
-  createOrder,
-  updateOrder
-} from '../../../services/backend/orderService'
+import { createOrder } from '../../../services/backend/orderService'
 import { payWithPayPal } from '../../../services/paypal'
 import { BuyBooksProcess } from '../components/buyBooksProcess'
 
@@ -14,12 +11,8 @@ class BuyBooksProcessContainer extends Component {
     header: null
   }
 
-  render() {
-    const totalPrice = this.props.booksToBuy.reduce((total, item) => {
-      return (
-        total + item.quantity * (item.book.buyingPrice || item.book.sellPrice)
-      )
-    }, 0)
+  render () {
+    const totalPrice = this.props.booksToBuy.total('BUY')
 
     return (
       <BuyBooksProcess

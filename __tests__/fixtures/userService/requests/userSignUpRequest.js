@@ -1,7 +1,7 @@
 export const userSignUpForm = {
   email: 'some@email.com',
   password: 'pass@123',
-  name: 'talhate',
+  name: 'Talhate',
   referredBy: 'DUDUZINHO',
   referId: 'HEBERT_BOLADO',
   birthDate: '2017-12-27T17:00:04.376Z',
