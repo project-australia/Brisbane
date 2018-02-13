@@ -1,4 +1,5 @@
 import Axios from 'axios'
+import { throwResponseBody } from './index'
 
 const validShippingMethods = ['STANDARD', 'EXPEDITE', 'IN_PERSON']
 
@@ -38,13 +39,4 @@ export const updateOrder = async (
   })
     .then(res => res.data)
     .catch(err => throwResponseBody(err))
-}
-
-const throwResponseBody = err => {
-  if (err.response) {
-    const { status, data } = err.response
-    throw new Error({ status, data })
-  }
-
-  throw err
 }

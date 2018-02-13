@@ -18,7 +18,7 @@ const size = {
   regular: 17,
   medium: 14,
   small: 13,
-  tiny: 8.5
+  tiny: 11
 }
 
 const style = {
@@ -88,6 +88,10 @@ const style = {
   footnote: {
     fontFamily: type.base,
     fontSize: size.small
+  },
+  caption: {
+    fontFamily: type.base,
+    fontSize: size.tiny
   }
 }
 
