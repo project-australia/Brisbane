@@ -29,6 +29,7 @@ class BuyBooksProcessContainer extends Component {
 
   render () {
     const totalPrice = this.props.booksToBuy.total('BUY')
+    const totalWeight = this.props.booksToBuy.reduce((acc = 0, item) => acc + item.book.dimensions.weight)
 
     return (
       <BuyBooksProcess
@@ -37,6 +38,7 @@ class BuyBooksProcessContainer extends Component {
         navigateBack={this.goBack}
         totalPrice={totalPrice}
         isLoading={this.state.isLoading}
+        expediteShippingPrice={totalWeight > 5 ? 9.99 : 6.99}
       />
     )
   }

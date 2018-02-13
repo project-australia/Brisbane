@@ -29,6 +29,7 @@ export class BuyBooksProcess extends React.Component {
     books: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
     navigateBack: PropTypes.func.isRequired,
     totalPrice: PropTypes.number.isRequired,
+    expediteShippingPrice: PropTypes.number.isRequired,
     isLoading: PropTypes.bool.isRequired
   }
 
@@ -45,7 +46,7 @@ export class BuyBooksProcess extends React.Component {
     return (
       <Button
         secondary
-        title={'Standard Shipping'}
+        title={'Standard Shipping - FREE'}
         onPress={() => this.changeToStandardShippingMethod()}
       />
     )
@@ -56,7 +57,7 @@ export class BuyBooksProcess extends React.Component {
     return (
       <Button
         secondary
-        title={'Expedite Shipping'}
+        title={`Expedite Shipping - $${this.props.expediteShippingPrice}`}
         onPress={() => this.changeToExpediteShippingMethod()}
       />
     )
@@ -71,6 +72,16 @@ export class BuyBooksProcess extends React.Component {
         />
         <ScrollView>
           <OrderSummaryList orders={this.props.books} total={this.props.totalPrice} />
+          <MenuTitle title={'Shipping Method'} style={styles.titleWrap} />
+          <View style={styles.wrappingCard}>
+            <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
+              Choose shipping method
+            </Text>
+            {this.renderStandardShippingButton()}
+            {/* TODO: Isso deveria ser uma margem? */}
+            <View style={{ height: 15 }} />
+            {this.renderExpediteShippingButton()}
+          </View>
           <MenuTitle title={'Checkout'} style={styles.titleWrap} />
           <View style={styles.wrappingCard}>
             <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
@@ -87,16 +98,6 @@ export class BuyBooksProcess extends React.Component {
               title={'Checkout with Paypal'}
               onPress={this.props.checkoutWithPayPal}
             />
-          </View>
-          <MenuTitle title={'Shipping Method'} style={styles.titleWrap} />
-          <View style={styles.wrappingCard}>
-            <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
-              Choose shipping method
-            </Text>
-            {this.renderStandardShippingButton()}
-            {/* TODO: Isso deveria ser uma margem? */}
-            <View style={{ height: 15 }} />
-            {this.renderExpediteShippingButton()}
           </View>
         </ScrollView>
       </LoadingOverlay>
