@@ -1,30 +1,75 @@
-import React from 'react'
-import { Alert } from 'react-native'
+import React, { Component } from 'react'
+import { Alert, View } from 'react-native'
 import { connect } from 'react-redux'
 import { WalletBalance } from '../components/walletBalance'
+import { ModalWithInput } from '../../shared/components/modals/modalWithInput'
+import { requestWithdraw } from '../../../services/backend/userService'
+class WalletContainer extends Component {
+  state = { isEditModalOpen: false }
 
-const confirmation = () =>
-  Alert.alert(
+  showEditModal = () => {
+    const { status, club } = this.props
+    if (!club) {
+      return this.defaultAlertPopUp('You need to be logged.')
+    }
+    if (club === 'NONE') {
+      return this.defaultAlertPopUp('You need get 10% or 20% Club.')
+    }
+    if (status !== 'NONE') {
+      return this.defaultAlertPopUp('Your request is under processing')
+    }
+    return this.setState({
+      isEditModalOpen: true
+    })
+  }
+
+  hideEditModal = async () => this.setState({ isEditModalOpen: false })
+
+  confirmModal = async (paypalAccount) => {
+    const { id } = this.props
+    await this.hideEditModal()
+    requestWithdraw(id, { paypalAccount })
+  }
+
+  defaultAlertPopUp = (msg) => Alert.alert(
     'Withdraw Solicitation',
-    'Do you want request your credit?',
+    msg,
     [
-      { text: "Yes, I'm sure", onPress: () => console.log('OK Pressed') },
       {
-        text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'cancel'
+        text: 'Ok'
       }
     ],
     { cancelable: false }
   )
-const WalletContainer = () => (
-  <WalletBalance
-    balance={15.5}
-    onWithDrawPressed={confirmation}
-    onWalletViewPressed={() => alert('🛶 navigate to wallet')}
-  />
-)
 
-const mapStateToProps = () => ({})
+  render () {
+    const { ballance } = this.props
+    const { isEditModalOpen } = this.state
+    return (
+      <View>
+        <WalletBalance
+          balance={ballance || 0.0}
+          onWithDrawPressed={this.showEditModal}
+          onWalletViewPressed={() => alert('🛶 navigate to wallet')}
+        />
+        <ModalWithInput
+          visible={isEditModalOpen}
+          placeholder={'Inform your paypal account'}
+          title={'Withdraw Solicitation'}
+          onConfirm={value => this.confirmModal(value)}
+          onDismiss={this.hideEditModal}
+        />
+      </View>
+    )
+  }
+}
+
+const mapStateToProps = ({authentication: { user }}) => ({
+  ballance: user.wallet.ballance,
+  status: user.wallet.status,
+  paypalAccount: user.wallet.paypalAccount,
+  club: user.club,
+  id: user.id
+})
 
 export const WalletBalanceAmount = connect(mapStateToProps)(WalletContainer)
