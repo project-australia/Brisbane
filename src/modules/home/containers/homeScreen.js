@@ -51,6 +51,7 @@ class HomeContainer extends Component {
 
 const mapStateToProps = ({ authentication: { user }, books }) => ({
   displayName: user.name,
+  wallet: user.wallet,
   booksLists: books
 })
 

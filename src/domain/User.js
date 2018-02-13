@@ -12,7 +12,8 @@ export class User {
     referId,
     club,
     role,
-    address
+    address,
+    wallet
   ) {
     this.id = id
     this.referredBy = referredBy
@@ -25,6 +26,7 @@ export class User {
     this.club = club
     this.role = role
     this.address = address
+    this.wallet = wallet
   }
 
   id
@@ -38,4 +40,5 @@ export class User {
   club
   role
   address
+  wallet
 }

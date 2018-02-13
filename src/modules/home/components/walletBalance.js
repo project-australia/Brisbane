@@ -23,7 +23,7 @@ export const WalletBalance = props => {
             />
           </View>
           <Text style={styles.secondaryInput}>Balance</Text>
-          <Text style={styles.primaryText}>${props.balance}</Text>
+          <Text style={styles.primaryText}>$ {props.balance}</Text>
         </View>
         <CardFooterButton
           onPress={props.onWithDrawPressed}

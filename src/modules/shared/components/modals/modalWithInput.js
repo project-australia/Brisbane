@@ -6,7 +6,10 @@ import { InputMultiline } from '../inputs/inputMultiline'
 import { FlatButton } from '../buttons/index'
 
 export class ModalWithInput extends Component {
-  state = { keyboardHeight: 0 }
+  state = {
+    keyboardHeight: 0,
+    inputValue: ''
+  }
 
   componentWillMount () {
     if (Platform.OS === 'ios') {
@@ -28,6 +31,8 @@ export class ModalWithInput extends Component {
     }
   }
 
+  setInput = inputValue => this.setState({ inputValue })
+
   keyboardShow = keyboardData =>
     this.setState({
       keyboardHeight: keyboardData.endCoordinates.height
@@ -35,8 +40,8 @@ export class ModalWithInput extends Component {
   keyboardHide = () => this.setState({ keyboardHeight: 0 })
 
   renderInput = inputType => {
-    const { multiline } = this.props
-    const placeholder = 'Insert your data here'
+    const { multiline, placeholder } = this.props
+    const placeHolderMsg = placeholder || 'Insert your data here'
     return multiline ? (
       <InputMultiline
         autoFocus
@@ -44,7 +49,12 @@ export class ModalWithInput extends Component {
         placeholder={placeholder}
       />
     ) : (
-      <FormTextInput autoFocus style={styles.input} placeholder={placeholder} />
+      <FormTextInput
+        autoFocus
+        style={styles.input}
+        placeholder={placeHolderMsg}
+        onChangeText={value => this.setInput(value)}
+      />
     )
   }
 
@@ -76,7 +86,7 @@ export class ModalWithInput extends Component {
                 secondary
                 containerStyle={styles.button}
                 title={'Confirm'}
-                onPress={onConfirm}
+                onPress={() => onConfirm(this.state.inputValue)}
               />
             </View>
           </View>
