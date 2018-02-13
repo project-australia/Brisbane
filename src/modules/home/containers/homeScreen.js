@@ -13,6 +13,7 @@ class HomeContainer extends Component {
     displayName: PropTypes.string,
     navigation: PropTypes.object.isRequired
   }
+
   handleListBooksToHome = booksList => {
     return booksList.slice(0, 5)
   }

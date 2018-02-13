@@ -1,8 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { View } from 'react-native'
 import { connect } from 'react-redux'
-import { buyBook, rentBook } from '../../../redux/actions'
+
 import { book } from '../propTypes/book'
+import { styles } from '../components/styles/home.styles'
+import { buyBook, rentBook } from '../../../redux/actions'
+import { MenuTitle } from '../../shared/components/menuTitle'
 import { HorizontalBookList } from '../components/horizontalBookList'
 
 class BookListContainer extends React.PureComponent {
@@ -10,26 +14,37 @@ class BookListContainer extends React.PureComponent {
     navigation: PropTypes.object.isRequired,
     onBuyBook: PropTypes.func.isRequired,
     onRentBook: PropTypes.func.isRequired,
-    books: PropTypes.arrayOf(book).isRequired
+    books: PropTypes.arrayOf(book).isRequired,
+    title: PropTypes.string.isRequired,
+    button: PropTypes.object.isRequired
   }
 
   render() {
     return (
-      <HorizontalBookList
-        books={this.props.books}
-        onBuyBook={book =>
-          this.props.navigation.navigate('BookDetails', {
-            book,
-            screenType: 'BUY'
-          })
-        }
-        onRentBook={book =>
-          this.props.navigation.navigate('BookDetails', {
-            book,
-            screenType: 'RENT'
-          })
-        }
-      />
+      <View>
+        <MenuTitle
+          title={this.props.title}
+          button={this.props.button}
+          style={styles.titleWrap}
+        />
+        <HorizontalBookList
+          books={this.props.books}
+          title={this.props.title}
+          button={this.props.button}
+          onBuyBook={book =>
+            this.props.navigation.navigate('BookDetails', {
+              book,
+              screenType: 'BUY'
+            })
+          }
+          onRentBook={book =>
+            this.props.navigation.navigate('BookDetails', {
+              book,
+              screenType: 'RENT'
+            })
+          }
+        />
+      </View>
     )
   }
 }

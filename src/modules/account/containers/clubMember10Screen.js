@@ -16,7 +16,7 @@ class ClubMember10Container extends Component {
     header: null
   }
 
-  render() {
+  render () {
     return (
       <View>
         <Navbar
