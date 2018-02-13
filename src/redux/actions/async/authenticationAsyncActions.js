@@ -62,6 +62,17 @@ export function updateProfileAction (id, userProfile) {
   }
 }
 
+export function requestWithdrawAction (id, walletWithPaypalAccount) {
+  return async dispatch => {
+    try {
+      const response = await Axios.put(`/users/${id}/requestwithdraw`, walletWithPaypalAccount)
+      dispatch(updateUserProfile(response.data))
+    } catch (error) {
+      dispatch(alertAction(error))
+    }
+  }
+}
+
 export function forgotPasswordAction (email) {
   return async dispatch => {
     try {
