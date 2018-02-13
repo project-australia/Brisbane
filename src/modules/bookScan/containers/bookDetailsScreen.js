@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { buyBook, rentBook, sellBook } from '../../../redux/actions'
 import { findBookByISBN } from '../../../services/backend/bookService'
-import { book } from '../../home/propTypes/book'
 
 import { BookDetails } from '../components/confirmBook'
 
@@ -22,7 +21,7 @@ class BookScannerContainer extends Component {
     navigation: PropTypes.object.isRequired,
     buyBook: PropTypes.func.isRequired,
     rentBook: PropTypes.func.isRequired,
-    sellBook: PropTypes.func.isRequired,
+    sellBook: PropTypes.func.isRequired
   }
 
   componentDidMount = async () => {
@@ -41,7 +40,7 @@ class BookScannerContainer extends Component {
     }
   }
 
-  onError = (err) => {
+  onError = () => {
     alert('Erro during searching for a book')
     this.goBack()
   }
@@ -69,10 +68,10 @@ class BookScannerContainer extends Component {
         book={book}
         navigateBack={this.goBack}
         navigateToShoppingBag={() => this.navigateToShoppingBag()}
-        onPressBallardsClub={() => console.warn('Ballards club :D')}
+        onPressBallardsClub={() => console.warn('Ballard club :D')}
         onPressBuy={() => this.toShoppingBag(this.props.buyBook)}
         onPressDonate={book => this.props.rentBook(book)}
-        onPressSell={book => this.props.sellBook(book)}
+        onPressSell={this.props.sellBook}
         screenType={screenType}
       />
     )
