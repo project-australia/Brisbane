@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ScrollView, StyleSheet } from 'react-native'
-import { Colors, Fonts, Metrics } from '../../../constants'
+import { View, Text, ScrollView } from 'react-native'
 import { Navbar } from '../../shared/components/navbar'
 import { SolidButton } from '../../shared/components/buttons'
 import { connect } from 'react-redux'
