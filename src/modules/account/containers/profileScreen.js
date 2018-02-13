@@ -37,7 +37,7 @@ class ProfileContainer extends Component {
     this.hideEditModal()
   }
 
-  render() {
+  render () {
     return (
       <Profile
         onBackPress={this.goBack}

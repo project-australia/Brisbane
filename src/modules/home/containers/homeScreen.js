@@ -18,7 +18,7 @@ class HomeContainer extends Component {
     return booksList.slice(0, 5)
   }
 
-  render() {
+  render () {
     const userName = this.props.displayName || 'Guest'
     return (
       <Home

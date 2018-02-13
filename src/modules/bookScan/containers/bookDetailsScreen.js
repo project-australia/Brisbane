@@ -21,7 +21,7 @@ class BookScannerContainer extends Component {
     screenType: PropTypes.oneOf(['SELL', 'BUY', 'RENT']).isRequired
   }
 
-  render() {
+  render () {
     const book = this.props.book || this.props.navigation.state.params.book
     const screenType =
       this.props.screenType || this.props.navigation.state.params.screenType

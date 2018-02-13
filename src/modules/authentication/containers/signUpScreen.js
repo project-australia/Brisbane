@@ -20,7 +20,7 @@ class SignUpContainer extends Component {
     }).isRequired
   }
 
-  componentWillUpdate(nextProps) {
+  componentWillUpdate (nextProps) {
     const isUserLoggedIn = nextProps.user && nextProps.user !== NOT_LOGGED_IN
     if (isUserLoggedIn) {
       nextProps.navigation.navigate('Home')
@@ -35,7 +35,7 @@ class SignUpContainer extends Component {
     this.props.navigation.navigate('SignIn')
   }
 
-  render() {
+  render () {
     return (
       <SignUpForm
         buttonText="SIGN UP"

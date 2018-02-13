@@ -31,7 +31,7 @@ export class BookDetails extends Component {
     ]
   }
 
-  buyPriceRow() {
+  buyPriceRow () {
     const { book, onPressBuy, screenType } = this.props
     const { buyingPrice } = book
 
@@ -55,7 +55,7 @@ export class BookDetails extends Component {
     )
   }
 
-  sellPriceRow() {
+  sellPriceRow () {
     const { book, onPressSell, onPressDonate } = this.props
     const { sellPrice } = book
 
@@ -80,7 +80,7 @@ export class BookDetails extends Component {
     )
   }
 
-  render() {
+  render () {
     const isSelling = this.props.screenType === 'SELL'
     const { book, onPressBallardsClub } = this.props
     const { aboutBook, author, isbn, images, title } = book

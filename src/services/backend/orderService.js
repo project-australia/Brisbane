@@ -1,5 +1,7 @@
 import Axios from 'axios'
 
+const validShippingMethods = ['STANDARD', 'EXPEDITE', 'IN_PERSON']
+
 export const createOrder = async (
   orderType,
   shippingMethod,
@@ -7,13 +9,18 @@ export const createOrder = async (
   user,
   transactionId
 ) => {
+  if (!validShippingMethods.includes(shippingMethod)) {
+    console.log('invalid shipping method')
+  }
+
   const order = {
     orderType,
     transactionId,
     items: books.map(book => book.id),
-    shippingMethod, // TODO: Precisamos pegar isso de algum lugar
+    shippingMethod,
     shippingAddress: user.address
   }
+
   return Axios.post(`users/${user.id}/orders`, order)
     .then(res => res.data)
     .catch(err => throwResponseBody(err))

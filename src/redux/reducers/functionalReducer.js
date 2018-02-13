@@ -1,6 +1,6 @@
 import Maybe from 'data.maybe'
 
-export function createReducer(reducerConfig) {
+export function createReducer (reducerConfig) {
   const { actionHandlers, initialState } = reducerConfig
   return (state = initialState, action) =>
     Maybe.fromNullable(actionHandlers[action.type])

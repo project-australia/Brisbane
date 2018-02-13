@@ -15,7 +15,7 @@ export class ForgotPassword extends React.Component {
     email: ''
   }
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { email: props.email, loading: false }
   }
@@ -26,7 +26,7 @@ export class ForgotPassword extends React.Component {
     this.setState({ loading: false })
   }
 
-  render() {
+  render () {
     return (
       <LoadingOverlay isLoading={this.state.loading} style={styles.screen}>
         <TextInput

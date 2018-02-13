@@ -11,7 +11,7 @@ export class ModalWithInput extends Component {
     inputValue: ''
   }
 
-  componentWillMount() {
+  componentWillMount () {
     if (Platform.OS === 'ios') {
       this.keyboardWillShowListener = Keyboard.addListener(
         'keyboardWillShow',
@@ -24,7 +24,7 @@ export class ModalWithInput extends Component {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     if (Platform.OS === 'ios') {
       this.keyboardWillShowListener.remove()
       this.keyboardWillHideListener.remove()
@@ -58,7 +58,7 @@ export class ModalWithInput extends Component {
     )
   }
 
-  render() {
+  render () {
     const { onConfirm, onDismiss, visible, title } = this.props
     const overlayStyle = StyleSheet.flatten([
       styles.overlay,

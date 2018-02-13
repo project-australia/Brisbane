@@ -19,7 +19,7 @@ class BookListContainer extends React.PureComponent {
     button: PropTypes.object.isRequired
   }
 
-  render() {
+  render () {
     return (
       <View>
         <MenuTitle

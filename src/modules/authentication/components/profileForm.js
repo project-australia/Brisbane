@@ -45,7 +45,7 @@ export class ProfileForm extends Component {
   setBirthDateYear = birthDateYear => this.props.onChange({ birthDateYear })
   setBirthDateMonth = birthDateMonth => this.props.onChange({ birthDateMonth })
 
-  render() {
+  render () {
     return (
       <ScrollView contentContainerStyle={styles.screen}>
         <FormHeader title="Almost there..." />

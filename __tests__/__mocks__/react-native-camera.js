@@ -14,7 +14,7 @@ const constants = {
 
 class Camera extends React.Component {
   static constants = constants
-  render() {
+  render () {
     return null
   }
 }

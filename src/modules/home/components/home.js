@@ -42,7 +42,7 @@ export class Home extends Component {
 
   updateBookSearchValue = bookSearchValue => this.setState({ bookSearchValue })
 
-  render() {
+  render () {
     const recentlyAddedButton = {
       text: 'View All',
       onPress: this.props.onRecentlyAddedPressed

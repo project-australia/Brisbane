@@ -46,7 +46,7 @@ class ConfirmationScreenContainer extends Component {
     totalPrice: 230.0
   }
 
-  render() {
+  render () {
     return (
       <SellBooksProcess
         booksToSell={this.state.booksToSell}

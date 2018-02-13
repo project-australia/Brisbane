@@ -20,7 +20,7 @@ export class EmailPasswordForm extends Component {
   setEmail = email => this.props.onChange({ email })
   setPassword = password => this.props.onChange({ password })
 
-  render() {
+  render () {
     return (
       <View style={styles.screen}>
         <FormHeader />

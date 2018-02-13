@@ -36,7 +36,7 @@ export class SignIn extends Component {
     )
   }
 
-  render() {
+  render () {
     return (
       <LoginForm
         buttonText="Log In"

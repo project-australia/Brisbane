@@ -25,15 +25,15 @@ class BuyBooksProcessContainer extends Component {
 
   state = {
     isLoading: false,
-    shippingMethod: 'standard'
+    shippingMethod: 'STANDARD'
   }
 
   changeToExpediteShippingMethod = () => {
-    this.setState({ shippingMethod: 'expedite' })
+    this.setState({ shippingMethod: 'EXPEDITE' })
   }
 
   changeToStandardShippingMethod = () => {
-    this.setState({ shippingMethod: 'standard' })
+    this.setState({ shippingMethod: 'STANDARD' })
   }
 
   goBack = () => this.props.navigation.goBack()
@@ -48,6 +48,7 @@ class BuyBooksProcessContainer extends Component {
       )
     } catch (error) {
       console.log('Paypal checkout failed', JSON.stringify(error))
+      this.setState({ isLoading: false })
     }
   }
 
@@ -85,25 +86,28 @@ class BuyBooksProcessContainer extends Component {
 
   render () {
     const totalPrice = this.props.booksToBuy.total('BUY')
-    const totalWeight = this.props.booksToBuy.reduce((acc = 0, item) => acc + item.book.dimensions.weight)
+    const totalWeight = this.props.booksToBuy.reduce(
+      (acc = 0, item) => acc + item.book.dimensions.weight
+    )
 
     return (
       <BuyBooksProcess
         books={this.props.booksToBuy}
         checkoutWithPayPal={this.checkoutWithPaypal(totalPrice)}
-        navigateBack={this.goBack}
-        totalPrice={totalPrice}
-        isLoading={this.state.isLoading}
         expediteShippingPrice={totalWeight > 5 ? 9.99 : 6.99}
-        shippingMethod={this.state.shippingMethod}
+        isLoading={this.state.isLoading}
+        navigateBack={this.goBack}
         selectExpediteShipping={() => this.changeToExpediteShippingMethod()}
         selectStandardShipping={() => this.changeToStandardShippingMethod()}
+        shippingMethod={this.state.shippingMethod}
+        totalPrice={totalPrice}
       />
     )
   }
 }
 
 const mapStateToProps = ({ authentication: { user }, shoppingBag }) => {
+  console.log('shoppingBag', shoppingBag)
   const booksToBuy = shoppingBag.filter(
     item => item.type === SHOPPING_BAG_TYPES.BUY
   )

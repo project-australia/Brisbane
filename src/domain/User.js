@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
 export class User {
-  constructor(
+  constructor (
     id,
     referredBy,
     name,

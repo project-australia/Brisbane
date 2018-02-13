@@ -32,16 +32,19 @@ export class BuyBooksProcess extends React.Component {
     expediteShippingPrice: PropTypes.number.isRequired,
     selectExpediteShipping: PropTypes.func.isRequired,
     selectStandardShipping: PropTypes.func.isRequired,
-    shippingMethod: PropTypes.oneOf(['standard', 'expedite']),
+    shippingMethod: PropTypes.oneOf(['STANDARD', 'EXPEDITE', 'IN_PERSON']),
     isLoading: PropTypes.bool.isRequired
   }
 
   static defaultProps = {
-    shippingMethod: 'standard'
+    shippingMethod: 'STANDARD'
   }
 
   renderStandardShippingButton = () => {
-    const Button = this.props.shippingMethod === 'standard' ? SelectedButton : NotSelectedButton
+    const Button =
+      this.props.shippingMethod === 'STANDARD'
+        ? SelectedButton
+        : NotSelectedButton
     return (
       <Button
         secondary
@@ -52,7 +55,10 @@ export class BuyBooksProcess extends React.Component {
   }
 
   renderExpediteShippingButton = () => {
-    const Button = this.props.shippingMethod === 'expedite' ? SelectedButton : NotSelectedButton
+    const Button =
+      this.props.shippingMethod === 'EXPEDITE'
+        ? SelectedButton
+        : NotSelectedButton
     return (
       <Button
         secondary
@@ -70,10 +76,15 @@ export class BuyBooksProcess extends React.Component {
           onBack={this.props.navigateBack}
         />
         <ScrollView>
-          <OrderSummaryList orders={this.props.books} total={this.props.totalPrice} />
+          <OrderSummaryList
+            orders={this.props.books}
+            total={this.props.totalPrice}
+          />
           <MenuTitle title={'Shipping Method'} style={styles.titleWrap} />
           <View style={styles.wrappingCard}>
-            <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
+            <Text
+              style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}
+            >
               Choose shipping method
             </Text>
             {this.renderStandardShippingButton()}
@@ -83,7 +94,9 @@ export class BuyBooksProcess extends React.Component {
           </View>
           <MenuTitle title={'Checkout'} style={styles.titleWrap} />
           <View style={styles.wrappingCard}>
-            <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
+            <Text
+              style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}
+            >
               Choose a method to finalize your selling
             </Text>
             <FormOutlineButton
