@@ -17,7 +17,7 @@ import {
 } from '../../../services/backend/userService'
 import { NOT_LOGGED_IN } from '../../reducers/authentication/constants'
 
-export function signInAction (email, password) {
+export function signInAction(email, password) {
   return async dispatch => {
     try {
       const firebaseUser = await signInWithEmailAndPassword(email, password)
@@ -29,7 +29,7 @@ export function signInAction (email, password) {
   }
 }
 
-export function signUpAction (signUpForm) {
+export function signUpAction(signUpForm) {
   return async dispatch => {
     try {
       const user = await signUpUser(signUpForm)
@@ -40,7 +40,7 @@ export function signUpAction (signUpForm) {
   }
 }
 
-export function logOutAction (signUpForm) {
+export function logOutAction(signUpForm) {
   return async dispatch => {
     try {
       await logOut(signUpForm)
@@ -51,7 +51,7 @@ export function logOutAction (signUpForm) {
   }
 }
 
-export function updateProfileAction (id, userProfile) {
+export function updateProfileAction(id, userProfile) {
   return async dispatch => {
     try {
       const response = await Axios.put(`/users/${id}/profile`, userProfile)
@@ -62,7 +62,7 @@ export function updateProfileAction (id, userProfile) {
   }
 }
 
-export function forgotPasswordAction (email) {
+export function forgotPasswordAction(email) {
   return async dispatch => {
     try {
       await sendPasswordResetEmail(email)

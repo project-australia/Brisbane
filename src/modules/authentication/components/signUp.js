@@ -109,7 +109,7 @@ export class SignUpForm extends Component {
     )
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { showAlert, message } = nextProps.alert
     if (showAlert) {
       alert(message)
@@ -135,7 +135,7 @@ export class SignUpForm extends Component {
     />
   )
 
-  render () {
+  render() {
     const formToRender = this.state.switch
       ? this.userPasswordForm()
       : this.userProfileForm()
