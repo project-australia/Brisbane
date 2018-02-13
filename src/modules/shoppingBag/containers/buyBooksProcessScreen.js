@@ -87,7 +87,8 @@ class BuyBooksProcessContainer extends Component {
   render () {
     const totalPrice = this.props.booksToBuy.total('BUY')
     const totalWeight = this.props.booksToBuy.reduce(
-      (acc = 0, item) => acc + item.book.dimensions.weight
+      (acc, item) => acc + item.book.dimensions.weight,
+      0
     )
 
     return (
@@ -107,7 +108,6 @@ class BuyBooksProcessContainer extends Component {
 }
 
 const mapStateToProps = ({ authentication: { user }, shoppingBag }) => {
-  console.log('shoppingBag', shoppingBag)
   const booksToBuy = shoppingBag.filter(
     item => item.type === SHOPPING_BAG_TYPES.BUY
   )
