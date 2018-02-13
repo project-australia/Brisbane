@@ -32,7 +32,6 @@ export class BookDetails extends Component {
         onPress: this.props.navigateToShoppingBag
       }
     ],
-    selectedCondition: 'Used – Acceptable',
     book: this.props.book
   }
 
@@ -40,7 +39,6 @@ export class BookDetails extends Component {
   hideConditionModal = () => this.setState({ isConditionModalOn: false })
   updateSelectedCondition = selectedCondition => (
     this.setState({
-      selectedCondition,
       isConditionModalOn: false,
       book: { ...this.props.book, condition: selectedCondition }
     })
@@ -104,7 +102,7 @@ export class BookDetails extends Component {
           <RowValue
             title={'Condition'}
             subtitle={'About conditions'}
-            value={condition}
+            value={condition || 'Select a condition'}
             onPress={onPressCondition}
             onPressTitle={onPressConditionTitle}
           />
@@ -132,12 +130,15 @@ export class BookDetails extends Component {
             }}
           />
 
-          <Touchable onPress={onPressBallardsClub}>
-            <Text style={styles.footnote}>
-              Ballards club members gets 10% more money selling books.
-              <Text style={styles.textAccent}> LEARN MORE</Text>
-            </Text>
-          </Touchable>
+          {
+            isSelling &&
+            <Touchable onPress={onPressBallardsClub}>
+              <Text style={styles.footnote}>
+                Ballards club members gets 10% more money selling books.
+                <Text style={styles.textAccent}> LEARN MORE</Text>
+              </Text>
+            </Touchable>
+          }
           <MenuTitle title={'Details'} style={styles.titleWrap} />
           <GeneralInfoCard style={styles.standardSpacing}>
             {aboutBook !== null && (
