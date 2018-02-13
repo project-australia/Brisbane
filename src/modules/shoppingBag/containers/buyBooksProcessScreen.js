@@ -11,7 +11,7 @@ class BuyBooksProcessContainer extends Component {
     header: null
   }
 
-  render () {
+  render() {
     const totalPrice = this.props.booksToBuy.total('BUY')
 
     return (
@@ -41,7 +41,13 @@ class BuyBooksProcessContainer extends Component {
 
   onPayPalOnSuccess = (books, user) => async paypalResponse => {
     const transactionId = paypalResponse.response.id
-    const order = await createOrder('BUY', 'SHIPPED', books, user, transactionId)
+    const order = await createOrder(
+      'BUY',
+      'SHIPPED',
+      books,
+      user,
+      transactionId
+    )
     console.log('Paypall Payment confirmed, order generated', order)
   }
 }

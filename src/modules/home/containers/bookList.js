@@ -13,7 +13,7 @@ class BookListContainer extends React.PureComponent {
     books: PropTypes.arrayOf(book).isRequired
   }
 
-  render () {
+  render() {
     return (
       <HorizontalBookList
         books={this.props.books}

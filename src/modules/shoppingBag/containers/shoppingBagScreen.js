@@ -12,7 +12,7 @@ class ShoppingBagContainer extends Component {
     header: null
   }
 
-  render () {
+  render() {
     return (
       <ShoppingBag
         booksToBuy={this.props.booksToBuy}

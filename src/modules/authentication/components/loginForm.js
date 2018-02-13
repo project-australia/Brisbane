@@ -36,14 +36,14 @@ export class LoginForm extends Component {
     this.setState({ loading: false })
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { showAlert, message } = nextProps.alert
     if (showAlert) {
       alert(message)
     }
   }
 
-  render () {
+  render() {
     return (
       <LoadingOverlay style={styles.screen} isLoading={this.state.loading}>
         <FormHeader />

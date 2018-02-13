@@ -25,7 +25,7 @@ export class Scanner extends Component {
     this.props.showBook(isbn)
   }
 
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <Camera

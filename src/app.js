@@ -11,7 +11,7 @@ import {
 } from './redux/actions/sync/bookActions'
 
 export class App extends React.Component {
-  async componentDidMount () {
+  async componentDidMount() {
     const [recently, featured] = await Promise.all([
       recentlyAddedBooks(),
       featuredBooks()
@@ -22,7 +22,7 @@ export class App extends React.Component {
     dispatch(updateFeaturedBooks(featured))
   }
 
-  render () {
+  render() {
     return (
       <Provider store={this.props.store}>
         <Navigator />

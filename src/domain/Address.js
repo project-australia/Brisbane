@@ -1,5 +1,5 @@
 export class Address {
-  constructor (street, city, number, zipCode, state) {
+  constructor(street, city, number, zipCode, state) {
     this.street = street
     this.city = city
     this.number = number

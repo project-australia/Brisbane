@@ -1,5 +1,5 @@
 export class SignUpRequest {
-  constructor (email, password, user) {
+  constructor(email, password, user) {
     this.email = email
     this.password = password
     this.referredBy = user.referredBy

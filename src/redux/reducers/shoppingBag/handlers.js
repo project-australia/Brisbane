@@ -1,7 +1,8 @@
 import _ from 'lodash'
 const sameItem = item => element => element.equals(item)
 
-export const removeShoppingBagItem = (state, { item }) => _.reject(state, sameItem(item))
+export const removeShoppingBagItem = (state, { item }) =>
+  _.reject(state, sameItem(item))
 
 export const addShoppingBagItem = (state, { item }) => {
   const items = _.cloneDeep(state)
@@ -18,7 +19,7 @@ export const addShoppingBagItem = (state, { item }) => {
 // Assim que tiver tempo eu refatoro.
 if (!Array.prototype.total) {
   // eslint-disable-next-line
-  Array.prototype.total = function (type) {
+  Array.prototype.total = function(type) {
     const priceField = {
       BUY: 'buyingPrice',
       SELL: 'sellingPrice'

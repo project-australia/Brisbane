@@ -11,7 +11,7 @@ class BookListContainer extends Component {
 
   selectBookList = typeList => this.props.items[typeList]
 
-  render () {
+  render() {
     const { typeList } = this.props.navigation.state.params
     return (
       <BookList

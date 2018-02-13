@@ -42,14 +42,14 @@ class SignInContainer extends Component {
     header: null
   }
 
-  componentWillUpdate (nextProps) {
+  componentWillUpdate(nextProps) {
     const isUserLoggedIn = nextProps.user && nextProps.user !== NOT_LOGGED_IN
     if (isUserLoggedIn) {
       nextProps.navigation.navigate(nextProps.redirectTo)
     }
   }
 
-  render () {
+  render() {
     return (
       <SignIn
         alert={this.props.alert}
