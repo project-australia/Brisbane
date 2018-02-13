@@ -27,6 +27,10 @@ class BookListContainer extends Component {
         ? this.props.featuredBooks
         : this.props.recentBooks
 
+    if (!list) {
+      return null
+    }
+
     return (
       <BookList
         list={list}
