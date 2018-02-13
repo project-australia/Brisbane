@@ -63,6 +63,8 @@ export const TestScreen = props => {
       {navigateTo('ShoppingBag')}
       {navigateTo('BuyBooksProcess')}
       {navigateTo('SellBooksProcess')}
+      {navigateTo('ClubMember10')}
+      {navigateTo('ClubMember20')}
       {openPayPalScreen()}
       {/* <ModalWithTextAndButton // DUMMY DATA
         isVisible

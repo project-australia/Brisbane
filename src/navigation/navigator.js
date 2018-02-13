@@ -11,6 +11,8 @@ import { HomeScreen } from '../modules/home/containers/homeScreen'
 import { ManageAccountScreen } from '../modules/account/containers/manageAccountScreen'
 import { NetworkMembersScreen } from '../modules/account/containers/networkMembersScreen'
 import { ProfileScreen } from '../modules/account/containers/profileScreen'
+import { ClubMember10Screen } from '../modules/account/containers/clubMember10Screen'
+import { ClubMember20Screen } from '../modules/account/containers/clubMember20Screen'
 import { ShoppingBagScreen } from '../modules/shoppingBag/containers/shoppingBagScreen'
 import { SignInScreen } from '../modules/authentication/containers/signInScreen'
 import { SignUpScreen } from '../modules/authentication/containers/signUpScreen'
@@ -63,6 +65,12 @@ const routeConfigs = {
   },
   NetworkMembers: {
     screen: NetworkMembersScreen
+  },
+  ClubMember10: {
+    screen: ClubMember10Screen
+  },
+  ClubMember20: {
+    screen: ClubMember20Screen
   }
 }
 
