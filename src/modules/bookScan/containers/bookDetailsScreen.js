@@ -2,52 +2,80 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { buyBook, rentBook, sellBook } from '../../../redux/actions'
+import { findBookByISBN } from '../../../services/backend/bookService'
 import { book } from '../../home/propTypes/book'
 
 import { BookDetails } from '../components/confirmBook'
 
 class BookScannerContainer extends Component {
+  state = {
+    book: null,
+    screenType: 'BUY'
+  }
+
   static navigationOptions = {
     title: 'Book Details',
     header: null
   }
 
-  static defaultProps = {
-    screenType: 'BUY'
+  static propTypes = {
+    navigation: PropTypes.object.isRequired,
+    buyBook: PropTypes.func.isRequired,
+    rentBook: PropTypes.func.isRequired,
+    sellBook: PropTypes.func.isRequired,
   }
 
-  static propTypes = {
-    book: book,
-    screenType: PropTypes.oneOf(['SELL', 'BUY', 'RENT']).isRequired
+  componentDidMount = async () => {
+    const { book, isbn, screenType } = this.props.navigation.state.params
+
+    if (book) {
+      this.setState({book, screenType})
+    } else {
+      try {
+        const book = await findBookByISBN(isbn)
+        this.setState({book, screenType})
+        console.log('book', book)
+      } catch (err) {
+        this.onError(err)
+      }
+    }
+  }
+
+  onError = (err) => {
+    alert('Erro during searching for a book')
+    this.goBack()
+  }
+
+  goBack = () => this.props.navigation.goBack()
+
+  navigateToShoppingBag = () => {
+    this.props.navigation.navigate('ShoppingBag', {})
+  }
+
+  toShoppingBag = callback => {
+    callback(this.state.book)
+    this.navigateToShoppingBag()
   }
 
   render () {
-    const { params } = this.props.navigation.state
-    const book = this.props.book || params.book
-    const screenType = this.props.screenType || params.screenType
+    const { book, screenType } = this.state
+
+    if (!book) {
+      return null
+    }
 
     return (
       <BookDetails
         book={book}
-        screenType={screenType}
         navigateBack={this.goBack}
-        onPressSell={book => this.props.sellBook(book)}
+        navigateToShoppingBag={() => this.navigateToShoppingBag()}
+        onPressBallardsClub={() => console.warn('Ballards club :D')}
         onPressBuy={() => this.toShoppingBag(this.props.buyBook)}
         onPressDonate={book => this.props.rentBook(book)}
-        onPressBallardsClub={() => console.warn('Ballards club :D')}
-        navigateToShoppingBag={() => this.navigateToShoppingBag()}
+        onPressSell={book => this.props.sellBook(book)}
+        screenType={screenType}
       />
     )
-  }
-
-  goBack = () => this.props.navigation.goBack()
-  navigateToShoppingBag = () => {
-    this.props.navigation.navigate('ShoppingBag', {})
-  }
-  toShoppingBag = callback => {
-    const book = this.props.book || this.props.navigation.state.params.book
-    callback(book)
-    this.navigateToShoppingBag()
   }
 }
 
