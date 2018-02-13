@@ -4,7 +4,6 @@ import { ScrollView, View } from 'react-native'
 
 import { AppStatusBar } from '../../shared/components/appStatusBar'
 import { BookSearch } from './searchBook'
-import { MenuTitle } from '../../shared/components/menuTitle'
 import { NavbarMain } from '../../shared/components/navbar'
 import { SellingBooks } from '../containers/sellingBooksContainer'
 import { WalletBalanceAmount } from '../containers/walletBalanceContainer'
@@ -22,7 +21,9 @@ export class Home extends Component {
     searchBook: PropTypes.func.isRequired,
     recentlyAddedBooks: PropTypes.arrayOf(book).isRequired,
     featuredBooks: PropTypes.arrayOf(book).isRequired,
-    userName: PropTypes.string.isRequired
+    userName: PropTypes.string.isRequired,
+    onRecentlyAddedPressed: PropTypes.func.isRequired,
+    onFeaturedPressed: PropTypes.func.isRequired
   }
 
   state = {
@@ -72,23 +73,17 @@ export class Home extends Component {
               <WalletBalanceAmount />
             </View>
           </View>
-          <MenuTitle
-            title={'Recently added'}
-            button={recentlyAddedButton}
-            style={styles.titleWrap}
-          />
           <BookList
             navigation={this.props.navigation}
             books={this.props.recentlyAddedBooks}
-          />
-          <MenuTitle
-            title={'Featured'}
-            button={featuredButton}
-            style={styles.titleWrap}
+            title={'Recently added'}
+            button={recentlyAddedButton}
           />
           <BookList
             books={this.props.featuredBooks}
             navigation={this.props.navigation}
+            title={'Featured'}
+            button={featuredButton}
           />
         </ScrollView>
       </View>

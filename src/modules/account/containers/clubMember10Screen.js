@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ScrollView, StyleSheet } from 'react-native'
+import { View, Text, ScrollView, StyleSheet, Alert } from 'react-native'
 import { Colors, Fonts, Metrics } from '../../../constants'
 import { Navbar } from '../../shared/components/navbar'
 import { SolidButton } from '../../shared/components/buttons'
@@ -8,6 +8,7 @@ import {
   updateProfileAction,
   logOutAction
 } from '../../../redux/actions/async/authenticationAsyncActions'
+import { payWithPayPal } from '../../../services/paypal'
 
 class ClubMember10Container extends Component {
   static navigationOptions = {
@@ -16,20 +17,56 @@ class ClubMember10Container extends Component {
   }
 
   render () {
-    return (<View>
-      <Navbar title={'10% Club Member'} onBack={this.goBack} ignoreAndroidStatusBar />
-      <ScrollView>
-        <Text>
-          10% Club
-        </Text>
-      </ScrollView>
-      <SolidButton title={'Get Your 10% Only U$ 19,99/y'} onPress={this.goBack} />
-    </View>
+    return (
+      <View>
+        <Navbar
+          title={'10% Club Member'}
+          onBack={this.goBack}
+          ignoreAndroidStatusBar
+        />
+        <ScrollView>
+          <Text style={styles.text}>10% Club</Text>
+        </ScrollView>
+        <SolidButton
+          title={'Get Your 10% Only U$ 2,99/y'}
+          onPress={this.checkoutWithPaypal}
+        />
+      </View>
     )
   }
 
   goBack = () => this.props.navigation.goBack()
-  navigateToWallet = () => alert('navigate to my wallet')
+  checkoutWithPaypal = async () => {
+    try {
+      await payWithPayPal('2.99', '10 Club Member', this.onPayPalOnSuccess())
+    } catch (error) {
+      console.log('Paypal checkout failed', JSON.stringify(error))
+      this.defaultAlertPopUp('Sorry. Request Failed')
+    }
+  }
+  onPayPalOnSuccess = () => async paypalResponse => {
+    const { user } = this.props
+    console.log(
+      'Paypall Payment membership confirmed, uadpted member status generated',
+      user
+    )
+    this.defaultAlertPopUp(
+      'Successfully registered',
+      this.props.navigation.navigate('Home', {})
+    )
+  }
+  defaultAlertPopUp = (msg, press = () => {}) =>
+    Alert.alert(
+      '10% Club Member',
+      msg,
+      [
+        {
+          text: 'Ok',
+          onPress: () => press
+        }
+      ],
+      { cancelable: false }
+    )
 }
 
 const mapDispatchToProps = dispatch => ({

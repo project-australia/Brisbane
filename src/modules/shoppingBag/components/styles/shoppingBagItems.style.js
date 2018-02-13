@@ -3,6 +3,9 @@ import { StyleSheet } from 'react-native'
 import { Colors, Fonts, Metrics, Values } from '../../../../constants'
 
 export const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   itemsWrap: {
     marginBottom: Metrics.baseMargin
   },

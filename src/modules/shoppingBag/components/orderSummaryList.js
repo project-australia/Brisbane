@@ -19,16 +19,13 @@ const renderOrders = ({ book }) => {
   )
 }
 
-export const OrderSummaryList = ({ orders, total }) => {
-  const totalString = `$${total}`
-  return (
-    <View style={styles.itemsWrap}>
-      <MenuTitle title={'Sale Summary'} style={styles.titleWrap} />
-      {orders.map(renderOrders)}
-      <Row
-        left={{ title: 'Total', style: rowStyles.darkTitle }}
-        right={{ title: totalString, style: rowStyles.secondaryTitle }}
-      />
-    </View>
-  )
-}
+export const OrderSummaryList = ({ orders, total }) => (
+  <View style={styles.itemsWrap}>
+    <MenuTitle title={'Sale Summary'} style={styles.titleWrap} />
+    {orders.map(renderOrders)}
+    <Row
+      left={{ title: 'Total', style: rowStyles.darkTitle }}
+      right={{ title: `$${total}`, style: rowStyles.secondaryTitle }}
+    />
+  </View>
+)

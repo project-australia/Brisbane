@@ -21,6 +21,12 @@ export const book = shape({
     'Used – Like New',
     'New'
   ]),
+  dimensions: shape({
+    height: number.isRequired,
+    length: number.isRequired,
+    width: number.isRequired,
+    weight: number.isRequired
+  }),
   sellPrice: number,
   buyingPrice: number
 })
