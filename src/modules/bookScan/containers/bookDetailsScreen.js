@@ -22,9 +22,9 @@ class BookScannerContainer extends Component {
   }
 
   render () {
-    const book = this.props.book || this.props.navigation.state.params.book
-    const screenType =
-      this.props.screenType || this.props.navigation.state.params.screenType
+    const { params } = this.props.navigation.state
+    const book = this.props.book || params.book
+    const screenType = this.props.screenType || params.screenType
 
     return (
       <BookDetails
