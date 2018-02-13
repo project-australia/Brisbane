@@ -4,6 +4,7 @@ import { StyleSheet, ScrollView, Text, View } from 'react-native'
 
 import { Navbar } from '../../shared/components/navbar'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
+import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 import { OrderSummaryList } from './orderSummaryList'
 import { MenuTitle } from '../../shared/components/menuTitle'
 import { FormOutlineButton } from '../../shared/components/buttons'
@@ -13,7 +14,7 @@ import { styles } from './styles/shoppingBagItems.style'
 export const BuyBooksProcess = props => {
   const booksLength = props.books.length
   return (
-    <View>
+    <LoadingOverlay style={styles.container} isLoading={props.isLoading}>
       <Navbar
         title={`Buying ${booksLength} Books`}
         onBack={props.navigateBack}
@@ -38,7 +39,7 @@ export const BuyBooksProcess = props => {
           />
         </View>
       </ScrollView>
-    </View>
+    </LoadingOverlay>
   )
 }
 
@@ -51,5 +52,6 @@ BuyBooksProcess.propTypes = {
   checkoutWithPayPal: PropTypes.func.isRequired,
   books: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
   navigateBack: PropTypes.func.isRequired,
-  totalPrice: PropTypes.number.isRequired
+  totalPrice: PropTypes.number.isRequired,
+  isLoading: PropTypes.bool.isRequired
 }

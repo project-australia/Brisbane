@@ -22,6 +22,10 @@ class BuyBooksProcessContainer extends Component {
     header: null
   }
 
+  state = {
+    isLoading: false
+  }
+
   render () {
     const totalPrice = this.props.booksToBuy.total('BUY')
 
@@ -31,6 +35,7 @@ class BuyBooksProcessContainer extends Component {
         checkoutWithPayPal={this.checkoutWithPaypal(totalPrice)}
         navigateBack={this.goBack}
         totalPrice={totalPrice}
+        isLoading={this.state.isLoading}
       />
     )
   }
@@ -53,7 +58,9 @@ class BuyBooksProcessContainer extends Component {
   onPayPalOnSuccess = (books, user) => async paypalResponse => {
     const transactionId = paypalResponse.response.id
     const shoppingBagType = 'BUY'
+    this.setState({ isLoading: true })
     const order = await createOrder(shoppingBagType, 'SHIPPED', books, user, transactionId)
+    this.setState({ isLoading: false })
     console.log('order created, cleaning shopping bag and redirecting', order)
 
     this.props.cleanShoppingBagByType(shoppingBagType)
