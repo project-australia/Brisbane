@@ -46,10 +46,7 @@ class ClubMember10Container extends Component {
   }
   onPayPalOnSuccess = () => async paypalResponse => {
     const { user } = this.props
-    console.log(
-      'Paypall Payment membership confirmed, uadpted member status generated',
-      user
-    )
+    await this.props.updateProfile(user.id, { club: 'TEN' })
     this.defaultAlertPopUp(
       'Successfully registered',
       this.props.navigation.navigate('Home', {})

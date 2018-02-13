@@ -3,7 +3,8 @@ import { Alert, View } from 'react-native'
 import { connect } from 'react-redux'
 import { WalletBalance } from '../components/walletBalance'
 import { ModalWithInput } from '../../shared/components/modals/modalWithInput'
-import { requestWithdraw } from '../../../services/backend/userService'
+
+import { requestWithdrawAction } from '../../../redux/actions/async/authenticationAsyncActions'
 class WalletContainer extends Component {
   state = { isEditModalOpen: false }
 
@@ -27,8 +28,8 @@ class WalletContainer extends Component {
 
   confirmModal = async paypalAccount => {
     const { id } = this.props
+    await this.props.requestWithdraw(id, { paypalAccount })
     await this.hideEditModal()
-    requestWithdraw(id, { paypalAccount })
   }
 
   defaultAlertPopUp = msg =>
@@ -65,6 +66,10 @@ class WalletContainer extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  requestWithdraw: (userId, form) => dispatch(requestWithdrawAction(userId, form))
+})
+
 const mapStateToProps = ({ authentication: { user } }) => ({
   ballance: user.wallet.ballance,
   status: user.wallet.status,
@@ -73,4 +78,4 @@ const mapStateToProps = ({ authentication: { user } }) => ({
   id: user.id
 })
 
-export const WalletBalanceAmount = connect(mapStateToProps)(WalletContainer)
+export const WalletBalanceAmount = connect(mapStateToProps, mapDispatchToProps)(WalletContainer)
