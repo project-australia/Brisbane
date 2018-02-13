@@ -96,5 +96,4 @@ describe('Shopping bag sync actions', () => {
       expect(action).toEqual(expectedAction)
     })
   })
-
 })

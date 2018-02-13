@@ -1,5 +1,6 @@
 import {
-  ADD_TO_SHOPPING_BAG, REMOVE_ALL_ITEMS_FOR_TYPE,
+  ADD_TO_SHOPPING_BAG,
+  REMOVE_ALL_ITEMS_FOR_TYPE,
   REMOVE_FROM_SHOPPING_BAG
 } from '../../types/shoppingBagTypes'
 import {

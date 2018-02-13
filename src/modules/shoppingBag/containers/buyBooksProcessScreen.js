@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Alert } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { SHOPPING_BAG_TYPES } from '../../../domain/ShoppingBagItem'
@@ -59,11 +60,31 @@ class BuyBooksProcessContainer extends Component {
     const transactionId = paypalResponse.response.id
     const shoppingBagType = 'BUY'
     this.setState({ isLoading: true })
-    const order = await createOrder(shoppingBagType, 'SHIPPED', books, user, transactionId)
+    const order = await createOrder(
+      shoppingBagType,
+      'SHIPPED',
+      books,
+      user,
+      transactionId
+    )
     this.setState({ isLoading: false })
     console.log('order created, cleaning shopping bag and redirecting', order)
 
-    this.props.cleanShoppingBagByType(shoppingBagType)
+    Alert.alert(
+      'Payment Confirmed',
+      'Thanks for buying',
+      [
+        {
+          text: 'OK',
+          onPress: () => this.onCheckoutSuccess()
+        }
+      ],
+      { onDismiss: () => this.onCheckoutSuccess(), cancelable: false }
+    )
+  }
+
+  onCheckoutSuccess = () => {
+    this.props.cleanShoppingBagByType('BUY')
     this.props.navigation.navigate('Home')
   }
 }
@@ -79,6 +100,7 @@ const mapDispatchtoProps = dispatch => ({
   cleanShoppingBagByType: type => dispatch(removeAllFromShoppingBag(type))
 })
 
-export const BuyBooksProcessScreen = connect(mapStateToProps, mapDispatchtoProps)(
-  BuyBooksProcessContainer
-)
+export const BuyBooksProcessScreen = connect(
+  mapStateToProps,
+  mapDispatchtoProps
+)(BuyBooksProcessContainer)

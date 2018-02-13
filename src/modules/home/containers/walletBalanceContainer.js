@@ -25,22 +25,23 @@ class WalletContainer extends Component {
 
   hideEditModal = async () => this.setState({ isEditModalOpen: false })
 
-  confirmModal = async (paypalAccount) => {
+  confirmModal = async paypalAccount => {
     const { id } = this.props
     await this.hideEditModal()
     requestWithdraw(id, { paypalAccount })
   }
 
-  defaultAlertPopUp = (msg) => Alert.alert(
-    'Withdraw Solicitation',
-    msg,
-    [
-      {
-        text: 'Ok'
-      }
-    ],
-    { cancelable: false }
-  )
+  defaultAlertPopUp = msg =>
+    Alert.alert(
+      'Withdraw Solicitation',
+      msg,
+      [
+        {
+          text: 'Ok'
+        }
+      ],
+      { cancelable: false }
+    )
 
   render () {
     const { ballance } = this.props
@@ -64,7 +65,7 @@ class WalletContainer extends Component {
   }
 }
 
-const mapStateToProps = ({authentication: { user }}) => ({
+const mapStateToProps = ({ authentication: { user } }) => ({
   ballance: user.wallet.ballance,
   status: user.wallet.status,
   paypalAccount: user.wallet.paypalAccount,

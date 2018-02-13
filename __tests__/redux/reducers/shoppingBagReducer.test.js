@@ -20,7 +20,10 @@ describe('Shopping bag reducer', () => {
   const startTrek = { title: 'Star Trek', id: '2' }
 
   const buyingItem = new ShoppingBagItem(starWars, SHOPPING_BAG_TYPES.BUY)
-  const anotherBuyingItem = new ShoppingBagItem(startTrek, SHOPPING_BAG_TYPES.BUY)
+  const anotherBuyingItem = new ShoppingBagItem(
+    startTrek,
+    SHOPPING_BAG_TYPES.BUY
+  )
   const rentingItem = new ShoppingBagItem(startTrek, SHOPPING_BAG_TYPES.RENT)
 
   it('should initial state be an empty shopping bag', async () => {
@@ -32,7 +35,10 @@ describe('Shopping bag reducer', () => {
   describe('add items into shopping bag', () => {
     it('should not increase buyingItem quantity during adding existing buyingItem to shopping bag', () => {
       const initialState = [buyingItem]
-      const state = shoppingBagReducer(initialState, addToShoppingBag(buyingItem))
+      const state = shoppingBagReducer(
+        initialState,
+        addToShoppingBag(buyingItem)
+      )
       expect(state).toEqual(state)
     })
 
@@ -49,7 +55,6 @@ describe('Shopping bag reducer', () => {
       state = shoppingBagReducer(state, addToShoppingBag(rentingItem))
       expect(state).toEqual(secondState)
     })
-
   })
 
   describe('remove items from shopping bag', () => {
@@ -58,7 +63,10 @@ describe('Shopping bag reducer', () => {
       const firstState = [rentingItem]
       const secondState = EMPTY_SHOPPING_BAG
 
-      let state = shoppingBagReducer(initialState, removeFromShoppingBag(buyingItem))
+      let state = shoppingBagReducer(
+        initialState,
+        removeFromShoppingBag(buyingItem)
+      )
       expect(state).toEqual(firstState)
 
       state = shoppingBagReducer(state, removeFromShoppingBag(rentingItem))
@@ -68,7 +76,10 @@ describe('Shopping bag reducer', () => {
     it('should remove all items from a type', () => {
       const expectedState = [rentingItem]
       const initialState = [buyingItem, anotherBuyingItem, rentingItem]
-      const state = shoppingBagReducer(initialState, removeAllFromShoppingBag('BUY'))
+      const state = shoppingBagReducer(
+        initialState,
+        removeAllFromShoppingBag('BUY')
+      )
 
       expect(state).toEqual(expectedState)
     })

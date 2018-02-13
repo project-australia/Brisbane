@@ -4,7 +4,11 @@ import {
   REMOVE_ALL_ITEMS_FOR_TYPE,
   REMOVE_FROM_SHOPPING_BAG
 } from '../../types'
-import { addShoppingBagItem, removeShoppingBagItem, removeAllItemsFromType } from './handlers'
+import {
+  addShoppingBagItem,
+  removeShoppingBagItem,
+  removeAllItemsFromType
+} from './handlers'
 
 const actionHandlers = {
   [ADD_TO_SHOPPING_BAG]: addShoppingBagItem,
