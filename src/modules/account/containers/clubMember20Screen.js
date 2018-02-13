@@ -16,15 +16,21 @@ class ClubMember20Container extends Component {
   }
 
   render () {
-    return (<View>
-      <Navbar title={'20% Club Member'} onBack={this.goBack} ignoreAndroidStatusBar />
-      <ScrollView>
-        <Text>
-          20% Club
-        </Text>
-      </ScrollView>
-      <SolidButton title={'Get Your 20% Only U$ 19,99/y'} onPress={this.goBack} />
-    </View>
+    return (
+      <View>
+        <Navbar
+          title={'20% Club Member'}
+          onBack={this.goBack}
+          ignoreAndroidStatusBar
+        />
+        <ScrollView>
+          <Text>20% Club</Text>
+        </ScrollView>
+        <SolidButton
+          title={'Get Your 20% Only U$ 19,99/y'}
+          onPress={this.goBack}
+        />
+      </View>
     )
   }
 
@@ -39,15 +45,6 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = ({ authentication: { user } }) => ({
   user
-})
-
-const styles = StyleSheet.create({
-  text: {
-    ...Fonts.style.description,
-    color: Colors.gray700,
-    marginBottom: Metrics.baseMargin,
-    marginHorizontal: Metrics.section
-  }
 })
 
 export const ClubMember20Screen = connect(mapStateToProps, mapDispatchToProps)(
