@@ -17,7 +17,13 @@ const aBook = {
     large: 'https://images-na.ssl-images-amazon.com/images/I/51lMZ7YiDXL.jpg'
   },
   authors: ['rich koslowski'],
+  condition: 'Used – Acceptable',
   featured: false,
+  price: {
+    buy: 15,
+    sell: 10,
+    rent: 5
+  },
   status: 'UNAVAILABLE',
   id: '5a6fa6e71438d000141fc922',
   isbn: '9780261102941'
@@ -58,7 +64,7 @@ export const TestScreen = props => {
       {navigateTo('BookScanner')}
       {navigateTo('ShoppingBag')}
       {navigateTo('ConfirmationScreen')}
-      {navigateTo('BookDetails', { book: aBook })}
+      {navigateTo('BookDetails', { book: aBook, screenType: 'SELL' })}
       {navigateTo('BookList')}
       {navigateTo('ShoppingBag')}
       {navigateTo('BuyBooksProcess')}

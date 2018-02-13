@@ -24,17 +24,17 @@ class BookScannerContainer extends Component {
   render () {
     const book = this.props.book || this.props.navigation.state.params.book
     const screenType =
-      this.props.screenType || this.props.navigation.state.params.screenType
+      this.props.navigation.state.params.screenType || this.props.screenType
 
     return (
       <BookDetails
         book={book}
         screenType={screenType}
         navigateBack={this.goBack}
-        onPressSell={book => this.props.sellBook(book)}
+        onPressSell={this.props.sellBook}
         onPressBuy={() => this.toShoppingBag(this.props.buyBook)}
         onPressDonate={book => this.props.rentBook(book)}
-        onPressBallardsClub={() => console.warn('Ballards club :D')}
+        onPressBallardsClub={() => console.warn('Ballard club :D')}
         navigateToShoppingBag={() => this.navigateToShoppingBag()}
       />
     )
