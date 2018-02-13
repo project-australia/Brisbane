@@ -22,7 +22,9 @@ export class Home extends Component {
     searchBook: PropTypes.func.isRequired,
     recentlyAddedBooks: PropTypes.arrayOf(book).isRequired,
     featuredBooks: PropTypes.arrayOf(book).isRequired,
-    userName: PropTypes.string.isRequired
+    userName: PropTypes.string.isRequired,
+    onRecentlyAddedPressed: PropTypes.func.isRequired,
+    onFeaturedPressed: PropTypes.func.isRequired
   }
 
   state = {
