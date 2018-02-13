@@ -31,6 +31,7 @@ class BookScannerContainer extends Component {
       this.setState({book, screenType})
     } else {
       try {
+        console.log(`searching for ISBN ${isbn}`)
         const book = await findBookByISBN(isbn)
         this.setState({book, screenType})
         console.log('book', book)
@@ -40,7 +41,8 @@ class BookScannerContainer extends Component {
     }
   }
 
-  onError = () => {
+  onError = (err) => {
+    console.log('err', err)
     alert('Erro during searching for a book')
     this.goBack()
   }

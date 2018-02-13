@@ -26,8 +26,8 @@ class HomeContainer extends Component {
         featuredBooks={this.handleListBooksToHome(
           this.props.booksLists['featured']
         )}
-        searchBook={isbn =>
-          this.props.navigation.navigate('BookDetails', { isbn })
+        searchBook={(isbn, screenType = 'SELL') =>
+          this.props.navigation.navigate('BookDetails', { isbn, screenType })
         }
         recentlyAddedBooks={this.handleListBooksToHome(
           this.props.booksLists['recent']
