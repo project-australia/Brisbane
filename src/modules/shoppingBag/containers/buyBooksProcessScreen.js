@@ -24,23 +24,16 @@ class BuyBooksProcessContainer extends Component {
   }
 
   state = {
-    isLoading: false
+    isLoading: false,
+    shippingMethod: 'standard'
   }
 
-  render () {
-    const totalPrice = this.props.booksToBuy.total('BUY')
-    const totalWeight = this.props.booksToBuy.reduce((acc = 0, item) => acc + item.book.dimensions.weight)
+  changeToExpediteShippingMethod = () => {
+    this.setState({ shippingMethod: 'expedite' })
+  }
 
-    return (
-      <BuyBooksProcess
-        books={this.props.booksToBuy}
-        checkoutWithPayPal={this.checkoutWithPaypal(totalPrice)}
-        navigateBack={this.goBack}
-        totalPrice={totalPrice}
-        isLoading={this.state.isLoading}
-        expediteShippingPrice={totalWeight > 5 ? 9.99 : 6.99}
-      />
-    )
+  changeToStandardShippingMethod = () => {
+    this.setState({ shippingMethod: 'standard' })
   }
 
   goBack = () => this.props.navigation.goBack()
@@ -64,7 +57,7 @@ class BuyBooksProcessContainer extends Component {
     this.setState({ isLoading: true })
     const order = await createOrder(
       shoppingBagType,
-      'SHIPPED',
+      this.state.shippingMethod,
       books,
       user,
       transactionId
@@ -88,6 +81,25 @@ class BuyBooksProcessContainer extends Component {
   onCheckoutSuccess = () => {
     this.props.cleanShoppingBagByType('BUY')
     this.props.navigation.navigate('Home')
+  }
+
+  render () {
+    const totalPrice = this.props.booksToBuy.total('BUY')
+    const totalWeight = this.props.booksToBuy.reduce((acc = 0, item) => acc + item.book.dimensions.weight)
+
+    return (
+      <BuyBooksProcess
+        books={this.props.booksToBuy}
+        checkoutWithPayPal={this.checkoutWithPaypal(totalPrice)}
+        navigateBack={this.goBack}
+        totalPrice={totalPrice}
+        isLoading={this.state.isLoading}
+        expediteShippingPrice={totalWeight > 5 ? 9.99 : 6.99}
+        shippingMethod={this.state.shippingMethod}
+        selectExpediteShipping={() => this.changeToExpediteShippingMethod()}
+        selectStandardShipping={() => this.changeToStandardShippingMethod()}
+      />
+    )
   }
 }
 

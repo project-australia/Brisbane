@@ -30,35 +30,34 @@ export class BuyBooksProcess extends React.Component {
     navigateBack: PropTypes.func.isRequired,
     totalPrice: PropTypes.number.isRequired,
     expediteShippingPrice: PropTypes.number.isRequired,
+    selectExpediteShipping: PropTypes.func.isRequired,
+    selectStandardShipping: PropTypes.func.isRequired,
+    shippingMethod: PropTypes.oneOf(['standard', 'expedite']),
     isLoading: PropTypes.bool.isRequired
   }
 
-  changeToExpediteShippingMethod = () => {
-    this.setState({ shippingMethod: 'expedite' })
-  }
-
-  changeToStandardShippingMethod = () => {
-    this.setState({ shippingMethod: 'standard' })
+  static defaultProps = {
+    shippingMethod: 'standard'
   }
 
   renderStandardShippingButton = () => {
-    const Button = this.state.shippingMethod === 'standard' ? SelectedButton : NotSelectedButton
+    const Button = this.props.shippingMethod === 'standard' ? SelectedButton : NotSelectedButton
     return (
       <Button
         secondary
         title={'Standard Shipping - FREE'}
-        onPress={() => this.changeToStandardShippingMethod()}
+        onPress={this.props.selectStandardShipping}
       />
     )
   }
 
   renderExpediteShippingButton = () => {
-    const Button = this.state.shippingMethod === 'expedite' ? SelectedButton : NotSelectedButton
+    const Button = this.props.shippingMethod === 'expedite' ? SelectedButton : NotSelectedButton
     return (
       <Button
         secondary
         title={`Expedite Shipping - $${this.props.expediteShippingPrice}`}
-        onPress={() => this.changeToExpediteShippingMethod()}
+        onPress={this.props.selectExpediteShipping}
       />
     )
   }
