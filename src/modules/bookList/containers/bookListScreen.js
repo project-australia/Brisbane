@@ -37,12 +37,12 @@ class BookListContainer extends Component {
     )
   }
 
-  onBuyPressed = (book) => {
+  onBuyPressed = book => {
     this.props.addBuyItemToShoppingBag(book)
     this.props.navigation.navigate('ShoppingBag')
   }
 
-  onRentPressed = (book) => {
+  onRentPressed = book => {
     this.props.addRentItemToShoppingBag(book)
     this.props.navigation.navigate('ShoppingBag')
   }
@@ -62,4 +62,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export const BookListScreen = connect(mapStateToProps, mapDispatchToProps)(BookListContainer)
+export const BookListScreen = connect(mapStateToProps, mapDispatchToProps)(
+  BookListContainer
+)
