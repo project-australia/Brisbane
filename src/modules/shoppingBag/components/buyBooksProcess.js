@@ -32,7 +32,7 @@ export class BuyBooksProcess extends React.Component {
     expediteShippingPrice: PropTypes.number.isRequired,
     selectExpediteShipping: PropTypes.func.isRequired,
     selectStandardShipping: PropTypes.func.isRequired,
-    shippingMethod: PropTypes.oneOf(['STANDARD', 'EXPEDITE', 'IN_PERSON']),
+    shippingMethod: PropTypes.oneOf(['STANDARD', 'EXPEDITE', 'IN_PERSON']).isRequired,
     isLoading: PropTypes.bool.isRequired
   }
 
