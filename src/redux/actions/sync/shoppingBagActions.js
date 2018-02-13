@@ -1,5 +1,5 @@
 import {
-  ADD_TO_SHOPPING_BAG,
+  ADD_TO_SHOPPING_BAG, REMOVE_ALL_ITEMS_FOR_TYPE,
   REMOVE_FROM_SHOPPING_BAG
 } from '../../types/shoppingBagTypes'
 import {
@@ -30,5 +30,18 @@ export const removeFromShoppingBag = (item, type) => {
       type: REMOVE_FROM_SHOPPING_BAG,
       item: new ShoppingBagItem(item, type)
     }
+  }
+}
+
+export const removeAllFromShoppingBag = type => {
+  const desiredType = SHOPPING_BAG_TYPES[type]
+
+  if (!desiredType) {
+    throw new Error('Invalid Shopping Bag Type')
+  }
+
+  return {
+    type: REMOVE_ALL_ITEMS_FOR_TYPE,
+    bookType: desiredType
   }
 }

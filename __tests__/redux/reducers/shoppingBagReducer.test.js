@@ -1,3 +1,4 @@
+import { removeAllFromShoppingBag } from '../../../src/redux/actions'
 import {
   addToShoppingBag,
   removeFromShoppingBag
@@ -18,9 +19,9 @@ describe('Shopping bag reducer', () => {
   const starWars = { title: 'Star Wars', id: '1' }
   const startTrek = { title: 'Star Trek', id: '2' }
 
-  const item = new ShoppingBagItem(starWars, SHOPPING_BAG_TYPES.BUY)
-
-  const anotherItem = new ShoppingBagItem(startTrek, SHOPPING_BAG_TYPES.RENT)
+  const buyingItem = new ShoppingBagItem(starWars, SHOPPING_BAG_TYPES.BUY)
+  const anotherBuyingItem = new ShoppingBagItem(startTrek, SHOPPING_BAG_TYPES.BUY)
+  const rentingItem = new ShoppingBagItem(startTrek, SHOPPING_BAG_TYPES.RENT)
 
   it('should initial state be an empty shopping bag', async () => {
     const expectedInitialState = EMPTY_SHOPPING_BAG
@@ -28,35 +29,48 @@ describe('Shopping bag reducer', () => {
     expect(state).toEqual(expectedInitialState)
   })
 
-  it('should not increase item quantity during adding existing item to shopping bag', () => {
-    const initialState = [item]
-    const state = shoppingBagReducer(initialState, addToShoppingBag(item))
-    expect(state).toEqual(state)
+  describe('add items into shopping bag', () => {
+    it('should not increase buyingItem quantity during adding existing buyingItem to shopping bag', () => {
+      const initialState = [buyingItem]
+      const state = shoppingBagReducer(initialState, addToShoppingBag(buyingItem))
+      expect(state).toEqual(state)
+    })
+
+    it('should addToShoppingBag items to shopping bag', async () => {
+      const firstState = [buyingItem]
+      const secondState = [buyingItem, rentingItem]
+
+      let state = shoppingBagReducer(
+        SHOPPING_BAG_INITIAL_STATE,
+        addToShoppingBag(buyingItem)
+      )
+      expect(state).toEqual(firstState)
+
+      state = shoppingBagReducer(state, addToShoppingBag(rentingItem))
+      expect(state).toEqual(secondState)
+    })
+
   })
 
-  it('should addToShoppingBag items to shopping bag', async () => {
-    const firstState = [item]
-    const secondState = [item, anotherItem]
+  describe('remove items from shopping bag', () => {
+    it('should removeFromShoppingBag an buyingItem from shopping bag', async () => {
+      const initialState = [buyingItem, rentingItem]
+      const firstState = [rentingItem]
+      const secondState = EMPTY_SHOPPING_BAG
 
-    let state = shoppingBagReducer(
-      SHOPPING_BAG_INITIAL_STATE,
-      addToShoppingBag(item)
-    )
-    expect(state).toEqual(firstState)
+      let state = shoppingBagReducer(initialState, removeFromShoppingBag(buyingItem))
+      expect(state).toEqual(firstState)
 
-    state = shoppingBagReducer(state, addToShoppingBag(anotherItem))
-    expect(state).toEqual(secondState)
-  })
+      state = shoppingBagReducer(state, removeFromShoppingBag(rentingItem))
+      expect(state).toEqual(secondState)
+    })
 
-  it('should removeFromShoppingBag an item from shopping bag', async () => {
-    const initialState = [item, anotherItem]
-    const firstState = [anotherItem]
-    const secondState = EMPTY_SHOPPING_BAG
+    it('should remove all items from a type', () => {
+      const expectedState = [rentingItem]
+      const initialState = [buyingItem, anotherBuyingItem, rentingItem]
+      const state = shoppingBagReducer(initialState, removeAllFromShoppingBag('BUY'))
 
-    let state = shoppingBagReducer(initialState, removeFromShoppingBag(item))
-    expect(state).toEqual(firstState)
-
-    state = shoppingBagReducer(state, removeFromShoppingBag(anotherItem))
-    expect(state).toEqual(secondState)
+      expect(state).toEqual(expectedState)
+    })
   })
 })
