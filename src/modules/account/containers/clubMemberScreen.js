@@ -11,7 +11,7 @@ class ClubMembershipContainer extends Component {
   static propTypes = {
     logOut: PropTypes.func.isRequired,
     updateProfile: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
   }
 
   clubTenProps = () => {
@@ -41,7 +41,9 @@ class ClubMembershipContainer extends Component {
   isClubTenUser = () => this.props.user.club === 'NONE'
 
   render () {
-    const props = this.isClubTenUser() ? this.clubTenProps() : this.clubTwentyProps()
+    const props = this.isClubTenUser()
+      ? this.clubTenProps()
+      : this.clubTwentyProps()
 
     return (
       <ClubMember
@@ -64,6 +66,7 @@ const mapStateToProps = ({ authentication: { user } }) => ({
   user
 })
 
-export const ClubMembershipScreen = connect(mapStateToProps, mapDispatchToProps)(
-  ClubMembershipContainer
-)
+export const ClubMembershipScreen = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ClubMembershipContainer)
