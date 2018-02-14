@@ -22,7 +22,7 @@ export const PriceRow = ({ title, price, button, screenType, book }) => {
     callbackFunction = price ? button.onPress.sell : button.onPress.donate
   } else {
     titleToShow = title.buy
-    priceToShow = price.buy
+    priceToShow = price
     buttonTitleToShow = button.title.buy
     callbackFunction = button.onPress.buy
   }

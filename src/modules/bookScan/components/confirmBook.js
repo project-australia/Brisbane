@@ -27,15 +27,13 @@ export class BookDetails extends Component {
   }
 
   state = {
+    book: this.props.book,
     isConditionExplanationModalOn: false,
     isConditionModalOn: false,
-    navRightIcons: [
-      {
-        name: 'cart-outline',
-        onPress: this.props.navigateToShoppingBag
-      }
-    ],
-    book: this.props.book
+    navRightIcons: [{
+      name: 'cart-outline',
+      onPress: this.props.navigateToShoppingBag
+    }]
   }
 
   showConditionExplanationModal = () =>
@@ -50,9 +48,40 @@ export class BookDetails extends Component {
       book: { ...this.props.book, condition: selectedCondition }
     })
 
+  renderMembershipData = () => {
+    const { membershipStatus, onPressBallardsClub, screenType } = this.props
+    const isSelling = screenType === 'SELL'
+    const sellOrBuy = isSelling ? 'more money selling' : 'off buying'
+    switch (membershipStatus) {
+      case 'TEN':
+        return (
+          <Touchable onPress={onPressBallardsClub}>
+            <Text style={styles.footnote}>
+              Upgrade your membership and get 20% {sellOrBuy} books.
+              <Text style={styles.textAccent}> LEARN MORE</Text>
+            </Text>
+          </Touchable>
+        )
+      case 'TWENTY':
+        return (
+          <Text style={styles.footnote}>
+            Invite friends and earn even more.
+          </Text>
+        )
+      default:
+        return (
+          <Touchable onPress={onPressBallardsClub}>
+            <Text style={styles.footnote}>
+              Ballards club members gets 10% {sellOrBuy} books.
+              <Text style={styles.textAccent}> LEARN MORE</Text>
+            </Text>
+          </Touchable>
+        )
+    }
+  }
+
   render () {
     const {
-      onPressBallardsClub,
       onPressBuy,
       onPressDonate,
       onPressSell,
@@ -134,15 +163,7 @@ export class BookDetails extends Component {
               }
             }}
           />
-
-          {isSelling && (
-            <Touchable onPress={onPressBallardsClub}>
-              <Text style={styles.footnote}>
-                Ballards club members gets 10% more money selling books.
-                <Text style={styles.textAccent}> LEARN MORE</Text>
-              </Text>
-            </Touchable>
-          )}
+          {this.renderMembershipData()}
           <MenuTitle title={'Details'} style={styles.titleWrap} />
           <GeneralInfoCard style={styles.standardSpacing}>
             {aboutBook && (
