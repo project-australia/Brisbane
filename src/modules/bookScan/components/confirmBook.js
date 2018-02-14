@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, ScrollView, View } from 'react-native'
+import { Alert, Text, ScrollView, View } from 'react-native'
 import PropTypes from 'prop-types'
 import { book } from '../../home/propTypes/book'
 
@@ -10,6 +10,7 @@ import { GeneralInfoCard } from '../../shared/components/generalInfoCard'
 import { MenuTitle } from '../../shared/components/menuTitle'
 import { ModalConditionExplanation } from '../../shared/components/modals/modalConditionExplanation'
 import { ModalOptionSelect } from '../../shared/components/modals/modalOptionSelect'
+import { ModalRentalTerms } from '../../shared/components/modals/modalRentalTerms'
 import { Navbar } from '../../shared/components/navbar'
 import { PriceRow } from '../../shared/components/priceRow'
 import { RowValue } from '../../shared/components/rowValue'
@@ -30,6 +31,7 @@ export class BookDetails extends Component {
     book: this.props.book,
     isConditionExplanationModalOn: false,
     isConditionModalOn: false,
+    isRentalTermsModalOn: false,
     navRightIcons: [{
       name: 'cart-outline',
       onPress: this.props.navigateToShoppingBag
@@ -47,6 +49,25 @@ export class BookDetails extends Component {
       isConditionModalOn: false,
       book: { ...this.props.book, condition: selectedCondition }
     })
+  showRentalTermsModal = () => this.setState({ isRentalTermsModalOn: true })
+  hideRentalTermsModal = () => this.setState({ isRentalTermsModalOn: false })
+
+  confirmRent = () =>
+    Alert.alert(
+      'Rental agreement',
+      'By confirming you agree to our Rental Terms of Agreement, do you confirm?',
+      [
+        {text: 'Check terms', onPress: this.showRentalTermsModal},
+        {text: 'Decline', onPress: () => {}, style: 'cancel'},
+        {text: 'Agree', onPress: this.props.onPressRent}
+      ],
+      { cancelable: true }
+    )
+
+  agreedWithTerms = () => {
+    this.hideRentalTermsModal()
+    this.props.onPressRent()
+  }
 
   renderMembershipData = () => {
     const { membershipStatus, onPressBallardsClub, screenType } = this.props
@@ -91,6 +112,7 @@ export class BookDetails extends Component {
       book,
       isConditionExplanationModalOn,
       isConditionModalOn,
+      isRentalTermsModalOn,
       navRightIcons
     } = this.state
     const { aboutBook, authors, condition, images, isbn, price, title } = book
@@ -122,6 +144,7 @@ export class BookDetails extends Component {
       }
     ]
 
+    const defaultCondition = isSelling ? 'Select a condition' : 'Used - Acceptable'
     return (
       <View style={styles.container}>
         <AppStatusBar />
@@ -136,7 +159,7 @@ export class BookDetails extends Component {
           <RowValue
             title={'Condition'}
             subtitle={'About conditions'}
-            value={condition || 'Select a condition'}
+            value={condition || defaultCondition}
             onPress={onPressCondition}
             onPressTitle={onPressConditionTitle}
           />
@@ -152,13 +175,15 @@ export class BookDetails extends Component {
             price={price}
             button={{
               title: {
-                buy: 'buy',
+                buy: 'Buy',
                 donate: 'Donate',
+                rent: 'Rent',
                 sell: 'Sell'
               },
               onPress: {
                 buy: book => onPressBuy(book),
                 donate: book => onPressDonate(book),
+                rent: book => this.confirmRent(book),
                 sell: book => onPressSell(book)
               }
             }}
@@ -184,6 +209,12 @@ export class BookDetails extends Component {
         <ModalConditionExplanation
           isVisible={isConditionExplanationModalOn}
           onCancel={this.hideConditionExplanationModal}
+        />
+        <ModalRentalTerms
+          isVisible={isRentalTermsModalOn}
+          onCancel={this.hideRentalTermsModal}
+          buttonTitle={'Agree with the terms'}
+          onPressButton={this.agreedWithTerms}
         />
       </View>
     )

@@ -74,7 +74,8 @@ class BookScannerContainer extends Component {
         navigateToShoppingBag={this.navigateToShoppingBag}
         onPressBallardsClub={this.navigateToClubMember}
         onPressBuy={() => this.toShoppingBag(this.props.buyBook)}
-        onPressDonate={book => this.props.rentBook(book)}
+        onPressDonate={this.props.sellBook}
+        onPressRent={() => this.toShoppingBag(this.props.buyBook)}
         onPressSell={this.props.sellBook}
         screenType={screenType}
       />
