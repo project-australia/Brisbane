@@ -114,9 +114,10 @@ export const Navbar = ({
     })
   }
 
-  const wrapStyle = (Platform.OS === 'android' && ignoreAndroidStatusBar)
-    ? styles.wrapWithoutAndroidStatusbar
-    : styles.wrap
+  const wrapStyle =
+    Platform.OS === 'android' && ignoreAndroidStatusBar
+      ? styles.wrapWithoutAndroidStatusbar
+      : styles.wrap
   return (
     <View style={wrapStyle}>
       <View style={iconWrapStyle}>{buildIcon(backButton)}</View>

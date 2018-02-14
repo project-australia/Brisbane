@@ -45,7 +45,11 @@ export class ClubMember extends Component {
 
   checkoutWithPaypal = async () => {
     try {
-      await payWithPayPal(this.props.price, this.props.title, this.onPayPalOnSuccess)
+      await payWithPayPal(
+        this.props.price,
+        this.props.title,
+        this.onPayPalOnSuccess
+      )
     } catch (error) {
       console.log('Paypal checkout failed', JSON.stringify(error))
       this.alert('Sorry. Request Failed')
@@ -55,10 +59,7 @@ export class ClubMember extends Component {
   onPayPalOnSuccess = async paypalResponse => {
     const { user, club, updateProfile, navigate } = this.props
     await updateProfile(user.id, { club })
-    this.alert(
-      'Successfully registered',
-      navigate('Home')
-    )
+    this.alert('Successfully registered', navigate('Home'))
   }
 
   alert = (msg, press = () => {}) =>

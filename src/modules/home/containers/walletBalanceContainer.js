@@ -67,7 +67,8 @@ class WalletContainer extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  requestWithdraw: (userId, form) => dispatch(requestWithdrawAction(userId, form))
+  requestWithdraw: (userId, form) =>
+    dispatch(requestWithdrawAction(userId, form))
 })
 
 const mapStateToProps = ({ authentication: { user } }) => ({
@@ -78,4 +79,6 @@ const mapStateToProps = ({ authentication: { user } }) => ({
   id: user.id
 })
 
-export const WalletBalanceAmount = connect(mapStateToProps, mapDispatchToProps)(WalletContainer)
+export const WalletBalanceAmount = connect(mapStateToProps, mapDispatchToProps)(
+  WalletContainer
+)

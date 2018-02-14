@@ -28,12 +28,12 @@ class BookScannerContainer extends Component {
     const { book, isbn, screenType } = this.props.navigation.state.params
 
     if (book) {
-      this.setState({book, screenType})
+      this.setState({ book, screenType })
     } else {
       try {
         console.log(`searching for ISBN ${isbn}`)
         const book = await findBookByISBN(isbn)
-        this.setState({book, screenType})
+        this.setState({ book, screenType })
         console.log('book', book)
       } catch (err) {
         this.onError(err)
@@ -41,7 +41,7 @@ class BookScannerContainer extends Component {
     }
   }
 
-  onError = (err) => {
+  onError = err => {
     console.log('err', err)
     alert('Erro during searching for a book')
     this.goBack()
@@ -54,7 +54,7 @@ class BookScannerContainer extends Component {
   }
 
   navigateToClubMember = () => {
-    this.props.navigation.navigate('ClubMember10')
+    this.props.navigation.navigate('ClubMembership')
   }
 
   toShoppingBag = callback => {
