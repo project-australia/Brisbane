@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   },
   contentTitle: {
     ...Fonts.style.description,
-    color: Colors.gray900
+    color: Colors.gray700
   },
   contentSubtitle: {
     ...Fonts.style.footnote,
@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     marginRight: Metrics.section,
     marginVertical: Metrics.baseMargin,
     ...Fonts.style.description,
-    color: Colors.gray700,
+    color: Colors.gray900,
     textAlign: 'right'
   },
   darkTitle: {

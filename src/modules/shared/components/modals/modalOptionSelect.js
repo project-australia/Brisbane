@@ -11,18 +11,18 @@ const renderOption = ({ title, onPress }) => (
 )
 
 export const ModalOptionSelect = ({
-  isModalVisible,
-  onClose,
+  isVisible,
+  onCancel,
   options,
   title
 }) => (
   <Modal
-    visible={isModalVisible}
-    onRequestClose={onClose}
+    visible={isVisible}
+    onRequestClose={onCancel}
     transparent
     animationType={'fade'}
   >
-    <TouchableWithoutFeedback onPress={onClose}>
+    <TouchableWithoutFeedback onPress={onCancel}>
       <View style={styles.darkBackground}>
         <View style={styles.card}>
           <Text style={styles.title}>{title}</Text>
