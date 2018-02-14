@@ -39,7 +39,7 @@ export const TestScreen = props => {
       {navigateTo('ShoppingBag')}
       {navigateTo('ConfirmationScreen')}
       {navigateTo('BookDetails', {
-        isbn: '97-802-611-02941',
+        isbn: '978-1451639612',
         screenType: 'SELL'
       })}
       {navigateTo('BookList')}

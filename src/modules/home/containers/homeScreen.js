@@ -14,24 +14,22 @@ class HomeContainer extends Component {
     navigation: PropTypes.object.isRequired
   }
 
-  handleListBooksToHome = booksList => {
-    return booksList.slice(0, 5)
-  }
+  navigateTo = (screen, param = {}) => () =>
+    this.props.navigation.navigate(screen, param)
 
-  render () {
+  firstFivesElementsOf = booksList => booksList.slice(0, 5)
+
+  render() {
     const userName = this.props.displayName || 'Guest'
+    const { booksLists } = this.props
     return (
       <Home
         userName={userName}
-        featuredBooks={this.handleListBooksToHome(
-          this.props.booksLists['featured']
-        )}
+        featuredBooks={this.firstFivesElementsOf(booksLists['featured'])}
         searchBook={(isbn, screenType = 'SELL') =>
-          this.props.navigation.navigate('BookDetails', { isbn, screenType })
+          this.navigateTo('BookDetails', { isbn, screenType })
         }
-        recentlyAddedBooks={this.handleListBooksToHome(
-          this.props.booksLists['recent']
-        )}
+        recentlyAddedBooks={this.firstFivesElementsOf(booksLists['recent'])}
         onRecentlyAddedPressed={this.navigateTo('BookList', {
           typeList: 'recent'
         })}
@@ -45,9 +43,6 @@ class HomeContainer extends Component {
       />
     )
   }
-
-  navigateTo = (screen, param = {}) => () =>
-    this.props.navigation.navigate(screen, param)
 }
 
 const mapStateToProps = ({ authentication: { user }, books }) => ({

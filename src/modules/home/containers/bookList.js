@@ -20,17 +20,23 @@ class BookListContainer extends React.PureComponent {
   }
 
   render () {
+    const { books, title, button } = this.props
+
+    if (books.length === 0) {
+      return null
+    }
+
     return (
       <View>
         <MenuTitle
-          title={this.props.title}
-          button={this.props.button}
+          title={title}
+          button={button}
           style={styles.titleWrap}
         />
         <HorizontalBookList
-          books={this.props.books}
-          title={this.props.title}
-          button={this.props.button}
+          books={books}
+          title={title}
+          button={button}
           onBuyBook={book =>
             this.props.navigation.navigate('BookDetails', {
               book,

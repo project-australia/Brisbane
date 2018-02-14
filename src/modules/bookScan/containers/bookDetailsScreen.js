@@ -32,10 +32,10 @@ class BookScannerContainer extends Component {
       this.setState({ book, screenType })
     } else {
       try {
-        console.log(`searching for ISBN ${isbn}`)
+        console.log(`searching for ISBN ${isbn}.`)
         const book = await findBookByISBN(isbn)
         this.setState({ book, screenType })
-        console.log('book', book)
+        console.log('Book found!', book)
       } catch (err) {
         this.onError(err)
       }
