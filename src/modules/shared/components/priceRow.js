@@ -28,16 +28,32 @@ export const PriceRow = ({ title, price, button, screenType, book }) => {
   }
 
   return (
-    <View style={styles.row}>
-      <View style={styles.rowInfo}>
-        <Text style={styles.description}>{titleToShow}</Text>
-        <Text style={styles.title}>{`$${priceToShow}`}</Text>
+    <View>
+      <View style={styles.row}>
+        <View style={styles.rowInfo}>
+          <Text style={styles.description}>{titleToShow}</Text>
+          <Text style={styles.title}>{`$${priceToShow}`}</Text>
+        </View>
+        <FlatButton
+          secondary
+          title={buttonTitleToShow}
+          onPress={() => callbackFunction(book)}
+        />
       </View>
-      <FlatButton
-        secondary
-        title={buttonTitleToShow}
-        onPress={() => callbackFunction(book)}
-      />
+      {
+        (!isSelling(screenType) && price && price.rent) &&
+        <View style={styles.row}>
+          <View style={styles.rowInfo}>
+            <Text style={styles.description}>{title.rent}</Text>
+            <Text style={styles.title}>{`$${price.rent}`}</Text>
+          </View>
+          <FlatButton
+            secondary
+            title={button.title.rent}
+            onPress={button.onPress.rent}
+          />
+        </View>
+      }
     </View>
   )
 }
