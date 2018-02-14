@@ -53,6 +53,10 @@ class BookScannerContainer extends Component {
     this.props.navigation.navigate('ShoppingBag', {})
   }
 
+  navigateToClubMember = () => {
+    this.props.navigation.navigate('ClubMember10')
+  }
+
   toShoppingBag = callback => {
     callback(this.state.book)
     this.navigateToShoppingBag()
@@ -69,8 +73,8 @@ class BookScannerContainer extends Component {
       <BookDetails
         book={book}
         navigateBack={this.goBack}
-        navigateToShoppingBag={() => this.navigateToShoppingBag()}
-        onPressBallardsClub={() => console.warn('Ballard club :D')}
+        navigateToShoppingBag={this.navigateToShoppingBag}
+        onPressBallardsClub={this.navigateToClubMember}
         onPressBuy={() => this.toShoppingBag(this.props.buyBook)}
         onPressDonate={book => this.props.rentBook(book)}
         onPressSell={this.props.sellBook}
@@ -88,6 +92,7 @@ const mapDispatchToProps = dispatch => {
     sellBook: book => dispatch(sellBook(sellBook))
   }
 }
+
 export const BookDetailsScreen = connect(mapStateToProps, mapDispatchToProps)(
   BookScannerContainer
 )

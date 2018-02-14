@@ -36,15 +36,17 @@ class ClubMember10Container extends Component {
   }
 
   goBack = () => this.props.navigation.goBack()
+
   checkoutWithPaypal = async () => {
     try {
-      await payWithPayPal('2.99', '10 Club Member', this.onPayPalOnSuccess())
+      await payWithPayPal('2.99', '10 Club Member', this.onPayPalOnSuccess)
     } catch (error) {
       console.log('Paypal checkout failed', JSON.stringify(error))
       this.defaultAlertPopUp('Sorry. Request Failed')
     }
   }
-  onPayPalOnSuccess = () => async paypalResponse => {
+
+  onPayPalOnSuccess = async paypalResponse => {
     const { user } = this.props
     await this.props.updateProfile(user.id, { club: 'TEN' })
     this.defaultAlertPopUp(
@@ -52,6 +54,7 @@ class ClubMember10Container extends Component {
       this.props.navigation.navigate('Home', {})
     )
   }
+
   defaultAlertPopUp = (msg, press = () => {}) =>
     Alert.alert(
       '10% Club Member',
