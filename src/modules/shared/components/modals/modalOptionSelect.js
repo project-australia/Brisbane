@@ -1,5 +1,11 @@
 import React from 'react'
-import { Modal, View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native'
+import {
+  Modal,
+  View,
+  Text,
+  StyleSheet,
+  TouchableWithoutFeedback
+} from 'react-native'
 import { Touchable } from '../touchable'
 
 import { Colors, Metrics, Fonts, Values } from '../../../../constants'
@@ -10,12 +16,7 @@ const renderOption = ({ title, onPress }) => (
   </Touchable>
 )
 
-export const ModalOptionSelect = ({
-  isVisible,
-  onCancel,
-  options,
-  title
-}) => (
+export const ModalOptionSelect = ({ isVisible, onCancel, options, title }) => (
   <Modal
     visible={isVisible}
     onRequestClose={onCancel}

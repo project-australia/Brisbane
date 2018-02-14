@@ -38,22 +38,16 @@ export const TestScreen = props => {
       {navigateTo('BookScanner')}
       {navigateTo('ShoppingBag')}
       {navigateTo('ConfirmationScreen')}
-      {navigateTo('BookDetails', { isbn: '97-802-611-02941', screenType: 'SELL' })}
+      {navigateTo('BookDetails', {
+        isbn: '97-802-611-02941',
+        screenType: 'SELL'
+      })}
       {navigateTo('BookList')}
       {navigateTo('ShoppingBag')}
       {navigateTo('BuyBooksProcess')}
       {navigateTo('SellBooksProcess')}
-      {navigateTo('ClubMember10')}
-      {navigateTo('ClubMember20')}
+      {navigateTo('ClubMembership')}
       {openPayPalScreen()}
-      {/* <ModalWithTextAndButton // DUMMY DATA
-        isVisible
-        onCancel={() => alert('fechando o modal')}
-        title={'Rent conditions'}
-        paragraphs={RENT_CONDITIONS}
-        buttonTitle={'Accept conditions'}
-        onPressButton={() => alert('❤️ thank you')}
-      /> */}
     </ScrollView>
   )
 }

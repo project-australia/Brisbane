@@ -38,16 +38,17 @@ export class BookDetails extends Component {
     book: this.props.book
   }
 
-  showConditionExplanationModal = () => this.setState({ isConditionExplanationModalOn: true })
-  hideConditionExplanationModal = () => this.setState({ isConditionExplanationModalOn: false })
+  showConditionExplanationModal = () =>
+    this.setState({ isConditionExplanationModalOn: true })
+  hideConditionExplanationModal = () =>
+    this.setState({ isConditionExplanationModalOn: false })
   showConditionModal = () => this.setState({ isConditionModalOn: true })
   hideConditionModal = () => this.setState({ isConditionModalOn: false })
-  updateSelectedCondition = selectedCondition => (
+  updateSelectedCondition = selectedCondition =>
     this.setState({
       isConditionModalOn: false,
       book: { ...this.props.book, condition: selectedCondition }
     })
-  )
 
   render () {
     const {
@@ -63,17 +64,9 @@ export class BookDetails extends Component {
       isConditionModalOn,
       navRightIcons
     } = this.state
-    const {
-      aboutBook,
-      authors,
-      condition,
-      images,
-      isbn,
-      price,
-      title
-    } = book
+    const { aboutBook, authors, condition, images, isbn, price, title } = book
     const isSelling = screenType === 'SELL'
-    const [onPressCondition, onPressConditionTitle] = (isSelling)
+    const [onPressCondition, onPressConditionTitle] = isSelling
       ? [this.showConditionModal, this.showConditionExplanationModal]
       : [this.showConditionExplanationModal, undefined]
 
@@ -142,23 +135,21 @@ export class BookDetails extends Component {
             }}
           />
 
-          {
-            isSelling &&
+          {isSelling && (
             <Touchable onPress={onPressBallardsClub}>
               <Text style={styles.footnote}>
                 Ballards club members gets 10% more money selling books.
                 <Text style={styles.textAccent}> LEARN MORE</Text>
               </Text>
             </Touchable>
-          }
+          )}
           <MenuTitle title={'Details'} style={styles.titleWrap} />
           <GeneralInfoCard style={styles.standardSpacing}>
-            {
-              aboutBook &&
+            {aboutBook && (
               <Text style={[styles.description, styles.bottomSpacing]}>
                 {aboutBook}
               </Text>
-            }
+            )}
             <Text style={styles.description}>ISBN</Text>
             <Text style={styles.descriptionGray}>{isbn}</Text>
           </GeneralInfoCard>
