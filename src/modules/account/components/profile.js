@@ -50,7 +50,7 @@ export const Profile = ({
       <ScrollView>
         <ScreenTitleAndSubtitle
           title={user.name}
-          subtitle={`${getSubscriptionText(user.subscription)} member`}
+          subtitle={`${getSubscriptionText(user.club)} member`}
         />
         <ProfileItem
           title={'School'}

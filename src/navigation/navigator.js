@@ -67,10 +67,12 @@ const routeConfigs = {
     screen: NetworkMembersScreen
   },
   ClubMember10: {
-    screen: ClubMember10Screen
+    screen: authenticated(ClubMember10Screen),
+    navigationOptions: { header: null }
   },
   ClubMember20: {
-    screen: ClubMember20Screen
+    screen: authenticated(ClubMember20Screen),
+    navigationOptions: { header: null }
   }
 }
 
