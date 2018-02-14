@@ -1,4 +1,5 @@
 import { StackNavigator as Navigator } from 'react-navigation'
+import { ClubMembershipScreen } from '../modules/account/containers/clubMemberScreen'
 
 import { authenticated } from '../modules/shared/decorators/authenticated'
 import { BookDetailsScreen } from '../modules/bookScan/containers/bookDetailsScreen'
@@ -11,8 +12,6 @@ import { HomeScreen } from '../modules/home/containers/homeScreen'
 import { ManageAccountScreen } from '../modules/account/containers/manageAccountScreen'
 import { NetworkMembersScreen } from '../modules/account/containers/networkMembersScreen'
 import { ProfileScreen } from '../modules/account/containers/profileScreen'
-import { ClubMember10Screen } from '../modules/account/containers/clubMember10Screen'
-import { ClubMember20Screen } from '../modules/account/containers/clubMember20Screen'
 import { ShoppingBagScreen } from '../modules/shoppingBag/containers/shoppingBagScreen'
 import { SignInScreen } from '../modules/authentication/containers/signInScreen'
 import { SignUpScreen } from '../modules/authentication/containers/signUpScreen'
@@ -66,12 +65,8 @@ const routeConfigs = {
   NetworkMembers: {
     screen: NetworkMembersScreen
   },
-  ClubMember10: {
-    screen: authenticated(ClubMember10Screen),
-    navigationOptions: { header: null }
-  },
-  ClubMember20: {
-    screen: authenticated(ClubMember20Screen),
+  ClubMembership: {
+    screen: authenticated(ClubMembershipScreen),
     navigationOptions: { header: null }
   }
 }

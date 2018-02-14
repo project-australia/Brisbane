@@ -54,7 +54,7 @@ class BookScannerContainer extends Component {
   }
 
   navigateToClubMember = () => {
-    this.props.navigation.navigate('ClubMember10')
+    this.props.navigation.navigate('ClubMembership')
   }
 
   toShoppingBag = callback => {
