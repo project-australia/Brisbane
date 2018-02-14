@@ -114,7 +114,7 @@ export const Navbar = ({
     })
   }
 
-  const wrapStyle = ignoreAndroidStatusBar
+  const wrapStyle = (Platform.OS === 'android' && ignoreAndroidStatusBar)
     ? styles.wrapWithoutAndroidStatusbar
     : styles.wrap
   return (

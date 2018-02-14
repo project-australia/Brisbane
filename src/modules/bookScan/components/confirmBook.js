@@ -3,10 +3,12 @@ import { Text, ScrollView, View } from 'react-native'
 import PropTypes from 'prop-types'
 import { book } from '../../home/propTypes/book'
 
+import { AppStatusBar } from '../../shared/components/appStatusBar'
 import { BookTitleAndAuthor } from '../../shared/components/bookTitleAndAuthor'
 import { CoverImage } from '../../shared/components/coverImage'
 import { GeneralInfoCard } from '../../shared/components/generalInfoCard'
 import { MenuTitle } from '../../shared/components/menuTitle'
+import { ModalConditionExplanation } from '../../shared/components/modals/modalConditionExplanation'
 import { ModalOptionSelect } from '../../shared/components/modals/modalOptionSelect'
 import { Navbar } from '../../shared/components/navbar'
 import { PriceRow } from '../../shared/components/priceRow'
@@ -25,6 +27,7 @@ export class BookDetails extends Component {
   }
 
   state = {
+    isConditionExplanationModalOn: false,
     isConditionModalOn: false,
     navRightIcons: [
       {
@@ -35,6 +38,8 @@ export class BookDetails extends Component {
     book: this.props.book
   }
 
+  showConditionExplanationModal = () => this.setState({ isConditionExplanationModalOn: true })
+  hideConditionExplanationModal = () => this.setState({ isConditionExplanationModalOn: false })
   showConditionModal = () => this.setState({ isConditionModalOn: true })
   hideConditionModal = () => this.setState({ isConditionModalOn: false })
   updateSelectedCondition = selectedCondition => (
@@ -53,6 +58,12 @@ export class BookDetails extends Component {
       screenType
     } = this.props
     const {
+      book,
+      isConditionExplanationModalOn,
+      isConditionModalOn,
+      navRightIcons
+    } = this.state
+    const {
       aboutBook,
       authors,
       condition,
@@ -60,11 +71,11 @@ export class BookDetails extends Component {
       isbn,
       price,
       title
-    } = this.state.book
+    } = book
     const isSelling = screenType === 'SELL'
     const [onPressCondition, onPressConditionTitle] = (isSelling)
-      ? [this.showConditionModal, () => console.log('show about conditions modal')]
-      : [() => console.log('show about conditions modal'), undefined]
+      ? [this.showConditionModal, this.showConditionExplanationModal]
+      : [this.showConditionExplanationModal, undefined]
 
     const conditionsModalOptions = [
       {
@@ -91,9 +102,10 @@ export class BookDetails extends Component {
 
     return (
       <View style={styles.container}>
+        <AppStatusBar />
         <Navbar
           title={isSelling ? 'Sell your book' : 'Buy a book'}
-          rightIcons={this.state.navRightIcons}
+          rightIcons={navRightIcons}
           onBack={this.props.navigateBack}
         />
         <ScrollView>
@@ -107,7 +119,7 @@ export class BookDetails extends Component {
             onPressTitle={onPressConditionTitle}
           />
           <PriceRow
-            book={this.state.book}
+            book={book}
             screenType={screenType}
             title={{
               buy: 'Buy this book for',
@@ -141,20 +153,25 @@ export class BookDetails extends Component {
           }
           <MenuTitle title={'Details'} style={styles.titleWrap} />
           <GeneralInfoCard style={styles.standardSpacing}>
-            {aboutBook !== null && (
+            {
+              aboutBook &&
               <Text style={[styles.description, styles.bottomSpacing]}>
                 {aboutBook}
               </Text>
-            )}
+            }
             <Text style={styles.description}>ISBN</Text>
             <Text style={styles.descriptionGray}>{isbn}</Text>
           </GeneralInfoCard>
         </ScrollView>
         <ModalOptionSelect
           title={'Select the condition'}
-          isModalVisible={this.state.isConditionModalOn}
-          onClose={this.hideConditionModal}
+          isVisible={isConditionModalOn}
+          onCancel={this.hideConditionModal}
           options={conditionsModalOptions}
+        />
+        <ModalConditionExplanation
+          isVisible={isConditionExplanationModalOn}
+          onCancel={this.hideConditionExplanationModal}
         />
       </View>
     )
