@@ -9,6 +9,7 @@ import { BookDetails } from '../components/confirmBook'
 class BookScannerContainer extends Component {
   state = {
     book: null,
+    club: '',
     screenType: 'BUY'
   }
 
@@ -64,13 +65,10 @@ class BookScannerContainer extends Component {
 
   render () {
     const { book, screenType } = this.state
-
-    if (!book) {
-      return null
-    }
-
     return (
+      book &&
       <BookDetails
+        membershipStatus={this.state.club}
         book={book}
         navigateBack={this.goBack}
         navigateToShoppingBag={this.navigateToShoppingBag}
