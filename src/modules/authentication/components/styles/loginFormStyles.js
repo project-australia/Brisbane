@@ -2,6 +2,10 @@ import { StyleSheet } from 'react-native'
 import { Colors, Metrics, Fonts } from '../../../../constants'
 
 export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: Colors.screen
+  },
   screen: {
     flex: 1,
     backgroundColor: Colors.screen,
@@ -26,9 +30,26 @@ export const styles = StyleSheet.create({
   content: {
     justifyContent: 'space-between'
   },
+  inputRow: {
+    flexDirection: 'row',
+    paddingHorizontal: Metrics.marginHorizontal * 1.5
+  },
+  inlineInput: {
+    flex: 1,
+    marginHorizontal: Metrics.marginHorizontal / 2
+  },
+  inlineInputTriple: {
+    flex: 3,
+    marginHorizontal: Metrics.marginHorizontal / 2
+  },
   itemSpacing: {
     marginHorizontal: Metrics.marginHorizontal * 2,
     marginBottom: Metrics.marginVertical
+  },
+  buttonsSpacing: {
+    paddingVertical: Metrics.marginVertical,
+    borderTopWidth: Metrics.borderWidth,
+    borderColor: Colors.divider
   },
   loginButton: {
     flex: 1,

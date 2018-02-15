@@ -1,9 +1,12 @@
-import PropTypes, { string } from 'prop-types'
 import React, { Component } from 'react'
 import { ScrollView, View } from 'react-native'
+import PropTypes, { string } from 'prop-types'
+
+import { AppStatusBar } from '../../shared/components/appStatusBar'
 import { FormButton } from '../../shared/components/buttons'
-import { FormHeader } from './formHeader'
 import { FormTextInput } from './formTextInput'
+import { Navbar } from '../../shared/components/navbar'
+
 import { styles } from './styles/loginFormStyles'
 
 export const signupFormType = PropTypes.shape({
@@ -47,82 +50,95 @@ export class ProfileForm extends Component {
 
   render () {
     return (
-      <ScrollView contentContainerStyle={styles.screen}>
-        <FormHeader title="Almost there..." />
-        <FormTextInput
-          onChangeText={this.setBirthDateDay}
-          value={this.props.form.birthDateDay}
-          placeholder="Day"
-          keyboardType="phone-pad"
-        />
-        <FormTextInput
-          onChangeText={this.setBirthDateMonth}
-          value={this.props.form.birthDateMonth}
-          placeholder="Month"
-          keyboardType="phone-pad"
-        />
-        <FormTextInput
-          onChangeText={this.setBirthDateYear}
-          value={this.props.form.birthDateYear}
-          placeholder="Year"
-          keyboardType="phone-pad"
-        />
-        <FormTextInput
-          onChangeText={this.setReferredBy}
-          value={this.props.form.referredBy}
-          placeholder="Indicated by someone?"
-        />
-        <FormTextInput
-          onChangeText={this.setSchool}
-          value={this.props.form.school}
-          placeholder="School"
-        />
-        <FormTextInput
-          onChangeText={this.setTelephone}
-          value={this.props.form.telephone}
-          placeholder="Phone"
-          autoCapitalize="none"
-          keyboardType="phone-pad"
-        />
-        <FormTextInput
-          onChangeText={this.setStreet}
-          value={this.props.form.street}
-          placeholder="Street"
-        />
-        <FormTextInput
-          onChangeText={this.setNumber}
-          value={this.props.form.number}
-          placeholder="Number"
-          keyboardType="phone-pad"
-        />
-        <FormTextInput
-          onChangeText={this.setZipCode}
-          value={this.props.form.zipCode}
-          placeholder="Zip Code"
-          keyboardType="phone-pad"
-        />
-        <FormTextInput
-          onChangeText={this.setCity}
-          value={this.props.form.city}
-          placeholder="City"
-        />
-        <FormTextInput
-          onChangeText={this.setAddressState}
-          value={this.props.form.state}
-          placeholder="State"
-        />
-        <FormButton
-          title={'Create your account'}
-          onPress={() => this.props.onButtonPress()}
-          style={styles.itemSpacing}
-        />
-        <FormButton
-          title={'Return to previous Screen'}
-          onPress={() => this.props.navigateBack()}
-          style={styles.itemSpacing}
-        />
-        {this.props.footer}
-      </ScrollView>
+      <View style={styles.container}>
+        <AppStatusBar />
+        <Navbar title={'Almost there...'} onBack={this.props.navigateBack} />
+        <ScrollView>
+          <View style={styles.inputRow}>
+            <FormTextInput
+              style={styles.inlineInput}
+              onChangeText={this.setBirthDateDay}
+              value={this.props.form.birthDateDay}
+              placeholder="Day"
+              keyboardType="phone-pad"
+            />
+            <FormTextInput
+              style={styles.inlineInput}
+              onChangeText={this.setBirthDateMonth}
+              value={this.props.form.birthDateMonth}
+              placeholder="Month"
+              keyboardType="phone-pad"
+            />
+            <FormTextInput
+              style={styles.inlineInput}
+              onChangeText={this.setBirthDateYear}
+              value={this.props.form.birthDateYear}
+              placeholder="Year"
+              keyboardType="phone-pad"
+            />
+          </View>
+          <FormTextInput
+            onChangeText={this.setReferredBy}
+            value={this.props.form.referredBy}
+            placeholder="Indicated by someone?"
+          />
+          <FormTextInput
+            onChangeText={this.setSchool}
+            value={this.props.form.school}
+            placeholder="School"
+          />
+          <FormTextInput
+            onChangeText={this.setTelephone}
+            value={this.props.form.telephone}
+            placeholder="Phone"
+            autoCapitalize="none"
+            keyboardType="phone-pad"
+          />
+          <FormTextInput
+            onChangeText={this.setStreet}
+            value={this.props.form.street}
+            placeholder="Street"
+          />
+          <View style={styles.inputRow}>
+            <FormTextInput
+              style={styles.inlineInput}
+              onChangeText={this.setNumber}
+              value={this.props.form.number}
+              placeholder="Number"
+              keyboardType="phone-pad"
+            />
+            <FormTextInput
+              style={styles.inlineInput}
+              onChangeText={this.setZipCode}
+              value={this.props.form.zipCode}
+              placeholder="Zip Code"
+              keyboardType="phone-pad"
+            />
+          </View>
+          <View style={styles.inputRow}>
+            <FormTextInput
+              style={styles.inlineInputTriple}
+              onChangeText={this.setCity}
+              value={this.props.form.city}
+              placeholder="City"
+            />
+            <FormTextInput
+              style={styles.inlineInput}
+              onChangeText={this.setAddressState}
+              value={this.props.form.state}
+              placeholder="State"
+            />
+          </View>
+        </ScrollView>
+        <View style={styles.buttonsSpacing}>
+          <FormButton
+            title={'Create your account'}
+            onPress={() => this.props.onButtonPress()}
+            style={styles.itemSpacing}
+          />
+          {this.props.footer}
+        </View>
+      </View>
     )
   }
 }
