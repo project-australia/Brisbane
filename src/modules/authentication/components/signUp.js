@@ -1,5 +1,7 @@
-import { bool, func, shape, string } from 'prop-types'
 import React, { Component } from 'react'
+import { Keyboard, Platform } from 'react-native'
+import { bool, func, shape, string } from 'prop-types'
+
 import { Address } from '../../../domain/Address'
 import { SignUpRequest } from '../../../domain/SignUpRequest'
 import { User } from '../../../domain/User'
@@ -74,8 +76,26 @@ export class SignUpForm extends Component {
     loading: false,
     birthDateDay: '',
     birthDateMonth: '',
-    birthDateYear: ''
+    birthDateYear: '',
+    keyboardHeight: 0
   }
+
+  componentWillMount () {
+    if (Platform.OS === 'ios') {
+      this.keyboardShowListener = Keyboard.addListener('keyboardWillShow', this.keyboardShow)
+      this.keyboardHideListener = Keyboard.addListener('keyboardWillHide', this.keyboardHide)
+    }
+  }
+
+  componentWillUnmount () {
+    if (Platform.OS === 'ios') {
+      this.keyboardShowListener.remove()
+      this.keyboardHideListener.remove()
+    }
+  }
+
+  keyboardShow = (keyboard) => this.setState({ keyboardHeight: keyboard.endCoordinates.height })
+  keyboardHide = () => this.setState({ keyboardHeight: 0 })
 
   onFormChange = value => {
     this.setState(value)
@@ -136,11 +156,12 @@ export class SignUpForm extends Component {
   )
 
   render () {
+    const overlayStyle = [styles.container, { paddingBottom: this.state.keyboardHeight }]
     const formToRender = this.state.switch
       ? this.userPasswordForm()
       : this.userProfileForm()
     return (
-      <LoadingOverlay style={styles.container} isLoading={this.state.loading}>
+      <LoadingOverlay style={overlayStyle} isLoading={this.state.loading}>
         {formToRender}
       </LoadingOverlay>
     )
