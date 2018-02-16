@@ -12,7 +12,7 @@ import { styles } from './styles/shoppingBagItems.style'
 
 const renderBook = ({ book, type, quantity, id }) => (
   <ShoppingBagBook
-    key={id}
+    key={id || 'dsad'}
     image={book.images && book.images.medium}
     title={book.title}
     quantity={quantity}
