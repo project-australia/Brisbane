@@ -17,6 +17,13 @@ class HomeContainer extends Component {
   navigateTo = (screen, param = {}) => () =>
     this.props.navigation.navigate(screen, param)
 
+  navigateToSearchForBook = isbn => {
+    this.props.navigation.navigate('BookDetails', {
+      isbn,
+      screenType: 'SELL'
+    })
+  }
+
   firstFivesElementsOf = booksList => booksList.slice(0, 5)
 
   render() {
@@ -26,20 +33,18 @@ class HomeContainer extends Component {
       <Home
         userName={userName}
         featuredBooks={this.firstFivesElementsOf(booksLists['featured'])}
-        searchBook={(isbn, screenType = 'SELL') =>
-          this.navigateTo('BookDetails', { isbn, screenType })
-        }
         recentlyAddedBooks={this.firstFivesElementsOf(booksLists['recent'])}
+        navigateToScan={this.navigateTo('BookScanner')}
+        navigateToProfile={this.navigateTo('Profile')}
+        navigateToShoppingBag={this.navigateTo('ShoppingBag')}
+        navigation={this.props.navigation}
+        searchBook={this.navigateToSearchForBook}
         onRecentlyAddedPressed={this.navigateTo('BookList', {
           typeList: 'recent'
         })}
         onFeaturedPressed={this.navigateTo('BookList', {
           typeList: 'featured'
         })}
-        navigateToScan={this.navigateTo('BookScanner')}
-        navigateToProfile={this.navigateTo('Profile')}
-        navigateToShoppingBag={this.navigateTo('ShoppingBag')}
-        navigation={this.props.navigation}
       />
     )
   }

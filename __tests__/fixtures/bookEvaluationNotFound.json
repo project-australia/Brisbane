@@ -1,0 +1,176 @@
+{
+  "config": {
+    "transformRequest": {},
+    "transformResponse": {},
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "headers": {
+      "Accept": "application/json, text/plain, */*"
+    },
+    "baseURL": "https://project-australia.herokuapp.com/",
+    "method": "get",
+    "url": "https://project-australia.herokuapp.com/books/123123123/evaluation"
+  },
+  "request": {
+    "UNSENT": 0,
+    "OPENED": 1,
+    "HEADERS_RECEIVED": 2,
+    "LOADING": 3,
+    "DONE": 4,
+    "readyState": 4,
+    "status": 404,
+    "timeout": 0,
+    "withCredentials": true,
+    "upload": {},
+    "_aborted": false,
+    "_hasError": false,
+    "_method": "GET",
+    "_response": "{\"status\":404,\"name\":\"ApiError\",\"userMessage\":\"ISBN Not Found\",\"rootCause\":{\"rootCause\":{},\"name\":\"ServiceError\",\"userMessage\":\"ISBN Not Found\",\"status\":404},\"stackTrace\":\"ServiceError: ISBN Not Found    at Object.evaluateBook (/app/src/services/evaluation.js:26:11)\"}",
+    "_url": "https://project-australia.herokuapp.com/books/123123123/evaluation",
+    "_timedOut": false,
+    "_trackingName": "unknown",
+    "_incrementalEvents": false,
+    "responseHeaders": {
+      "X-Download-Options": "noopen",
+      "Server": "Cowboy",
+      "X-Xss-Protection": "1; mode=block",
+      "Etag": "W/\"10c-eFqSqMG+FFb2ZVG29lvG/B2/+ls\"",
+      "Connection": "keep-alive",
+      "Content-Type": "application/json; charset=utf-8",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Dns-Prefetch-Control": "off",
+      "Strict-Transport-Security": "max-age=15552000; includeSubDomains",
+      "X-Content-Type-Options": "nosniff",
+      "Via": "1.1 vegur",
+      "Date": "Fri, 16 Feb 2018 12:37:51 GMT",
+      "Content-Length": "268"
+    },
+    "_requestId": null,
+    "_headers": {
+      "accept": "application/json, text/plain, */*"
+    },
+    "_responseType": "",
+    "_sent": true,
+    "_lowerCaseResponseHeaders": {
+      "x-download-options": "noopen",
+      "server": "Cowboy",
+      "x-xss-protection": "1; mode=block",
+      "etag": "W/\"10c-eFqSqMG+FFb2ZVG29lvG/B2/+ls\"",
+      "connection": "keep-alive",
+      "content-type": "application/json; charset=utf-8",
+      "x-frame-options": "SAMEORIGIN",
+      "x-dns-prefetch-control": "off",
+      "strict-transport-security": "max-age=15552000; includeSubDomains",
+      "x-content-type-options": "nosniff",
+      "via": "1.1 vegur",
+      "date": "Fri, 16 Feb 2018 12:37:51 GMT",
+      "content-length": "268"
+    },
+    "_subscriptions": [],
+    "responseURL": "https://project-australia.herokuapp.com/books/123123123/evaluation"
+  },
+  "response": {
+    "data": {
+      "status": 404,
+      "name": "ApiError",
+      "userMessage": "ISBN Not Found",
+      "rootCause": {
+        "rootCause": {},
+        "name": "ServiceError",
+        "userMessage": "ISBN Not Found",
+        "status": 404
+      },
+      "stackTrace": "ServiceError: ISBN Not Found    at Object.evaluateBook (/app/src/services/evaluation.js:26:11)"
+    },
+    "status": 404,
+    "headers": {
+      "x-download-options": "noopen",
+      "server": "Cowboy",
+      "x-xss-protection": "1; mode=block",
+      "etag": "W/\"10c-eFqSqMG+FFb2ZVG29lvG/B2/+ls\"",
+      "connection": "keep-alive",
+      "content-type": "application/json; charset=utf-8",
+      "x-frame-options": "SAMEORIGIN",
+      "x-dns-prefetch-control": "off",
+      "strict-transport-security": "max-age=15552000; includeSubDomains",
+      "x-content-type-options": "nosniff",
+      "via": "1.1 vegur",
+      "date": "Fri, 16 Feb 2018 12:37:51 GMT",
+      "content-length": "268"
+    },
+    "config": {
+      "transformRequest": {},
+      "transformResponse": {},
+      "timeout": 0,
+      "xsrfCookieName": "XSRF-TOKEN",
+      "xsrfHeaderName": "X-XSRF-TOKEN",
+      "maxContentLength": -1,
+      "headers": {
+        "Accept": "application/json, text/plain, */*"
+      },
+      "baseURL": "https://project-australia.herokuapp.com/",
+      "method": "get",
+      "url": "https://project-australia.herokuapp.com/books/123123123/evaluation"
+    },
+    "request": {
+      "UNSENT": 0,
+      "OPENED": 1,
+      "HEADERS_RECEIVED": 2,
+      "LOADING": 3,
+      "DONE": 4,
+      "readyState": 4,
+      "status": 404,
+      "timeout": 0,
+      "withCredentials": true,
+      "upload": {},
+      "_aborted": false,
+      "_hasError": false,
+      "_method": "GET",
+      "_response": "{\"status\":404,\"name\":\"ApiError\",\"userMessage\":\"ISBN Not Found\",\"rootCause\":{\"rootCause\":{},\"name\":\"ServiceError\",\"userMessage\":\"ISBN Not Found\",\"status\":404},\"stackTrace\":\"ServiceError: ISBN Not Found    at Object.evaluateBook (/app/src/services/evaluation.js:26:11)\"}",
+      "_url": "https://project-australia.herokuapp.com/books/123123123/evaluation",
+      "_timedOut": false,
+      "_trackingName": "unknown",
+      "_incrementalEvents": false,
+      "responseHeaders": {
+        "X-Download-Options": "noopen",
+        "Server": "Cowboy",
+        "X-Xss-Protection": "1; mode=block",
+        "Etag": "W/\"10c-eFqSqMG+FFb2ZVG29lvG/B2/+ls\"",
+        "Connection": "keep-alive",
+        "Content-Type": "application/json; charset=utf-8",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-Dns-Prefetch-Control": "off",
+        "Strict-Transport-Security": "max-age=15552000; includeSubDomains",
+        "X-Content-Type-Options": "nosniff",
+        "Via": "1.1 vegur",
+        "Date": "Fri, 16 Feb 2018 12:37:51 GMT",
+        "Content-Length": "268"
+      },
+      "_requestId": null,
+      "_headers": {
+        "accept": "application/json, text/plain, */*"
+      },
+      "_responseType": "",
+      "_sent": true,
+      "_lowerCaseResponseHeaders": {
+        "x-download-options": "noopen",
+        "server": "Cowboy",
+        "x-xss-protection": "1; mode=block",
+        "etag": "W/\"10c-eFqSqMG+FFb2ZVG29lvG/B2/+ls\"",
+        "connection": "keep-alive",
+        "content-type": "application/json; charset=utf-8",
+        "x-frame-options": "SAMEORIGIN",
+        "x-dns-prefetch-control": "off",
+        "strict-transport-security": "max-age=15552000; includeSubDomains",
+        "x-content-type-options": "nosniff",
+        "via": "1.1 vegur",
+        "date": "Fri, 16 Feb 2018 12:37:51 GMT",
+        "content-length": "268"
+      },
+      "_subscriptions": [],
+      "responseURL": "https://project-australia.herokuapp.com/books/123123123/evaluation"
+    }
+  }
+}

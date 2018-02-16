@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import { Alert } from 'react-native'
 import { connect } from 'react-redux'
 import { buyBook, rentBook, sellBook } from '../../../redux/actions'
 import { findBookByISBN } from '../../../services/backend/bookService'
@@ -32,10 +33,8 @@ class BookScannerContainer extends Component {
       this.setState({ book, screenType })
     } else {
       try {
-        console.log(`searching for ISBN ${isbn}.`)
         const book = await findBookByISBN(isbn)
         this.setState({ book, screenType })
-        console.log('Book found!', book)
       } catch (err) {
         this.onError(err)
       }
@@ -43,9 +42,14 @@ class BookScannerContainer extends Component {
   }
 
   onError = err => {
-    console.log('err', err)
-    alert('Erro during searching for a book')
-    this.goBack()
+    Alert.alert(
+      'Searching Book',
+      err.message,
+      [{ text: 'Ok', onPress: () => this.goBack() }],
+      {
+        onDismiss: () => this.goBack()
+      }
+    )
   }
 
   goBack = () => this.props.navigation.goBack()
@@ -63,22 +67,23 @@ class BookScannerContainer extends Component {
     this.navigateToShoppingBag()
   }
 
-  render () {
+  render() {
     const { book, screenType } = this.state
     return (
-      book &&
-      <BookDetails
-        membershipStatus={this.state.club}
-        book={book}
-        navigateBack={this.goBack}
-        navigateToShoppingBag={this.navigateToShoppingBag}
-        onPressBallardsClub={this.navigateToClubMember}
-        onPressBuy={() => this.toShoppingBag(this.props.buyBook)}
-        onPressDonate={this.props.sellBook}
-        onPressRent={() => this.toShoppingBag(this.props.buyBook)}
-        onPressSell={this.props.sellBook}
-        screenType={screenType}
-      />
+      book && (
+        <BookDetails
+          membershipStatus={this.state.club}
+          book={book}
+          navigateBack={this.goBack}
+          navigateToShoppingBag={this.navigateToShoppingBag}
+          onPressBallardsClub={this.navigateToClubMember}
+          onPressBuy={() => this.toShoppingBag(this.props.buyBook)}
+          onPressDonate={this.props.sellBook}
+          onPressRent={() => this.toShoppingBag(this.props.buyBook)}
+          onPressSell={this.props.sellBook}
+          screenType={screenType}
+        />
+      )
     )
   }
 }
