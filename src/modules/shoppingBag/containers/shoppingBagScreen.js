@@ -57,7 +57,7 @@ ShoppingBagContainer.propTypes = {
   totalSellingPrice: PropTypes.number.isRequired
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { shoppingBag } = state
   const booksToBuy = shoppingBag.filter(
     item => item.type === SHOPPING_BAG_TYPES.BUY
