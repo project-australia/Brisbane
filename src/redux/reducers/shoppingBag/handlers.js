@@ -31,12 +31,12 @@ if (!Array.prototype.total) {
   // eslint-disable-next-line
   Array.prototype.total = function(type) {
     const priceField = {
-      BUY: 'buyingPrice',
-      SELL: 'sellingPrice'
+      BUY: 'buy',
+      SELL: 'sell'
     }
 
     return this.reduce((total, item) => {
-      return total + item.book[priceField[type]]
+      return total + item.book.price[priceField[type]]
     }, 0)
   }
 }
