@@ -13,20 +13,23 @@ export const book = shape({
   edition: string,
   id: string.isRequired,
   featured: bool,
-  status: oneOf(['RENTED', 'AVAILABLE', 'SOLD', 'UNAVAILABLE']),
+  status: oneOf(['RENTED', 'AVAILABLE', 'SOLD', 'UNAVAILABLE']).isRequired,
   condition: oneOf([
     'Used – Acceptable',
     'Used – Good',
     'Used – Very Good',
     'Used – Like New',
     'New'
-  ]),
+  ]).isRequired,
   dimensions: shape({
     height: number.isRequired,
     length: number.isRequired,
     width: number.isRequired,
     weight: number.isRequired
-  }),
-  sellPrice: number,
-  buyingPrice: number
+  }).isRequired,
+  price: shape({
+    sell: number,
+    buy: number,
+    rent: number
+  }).isRequired
 })
