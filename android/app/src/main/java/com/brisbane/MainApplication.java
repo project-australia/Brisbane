@@ -3,6 +3,7 @@ package com.brisbane;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.taessina.paypal.RNPaypalWrapperPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -27,6 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new SplashScreenReactPackage(),
             new RNPaypalWrapperPackage(),
             new VectorIconsPackage(),
             new RCTCameraPackage(),
