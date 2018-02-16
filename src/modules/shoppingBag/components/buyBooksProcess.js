@@ -69,7 +69,7 @@ export class BuyBooksProcess extends React.Component {
     )
   }
 
-  render () {
+  render() {
     return (
       <LoadingOverlay style={styles.container} isLoading={this.props.isLoading}>
         <Navbar

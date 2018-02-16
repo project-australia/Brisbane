@@ -19,7 +19,7 @@ class BookListContainer extends React.PureComponent {
     button: PropTypes.object.isRequired
   }
 
-  render () {
+  render() {
     const { books, title, button } = this.props
 
     if (books.length === 0) {
@@ -28,11 +28,7 @@ class BookListContainer extends React.PureComponent {
 
     return (
       <View>
-        <MenuTitle
-          title={title}
-          button={button}
-          style={styles.titleWrap}
-        />
+        <MenuTitle title={title} button={button} style={styles.titleWrap} />
         <HorizontalBookList
           books={books}
           title={title}

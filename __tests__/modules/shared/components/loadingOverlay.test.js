@@ -46,13 +46,13 @@ describe('<LoadingOverlay />', () => {
   })
 })
 
-function asserThatOverlayIsShowing (overlayedComponent, aComponent) {
+function asserThatOverlayIsShowing(overlayedComponent, aComponent) {
   const wrapper = shallow(overlayedComponent)
   expect(wrapper.contains(aComponent)).toEqual(true)
   expect(wrapper.children()).toHaveLength(2)
 }
 
-function assertThatOverlayIsNotShowing (overlayedComponent, aComponent) {
+function assertThatOverlayIsNotShowing(overlayedComponent, aComponent) {
   const wrapper = shallow(overlayedComponent)
   expect(wrapper.contains(aComponent)).toEqual(true)
   expect(wrapper.children()).toHaveLength(1)

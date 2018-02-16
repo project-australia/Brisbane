@@ -40,7 +40,7 @@ class ClubMembershipContainer extends Component {
 
   isClubTenUser = () => this.props.user.club === 'NONE'
 
-  render () {
+  render() {
     const props = this.isClubTenUser()
       ? this.clubTenProps()
       : this.clubTwentyProps()

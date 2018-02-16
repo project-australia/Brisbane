@@ -36,7 +36,8 @@ export const ShoppingBagItems = ({
   checkoutButton,
   isSellingBooks,
   onPress,
-  onPressMoreBooks
+  onPressMoreBooks,
+  totalPrice
 }) => {
   if (items.length === 0) {
     return null
@@ -59,7 +60,7 @@ export const ShoppingBagItems = ({
             setTotalPriceColor(isSellingBooks)
           ])}
         >
-          {`$${items.total('BUY')}`}
+          {`$${totalPrice}`}
         </Text>
       </View>
       <SolidButton
@@ -73,6 +74,7 @@ export const ShoppingBagItems = ({
 
 ShoppingBagItems.propTypes = {
   items: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
+  totalPrice: PropTypes.number.isRequired,
   onPress: PropTypes.func,
   onPressMoreBooks: PropTypes.func.isRequired
 }

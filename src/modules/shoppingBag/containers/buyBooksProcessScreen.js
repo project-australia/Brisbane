@@ -5,6 +5,10 @@ import { connect } from 'react-redux'
 import { SHOPPING_BAG_TYPES } from '../../../domain/ShoppingBagItem'
 import { User } from '../../../domain/User'
 import { removeAllFromShoppingBag } from '../../../redux/actions'
+import {
+  calculateTotalWeight,
+  shoppingBagBuyingTotal
+} from '../../../redux/selectors/shoppingBagSelectors'
 import { createOrder } from '../../../services/backend/orderService'
 import { payWithPayPal } from '../../../services/paypal'
 import { BuyBooksProcess } from '../components/buyBooksProcess'
@@ -84,34 +88,37 @@ class BuyBooksProcessContainer extends Component {
     this.props.navigation.navigate('Home')
   }
 
-  render () {
-    const totalPrice = this.props.booksToBuy.total('BUY')
-    const totalWeight = this.props.booksToBuy.reduce(
-      (acc, item) => acc + item.book.dimensions.weight,
-      0
-    )
-
+  render() {
     return (
       <BuyBooksProcess
         books={this.props.booksToBuy}
-        checkoutWithPayPal={this.checkoutWithPaypal(totalPrice)}
-        expediteShippingPrice={totalWeight > 5 ? 9.99 : 6.99}
+        checkoutWithPayPal={this.checkoutWithPaypal(this.props.total)}
+        expediteShippingPrice={this.props.totalWeight > 5 ? 9.99 : 6.99}
         isLoading={this.state.isLoading}
         navigateBack={this.goBack}
         selectExpediteShipping={() => this.changeToExpediteShippingMethod()}
         selectStandardShipping={() => this.changeToStandardShippingMethod()}
         shippingMethod={this.state.shippingMethod}
-        totalPrice={totalPrice}
+        totalPrice={this.props.total}
       />
     )
   }
 }
 
-const mapStateToProps = ({ authentication: { user }, shoppingBag }) => {
+const mapStateToProps = state => {
+  const { authentication, shoppingBag } = state
+  const { user } = authentication
+
   const booksToBuy = shoppingBag.filter(
     item => item.type === SHOPPING_BAG_TYPES.BUY
   )
-  return { booksToBuy, user }
+
+  return {
+    booksToBuy,
+    user,
+    total: shoppingBagBuyingTotal(state),
+    totalWeight: calculateTotalWeight(booksToBuy)
+  }
 }
 
 const mapDispatchtoProps = dispatch => ({

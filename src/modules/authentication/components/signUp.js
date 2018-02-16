@@ -80,21 +80,28 @@ export class SignUpForm extends Component {
     keyboardHeight: 0
   }
 
-  componentWillMount () {
+  componentWillMount() {
     if (Platform.OS === 'ios') {
-      this.keyboardShowListener = Keyboard.addListener('keyboardWillShow', this.keyboardShow)
-      this.keyboardHideListener = Keyboard.addListener('keyboardWillHide', this.keyboardHide)
+      this.keyboardShowListener = Keyboard.addListener(
+        'keyboardWillShow',
+        this.keyboardShow
+      )
+      this.keyboardHideListener = Keyboard.addListener(
+        'keyboardWillHide',
+        this.keyboardHide
+      )
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     if (Platform.OS === 'ios') {
       this.keyboardShowListener.remove()
       this.keyboardHideListener.remove()
     }
   }
 
-  keyboardShow = (keyboard) => this.setState({ keyboardHeight: keyboard.endCoordinates.height })
+  keyboardShow = keyboard =>
+    this.setState({ keyboardHeight: keyboard.endCoordinates.height })
   keyboardHide = () => this.setState({ keyboardHeight: 0 })
 
   onFormChange = value => {
@@ -129,7 +136,7 @@ export class SignUpForm extends Component {
     )
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { showAlert, message } = nextProps.alert
     if (showAlert) {
       alert(message)
@@ -155,8 +162,11 @@ export class SignUpForm extends Component {
     />
   )
 
-  render () {
-    const overlayStyle = [styles.container, { paddingBottom: this.state.keyboardHeight }]
+  render() {
+    const overlayStyle = [
+      styles.container,
+      { paddingBottom: this.state.keyboardHeight }
+    ]
     const formToRender = this.state.switch
       ? this.userPasswordForm()
       : this.userProfileForm()

@@ -13,7 +13,7 @@ class NetworkMembersContainer extends Component {
     network: ['Arnold Schwazenegger', 'Adam Smith', 'Hebert Porto']
   }
 
-  render () {
+  render() {
     return (
       <NetworkMembers network={this.state.network} navigateBack={this.goBack} />
     )

@@ -8,7 +8,7 @@ import { styles as rowStyles } from '../../shared/components/styles/row.style'
 
 const renderOrders = ({ book }) => {
   const bookPrice = book.price.buy === 0 ? 'Donate' : `$${book.price.buy}`
-  const priceStyle = book.price.buy  === 0 ? rowStyles.lightTitle : null
+  const priceStyle = book.price.buy === 0 ? rowStyles.lightTitle : null
 
   return (
     <Row

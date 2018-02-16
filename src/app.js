@@ -12,19 +12,19 @@ import {
 import SplashScreen from 'react-native-splash-screen'
 
 export class App extends React.Component {
-  async componentDidMount () {
+  async componentDidMount() {
     SplashScreen.hide()
     const [recently, featured] = await Promise.all([
       recentlyAddedBooks(),
       featuredBooks()
     ])
     const { dispatch } = this.props.store
-    
+
     dispatch(updateRecentlyAddedBooks(recently))
     dispatch(updateFeaturedBooks(featured))
   }
 
-  render () {
+  render() {
     return (
       <Provider store={this.props.store}>
         <Navigator />

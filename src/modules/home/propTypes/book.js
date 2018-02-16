@@ -20,7 +20,7 @@ export const book = shape({
     'Used – Very Good',
     'Used – Like New',
     'New'
-  ]).isRequired,
+  ]), // TODO: This must be rewuired
   dimensions: shape({
     height: number.isRequired,
     length: number.isRequired,
