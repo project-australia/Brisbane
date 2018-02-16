@@ -8,7 +8,7 @@ export const book = shape({
     small: string.isRequired,
     medium: string.isRequired,
     large: string.isRequired
-  }),
+  }).isRequired,
   authors: arrayOf(string).isRequired,
   edition: string,
   id: string.isRequired,
