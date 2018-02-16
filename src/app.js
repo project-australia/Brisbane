@@ -9,15 +9,17 @@ import {
   updateFeaturedBooks,
   updateRecentlyAddedBooks
 } from './redux/actions/sync/bookActions'
+import SplashScreen from 'react-native-splash-screen'
 
 export class App extends React.Component {
   async componentDidMount () {
+    SplashScreen.hide()
     const [recently, featured] = await Promise.all([
       recentlyAddedBooks(),
       featuredBooks()
     ])
     const { dispatch } = this.props.store
-
+    
     dispatch(updateRecentlyAddedBooks(recently))
     dispatch(updateFeaturedBooks(featured))
   }
