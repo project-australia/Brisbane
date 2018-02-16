@@ -8,21 +8,21 @@ import { FlatButton } from './buttons'
 import { styles } from './styles/priceRow.style'
 
 const isSelling = type => type === 'SELL'
+const isBuying = type => type === 'BUY'
 
 export const PriceRow = ({ title, price, button, screenType, book }) => {
   let titleToShow
   let priceToShow
   let callbackFunction
   let buttonTitleToShow
-
   if (isSelling(screenType)) {
     titleToShow = price ? title.sell : title.donate
     priceToShow = price ? price.sell : 0
     buttonTitleToShow = price ? button.title.sell : button.title.donate
     callbackFunction = price ? button.onPress.sell : button.onPress.donate
-  } else {
+  } else if (isBuying(screenType)) {
     titleToShow = title.buy
-    priceToShow = price
+    priceToShow = price.buy
     buttonTitleToShow = button.title.buy
     callbackFunction = button.onPress.buy
   }
