@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Alert, Text, ScrollView, View } from 'react-native'
 import PropTypes from 'prop-types'
-import { book } from '../../home/propTypes/book'
+import { book } from '../../home/propTypes/bookDetail'
 
 import { AppStatusBar } from '../../shared/components/appStatusBar'
 import { BookTitleAndAuthor } from '../../shared/components/bookTitleAndAuthor'
