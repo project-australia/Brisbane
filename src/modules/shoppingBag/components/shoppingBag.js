@@ -18,6 +18,7 @@ export const ShoppingBag = props => (
           title: 'Buy these books',
           onPress: props.navigateToBuyBooksProcess
         }}
+        totalPrice={props.totalBuyingPrice}
       />
       <ShoppingBagItems
         isSellingBooks
@@ -29,6 +30,7 @@ export const ShoppingBag = props => (
           title: 'Sell these books',
           onPress: props.navigateToSellConfirmation
         }}
+        totalPrice={props.totalSellingPrice}
       />
     </ScrollView>
   </View>
@@ -41,5 +43,7 @@ ShoppingBag.propTypes = {
   onScanPress: PropTypes.func.isRequired,
   navigateToHome: PropTypes.func.isRequired,
   booksToSell: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
-  booksToBuy: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired
+  booksToBuy: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
+  totalBuyingPrice: PropTypes.number.isRequired,
+  totalSellingPrice: PropTypes.number.isRequired
 }

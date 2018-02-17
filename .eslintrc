@@ -12,7 +12,8 @@
       "never"
     ],
     "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error"
+    "react/jsx-uses-vars": "error",
+    "space-before-function-paren": "off"
   },
   "extends": "standard",
   "globals": {

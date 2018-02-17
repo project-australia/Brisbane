@@ -24,7 +24,7 @@ export class ClubMember extends Component {
     header: null
   }
 
-  render () {
+  render() {
     return (
       <View>
         <Navbar

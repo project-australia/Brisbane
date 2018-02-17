@@ -32,10 +32,12 @@ export class BookDetails extends Component {
     isConditionExplanationModalOn: false,
     isConditionModalOn: false,
     isRentalTermsModalOn: false,
-    navRightIcons: [{
-      name: 'cart-outline',
-      onPress: this.props.navigateToShoppingBag
-    }]
+    navRightIcons: [
+      {
+        name: 'cart-outline',
+        onPress: this.props.navigateToShoppingBag
+      }
+    ]
   }
 
   showConditionExplanationModal = () =>
@@ -57,9 +59,9 @@ export class BookDetails extends Component {
       'Rental agreement',
       'By confirming you agree to our Rental Terms of Agreement, do you confirm?',
       [
-        {text: 'Check terms', onPress: this.showRentalTermsModal},
-        {text: 'Decline', onPress: () => {}, style: 'cancel'},
-        {text: 'Agree', onPress: this.props.onPressRent}
+        { text: 'Check terms', onPress: this.showRentalTermsModal },
+        { text: 'Decline', onPress: () => {}, style: 'cancel' },
+        { text: 'Agree', onPress: this.props.onPressRent }
       ],
       { cancelable: true }
     )
@@ -101,13 +103,8 @@ export class BookDetails extends Component {
     }
   }
 
-  render () {
-    const {
-      onPressBuy,
-      onPressDonate,
-      onPressSell,
-      screenType
-    } = this.props
+  render() {
+    const { onPressBuy, onPressDonate, onPressSell, screenType } = this.props
     const {
       book,
       isConditionExplanationModalOn,
@@ -145,7 +142,9 @@ export class BookDetails extends Component {
       }
     ]
 
-    const defaultCondition = isSelling ? 'Select a condition' : 'Used - Acceptable'
+    const defaultCondition = isSelling
+      ? 'Select a condition'
+      : 'Used - Acceptable'
     return (
       <View style={styles.container}>
         <AppStatusBar />

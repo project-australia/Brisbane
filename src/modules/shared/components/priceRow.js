@@ -42,20 +42,21 @@ export const PriceRow = (props) => {
           onPress={() => callbackFunction(book)}
         />
       </View>
-      {
-        (!isSelling(screenType) && price && price.rent) &&
-        <View style={styles.row}>
-          <View style={styles.rowInfo}>
-            <Text style={styles.description}>{title.rent}</Text>
-            <Text style={styles.title}>{`$${price.rent}`}</Text>
+      {!isSelling(screenType) &&
+        price &&
+        price.rent && (
+          <View style={styles.row}>
+            <View style={styles.rowInfo}>
+              <Text style={styles.description}>{title.rent}</Text>
+              <Text style={styles.title}>{`$${price.rent}`}</Text>
+            </View>
+            <FlatButton
+              secondary
+              title={button.title.rent}
+              onPress={button.onPress.rent}
+            />
           </View>
-          <FlatButton
-            secondary
-            title={button.title.rent}
-            onPress={button.onPress.rent}
-          />
-        </View>
-      }
+        )}
     </View>
   )
 }

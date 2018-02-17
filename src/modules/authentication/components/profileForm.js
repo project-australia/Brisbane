@@ -48,7 +48,7 @@ export class ProfileForm extends Component {
   setBirthDateYear = birthDateYear => this.props.onChange({ birthDateYear })
   setBirthDateMonth = birthDateMonth => this.props.onChange({ birthDateMonth })
 
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <AppStatusBar />

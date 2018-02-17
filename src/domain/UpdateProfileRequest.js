@@ -1,5 +1,5 @@
 export class UpdateProfileRequest {
-  constructor (user) {
+  constructor(user) {
     this.id = user.id
     this.telephone = user.telephone
     this.school = user.school

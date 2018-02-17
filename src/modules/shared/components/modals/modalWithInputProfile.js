@@ -24,7 +24,7 @@ export class ModalWithInputProfile extends Component {
     city: ''
   }
 
-  componentWillMount () {
+  componentWillMount() {
     if (Platform.OS === 'ios') {
       this.keyboardWillShowListener = Keyboard.addListener(
         'keyboardWillShow',
@@ -37,11 +37,11 @@ export class ModalWithInputProfile extends Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.fillForm()
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     if (Platform.OS === 'ios') {
       this.keyboardWillShowListener.remove()
       this.keyboardWillHideListener.remove()
@@ -88,7 +88,7 @@ export class ModalWithInputProfile extends Component {
     profile.address.city = this.state.city
     return onConfirm(user.id, profile)
   }
-  render () {
+  render() {
     const { onDismiss, visible } = this.props
     const overlayStyle = StyleSheet.flatten([
       styles.overlay,

@@ -20,7 +20,7 @@ class BookListContainer extends Component {
     header: null
   }
 
-  render () {
+  render() {
     const { typeList } = this.props.navigation.state.params
     const list =
       typeList === 'featured'

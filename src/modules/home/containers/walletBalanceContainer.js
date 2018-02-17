@@ -44,7 +44,7 @@ class WalletContainer extends Component {
       { cancelable: false }
     )
 
-  render () {
+  render() {
     const { ballance } = this.props
     const { isEditModalOpen } = this.state
     return (
