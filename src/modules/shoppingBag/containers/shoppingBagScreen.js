@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { SHOPPING_BAG_TYPES } from '../../../domain/ShoppingBagItem'
-import { shoppingBagBuyingTotal } from '../../../redux/selectors/shoppingBagSelectors'
+import { shoppingBagBuyingTotal, shoppingBagSellingTotal } from '../../../redux/selectors/shoppingBagSelectors'
 import { ShoppingBag } from '../components/shoppingBag'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { payWithPayPal } from '../../../services/paypal'
@@ -34,7 +34,7 @@ class ShoppingBagContainer extends Component {
         searchBook={() => alert('search book')}
         onScanPress={() => this.props.navigation.navigate('BookScanner', {})}
         totalBuyingPrice={this.props.totalBuyingPrice}
-        totalSellingPrice={0}
+        totalSellingPrice={this.props.totalSellingPrice}
       />
     )
   }
@@ -69,7 +69,7 @@ const mapStateToProps = state => {
     booksToBuy,
     booksToSell,
     totalBuyingPrice: shoppingBagBuyingTotal(state),
-    totalSellingPrice: 0
+    totalSellingPrice: shoppingBagSellingTotal(state)
   }
 }
 
