@@ -67,7 +67,7 @@ class BookScannerContainer extends Component {
     this.navigateToShoppingBag()
   }
 
-  render() {
+  render () {
     const { book, screenType } = this.state
     return (
       book && (
@@ -78,9 +78,9 @@ class BookScannerContainer extends Component {
           navigateToShoppingBag={this.navigateToShoppingBag}
           onPressBallardsClub={this.navigateToClubMember}
           onPressBuy={() => this.toShoppingBag(this.props.buyBook)}
-          onPressDonate={this.props.sellBook}
+          onPressDonate={() => this.toShoppingBag(this.props.sellBook)}
           onPressRent={() => this.toShoppingBag(this.props.buyBook)}
-          onPressSell={this.props.sellBook}
+          onPressSell={() => this.toShoppingBag(this.props.sellBook)}
           screenType={screenType}
         />
       )
@@ -93,7 +93,7 @@ const mapDispatchToProps = dispatch => {
   return {
     buyBook: book => dispatch(buyBook(book)),
     rentBook: book => dispatch(rentBook(book)),
-    sellBook: book => dispatch(sellBook(sellBook))
+    sellBook: book => dispatch(sellBook(book))
   }
 }
 

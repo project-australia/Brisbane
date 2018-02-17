@@ -29,7 +29,6 @@ export const ShoppingBag = props => (
           title: 'Sell these books',
           onPress: props.navigateToSellConfirmation
         }}
-        totalValue={'123.45'}
       />
     </ScrollView>
   </View>
