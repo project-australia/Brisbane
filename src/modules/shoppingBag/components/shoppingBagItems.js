@@ -29,16 +29,18 @@ const setAddBookTitle = isSelling =>
 const setTotalPriceColor = isSelling =>
   isSelling ? styles.secondaryColor : styles.primaryColor
 
-export const ShoppingBagItems = ({
-  items,
-  title,
-  addBookTitle,
-  checkoutButton,
-  isSellingBooks,
-  onPress,
-  onPressMoreBooks,
-  totalPrice
-}) => {
+export const ShoppingBagItems = (props) => {
+  console.log('shoppingBagItems', props)
+  const {
+    items,
+    title,
+    addBookTitle,
+    checkoutButton,
+    isSellingBooks,
+    onPress,
+    onPressMoreBooks,
+    totalPrice
+  } = props
   if (items.length === 0) {
     return null
   }

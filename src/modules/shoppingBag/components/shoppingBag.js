@@ -5,36 +5,38 @@ import { ShoppingBagItems } from './shoppingBagItems'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { Navbar } from '../../shared/components/navbar'
 
-export const ShoppingBag = props => (
-  <View style={{ flex: 1 }}>
-    <Navbar title={'Shopping Cart'} onBack={props.navigateBack} />
-    <ScrollView>
-      <ShoppingBagItems
-        title={'Books you are buying'}
-        items={props.booksToBuy}
-        addBookTitle={'Buy more Books'}
-        onPressMoreBooks={props.navigateToHome}
-        checkoutButton={{
-          title: 'Buy these books',
-          onPress: props.navigateToBuyBooksProcess
-        }}
-        totalPrice={props.totalBuyingPrice}
-      />
-      <ShoppingBagItems
-        isSellingBooks
-        title={'Books you are selling'}
-        items={props.booksToSell}
-        addBookTitle={'Sell more Books'}
-        onPressMoreBooks={props.navigateToHome}
-        checkoutButton={{
-          title: 'Sell these books',
-          onPress: props.navigateToSellConfirmation
-        }}
-        totalPrice={props.totalSellingPrice}
-      />
-    </ScrollView>
-  </View>
-)
+export const ShoppingBag = props => {
+  return (
+    <View style={{ flex: 1 }}>
+      <Navbar title={'Shopping Cart'} onBack={props.navigateBack} />
+      <ScrollView>
+        <ShoppingBagItems
+          title={'Books you are buying'}
+          items={props.booksToBuy}
+          addBookTitle={'Buy more Books'}
+          onPressMoreBooks={props.navigateToHome}
+          checkoutButton={{
+            title: 'Buy these books',
+            onPress: props.navigateToBuyBooksProcess
+          }}
+          totalPrice={props.totalBuyingPrice}
+        />
+        <ShoppingBagItems
+          isSellingBooks
+          title={'Books you are selling'}
+          items={props.booksToSell}
+          addBookTitle={'Sell more Books'}
+          onPressMoreBooks={props.navigateToHome}
+          checkoutButton={{
+            title: 'Sell these books',
+            onPress: props.navigateToSellBooksProcess
+          }}
+          totalPrice={props.totalSellingPrice}
+        />
+      </ScrollView>
+    </View>
+  )
+}
 
 ShoppingBag.propTypes = {
   navigateToCheckout: PropTypes.func.isRequired,

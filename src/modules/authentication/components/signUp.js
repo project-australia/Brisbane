@@ -38,9 +38,9 @@ const extractSignUpFormFromState = form => {
     name,
     email,
     new Date(
-      Number(birthDateDay),
-      Number(birthDateMonth),
-      Number(birthDateYear)
+      Number(birthDateYear),
+      Number(birthDateMonth + 1),
+      Number(birthDateDay)
     ),
     telephone,
     school,
@@ -113,8 +113,11 @@ export class SignUpForm extends Component {
   }
 
   doSignUp = async () => {
-    this.setState({ loading: true })
+    await this.setState({ loading: true })
+    this.sendForm()
+  }
 
+  sendForm = async () => {
     try {
       const form = extractSignUpFormFromState(this.state)
       console.log('Signup Form', form)
