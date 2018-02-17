@@ -27,8 +27,8 @@ export const book = shape({
     weight: number.isRequired
   }),
   price: shape({
-    buy: string,
+    buy: number,
     sell: string,
-    rent: string
+    rent: number
   })
 })
