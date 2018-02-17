@@ -10,7 +10,9 @@ import { styles } from './styles/priceRow.style'
 const isSelling = type => type === 'SELL'
 const isBuying = type => type === 'BUY'
 
-export const PriceRow = ({ title, price, button, screenType, book }) => {
+export const PriceRow = (props) => {
+  const { title, price, button, screenType, book } = props
+  console.log('price row', props)
   let titleToShow
   let priceToShow
   let callbackFunction
@@ -19,7 +21,7 @@ export const PriceRow = ({ title, price, button, screenType, book }) => {
     titleToShow = price ? title.sell : title.donate
     priceToShow = price ? price.sell : 0
     buttonTitleToShow = price ? button.title.sell : button.title.donate
-    callbackFunction = price ? button.onPress.sell : button.onPress.donate
+    callbackFunction = button.onPress.sell
   } else if (isBuying(screenType)) {
     titleToShow = title.buy
     priceToShow = price.buy
