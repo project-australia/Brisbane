@@ -8,66 +8,43 @@ import { FormOutlineButton } from '../../shared/components/buttons'
 
 import { styles } from './styles/shoppingBagItems.style'
 
-export const SellBooksProcess = props => {
-  const booksLength = props.booksToSell.length
-  return (
-    <View>
-      <Navbar
-        title={`Selling ${booksLength} Books`}
-        onBack={props.navigateBack}
-      />
-      <ScrollView>
-        <OrderSummaryList orders={props.booksToSell} total={props.totalPrice} />
+export class SellBooksProcess extends React.Component {
+  render () {
+    const booksLength = this.props.books.length || 0
+    return (
+      <View>
+        <Navbar
+          title={`Selling ${booksLength} Books`}
+          onBack={this.props.navigateBack}
+        />
+        <ScrollView>
+          <OrderSummaryList
+            orders={this.props.books}
+            total={this.props.totalPrice}
+            selling
+          />
 
-        {/* <MenuTitle title={'Shipping'} style={styles.titleWrap} />
-        <View style={styles.wrappingCard}>
-          <Text style={styles.footnote}>
-            Books will be shipped to the following address:
-          </Text>
-          <Text style={styles.description}>
-            12870 Interurban Avenue South, Seattle, WA 98168
-          </Text>
-        </View> */}
-
-        {/* <MenuTitle title={'Tracking number'} style={styles.titleWrap} />
-        <View style={styles.wrappingCard}>
-          <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
-            Type the tracking number below, so we can track the shipping
-          </Text>
-          <View style={styles.rowWrap}>
-            <FormTextInput
-              style={{ flex: 1 }}
-              placeholder={'Insert tracking number'}
-            />
+          <MenuTitle title={'Checkout'} style={styles.titleWrap} />
+          <View style={styles.wrappingCard}>
+            <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
+              Choose a method to finalize your selling
+            </Text>
             <FormOutlineButton
               secondary
-              title={'Send'}
-              style={styles.inlineButton}
-              onPress={() => alert('Tracking number saved')}
+              title={'Delivery in Person'}
+              // style={styles.inlineButton}
+              onPress={() => alert('Under Development')}
+            />
+            <View style={{ height: 15 }} />
+            <FormOutlineButton
+              secondary
+              title={'Get a label to send it'}
+              // style={styles.inlineButton}
+              onPress={() => alert('Under Development')}
             />
           </View>
-        </View> */}
-
-        <MenuTitle title={'Checkout'} style={styles.titleWrap} />
-        <View style={styles.wrappingCard}>
-          <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
-            Choose a method to finalize your selling
-          </Text>
-          <FormOutlineButton
-            secondary
-            title={'Delivery in Person'}
-            // style={styles.inlineButton}
-            onPress={() => alert('Go to add payment method on profile')}
-          />
-          <View style={{ height: 15 }} />
-          <FormOutlineButton
-            secondary
-            title={'Get a label to send it'}
-            // style={styles.inlineButton}
-            onPress={() => alert('Go to add payment method on profile')}
-          />
-        </View>
-      </ScrollView>
-    </View>
-  )
+        </ScrollView>
+      </View>
+    )
+  }
 }

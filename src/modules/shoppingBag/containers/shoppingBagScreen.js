@@ -22,13 +22,6 @@ class ShoppingBagContainer extends Component {
         navigateToCheckout={this.navigateToCheckout}
         navigateToHome={this.navigateToHome}
         navigateToSellConfirmation={this.navigateToSellConfirmation}
-        navigateToCheckout={this.navigateToBuyBooksProcess}
-        navigateToSellBooksProcess={this.navigateToSellBooksProcess}
-        navigateToBuyBooksProcess={this.navigateToBuyBooksProcess}
-        navigateToCheckout={this.navigateToCheckout}
-        navigateToHome={this.navigateToHome}
-        navigateToSellConfirmation={this.navigateToSellConfirmation}
-        navigateToCheckout={this.navigateToBuyBooksProcess}
         navigateToSellBooksProcess={this.navigateToSellBooksProcess}
         navigateToBuyBooksProcess={this.navigateToBuyBooksProcess}
         searchBook={() => alert('search book')}
