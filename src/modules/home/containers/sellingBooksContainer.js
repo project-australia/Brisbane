@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { SellingBookAmount } from '../components/sellingBooks'
+import { shoppingBagSellingQuantityBooks } from '../../../redux/selectors/shoppingBagSelectors';
 
-const SellingBooksContainer = props => (
-  <SellingBookAmount
-    sellingAmount={0}
-    onAddBookPressed={props.navigateToScan}
-  />
-)
+export class SellingBooksContainer extends Component {
+  render() {
+    return (
+      <SellingBookAmount
+        sellingAmount={this.props.total}
+        onAddBookPressed={this.props.navigateToScan}
+      />
+    )
+  }
+}
 
-const mapStateToProps = () => ({})
+const mapStateToProps = state => {
+  return {
+    total: shoppingBagSellingQuantityBooks(state)
+  }
+}
 
 export const SellingBooks = connect(mapStateToProps)(SellingBooksContainer)

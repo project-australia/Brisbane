@@ -20,5 +20,14 @@ export const shoppingBagSellingTotal = state => {
   return Number(sellTotal.toFixed(2))
 }
 
+export const shoppingBagSellingQuantityBooks = state => {
+  const booksToSell = state.shoppingBag.filter(
+    item => item.type === SHOPPING_BAG_TYPES.SELL
+  )
+  const sellQuantity = booksToSell.length
+
+  return Number(sellQuantity)
+}
+
 export const calculateTotalWeight = bookList =>
   bookList.reduce((acc, item) => acc + item.book.dimensions.weight, 0)
