@@ -8,7 +8,7 @@ class BookScanner extends Component {
     title: 'Book Scan'
   }
   navigateToBookSelling = isbn =>
-    this.props.navigation.navigate('BookDetails', { isbn })
+    this.props.navigation.navigate('BookDetails', { isbn, screenType: 'SELL' })
 
   render() {
     return <Scanner showBook={this.navigateToBookSelling} />
