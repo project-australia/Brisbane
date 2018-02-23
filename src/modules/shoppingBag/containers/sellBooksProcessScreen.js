@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { Alert } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { SHOPPING_BAG_TYPES } from '../../../domain/ShoppingBagItem'
 import { User } from '../../../domain/User'
 import { removeAllFromShoppingBag } from '../../../redux/actions'
 import {
-  calculateTotalWeight, sellingItems,
+  calculateTotalWeight,
+  sellingItems,
   shoppingBagSellingTotal
 } from '../../../redux/selectors/shoppingBagSelectors'
 import { createOrder } from '../../../services/backend/orderService'

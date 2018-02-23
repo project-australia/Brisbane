@@ -32,7 +32,7 @@ const renderOrdersSelling = ({ book }) => {
   )
 }
 
-export const OrderSummaryList = (props) => {
+export const OrderSummaryList = props => {
   const { orders, total, selling } = props
   return (
     <View style={styles.itemsWrap}>

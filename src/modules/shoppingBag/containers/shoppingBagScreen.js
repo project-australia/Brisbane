@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {
-  buyingItems, sellingItems, shoppingBagBuyingTotal,
+  buyingItems,
+  sellingItems,
+  shoppingBagBuyingTotal,
   shoppingBagSellingTotal
 } from '../../../redux/selectors/shoppingBagSelectors'
 import { ShoppingBag } from '../components/shoppingBag'

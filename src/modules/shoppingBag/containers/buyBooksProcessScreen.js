@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Alert } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { SHOPPING_BAG_TYPES } from '../../../domain/ShoppingBagItem'
 import { User } from '../../../domain/User'
 import { removeAllFromShoppingBag } from '../../../redux/actions'
 import {
@@ -35,7 +34,10 @@ class BuyBooksProcessContainer extends Component {
   }
 
   changeToExpediteShippingMethod = () => {
-    this.setState({ shippingMethod: 'EXPEDITE', shippingPrice: this.props.totalWeight > 5 ? 9.99 : 6.99 })
+    this.setState({
+      shippingMethod: 'EXPEDITE',
+      shippingPrice: this.props.totalWeight > 5 ? 9.99 : 6.99
+    })
   }
 
   changeToStandardShippingMethod = () => {
@@ -50,7 +52,7 @@ class BuyBooksProcessContainer extends Component {
 
   checkoutWithPaypal = price => async () => {
     const { user, booksToBuy } = this.props
-    const totalPrice = this.getTotalPrice().toString()
+    const totalPrice = this.getTotalPrice()
     try {
       await payWithPayPal(
         totalPrice,
@@ -118,18 +120,18 @@ const mapStateToProps = state => {
   const booksToBuy = buyingItems(state)
 
   return {
-    booksToBuy: buyingItems(state),
     user,
+    booksToBuy: buyingItems(state),
     total: shoppingBagBuyingTotal(state),
     totalWeight: calculateTotalWeight(booksToBuy)
   }
 }
 
-const mapDispatchtoProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   cleanShoppingBagByType: type => dispatch(removeAllFromShoppingBag(type))
 })
 
 export const BuyBooksProcessScreen = connect(
   mapStateToProps,
-  mapDispatchtoProps
+  mapDispatchToProps
 )(BuyBooksProcessContainer)

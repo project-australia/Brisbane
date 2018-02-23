@@ -29,7 +29,7 @@ const setAddBookTitle = isSelling =>
 const setTotalPriceColor = isSelling =>
   isSelling ? styles.secondaryColor : styles.primaryColor
 
-export const ShoppingBagItems = (props) => {
+export const ShoppingBagItems = props => {
   const {
     items,
     title,

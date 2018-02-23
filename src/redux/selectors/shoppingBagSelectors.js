@@ -1,13 +1,11 @@
 import { SHOPPING_BAG_TYPES } from '../../domain/ShoppingBagItem'
 const { BUY, RENT, SELL } = SHOPPING_BAG_TYPES
 
-export const buyingItems = ({shoppingBag}) => shoppingBag.filter(
-  ({type}) => type === BUY || type === RENT
-)
+export const buyingItems = ({ shoppingBag }) =>
+  shoppingBag.filter(({ type }) => type === BUY || type === RENT)
 
-export const sellingItems = ({shoppingBag}) => shoppingBag.filter(
-  ({type}) => type === SELL
-)
+export const sellingItems = ({ shoppingBag }) =>
+  shoppingBag.filter(({ type }) => type === SELL)
 
 export const shoppingBagBuyingTotal = state => {
   const booksToBuy = buyingItems(state)

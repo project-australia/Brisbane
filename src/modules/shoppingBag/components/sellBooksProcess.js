@@ -9,7 +9,7 @@ import { FormOutlineButton } from '../../shared/components/buttons'
 import { styles } from './styles/shoppingBagItems.style'
 
 export class SellBooksProcess extends React.Component {
-  render () {
+  render() {
     const booksLength = this.props.books.length || 0
     return (
       <View>
@@ -26,7 +26,9 @@ export class SellBooksProcess extends React.Component {
 
           <MenuTitle title={'Checkout'} style={styles.titleWrap} />
           <View style={styles.wrappingCard}>
-            <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
+            <Text
+              style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}
+            >
               Choose a method to finalize your selling
             </Text>
             <FormOutlineButton

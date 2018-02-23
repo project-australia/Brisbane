@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Text, View } from 'react-native'
-import { book } from '../../home/propTypes/book'
 
 import { FlatButton } from './buttons'
 
@@ -50,12 +49,9 @@ const mapPropsBasedOnScreenType = props => {
 }
 
 export const PriceRow = props => {
-  const {
-    title,
-    price,
-    callback,
-    buttonTitle
-  } = mapPropsBasedOnScreenType(props)
+  const { title, price, callback, buttonTitle } = mapPropsBasedOnScreenType(
+    props
+  )
 
   return (
     <View style={styles.row}>
@@ -63,11 +59,7 @@ export const PriceRow = props => {
         <Text style={styles.description}>{title}</Text>
         {price > 0 && <Text style={styles.title}>{`$${price}`}</Text>}
       </View>
-      <FlatButton
-        secondary
-        title={buttonTitle}
-        onPress={callback}
-      />
+      <FlatButton secondary title={buttonTitle} onPress={callback} />
     </View>
   )
 }

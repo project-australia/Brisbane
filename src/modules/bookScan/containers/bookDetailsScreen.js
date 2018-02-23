@@ -67,7 +67,7 @@ class BookScannerContainer extends Component {
     this.navigateToShoppingBag()
   }
 
-  render () {
+  render() {
     const { book, screenType } = this.state
     return (
       book && (

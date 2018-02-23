@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-  Modal,
-  View,
-  Text,
-  TouchableWithoutFeedback
-} from 'react-native'
+import { Modal, View, Text, TouchableWithoutFeedback } from 'react-native'
 import { Touchable } from '../touchable'
 
 import { styles } from './styles/modalOptionSelect.style'
