@@ -27,7 +27,7 @@ export const SellingBookAmount = props => (
       <CardFooterButton
         onPress={props.onAddBookPressed}
         secondary
-        title={'Add'}
+        title={'Sell'}
       />
     </View>
   </View>
