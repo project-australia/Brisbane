@@ -22,7 +22,6 @@ export class BookDetails extends Component {
   static propTypes = {
     book: book,
     screenType: PropTypes.oneOf(['SELL', 'BUY', 'RENT']).isRequired,
-    onPressDonate: PropTypes.func,
     onPressSell: PropTypes.func,
     onPressBuy: PropTypes.func
   }
@@ -104,7 +103,7 @@ export class BookDetails extends Component {
   }
 
   render() {
-    const { onPressBuy, onPressDonate, onPressSell, screenType } = this.props
+    const { onPressBuy, onPressSell, screenType } = this.props
     const {
       book,
       isConditionExplanationModalOn,
@@ -168,7 +167,6 @@ export class BookDetails extends Component {
             screenType={screenType}
             title={{
               buy: 'Buy this book for',
-              donate: 'Donate this book',
               rent: 'Rent this book for',
               sell: 'Sell this book for'
             }}
@@ -182,7 +180,6 @@ export class BookDetails extends Component {
               },
               onPress: {
                 buy: book => onPressBuy(book),
-                donate: book => onPressDonate(book),
                 rent: book => this.confirmRent(book),
                 sell: book => onPressSell(book)
               }
