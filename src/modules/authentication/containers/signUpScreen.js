@@ -27,8 +27,8 @@ class SignUpContainer extends Component {
     }
   }
 
-  onSignUp = signUpForm => {
-    this.props.signUp(signUpForm)
+  onSignUp = async signUpForm => {
+    await this.props.signUp(signUpForm)
   }
 
   navigateToSignInScreen = () => {

@@ -52,6 +52,7 @@ export class Home extends Component {
       text: 'View All',
       onPress: this.props.onFeaturedPressed
     }
+
     return (
       <View style={styles.container}>
         <AppStatusBar />

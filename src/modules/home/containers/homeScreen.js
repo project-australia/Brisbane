@@ -47,10 +47,7 @@ class HomeContainer extends Component {
 
   getDisplayName = () => {
     const name = this.props.displayName
-    if (name) {
-      return name.split(' ')
-    }
-    return 'Guest'
+    return name ? name.split(' ') : 'Guest'
   }
 
   firstFivesElementsOf = booksList => booksList.slice(0, 5)
@@ -58,6 +55,7 @@ class HomeContainer extends Component {
   render() {
     const userName = this.getDisplayName()
     const { booksLists } = this.props
+
     return (
       <Home
         userName={userName}

@@ -135,7 +135,6 @@ export class BookDetails extends Component {
   }
 
   render() {
-    console.log('props', this.props)
     const { onPressBuy, screenType } = this.props
     const {
       book,

@@ -100,30 +100,19 @@ export class SignUpForm extends Component {
     }
   }
 
+  switchForm = () => { this.setState({ switch: !this.state.switch }) }
+  onFormChange = value => { this.setState(value) }
+  keyboardHide = () => this.setState({ keyboardHeight: 0 })
   keyboardShow = keyboard =>
     this.setState({ keyboardHeight: keyboard.endCoordinates.height })
-  keyboardHide = () => this.setState({ keyboardHeight: 0 })
-
-  onFormChange = value => {
-    this.setState(value)
-  }
-
-  switchForm = () => {
-    this.setState({ switch: !this.state.switch })
-  }
 
   doSignUp = async () => {
-    await this.setState({ loading: true })
-    this.sendForm()
-  }
-
-  sendForm = async () => {
+    this.setState({ loading: true })
     try {
       const form = extractSignUpFormFromState(this.state)
-      console.log('Signup Form', form)
       await this.props.signUpUser(form)
     } catch (err) {
-      console.log('err', err)
+      console.log('err during signup', err)
     } finally {
       this.setState({ loading: false })
     }
@@ -166,13 +155,16 @@ export class SignUpForm extends Component {
   )
 
   render() {
+    console.log('state', this.state)
     const overlayStyle = [
       styles.container,
       { paddingBottom: this.state.keyboardHeight }
     ]
+
     const formToRender = this.state.switch
       ? this.userPasswordForm()
       : this.userProfileForm()
+
     return (
       <LoadingOverlay style={overlayStyle} isLoading={this.state.loading}>
         {formToRender}
