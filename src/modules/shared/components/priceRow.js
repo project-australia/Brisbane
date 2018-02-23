@@ -28,7 +28,6 @@ export const PriceRow = (props) => {
     } else {
       titleToShow = 'Donate this book'
       buttonTitleToShow = 'Donate'
-      priceToShow = null
     }
   } else if (isBuying(screenType)) {
     titleToShow = title.buy
@@ -42,7 +41,7 @@ export const PriceRow = (props) => {
       <View style={styles.row}>
         <View style={styles.rowInfo}>
           <Text style={styles.description}>{titleToShow}</Text>
-          {priceToShow && <Text style={styles.title}>{`$${priceToShow}`}</Text>}
+          {priceToShow > 0 && <Text style={styles.title}>{`$${priceToShow}`}</Text>}
         </View>
         <FlatButton
           secondary

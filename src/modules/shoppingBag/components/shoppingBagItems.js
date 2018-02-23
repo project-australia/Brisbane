@@ -30,14 +30,11 @@ const setTotalPriceColor = isSelling =>
   isSelling ? styles.secondaryColor : styles.primaryColor
 
 export const ShoppingBagItems = (props) => {
-  console.log('shoppingBagItems', props)
   const {
     items,
     title,
-    addBookTitle,
     checkoutButton,
     isSellingBooks,
-    onPress,
     onPressMoreBooks,
     totalPrice
   } = props

@@ -5,16 +5,14 @@ import { Image, Text, View } from 'react-native'
 import { styles } from './styles/shoppingBagItems.style'
 import { Colors } from '../../../constants'
 
-const renderType = type => {
+const renderType = (type, price) => {
   switch (type) {
     case 'BUY':
       return 'Buying '
     case 'RENT':
       return 'Renting '
     case 'SELL':
-      return 'Selling '
-    case 'DONATE':
-      return 'Donating '
+      return price ? 'Selling ' : 'Donating '
     default:
       return ''
   }
@@ -48,7 +46,7 @@ export const ShoppingBagBook = ({
           </Text>
         </View>
         <View style={styles.rightContentWrap}>
-          <Text style={styles.subtitle}>{renderType(type)}</Text>
+          <Text style={styles.subtitle}>{renderType(type, price)}</Text>
           {price && <Text style={styles.title}>{`$${price}`}</Text>}
         </View>
       </View>
