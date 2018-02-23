@@ -24,6 +24,13 @@ class HomeContainer extends Component {
     })
   }
 
+  navigateToSellBook = (isbn) => {
+    this.props.navigation.navigate('BookDetails', {
+      isbn,
+      screenType: 'SELL'
+    })
+  }
+
   getDisplayName = () => {
     const name = this.props.displayName
     if (name) {
@@ -45,6 +52,7 @@ class HomeContainer extends Component {
         navigateToScan={this.navigateTo('BookScanner')}
         navigateToProfile={this.navigateTo('Profile')}
         navigateToShoppingBag={this.navigateTo('ShoppingBag')}
+        navigateToSellBook={(isbn) => this.navigateToSellBook(isbn)}
         navigation={this.props.navigation}
         searchBook={this.navigateToSearchForBook}
         onRecentlyAddedPressed={this.navigateTo('BookList', {

@@ -23,7 +23,8 @@ export class Home extends Component {
     featuredBooks: PropTypes.arrayOf(book).isRequired,
     userName: PropTypes.string.isRequired,
     onRecentlyAddedPressed: PropTypes.func.isRequired,
-    onFeaturedPressed: PropTypes.func.isRequired
+    onFeaturedPressed: PropTypes.func.isRequired,
+    navigateToSellBook: PropTypes.func.isRequired
   }
 
   state = {
@@ -67,7 +68,10 @@ export class Home extends Component {
           />
           <View style={styles.twoColumnMenuWrap}>
             <View style={styles.menuColumn}>
-              <SellingBooks navigateToScan={this.props.navigateToScan} />
+              <SellingBooks
+                navigateToSellBook={this.props.navigateToSellBook}
+                navigateToScan={this.props.navigateToScan}
+              />
             </View>
             <View style={styles.menuColumn}>
               <WalletBalanceAmount />

@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
-import { Alert } from 'react-native'
 import { connect } from 'react-redux'
+import { Alert } from 'react-native'
+import PropTypes from 'prop-types'
+
 import { SellingBookAmount } from '../components/sellingBooks'
 import { shoppingBagSellingQuantityBooks } from '../../../redux/selectors/shoppingBagSelectors'
 
 export class SellingBooksContainer extends Component {
+  static propTypes = {
+    total: PropTypes.number.isRequired,
+    navigateToScan: PropTypes.func.isRequired,
+    navigateToSellBook: PropTypes.func.isRequired
+  }
+
   onPress = () => {
     Alert.alert(
       'Selling book',
@@ -16,7 +24,8 @@ export class SellingBooksContainer extends Component {
         },
         {
           text: 'Type book ISBN',
-          onPress: () => alert('E agora? Como receberemos o ISBN?')
+          onPress: () => this.props.navigateToSellBook('978-1451639612') // TODO: Precisa
+          // aparecer um modal para receber esse valor e depois navegar para a tela
         }
       ],
       { cancelable: false }
