@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Platform, Modal, Keyboard, StyleSheet, View, Text } from 'react-native'
-import { Fonts, Colors, Metrics } from '../../../../constants'
 import { FormTextInput } from '../../../authentication/components/formTextInput'
 import { InputMultiline } from '../inputs/inputMultiline'
 import { FlatButton } from '../buttons/index'
+import { styles } from './styles/modalWithInput.style'
 
 export class ModalWithInput extends Component {
   state = {
@@ -95,34 +95,3 @@ export class ModalWithInput extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  overlay: {
-    flex: 1,
-    backgroundColor: Colors.overlay,
-    justifyContent: 'center'
-  },
-  card: {
-    backgroundColor: Colors.white,
-    borderRadius: Metrics.cardRadius,
-    marginHorizontal: Metrics.section
-  },
-  title: {
-    ...Fonts.style.normal,
-    color: Colors.gray900,
-    textAlign: 'center',
-    marginHorizontal: Metrics.section,
-    marginTop: Metrics.section,
-    marginBottom: Metrics.doubleBaseMargin
-  },
-  input: {
-    marginHorizontal: Metrics.section
-  },
-  buttonGroup: {
-    marginVertical: Metrics.baseMargin,
-    flexDirection: 'row'
-  },
-  button: {
-    flex: 1
-  }
-})

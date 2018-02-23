@@ -1,9 +1,9 @@
 import React from 'react'
-import { Modal, Text, ScrollView, StyleSheet } from 'react-native'
+import { Modal, Text, ScrollView } from 'react-native'
 import PropTypes from 'prop-types'
 
 import { Navbar } from '../navbar'
-import { Colors, Fonts, Metrics } from '../../../../constants'
+import { styles } from './styles/modalConditionExplanation.style'
 
 export const ModalConditionExplanation = ({ isVisible, onCancel }) => (
   <Modal visible={isVisible} onRequestClose={onCancel} animationType={'slide'}>
@@ -124,35 +124,3 @@ ModalConditionExplanation.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   onCancel: PropTypes.func.isRequired
 }
-
-const styles = StyleSheet.create({
-  firstTitle: {
-    ...Fonts.style.normalKefa,
-    color: Colors.gray900,
-    marginBottom: Metrics.baseMargin,
-    marginHorizontal: Metrics.section
-  },
-  title: {
-    ...Fonts.style.normalKefa,
-    color: Colors.gray900,
-    marginVertical: Metrics.baseMargin,
-    marginHorizontal: Metrics.section
-  },
-  subtitle: {
-    ...Fonts.style.description,
-    color: Colors.gray900,
-    marginHorizontal: Metrics.section
-  },
-  text: {
-    ...Fonts.style.description,
-    color: Colors.gray500,
-    marginBottom: Metrics.baseMargin,
-    marginHorizontal: Metrics.section
-  },
-  lastText: {
-    ...Fonts.style.description,
-    color: Colors.gray500,
-    marginBottom: Metrics.section,
-    marginHorizontal: Metrics.section
-  }
-})

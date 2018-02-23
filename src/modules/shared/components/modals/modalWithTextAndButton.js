@@ -1,10 +1,10 @@
 import React from 'react'
-import { Modal, Text, ScrollView, StyleSheet } from 'react-native'
+import { Modal, Text, ScrollView } from 'react-native'
 import PropTypes from 'prop-types'
 
 import { Navbar } from '../navbar'
 import { SolidButton } from '../buttons'
-import { Colors, Fonts, Metrics } from '../../../../constants'
+import { styles } from './styles/modalWithTextAndButton.style'
 
 const buildParagraph = paragraph => (
   <Text style={styles.text} key={paragraph}>
@@ -37,16 +37,8 @@ ModalWithTextAndButton.propTypes = {
   buttonTitle: PropTypes.string,
   onPressButton: PropTypes.func
 }
+
 ModalWithTextAndButton.defaultProps = {
   buttonTitle: '',
   onPressButton: () => {}
 }
-
-const styles = StyleSheet.create({
-  text: {
-    ...Fonts.style.description,
-    color: Colors.gray700,
-    marginBottom: Metrics.baseMargin,
-    marginHorizontal: Metrics.section
-  }
-})

@@ -1,10 +1,10 @@
 import React from 'react'
-import { Platform, Modal, Text, ScrollView, StyleSheet } from 'react-native'
+import { Modal, Text, ScrollView } from 'react-native'
 import PropTypes from 'prop-types'
 
 import { Navbar } from '../navbar'
 import { SolidButton } from '../buttons'
-import { Colors, Fonts, Metrics } from '../../../../constants'
+import { styles } from './styles/modalRentalTerms.style'
 
 export const ModalRentalTerms = ({
   isVisible,
@@ -77,46 +77,3 @@ ModalRentalTerms.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   onCancel: PropTypes.func.isRequired
 }
-
-const styles = StyleSheet.create({
-  firstTitle: {
-    ...Fonts.style.normalKefa,
-    color: Colors.gray900,
-    marginBottom: Metrics.baseMargin,
-    marginHorizontal: Metrics.section
-  },
-  title: {
-    ...Fonts.style.normalKefa,
-    color: Colors.gray900,
-    marginVertical: Metrics.baseMargin,
-    marginHorizontal: Metrics.section
-  },
-  subtitle: {
-    ...Fonts.style.description,
-    color: Colors.gray900,
-    marginHorizontal: Metrics.section
-  },
-  text: {
-    ...Fonts.style.description,
-    color: Colors.gray700,
-    marginBottom: Metrics.baseMargin,
-    marginHorizontal: Metrics.section
-  },
-  heavy: {
-    color: Colors.gray900,
-    ...Platform.select({
-      android: {
-        fontFamily: 'sans-serif-medium'
-      },
-      ios: {
-        fontWeight: '600'
-      }
-    })
-  },
-  lastText: {
-    ...Fonts.style.description,
-    color: Colors.gray700,
-    marginBottom: Metrics.section,
-    marginHorizontal: Metrics.section
-  }
-})

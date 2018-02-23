@@ -3,12 +3,11 @@ import {
   Modal,
   View,
   Text,
-  StyleSheet,
   TouchableWithoutFeedback
 } from 'react-native'
 import { Touchable } from '../touchable'
 
-import { Colors, Metrics, Fonts, Values } from '../../../../constants'
+import { styles } from './styles/modalOptionSelect.style'
 
 const renderOption = ({ title, onPress }) => (
   <Touchable key={title} onPress={onPress} style={styles.option}>
@@ -33,33 +32,3 @@ export const ModalOptionSelect = ({ isVisible, onCancel, options, title }) => (
     </TouchableWithoutFeedback>
   </Modal>
 )
-
-const styles = StyleSheet.create({
-  darkBackground: {
-    justifyContent: 'center',
-    backgroundColor: Colors.overlay,
-    flex: 1
-  },
-  card: {
-    backgroundColor: Colors.white,
-    marginHorizontal: Metrics.menuHeight,
-    paddingVertical: Metrics.baseMargin,
-    borderRadius: Metrics.cardRadius,
-    ...Values.elevation16
-  },
-  title: {
-    ...Fonts.style.normalKefa,
-    color: Colors.gray900,
-    paddingHorizontal: Metrics.doubleBaseMargin,
-    padding: Metrics.baseMargin
-  },
-  option: {
-    height: Metrics.menuHeight,
-    justifyContent: 'center'
-  },
-  optionText: {
-    ...Fonts.style.description,
-    color: Colors.gray700,
-    textAlign: 'center'
-  }
-})
