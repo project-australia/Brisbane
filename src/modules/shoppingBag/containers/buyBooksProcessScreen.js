@@ -29,24 +29,30 @@ class BuyBooksProcessContainer extends Component {
 
   state = {
     isLoading: false,
-    shippingMethod: 'STANDARD'
+    shippingMethod: 'STANDARD',
+    shippingPrice: 0
   }
 
   changeToExpediteShippingMethod = () => {
-    this.setState({ shippingMethod: 'EXPEDITE' })
+    this.setState({ shippingMethod: 'EXPEDITE', shippingPrice: this.props.totalWeight > 5 ? 9.99 : 6.99 })
   }
 
   changeToStandardShippingMethod = () => {
-    this.setState({ shippingMethod: 'STANDARD' })
+    this.setState({ shippingMethod: 'STANDARD', shippingPrice: 0 })
+  }
+
+  getTotalPrice = () => {
+    return Number(this.props.total) + Number(this.state.shippingPrice)
   }
 
   goBack = () => this.props.navigation.goBack()
 
   checkoutWithPaypal = price => async () => {
     const { user, booksToBuy } = this.props
+    const totalPrice = this.getTotalPrice().toString()
     try {
       await payWithPayPal(
-        price,
+        totalPrice,
         'Buying books',
         this.onPayPalOnSuccess(booksToBuy, user)
       )
@@ -99,7 +105,7 @@ class BuyBooksProcessContainer extends Component {
         selectExpediteShipping={() => this.changeToExpediteShippingMethod()}
         selectStandardShipping={() => this.changeToStandardShippingMethod()}
         shippingMethod={this.state.shippingMethod}
-        totalPrice={this.props.total}
+        totalPrice={this.getTotalPrice()}
       />
     )
   }

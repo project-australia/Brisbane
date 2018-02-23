@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { SellingBookAmount } from '../components/sellingBooks'
-import { shoppingBagSellingQuantityBooks } from '../../../redux/selectors/shoppingBagSelectors';
+import { shoppingBagSellingQuantityBooks } from '../../../redux/selectors/shoppingBagSelectors'
 
 export class SellingBooksContainer extends Component {
   render() {
