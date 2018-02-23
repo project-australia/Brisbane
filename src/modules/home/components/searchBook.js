@@ -8,12 +8,6 @@ import { Touchable } from '../../shared/components/touchable'
 import { styles } from './styles/home.styles'
 import { Colors, Metrics } from '../../../constants'
 
-const rightIconOnPress = (inputValue, scanFunction, submitFunction) =>
-  inputValue === '' ? scanFunction : submitFunction
-
-const rightIconName = inputValue =>
-  inputValue === '' ? 'barcode-scan' : 'chevron-right'
-
 export const BookSearch = props => (
   <View style={styles.searchBarWrap}>
     <View style={styles.iconWrap}>
@@ -35,11 +29,11 @@ export const BookSearch = props => (
     />
     <Touchable
       borderless
-      onPress={rightIconOnPress(props.value, props.onScanPress, props.onSubmit)}
+      onPress={props.onSubmit}
       style={styles.iconWrap}
     >
       <Icon
-        name={rightIconName(props.value)}
+        name={'chevron-right'}
         size={Metrics.icons.medium}
         color={Colors.gray700}
       />
@@ -50,9 +44,9 @@ export const BookSearch = props => (
 BookSearch.defaultProps = {
   value: ''
 }
+
 BookSearch.propTypes = {
   onChangeText: PropTypes.func.isRequired,
-  onScanPress: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   value: PropTypes.string
 }

@@ -126,8 +126,16 @@ export class BookDetails extends Component {
     }
   ]
 
+  onPressSell = (book) => {
+    if (book.condition) {
+      this.props.onPressSell(book)
+    } else {
+      alert('Please, fill book condition field')
+    }
+  }
+
   render() {
-    const { onPressBuy, onPressSell, screenType } = this.props
+    const { onPressBuy, screenType } = this.props
     const {
       book,
       isConditionExplanationModalOn,
@@ -140,9 +148,7 @@ export class BookDetails extends Component {
     const [onPressCondition, onPressConditionTitle] = isSelling
       ? [this.showConditionModal, this.showConditionExplanationModal]
       : [this.showConditionExplanationModal, undefined]
-    const defaultCondition = isSelling
-      ? 'Select a condition'
-      : 'Used - Acceptable'
+    const defaultCondition = 'Select a condition'
 
     return (
       <View style={styles.container}>
@@ -167,7 +173,7 @@ export class BookDetails extends Component {
             price={price}
             onRent={() => this.confirmRent(book)}
             onBuy={() => onPressBuy(book)}
-            onSell={() => onPressSell(book)}
+            onSell={() => this.onPressSell(book)}
           />
           {this.renderMembershipData()}
           <MenuTitle title={'Details'} style={styles.titleWrap} />

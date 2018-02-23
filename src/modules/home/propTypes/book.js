@@ -13,7 +13,7 @@ export const book = shape({
   edition: string,
   id: string.isRequired,
   featured: bool,
-  status: oneOf(['RENTED', 'AVAILABLE', 'SOLD', 'UNAVAILABLE']).isRequired,
+  status: oneOf(['RENTED', 'AVAILABLE', 'SOLD', 'UNAVAILABLE']),
   condition: oneOf([
     'Used – Acceptable',
     'Used – Good',
