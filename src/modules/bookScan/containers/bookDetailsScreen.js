@@ -69,7 +69,6 @@ class BookScannerContainer extends Component {
 
   render () {
     const { book, screenType } = this.state
-    console.log('props', this.props)
     return (
       book && (
         <BookDetails

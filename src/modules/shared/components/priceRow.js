@@ -12,14 +12,14 @@ const isBuying = type => type === 'BUY'
 const isRenting = type => type === 'RENT'
 
 const mapPropsBasedOnScreenType = props => {
-  const { price, button, screenType } = props
+  const { price, screenType, onRent, onBuy, onSell } = props
   let titleToShow
   let priceToShow
   let callbackFunction
   let buttonTitleToShow
 
   if (isSelling(screenType)) {
-    callbackFunction = button.onPress.sell
+    callbackFunction = onSell
     priceToShow = price.sell
 
     if (priceToShow) {
@@ -33,12 +33,12 @@ const mapPropsBasedOnScreenType = props => {
     titleToShow = 'Buy this book for'
     buttonTitleToShow = 'Buy'
     priceToShow = price.buy
-    callbackFunction = button.onPress.buy
+    callbackFunction = onBuy
   } else if (isRenting(screenType)) {
     titleToShow = 'Rent this book for'
     buttonTitleToShow = 'Rent'
     priceToShow = price.rent
-    callbackFunction = button.onPress.rent
+    callbackFunction = onRent
   }
 
   return {
@@ -66,7 +66,7 @@ export const PriceRow = props => {
       <FlatButton
         secondary
         title={buttonTitle}
-        onPress={() => callback(props.book)}
+        onPress={callback}
       />
     </View>
   )
@@ -74,17 +74,14 @@ export const PriceRow = props => {
 
 PriceRow.propsType = {
   screenType: PropTypes.oneOf(['SELL', 'BUY', 'RENT']).isRequired,
-  book: book,
   price: PropTypes.shape({
     buy: PropTypes.number,
     rent: PropTypes.number,
     sell: PropTypes.number
   }).isRequired,
-  button: PropTypes.object,
-  onPress: PropTypes.shape({
-    buy: PropTypes.func,
-    sell: PropTypes.func
-  }).isRequired
+  onRent: PropTypes.func,
+  onBuy: PropTypes.func,
+  onSell: PropTypes.func
 }
 
 PriceRow.defaultProps = {

@@ -22,8 +22,9 @@ export class BookDetails extends Component {
   static propTypes = {
     book: book,
     screenType: PropTypes.oneOf(['SELL', 'BUY', 'RENT']).isRequired,
-    onPressSell: PropTypes.func,
-    onPressBuy: PropTypes.func
+    onPressSell: PropTypes.func.isRequired,
+    onPressRent: PropTypes.func.isRequired,
+    onPressBuy: PropTypes.func.isRequired
   }
 
   state = {
@@ -102,6 +103,29 @@ export class BookDetails extends Component {
     }
   }
 
+  conditionsModalOptions = [
+    {
+      title: 'Used – Acceptable',
+      onPress: () => this.updateSelectedCondition('Used – Acceptable')
+    },
+    {
+      title: 'Used – Good',
+      onPress: () => this.updateSelectedCondition('Used – Good')
+    },
+    {
+      title: 'Used – Very Good',
+      onPress: () => this.updateSelectedCondition('Used – Very Good')
+    },
+    {
+      title: 'Used – Like New',
+      onPress: () => this.updateSelectedCondition('Used – Like New')
+    },
+    {
+      title: 'New',
+      onPress: () => this.updateSelectedCondition('New')
+    }
+  ]
+
   render() {
     const { onPressBuy, onPressSell, screenType } = this.props
     const {
@@ -112,38 +136,14 @@ export class BookDetails extends Component {
       navRightIcons
     } = this.state
     const { aboutBook, authors, condition, images, isbn, price, title } = book
-    console.log('book', book)
     const isSelling = screenType === 'SELL'
     const [onPressCondition, onPressConditionTitle] = isSelling
       ? [this.showConditionModal, this.showConditionExplanationModal]
       : [this.showConditionExplanationModal, undefined]
-
-    const conditionsModalOptions = [
-      {
-        title: 'Used – Acceptable',
-        onPress: () => this.updateSelectedCondition('Used – Acceptable')
-      },
-      {
-        title: 'Used – Good',
-        onPress: () => this.updateSelectedCondition('Used – Good')
-      },
-      {
-        title: 'Used – Very Good',
-        onPress: () => this.updateSelectedCondition('Used – Very Good')
-      },
-      {
-        title: 'Used – Like New',
-        onPress: () => this.updateSelectedCondition('Used – Like New')
-      },
-      {
-        title: 'New',
-        onPress: () => this.updateSelectedCondition('New')
-      }
-    ]
-
     const defaultCondition = isSelling
       ? 'Select a condition'
       : 'Used - Acceptable'
+
     return (
       <View style={styles.container}>
         <AppStatusBar />
@@ -163,16 +163,11 @@ export class BookDetails extends Component {
             onPressTitle={onPressConditionTitle}
           />
           <PriceRow
-            book={book}
             screenType={screenType}
             price={price}
-            button={{
-              onPress: {
-                buy: book => onPressBuy(book),
-                rent: book => this.confirmRent(book),
-                sell: book => onPressSell(book)
-              }
-            }}
+            onRent={() => this.confirmRent(book)}
+            onBuy={() => onPressBuy(book)}
+            onSell={() => onPressSell(book)}
           />
           {this.renderMembershipData()}
           <MenuTitle title={'Details'} style={styles.titleWrap} />
@@ -190,7 +185,7 @@ export class BookDetails extends Component {
           title={'Select the condition'}
           isVisible={isConditionModalOn}
           onCancel={this.hideConditionModal}
-          options={conditionsModalOptions}
+          options={this.conditionsModalOptions}
         />
         <ModalConditionExplanation
           isVisible={isConditionExplanationModalOn}
