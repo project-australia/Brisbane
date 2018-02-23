@@ -6,7 +6,7 @@ import { SHOPPING_BAG_TYPES } from '../../../domain/ShoppingBagItem'
 import { User } from '../../../domain/User'
 import { removeAllFromShoppingBag } from '../../../redux/actions'
 import {
-  calculateTotalWeight,
+  calculateTotalWeight, sellingItems,
   shoppingBagSellingTotal
 } from '../../../redux/selectors/shoppingBagSelectors'
 import { createOrder } from '../../../services/backend/orderService'
@@ -107,12 +107,9 @@ class SellBooksProcessContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  const { authentication, shoppingBag } = state
+  const { authentication } = state
   const { user } = authentication
-
-  const booksToSell = shoppingBag.filter(
-    item => item.type === SHOPPING_BAG_TYPES.SELL
-  )
+  const booksToSell = sellingItems(state)
 
   return {
     booksToSell,

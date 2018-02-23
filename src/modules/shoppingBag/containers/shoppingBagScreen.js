@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { SHOPPING_BAG_TYPES } from '../../../domain/ShoppingBagItem'
-import { shoppingBagBuyingTotal, shoppingBagSellingTotal } from '../../../redux/selectors/shoppingBagSelectors'
+import {
+  buyingItems, sellingItems, shoppingBagBuyingTotal,
+  shoppingBagSellingTotal
+} from '../../../redux/selectors/shoppingBagSelectors'
 import { ShoppingBag } from '../components/shoppingBag'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
-import { payWithPayPal } from '../../../services/paypal'
 
 class ShoppingBagContainer extends Component {
   static navigationOptions = {
@@ -33,8 +34,6 @@ class ShoppingBagContainer extends Component {
   }
 
   goBack = () => this.props.navigation.goBack()
-  navigateToCheckout = (price, description, onSuccess, onError) =>
-    payWithPayPal('666.66', 'INSERT A DESCRIPTION' + ' HERE', alert, alert)
   navigateToSellConfirmation = () =>
     this.props.navigation.navigate('ConfirmationScreen')
   navigateToHome = () => this.props.navigation.navigate('Home')
@@ -50,20 +49,11 @@ ShoppingBagContainer.propTypes = {
   totalSellingPrice: PropTypes.number.isRequired
 }
 
-const mapStateToProps = state => {
-  const { shoppingBag } = state
-  const booksToBuy = shoppingBag.filter(
-    item => item.type === SHOPPING_BAG_TYPES.BUY
-  )
-  const booksToSell = shoppingBag.filter(
-    item => item.type === SHOPPING_BAG_TYPES.SELL
-  )
-  return {
-    booksToBuy,
-    booksToSell,
-    totalBuyingPrice: shoppingBagBuyingTotal(state),
-    totalSellingPrice: shoppingBagSellingTotal(state)
-  }
-}
+const mapStateToProps = state => ({
+  booksToBuy: buyingItems(state),
+  booksToSell: sellingItems(state),
+  totalBuyingPrice: shoppingBagBuyingTotal(state),
+  totalSellingPrice: shoppingBagSellingTotal(state)
+})
 
 export const ShoppingBagScreen = connect(mapStateToProps)(ShoppingBagContainer)

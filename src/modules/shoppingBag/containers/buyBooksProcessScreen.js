@@ -6,6 +6,7 @@ import { SHOPPING_BAG_TYPES } from '../../../domain/ShoppingBagItem'
 import { User } from '../../../domain/User'
 import { removeAllFromShoppingBag } from '../../../redux/actions'
 import {
+  buyingItems,
   calculateTotalWeight,
   shoppingBagBuyingTotal
 } from '../../../redux/selectors/shoppingBagSelectors'
@@ -112,15 +113,12 @@ class BuyBooksProcessContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  const { authentication, shoppingBag } = state
+  const { authentication } = state
   const { user } = authentication
-
-  const booksToBuy = shoppingBag.filter(
-    item => item.type === SHOPPING_BAG_TYPES.BUY
-  )
+  const booksToBuy = buyingItems(state)
 
   return {
-    booksToBuy,
+    booksToBuy: buyingItems(state),
     user,
     total: shoppingBagBuyingTotal(state),
     totalWeight: calculateTotalWeight(booksToBuy)

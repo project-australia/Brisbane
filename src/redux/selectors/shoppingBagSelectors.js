@@ -1,19 +1,23 @@
 import { SHOPPING_BAG_TYPES } from '../../domain/ShoppingBagItem'
+const { BUY, RENT, SELL } = SHOPPING_BAG_TYPES
+
+export const buyingItems = ({shoppingBag}) => shoppingBag.filter(
+  ({type}) => type === BUY || type === RENT
+)
+
+export const sellingItems = ({shoppingBag}) => shoppingBag.filter(
+  ({type}) => type === SELL
+)
 
 export const shoppingBagBuyingTotal = state => {
-  const booksToBuy = state.shoppingBag.filter(
-    item => item.type === SHOPPING_BAG_TYPES.BUY
-  )
-
+  const booksToBuy = buyingItems(state)
   return booksToBuy.reduce((total, item) => {
     return total + item.book.price.buy
   }, 0)
 }
 
 export const shoppingBagSellingTotal = state => {
-  const booksToSell = state.shoppingBag.filter(
-    item => item.type === SHOPPING_BAG_TYPES.SELL
-  )
+  const booksToSell = sellingItems(state)
   const sellTotal = booksToSell.reduce((total, item) => {
     return total + item.book.price.sell
   }, 0)
@@ -21,11 +25,8 @@ export const shoppingBagSellingTotal = state => {
 }
 
 export const shoppingBagSellingQuantityBooks = state => {
-  const booksToSell = state.shoppingBag.filter(
-    item => item.type === SHOPPING_BAG_TYPES.SELL
-  )
+  const booksToSell = sellingItems(state)
   const sellQuantity = booksToSell.length
-
   return Number(sellQuantity)
 }
 
