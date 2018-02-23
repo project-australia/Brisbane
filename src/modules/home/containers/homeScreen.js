@@ -34,7 +34,7 @@ class HomeContainer extends Component {
   navigateToSearchForBook = isbn => {
     this.props.navigation.navigate('BookDetails', {
       isbn,
-      screenType: 'SELL'
+      screenType: 'BUY'
     })
   }
 

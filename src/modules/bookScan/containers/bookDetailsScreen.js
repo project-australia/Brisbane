@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Alert } from 'react-native'
 import { connect } from 'react-redux'
 import { buyBook, rentBook, sellBook } from '../../../redux/actions'
-import { findBookByISBN } from '../../../services/backend/bookService'
+import { evaluateBookByISBN, findBookByISBN } from '../../../services/backend/bookService'
 
 import { BookDetails } from '../components/confirmBook'
 
@@ -33,7 +33,7 @@ class BookScannerContainer extends Component {
       this.setState({ book, screenType })
     } else {
       try {
-        const book = await findBookByISBN(isbn)
+        const book = screenType === 'SELL' ? await evaluateBookByISBN(isbn) : await findBookByISBN(isbn)
         this.setState({ book, screenType })
       } catch (err) {
         this.onError(err)
