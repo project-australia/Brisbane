@@ -24,10 +24,18 @@ class HomeContainer extends Component {
     })
   }
 
+  getDisplayName = () => {
+    const name = this.props.displayName
+    if (name) {
+      return name.split(' ')
+    }
+    return 'Guest'
+  }
+
   firstFivesElementsOf = booksList => booksList.slice(0, 5)
 
   render() {
-    const userName = this.props.displayName || 'Guest'
+    const userName = this.getDisplayName()
     const { booksLists } = this.props
     return (
       <Home
