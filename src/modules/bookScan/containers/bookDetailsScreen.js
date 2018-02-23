@@ -69,6 +69,7 @@ class BookScannerContainer extends Component {
 
   render () {
     const { book, screenType } = this.state
+    console.log('props', this.props)
     return (
       book && (
         <BookDetails
@@ -78,7 +79,7 @@ class BookScannerContainer extends Component {
           navigateToShoppingBag={this.navigateToShoppingBag}
           onPressBallardsClub={this.navigateToClubMember}
           onPressBuy={() => this.toShoppingBag(this.props.buyBook)}
-          onPressRent={() => this.toShoppingBag(this.props.buyBook)}
+          onPressRent={() => this.toShoppingBag(this.props.rentBook)}
           onPressSell={() => this.toShoppingBag(this.props.sellBook)}
           screenType={screenType}
         />

@@ -39,19 +39,19 @@ export class BookDetails extends Component {
     ]
   }
 
+  showConditionModal = () => this.setState({ isConditionModalOn: true })
+  hideConditionModal = () => this.setState({ isConditionModalOn: false })
+  showRentalTermsModal = () => this.setState({ isRentalTermsModalOn: true })
+  hideRentalTermsModal = () => this.setState({ isRentalTermsModalOn: false })
   showConditionExplanationModal = () =>
     this.setState({ isConditionExplanationModalOn: true })
   hideConditionExplanationModal = () =>
     this.setState({ isConditionExplanationModalOn: false })
-  showConditionModal = () => this.setState({ isConditionModalOn: true })
-  hideConditionModal = () => this.setState({ isConditionModalOn: false })
   updateSelectedCondition = selectedCondition =>
     this.setState({
       isConditionModalOn: false,
       book: { ...this.props.book, condition: selectedCondition }
     })
-  showRentalTermsModal = () => this.setState({ isRentalTermsModalOn: true })
-  hideRentalTermsModal = () => this.setState({ isRentalTermsModalOn: false })
 
   confirmRent = () =>
     Alert.alert(
@@ -165,19 +165,8 @@ export class BookDetails extends Component {
           <PriceRow
             book={book}
             screenType={screenType}
-            title={{
-              buy: 'Buy this book for',
-              rent: 'Rent this book for',
-              sell: 'Sell this book for'
-            }}
             price={price}
             button={{
-              title: {
-                buy: 'Buy',
-                donate: 'Donate',
-                rent: 'Rent',
-                sell: 'Sell'
-              },
               onPress: {
                 buy: book => onPressBuy(book),
                 rent: book => this.confirmRent(book),

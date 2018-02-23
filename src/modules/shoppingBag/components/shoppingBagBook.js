@@ -60,5 +60,5 @@ ShoppingBagBook.propTypes = {
   title: PropTypes.string.isRequired,
   subtitleOne: PropTypes.string,
   subtitleTwo: PropTypes.string,
-  price: PropTypes.number.isRequired
+  price: PropTypes.number
 }

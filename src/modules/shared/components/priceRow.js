@@ -9,14 +9,14 @@ import { styles } from './styles/priceRow.style'
 
 const isSelling = type => type === 'SELL'
 const isBuying = type => type === 'BUY'
+const isRenting = type => type === 'RENT'
 
-export const PriceRow = (props) => {
-  const { title, price, button, screenType, book } = props
+const mapPropsBasedOnScreenType = props => {
+  const { price, button, screenType } = props
   let titleToShow
   let priceToShow
   let callbackFunction
   let buttonTitleToShow
-  let rent
 
   if (isSelling(screenType)) {
     callbackFunction = button.onPress.sell
@@ -24,44 +24,50 @@ export const PriceRow = (props) => {
 
     if (priceToShow) {
       titleToShow = 'Sell this book for'
-      buttonTitleToShow = 'SELL'
+      buttonTitleToShow = 'Sell'
     } else {
       titleToShow = 'Donate this book'
       buttonTitleToShow = 'Donate'
     }
   } else if (isBuying(screenType)) {
-    titleToShow = title.buy
+    titleToShow = 'Buy this book for'
+    buttonTitleToShow = 'Buy'
     priceToShow = price.buy
-    buttonTitleToShow = button.title.buy
     callbackFunction = button.onPress.buy
+  } else if (isRenting(screenType)) {
+    titleToShow = 'Rent this book for'
+    buttonTitleToShow = 'Rent'
+    priceToShow = price.rent
+    callbackFunction = button.onPress.rent
   }
 
+  return {
+    title: titleToShow,
+    price: priceToShow,
+    callback: callbackFunction,
+    buttonTitle: buttonTitleToShow
+  }
+}
+
+export const PriceRow = props => {
+  const {
+    title,
+    price,
+    callback,
+    buttonTitle
+  } = mapPropsBasedOnScreenType(props)
+
   return (
-    <View>
-      <View style={styles.row}>
-        <View style={styles.rowInfo}>
-          <Text style={styles.description}>{titleToShow}</Text>
-          {priceToShow > 0 && <Text style={styles.title}>{`$${priceToShow}`}</Text>}
-        </View>
-        <FlatButton
-          secondary
-          title={buttonTitleToShow}
-          onPress={() => callbackFunction(book)}
-        />
+    <View style={styles.row}>
+      <View style={styles.rowInfo}>
+        <Text style={styles.description}>{title}</Text>
+        {price > 0 && <Text style={styles.title}>{`$${price}`}</Text>}
       </View>
-      { rent && (
-        <View style={styles.row}>
-          <View style={styles.rowInfo}>
-            <Text style={styles.description}>{title.rent}</Text>
-            <Text style={styles.title}>{`$${price.rent}`}</Text>
-          </View>
-          <FlatButton
-            secondary
-            title={button.title.rent}
-            onPress={button.onPress.rent}
-          />
-        </View>
-      )}
+      <FlatButton
+        secondary
+        title={buttonTitle}
+        onPress={() => callback(props.book)}
+      />
     </View>
   )
 }
@@ -71,13 +77,10 @@ PriceRow.propsType = {
   book: book,
   price: PropTypes.shape({
     buy: PropTypes.number,
+    rent: PropTypes.number,
     sell: PropTypes.number
   }).isRequired,
   button: PropTypes.object,
-  title: PropTypes.shape({
-    buy: PropTypes.string,
-    sell: PropTypes.string
-  }).isRequired,
   onPress: PropTypes.shape({
     buy: PropTypes.func,
     sell: PropTypes.func
