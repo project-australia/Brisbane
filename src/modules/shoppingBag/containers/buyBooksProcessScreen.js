@@ -9,7 +9,7 @@ import {
   calculateTotalWeight,
   shoppingBagBuyingTotal
 } from '../../../redux/selectors/shoppingBagSelectors'
-import { createOrder } from '../../../services/backend/orderService'
+import { createOrder, updateOrder } from '../../../services/backend/orderService'
 import { payWithPayPal } from '../../../services/paypal'
 import { BuyBooksProcess } from '../components/buyBooksProcess'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
@@ -44,41 +44,20 @@ class BuyBooksProcessContainer extends Component {
     this.setState({ shippingMethod: 'STANDARD', shippingPrice: 0 })
   }
 
-  getTotalPrice = () => {
-    return Number(this.props.total) + Number(this.state.shippingPrice)
-  }
+  getTotalPrice = () => Number(this.props.total) + Number(this.state.shippingPrice)
 
-  goBack = () => this.props.navigation.goBack()
-
-  checkoutWithPaypal = price => async () => {
+  generateBuyOrder = async () => {
     const { user, booksToBuy } = this.props
-    const totalPrice = this.getTotalPrice()
-    try {
-      await payWithPayPal(
-        totalPrice,
-        'Buying books',
-        this.onPayPalOnSuccess(booksToBuy, user)
-      )
-    } catch (error) {
-      console.log('Paypal checkout failed', JSON.stringify(error))
-      this.setState({ isLoading: false })
-    }
+    return createOrder(
+      'BUY',
+      this.state.shippingMethod,
+      booksToBuy,
+      user.address,
+      user.id
+    )
   }
 
-  onPayPalOnSuccess = (books, user) => async paypalResponse => {
-    const transactionId = paypalResponse.response.id
-    const shoppingBagType = 'BUY'
-    this.setState({ isLoading: true })
-    const order = await createOrder(
-      shoppingBagType,
-      this.state.shippingMethod,
-      books,
-      user,
-      transactionId
-    )
-    this.setState({ isLoading: false })
-    console.log('order created, cleaning shopping bag and redirecting', order)
-
+  successAlert = () => {
     Alert.alert(
       'Payment Confirmed',
       'Thanks for buying',
@@ -88,12 +67,35 @@ class BuyBooksProcessContainer extends Component {
           onPress: () => this.onCheckoutSuccess()
         }
       ],
-      { onDismiss: () => this.onCheckoutSuccess(), cancelable: false }
+      { onDismiss: () => this.onCheckoutSuccess() }
     )
   }
 
+  checkoutWithPaypal = price => async () => {
+    this.setState({ isLoading: true })
+
+    try {
+      const order = await this.generateBuyOrder()
+      await payWithPayPal(this.getTotalPrice(), 'Buying books', this.onPayPalOnSuccess(order))
+    } catch (error) {
+      console.log('Paypal checkout failed', JSON.stringify(error))
+    } finally {
+      this.setState({ isLoading: false })
+    }
+  }
+
+  onPayPalOnSuccess = order => async paypalResponse => {
+    await updateOrder(
+      this.props.user.id,
+      order.id,
+      paypalResponse.response.id,
+      'PAYMENT_CONFIRMED'
+    )
+    this.successAlert()
+  }
+
   onCheckoutSuccess = () => {
-    this.props.cleanShoppingBagByType('BUY')
+    this.props.cleanShoppingBagByType('SELL')
     this.props.navigation.navigate('Home')
   }
 
@@ -104,7 +106,7 @@ class BuyBooksProcessContainer extends Component {
         checkoutWithPayPal={this.checkoutWithPaypal(this.props.total)}
         expediteShippingPrice={this.props.totalWeight > 5 ? 9.99 : 6.99}
         isLoading={this.state.isLoading}
-        navigateBack={this.goBack}
+        navigateBack={() => this.props.navigation.goBack()}
         selectExpediteShipping={() => this.changeToExpediteShippingMethod()}
         selectStandardShipping={() => this.changeToStandardShippingMethod()}
         shippingMethod={this.state.shippingMethod}
