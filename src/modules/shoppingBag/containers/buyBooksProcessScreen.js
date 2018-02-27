@@ -9,7 +9,10 @@ import {
   calculateTotalWeight,
   shoppingBagBuyingTotal
 } from '../../../redux/selectors/shoppingBagSelectors'
-import { createOrder, updateOrder } from '../../../services/backend/orderService'
+import {
+  createOrder,
+  updateOrder
+} from '../../../services/backend/orderService'
 import { payWithPayPal } from '../../../services/paypal'
 import { BuyBooksProcess } from '../components/buyBooksProcess'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
@@ -44,7 +47,8 @@ class BuyBooksProcessContainer extends Component {
     this.setState({ shippingMethod: 'STANDARD', shippingPrice: 0 })
   }
 
-  getTotalPrice = () => Number(this.props.total) + Number(this.state.shippingPrice)
+  getTotalPrice = () =>
+    Number(this.props.total) + Number(this.state.shippingPrice)
 
   generateBuyOrder = async () => {
     const { user, booksToBuy } = this.props
@@ -71,17 +75,21 @@ class BuyBooksProcessContainer extends Component {
     )
   }
 
-  checkoutWithPaypal = price => async () => {
-    this.setState({ isLoading: true })
-
-    try {
-      const order = await this.generateBuyOrder()
-      await payWithPayPal(this.getTotalPrice(), 'Buying books', this.onPayPalOnSuccess(order))
-    } catch (error) {
-      console.log('Paypal checkout failed', JSON.stringify(error))
-    } finally {
-      this.setState({ isLoading: false })
-    }
+  confirmInPersonCheckout = () => {
+    Alert.alert(
+      'In Person Payment',
+      'Do you wanna proceed to in person checkout',
+      [
+        {
+          text: 'Sure thing',
+          onPress: () => this.inPersonCheckout()
+        },
+        {
+          text: 'Cancel',
+          style: 'cancel'
+        }
+      ]
+    )
   }
 
   onPayPalOnSuccess = order => async paypalResponse => {
@@ -99,11 +107,43 @@ class BuyBooksProcessContainer extends Component {
     this.props.navigation.navigate('Home')
   }
 
+  inPersonCheckout = async () => {
+    this.setState({ isLoading: true })
+
+    try {
+      await this.generateBuyOrder()
+      alert('Order Generated')
+      this.onCheckoutSuccess()
+    } catch (error) {
+      console.log('In Person checkout failed', JSON.stringify(error))
+    } finally {
+      this.setState({ isLoading: false })
+    }
+  }
+
+  payPalCheckout = async () => {
+    this.setState({ isLoading: true })
+
+    try {
+      const order = await this.generateBuyOrder()
+      await payWithPayPal(
+        this.getTotalPrice(),
+        'Buying books',
+        this.onPayPalOnSuccess(order)
+      )
+    } catch (error) {
+      console.log('Paypal checkout failed', JSON.stringify(error))
+    } finally {
+      this.setState({ isLoading: false })
+    }
+  }
+
   render() {
     return (
       <BuyBooksProcess
         books={this.props.booksToBuy}
-        checkoutWithPayPal={this.checkoutWithPaypal(this.props.total)}
+        checkoutWithPayPal={this.payPalCheckout}
+        checkoutWithInPersonPayment={this.confirmInPersonCheckout}
         expediteShippingPrice={this.props.totalWeight > 5 ? 9.99 : 6.99}
         isLoading={this.state.isLoading}
         navigateBack={() => this.props.navigation.goBack()}

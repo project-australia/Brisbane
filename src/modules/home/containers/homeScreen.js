@@ -19,10 +19,6 @@ class HomeContainer extends Component {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick)
   }
 
-  componentWillUnmount = () => {
-    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick)
-  }
-
   handleBackButtonClick = () => {
     this.props.navigation.goBack()
     return true
@@ -47,7 +43,7 @@ class HomeContainer extends Component {
 
   getDisplayName = () => {
     const name = this.props.displayName
-    return name ? name.split(' ') : 'Guest'
+    return name ? name.split(' ')[0] : 'Guest'
   }
 
   firstFivesElementsOf = booksList => booksList.slice(0, 5)
@@ -59,8 +55,8 @@ class HomeContainer extends Component {
     return (
       <Home
         userName={userName}
-        featuredBooks={this.firstFivesElementsOf(booksLists['featured'])}
-        recentlyAddedBooks={this.firstFivesElementsOf(booksLists['recent'])}
+        featuredBooks={this.firstFivesElementsOf(booksLists.featured)}
+        recentlyAddedBooks={this.firstFivesElementsOf(booksLists.recent)}
         navigateToScan={this.navigateTo('BookScanner')}
         navigateToProfile={this.navigateTo('Profile')}
         navigateToShoppingBag={this.navigateTo('ShoppingBag')}

@@ -26,6 +26,7 @@ export class BuyBooksProcess extends React.Component {
 
   static propTypes = {
     checkoutWithPayPal: PropTypes.func.isRequired,
+    checkoutWithInPersonPayment: PropTypes.func.isRequired,
     books: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
     navigateBack: PropTypes.func.isRequired,
     totalPrice: PropTypes.number.isRequired,
@@ -103,7 +104,7 @@ export class BuyBooksProcess extends React.Component {
             <FormOutlineButton
               secondary
               title={'Pay localy'}
-              onPress={() => alert('Create Order With Payment in Person')}
+              onPress={this.props.checkoutWithInPersonPayment}
             />
             <View style={{ height: 15 }} />
             <FormOutlineButton

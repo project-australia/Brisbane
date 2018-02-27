@@ -38,7 +38,7 @@ export class Home extends Component {
         onPress: this.props.navigateToShoppingBag
       }
     ],
-    bookSearchValue: ''
+    bookSearchValue: '9780261102941' // TODO: Remove this
   }
 
   updateBookSearchValue = bookSearchValue => this.setState({ bookSearchValue })
