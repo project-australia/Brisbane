@@ -21,7 +21,7 @@ export const evaluateBookByISBN = async isbn => {
 export const findBookByISBN = async isbn => {
   try {
     const bookResponse = await Axios.get(`books/${isbn}`)
-    return bookResponse.data
+    return bookResponse.status === 200 ? bookResponse.data : null
   } catch (err) {
     if (err.response && err.response.status === 404) {
       throw new Error('ISBN Not Found')

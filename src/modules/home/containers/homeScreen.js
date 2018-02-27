@@ -31,7 +31,7 @@ class HomeContainer extends Component {
   navigateTo = (screen, param = {}) => () =>
     this.props.navigation.navigate(screen, param)
 
-  navigateToSearchForBook = isbn => {
+  navigateToBuyBook = isbn => {
     this.props.navigation.navigate('BookDetails', {
       isbn,
       screenType: 'BUY'
@@ -66,7 +66,7 @@ class HomeContainer extends Component {
         navigateToShoppingBag={this.navigateTo('ShoppingBag')}
         navigateToSellBook={isbn => this.navigateToSellBook(isbn)}
         navigation={this.props.navigation}
-        searchBook={this.navigateToSearchForBook}
+        searchBook={isbn => this.navigateToBuyBook(isbn)}
         onRecentlyAddedPressed={this.navigateTo('BookList', {
           typeList: 'recent'
         })}
