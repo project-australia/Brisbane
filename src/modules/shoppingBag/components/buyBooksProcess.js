@@ -104,7 +104,7 @@ export class BuyBooksProcess extends React.Component {
             <FormOutlineButton
               secondary
               title={'Pay localy'}
-              onPress={this.props.checkoutWithInPersonPayment}
+              onPress={() => this.props.checkoutWithInPersonPayment()}
             />
             <View style={{ height: 15 }} />
             <FormOutlineButton

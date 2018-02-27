@@ -12,7 +12,7 @@ const validOrderStatus = [
 
 export const createOrder = async (
   orderType,
-  shippingMethod,
+  shippingMethod = 'IN_PERSON',
   books,
   shippingAddress,
   userId

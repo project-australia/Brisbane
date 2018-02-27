@@ -10,19 +10,19 @@ import {
   shoppingBagBuyingTotal
 } from '../../../redux/selectors/shoppingBagSelectors'
 import {
-  createOrder,
   updateOrder
 } from '../../../services/backend/orderService'
 import { payWithPayPal } from '../../../services/paypal'
 import { BuyBooksProcess } from '../components/buyBooksProcess'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
+import { confirmInPersonCheckout, generateOrder } from './shared/checkout'
 
 class BuyBooksProcessContainer extends Component {
   static propTypes = {
-    cleanShoppingBagByType: PropTypes.func.isRequired,
+    cleanShoppingBag: PropTypes.func.isRequired,
     navigation: PropTypes.object.isRequired,
     user: PropTypes.instanceOf(User),
-    booksToBuy: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired
+    books: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired
   }
 
   static navigationOptions = {
@@ -51,14 +51,9 @@ class BuyBooksProcessContainer extends Component {
     Number(this.props.total) + Number(this.state.shippingPrice)
 
   generateBuyOrder = async () => {
-    const { user, booksToBuy } = this.props
-    return createOrder(
-      'BUY',
-      this.state.shippingMethod,
-      booksToBuy,
-      user.address,
-      user.id
-    )
+    const { shippingMethod } = this.state
+    const { user, books } = this.props
+    return generateOrder(user, books, shippingMethod, 'BUY')
   }
 
   successAlert = () => {
@@ -75,23 +70,6 @@ class BuyBooksProcessContainer extends Component {
     )
   }
 
-  confirmInPersonCheckout = () => {
-    Alert.alert(
-      'In Person Payment',
-      'Do you wanna proceed to in person checkout',
-      [
-        {
-          text: 'Sure thing',
-          onPress: () => this.inPersonCheckout()
-        },
-        {
-          text: 'Cancel',
-          style: 'cancel'
-        }
-      ]
-    )
-  }
-
   onPayPalOnSuccess = order => async paypalResponse => {
     await updateOrder(
       this.props.user.id,
@@ -103,22 +81,8 @@ class BuyBooksProcessContainer extends Component {
   }
 
   onCheckoutSuccess = () => {
-    this.props.cleanShoppingBagByType('SELL')
+    this.props.cleanShoppingBag()
     this.props.navigation.navigate('Home')
-  }
-
-  inPersonCheckout = async () => {
-    this.setState({ isLoading: true })
-
-    try {
-      await this.generateBuyOrder()
-      alert('Order Generated')
-      this.onCheckoutSuccess()
-    } catch (error) {
-      console.log('In Person checkout failed', JSON.stringify(error))
-    } finally {
-      this.setState({ isLoading: false })
-    }
   }
 
   payPalCheckout = async () => {
@@ -141,9 +105,9 @@ class BuyBooksProcessContainer extends Component {
   render() {
     return (
       <BuyBooksProcess
-        books={this.props.booksToBuy}
+        books={this.props.books}
         checkoutWithPayPal={this.payPalCheckout}
-        checkoutWithInPersonPayment={this.confirmInPersonCheckout}
+        checkoutWithInPersonPayment={() => confirmInPersonCheckout(this, 'BUY')}
         expediteShippingPrice={this.props.totalWeight > 5 ? 9.99 : 6.99}
         isLoading={this.state.isLoading}
         navigateBack={() => this.props.navigation.goBack()}
@@ -159,18 +123,18 @@ class BuyBooksProcessContainer extends Component {
 const mapStateToProps = state => {
   const { authentication } = state
   const { user } = authentication
-  const booksToBuy = buyingItems(state)
+  const books = buyingItems(state)
 
   return {
     user,
-    booksToBuy: buyingItems(state),
+    books,
     total: shoppingBagBuyingTotal(state),
-    totalWeight: calculateTotalWeight(booksToBuy)
+    totalWeight: calculateTotalWeight(books)
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  cleanShoppingBagByType: type => dispatch(removeAllFromShoppingBag(type))
+  cleanShoppingBag: () => dispatch(removeAllFromShoppingBag('BUY'))
 })
 
 export const BuyBooksProcessScreen = connect(

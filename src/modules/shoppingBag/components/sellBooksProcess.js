@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { StyleSheet, ScrollView, Text, View } from 'react-native'
 
 import { Navbar } from '../../shared/components/navbar'
@@ -30,7 +31,7 @@ export const SellBooksProcess = props => {
           <FormOutlineButton
             secondary
             title={'Delivery in Person'}
-            onPress={() => alert('Under Development')}
+            onPress={() => props.inPersonCheckout()}
           />
           <View style={{ height: 15 }} />
           <FormOutlineButton
@@ -42,4 +43,8 @@ export const SellBooksProcess = props => {
       </ScrollView>
     </View>
   )
+}
+
+SellBooksProcess.propTypes = {
+  inPersonCheckout: PropTypes.func.isRequired
 }
