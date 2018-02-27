@@ -53,11 +53,11 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchtoProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   cleanShoppingBagByType: type => dispatch(removeAllFromShoppingBag(type))
 })
 
 export const SellBooksProcessScreen = connect(
   mapStateToProps,
-  mapDispatchtoProps
+  mapDispatchToProps
 )(SellBooksProcessContainer)

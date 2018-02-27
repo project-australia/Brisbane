@@ -38,7 +38,7 @@ export const updateOrder = async (userId, orderId, transactionId, status) => {
     throw new Error('Invalid Status')
   }
 
-  return Axios.post(`users/${userId}/orders/${orderId}`, {
+  return Axios.put(`users/${userId}/orders/${orderId}`, {
     status,
     transactionId
   })
