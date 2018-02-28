@@ -16,20 +16,29 @@ class ClubMembershipContainer extends Component {
 
   clubTenProps = () => {
     return {
-      title: '10% Club Member',
+      title: '10% More Club',
       buttonText: 'Get Your 10% Only U$ 2,99/y',
-      bodyText: '10% Club',
-      club: 'TEN',
+      club: 'NONE',
       price: 2.99
     }
   }
 
   clubTwentyProps = () => {
     return {
-      title: '20% Club Member',
+      title: '20% More Club',
       goBack: this.goBack,
       buttonText: 'Get Your 20% Only U$ 19,99/y',
-      bodyText: '20% Club',
+      user: this.props.user,
+      club: 'TEN',
+      price: 19.99
+    }
+  }
+
+  clubRepProps = () => {
+    return {
+      title: 'Invite your Friends',
+      goBack: this.goBack,
+      buttonText: 'Get Your 20% Only U$ 19,99/y',
       user: this.props.user,
       club: 'TWENTY',
       price: 19.99
@@ -38,12 +47,19 @@ class ClubMembershipContainer extends Component {
 
   goBack = () => this.props.navigation.goBack()
 
-  isClubTenUser = () => this.props.user.club === 'NONE'
+  clubProps = (club) => {
+    switch (club) {
+      case 'NONE':
+        return this.clubTenProps()
+      case 'TEN':
+        return this.clubTwentyProps()
+      default:
+        return this.clubRepProps()
+    }
+  }
 
   render() {
-    const props = this.isClubTenUser()
-      ? this.clubTenProps()
-      : this.clubTwentyProps()
+    const props = this.clubProps(this.props.user.club)
 
     return (
       <ClubMember
