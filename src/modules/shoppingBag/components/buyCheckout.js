@@ -14,7 +14,7 @@ import { styles } from './styles/shoppingBagItems.style'
 const SelectedButton = FormButton
 const NotSelectedButton = FormOutlineButton
 
-export class BuyBooksProcess extends React.Component {
+export class BuyCheckout extends React.Component {
   state = {
     shippingMethod: 'standard'
   }

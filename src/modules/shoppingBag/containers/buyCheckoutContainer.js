@@ -4,10 +4,10 @@ import PropTypes from 'prop-types'
 import { User } from '../../../domain/User'
 import { updateOrder } from '../../../services/backend/orderService'
 import { payWithPayPal } from '../../../services/paypal'
-import { BuyBooksProcess } from '../components/buyBooksProcess'
+import { BuyBooksProcess } from '../components/buyCheckout'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 
-export class BuyCheckout extends Component {
+export class BuyCheckoutContainer extends Component {
   static propTypes = {
     isLoading: PropTypes.bool.isRequired,
     checkoutWithInPersonPayment: PropTypes.func.isRequired,

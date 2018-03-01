@@ -10,7 +10,7 @@ import {
   shoppingBagBuyingTotal
 } from '../../../redux/selectors/shoppingBagSelectors'
 import { createOrder } from '../../../services/backend/orderService'
-import { BuyCheckout } from './buyBooksProcessScreen'
+import { BuyCheckoutContainer } from './buyCheckoutContainer'
 
 class CheckoutContainer extends Component {
   static propTypes = {
@@ -92,7 +92,7 @@ class CheckoutContainer extends Component {
 
     if (screenType === 'BUY') {
       return (
-        <BuyCheckout
+        <BuyCheckoutContainer
           books={this.props.books}
           checkoutWithInPersonPayment={this.confirmInPersonCheckout}
           navigateBack={() => this.props.navigation.goBack()}
