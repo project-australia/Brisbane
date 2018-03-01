@@ -42,15 +42,19 @@ class CheckoutContainer extends Component {
 
   inPersonCheckout = async () => {
     const { screenType } = this.props.navigation.state.params
-    const { user, books } = this.props
+    const { books } = this.state
+    const { user } = this.props
     this.setState({ isLoading: true })
 
     try {
+      // FIXME: inside `generateOrder` should have case of creating selling order
+      // actually this scenario is failing
       await this.generateOrder(user, books, 'IN_PERSON', screenType)
       this.onCheckoutSuccess(screenType)
     } catch (error) {
       alert('in person checkout failed')
-      console.log('In Person checkout failed', JSON.stringify(error))
+      console.log('In Person checkout failed')
+      console.log(error)
     } finally {
       this.setState({ isLoading: false })
     }
