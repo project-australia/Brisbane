@@ -1,7 +1,7 @@
 import Axios from 'axios'
 import { throwResponseBody } from './index'
 
-const validShippingMethods = ['STANDARD', 'EXPEDITE', 'IN_PERSON']
+const validShippingMethods = ['STANDARD', 'EXPEDITE', 'IN_PERSON', 'SHIPPO']
 const validOrderStatus = [
   'WAITING_PAYMENT',
   'PAYMENT_CONFIRMED',

@@ -37,7 +37,7 @@ export const SellCheckout = props => {
           <FormOutlineButton
             secondary
             title={'Get a label to send it'}
-            onPress={() => alert('Under Development')}
+            onPress={props.inGetLabelCheckout}
           />
         </View>
       </ScrollView>
@@ -47,6 +47,7 @@ export const SellCheckout = props => {
 
 SellCheckout.propTypes = {
   inPersonCheckout: PropTypes.func.isRequired,
+  inGetLabelCheckout: PropTypes.func.isRequired,
   books: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired
 }
 

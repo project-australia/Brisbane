@@ -153,6 +153,8 @@ class CheckoutContainer extends Component {
           totalPrice={this.totalPrice}
           onCheckoutSuccess={this.onCheckoutSuccess}
           isLoading={this.state.isLoading}
+          user={this.props.user}
+          generateOrder={this.generateOrder}
         />
       )
     }
