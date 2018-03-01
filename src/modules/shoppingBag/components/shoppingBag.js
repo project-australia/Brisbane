@@ -17,7 +17,7 @@ export const ShoppingBag = props => {
           onPressMoreBooks={props.navigateToHome}
           checkoutButton={{
             title: 'Proceed to Checkout',
-            onPress: props.navigateToBuyBooksProcess
+            onPress: props.navigateToBuyCheckout
           }}
           totalPrice={props.totalBuyingPrice}
         />
@@ -29,7 +29,7 @@ export const ShoppingBag = props => {
           onPressMoreBooks={props.navigateToHome}
           checkoutButton={{
             title: 'Proceed to Checkout',
-            onPress: props.navigateToSellBooksProcess
+            onPress: props.navigateToSellCheckout
           }}
           totalPrice={props.totalSellingPrice}
         />
@@ -39,9 +39,6 @@ export const ShoppingBag = props => {
 }
 
 ShoppingBag.propTypes = {
-  navigateToSellConfirmation: PropTypes.func.isRequired,
-  searchBook: PropTypes.func.isRequired,
-  onScanPress: PropTypes.func.isRequired,
   navigateToHome: PropTypes.func.isRequired,
   booksToSell: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
   booksToBuy: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,

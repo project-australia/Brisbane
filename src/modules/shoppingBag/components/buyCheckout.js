@@ -15,10 +15,6 @@ const SelectedButton = FormButton
 const NotSelectedButton = FormOutlineButton
 
 export class BuyCheckout extends React.Component {
-  state = {
-    shippingMethod: 'standard'
-  }
-
   static navigationOptions = {
     title: 'Buy Books',
     header: null

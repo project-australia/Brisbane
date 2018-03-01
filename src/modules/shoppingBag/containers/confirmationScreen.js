@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { SellBooksProcess } from '../components/sellBooksProcess'
+import { SellCheckout } from '../components/sellCheckout'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 
+// TODO: Aonde essa tela ta sendo usada?
 class ConfirmationScreenContainer extends Component {
   static navigationOptions = {
     title: 'Sell Books',
@@ -17,7 +18,7 @@ class ConfirmationScreenContainer extends Component {
 
   render() {
     return (
-      <SellBooksProcess
+      <SellCheckout
         booksToSell={this.state.booksToSell}
         navigateBack={this.goBack}
         totalPrice={this.state.totalPrice}

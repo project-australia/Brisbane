@@ -6,23 +6,29 @@ import { User } from '../../../domain/User'
 import { removeAllFromShoppingBag } from '../../../redux/actions'
 import {
   buyingItems,
-  calculateTotalWeight,
-  shoppingBagBuyingTotal
+  calculateTotalWeight, sellingItems,
+  shoppingBagBuyingTotal, shoppingBagSellingTotal
 } from '../../../redux/selectors/shoppingBagSelectors'
 import { createOrder } from '../../../services/backend/orderService'
+import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { BuyCheckoutContainer } from './buyCheckoutContainer'
+import { SellCheckoutContainer } from './sellCheckoutContainer'
 
 class CheckoutContainer extends Component {
   static propTypes = {
+    buyingBooks: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
+    sellingBooks: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
     cleanShoppingBag: PropTypes.func.isRequired,
     navigation: PropTypes.object.isRequired,
     user: PropTypes.instanceOf(User),
-    total: PropTypes.number.isRequired,
-    totalWeight: PropTypes.number.isRequired
+    buyingTotal: PropTypes.number.isRequired,
+    sellingTotal: PropTypes.number.isRequired,
   }
 
   state = {
     isLoading: false,
+    books: [],
+    total: 0,
     shippingMethod: 'STANDARD',
     shippingPrice: 0
   }
@@ -73,18 +79,42 @@ class CheckoutContainer extends Component {
   }
 
   get totalPrice() {
-    return Number(this.props.total) + Number(this.state.shippingPrice)
+    return Number(this.state.total) + Number(this.state.shippingPrice)
+  }
+
+  get standardShippingPrice() {
+    return calculateTotalWeight(this.state.books) > 5 ? 9.99 : 6.99
   }
 
   changeToExpediteShippingMethod = () => {
     this.setState({
       shippingMethod: 'EXPEDITE',
-      shippingPrice: this.props.totalWeight > 5 ? 9.99 : 6.99
+      shippingPrice: this.standardShippingPrice
     })
   }
 
   changeToStandardShippingMethod = () => {
     this.setState({ shippingMethod: 'STANDARD', shippingPrice: 0 })
+  }
+
+  navigateBack = () => this.props.navigation.goBack()
+
+  componentDidMount() {
+    const { screenType } = this.props.navigation.state.params
+
+    if (screenType === 'BUY') {
+      this.setState({
+        books: this.props.buyingBooks,
+        total: this.props.buyingTotal
+      })
+    }
+
+    if (screenType === 'SELL') {
+      this.setState({
+        books: this.props.sellingBooks,
+        total: this.props.sellingTotal
+      })
+    }
   }
 
   render() {
@@ -93,9 +123,9 @@ class CheckoutContainer extends Component {
     if (screenType === 'BUY') {
       return (
         <BuyCheckoutContainer
-          books={this.props.books}
+          books={this.state.books}
           checkoutWithInPersonPayment={this.confirmInPersonCheckout}
-          navigateBack={() => this.props.navigation.goBack()}
+          navigateBack={this.navigateBack}
           selectExpediteShipping={this.changeToExpediteShippingMethod}
           selectStandardShipping={this.changeToStandardShippingMethod}
           totalPrice={this.totalPrice}
@@ -110,17 +140,30 @@ class CheckoutContainer extends Component {
       )
     }
 
+    if (screenType === 'SELL') {
+      return (
+        <SellCheckoutContainer
+          books={this.state.books}
+          checkoutWithInPersonPayment={this.confirmInPersonCheckout}
+          navigateBack={this.navigateBack}
+          totalPrice={this.totalPrice}
+          onCheckoutSuccess={this.onCheckoutSuccess}
+          isLoading={this.state.isLoading}
+        />
+      )
+    }
+
     return null
   }
 }
 
 const mapStateToProps = state => {
-  const books = buyingItems(state)
   return {
-    books,
+    buyingBooks: buyingItems(state),
+    sellingBooks: sellingItems(state),
     user: state.authentication.user,
-    total: shoppingBagBuyingTotal(state),
-    totalWeight: calculateTotalWeight(books)
+    buyingTotal: shoppingBagBuyingTotal(state),
+    sellingTotal: shoppingBagSellingTotal(state)
   }
 }
 

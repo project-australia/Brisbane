@@ -22,13 +22,9 @@ class ShoppingBagContainer extends Component {
         booksToBuy={this.props.booksToBuy}
         booksToSell={this.props.booksToSell}
         navigateBack={this.goBack}
-        navigateToCheckout={this.navigateToCheckout}
         navigateToHome={this.navigateToHome}
-        navigateToSellConfirmation={this.navigateToSellConfirmation}
-        navigateToSellBooksProcess={this.navigateToSellBooksProcess}
-        navigateToBuyBooksProcess={this.navigateToBuyBooksProcess}
-        searchBook={() => alert('search book')}
-        onScanPress={() => this.props.navigation.navigate('BookScanner', {})}
+        navigateToSellCheckout={this.navigateToSellCheckout}
+        navigateToBuyCheckout={this.navigateToBuyCheckout}
         totalBuyingPrice={this.props.totalBuyingPrice}
         totalSellingPrice={this.props.totalSellingPrice}
       />
@@ -36,12 +32,10 @@ class ShoppingBagContainer extends Component {
   }
 
   goBack = () => this.props.navigation.goBack()
-  navigateToSellConfirmation = () =>
-    this.props.navigation.navigate('ConfirmationScreen')
   navigateToHome = () => this.props.navigation.navigate('Home')
-  navigateToSellBooksProcess = () =>
-    this.props.navigation.navigate('SellBooksProcess')
-  navigateToBuyBooksProcess = () =>
+  navigateToSellCheckout = () =>
+    this.props.navigation.navigate('Checkout', { screenType: 'SELL' })
+  navigateToBuyCheckout = () =>
     this.props.navigation.navigate('Checkout', { screenType: 'BUY' })
 }
 

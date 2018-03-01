@@ -3,18 +3,18 @@ import PropTypes from 'prop-types'
 import { StyleSheet, ScrollView, Text, View } from 'react-native'
 
 import { Navbar } from '../../shared/components/navbar'
+import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { OrderSummaryList } from './orderSummaryList'
 import { MenuTitle } from '../../shared/components/menuTitle'
 import { FormOutlineButton } from '../../shared/components/buttons'
 
 import { styles } from './styles/shoppingBagItems.style'
 
-export const SellBooksProcess = props => {
-  const booksLength = props.books.length || 0
+export const SellCheckout = props => {
   return (
     <View>
       <Navbar
-        title={`Selling ${booksLength} Books`}
+        title={`Selling ${props.books.length} Books`}
         onBack={props.navigateBack}
       />
       <ScrollView>
@@ -31,7 +31,7 @@ export const SellBooksProcess = props => {
           <FormOutlineButton
             secondary
             title={'Delivery in Person'}
-            onPress={() => props.inPersonCheckout()}
+            onPress={props.inPersonCheckout}
           />
           <View style={{ height: 15 }} />
           <FormOutlineButton
@@ -45,6 +45,11 @@ export const SellBooksProcess = props => {
   )
 }
 
-SellBooksProcess.propTypes = {
-  inPersonCheckout: PropTypes.func.isRequired
+SellCheckout.propTypes = {
+  inPersonCheckout: PropTypes.func.isRequired,
+  books: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired
+}
+
+SellCheckout.defaultProps = {
+  books: []
 }
