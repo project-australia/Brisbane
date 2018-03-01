@@ -33,13 +33,9 @@ export class BuyBooksProcess extends React.Component {
     expediteShippingPrice: PropTypes.number.isRequired,
     selectExpediteShipping: PropTypes.func.isRequired,
     selectStandardShipping: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
     shippingMethod: PropTypes.oneOf(['STANDARD', 'EXPEDITE', 'IN_PERSON'])
-      .isRequired,
-    isLoading: PropTypes.bool.isRequired
-  }
-
-  static defaultProps = {
-    shippingMethod: 'STANDARD'
+      .isRequired
   }
 
   renderStandardShippingButton = () => {
@@ -104,7 +100,7 @@ export class BuyBooksProcess extends React.Component {
             <FormOutlineButton
               secondary
               title={'Pay localy'}
-              onPress={() => this.props.checkoutWithInPersonPayment()}
+              onPress={this.props.checkoutWithInPersonPayment}
             />
             <View style={{ height: 15 }} />
             <FormOutlineButton

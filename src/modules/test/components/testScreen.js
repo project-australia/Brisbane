@@ -44,8 +44,6 @@ export const TestScreen = props => {
       })}
       {navigateTo('BookList')}
       {navigateTo('ShoppingBag')}
-      {navigateTo('BuyBooksProcess')}
-      {navigateTo('SellBooksProcess')}
       {navigateTo('ClubMembership')}
       {openPayPalScreen()}
     </ScrollView>

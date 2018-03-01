@@ -42,7 +42,7 @@ class ShoppingBagContainer extends Component {
   navigateToSellBooksProcess = () =>
     this.props.navigation.navigate('SellBooksProcess')
   navigateToBuyBooksProcess = () =>
-    this.props.navigation.navigate('BuyBooksProcess')
+    this.props.navigation.navigate('Checkout', { screenType: 'BUY' })
 }
 
 ShoppingBagContainer.propTypes = {

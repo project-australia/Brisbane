@@ -5,8 +5,7 @@ import { authenticated } from '../modules/shared/decorators/authenticated'
 import { BookDetailsScreen } from '../modules/bookScan/containers/bookDetailsScreen'
 import { BookListScreen } from '../modules/bookList/containers/bookListScreen'
 import { BookScannerScreen } from '../modules/bookScan/containers/bookScannerScreen'
-import { BuyBooksProcessScreen } from '../modules/shoppingBag/containers/buyBooksProcessScreen'
-import { SellBooksProcessScreen } from '../modules/shoppingBag/containers/sellBooksProcessScreen'
+import { CheckoutScreen } from '../modules/shoppingBag/containers/checkoutScreen'
 import { ConfirmationScreen } from '../modules/shoppingBag/containers/confirmationScreen'
 import { ForgotPasswordScreen } from '../modules/authentication/containers/forgotPasswordScreen'
 import { HomeScreen } from '../modules/home/containers/homeScreen'
@@ -56,13 +55,9 @@ const routeConfigs = {
   ConfirmationScreen: {
     screen: ConfirmationScreen
   },
-  BuyBooksProcess: {
-    screen: authenticated(BuyBooksProcessScreen),
-    navigationOptions: { header: null }
-  },
-  SellBooksProcess: {
-    screen: authenticated(SellBooksProcessScreen),
-    navigationOptions: { header: null }
+  Checkout: {
+    screen: authenticated(CheckoutScreen),
+    navigationOptions: CheckoutScreen.navigationOptions
   },
   BookList: {
     screen: BookListScreen

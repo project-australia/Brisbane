@@ -20,11 +20,6 @@ class SellBooksProcessContainer extends Component {
     books: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired
   }
 
-  static navigationOptions = {
-    title: 'Sell Books',
-    header: null
-  }
-
   state = {
     isLoading: false,
     shippingMethod: 'IN_PERSON'
