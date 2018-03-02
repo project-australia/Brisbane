@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import { View, Alert } from 'react-native'
 import { connect } from 'react-redux'
-import { Alert } from 'react-native'
 import PropTypes from 'prop-types'
 
 import { SellingBookAmount } from '../components/sellingBooks'
 import { shoppingBagSellingQuantityBooks } from '../../../redux/selectors/shoppingBagSelectors'
+import { ModalSellingHome } from '../../shared/components/modals/modalSellingHome'
 
 export class SellingBooksContainer extends Component {
   static propTypes = {
@@ -12,6 +13,8 @@ export class SellingBooksContainer extends Component {
     navigateToScan: PropTypes.func.isRequired,
     navigateToSellBook: PropTypes.func.isRequired
   }
+
+  state = { isModalOpen: false }
 
   onPress = () => {
     Alert.alert(
@@ -32,12 +35,38 @@ export class SellingBooksContainer extends Component {
     )
   }
 
+  goScanBook = () => {
+    this.hideModal()
+    this.props.navigateToScan()
+  }
+
+  openModal = () => this.setState({isModalOpen: true})
+
+  searchByIsbn = (isbn) => {
+    this.hideModal()
+    this.props.navigateToSellBook(isbn)
+  }
+
+  hideModal = async () => this.setState({ isModalOpen: false })
+
   render() {
+    const { isModalOpen } = this.state
+
     return (
-      <SellingBookAmount
-        sellingAmount={this.props.total}
-        onAddBookPressed={this.onPress}
-      />
+      <View>
+        <SellingBookAmount
+          sellingAmount={this.props.total}
+          onAddBookPressed={this.openModal}
+        />
+        <ModalSellingHome
+          visible={isModalOpen}
+          placeholder={'Type book ISBN'}
+          title={'Sell your Book'}
+          onConfirm={isbn => this.searchByIsbn(isbn)}
+          onDismiss={this.hideModal}
+          goScanBook={this.goScanBook}
+        />
+      </View>
     )
   }
 }

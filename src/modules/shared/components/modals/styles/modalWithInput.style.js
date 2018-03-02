@@ -29,5 +29,12 @@ export const styles = StyleSheet.create({
   },
   button: {
     flex: 1
+  },
+  text: {
+    ...Fonts.style.description,
+    color: Colors.gray700,
+    marginBottom: Metrics.baseMargin,
+    marginHorizontal: Metrics.section,
+    textAlign: 'center'
   }
 })
