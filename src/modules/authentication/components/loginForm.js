@@ -19,10 +19,9 @@ export class LoginForm extends Component {
     }).isRequired
   }
 
-  // FIXME: Test data only
   state = {
-    email: 'eduardomoroni@gmail.com',
-    password: '123123',
+    email: '',
+    password: '',
     loading: false
   }
 

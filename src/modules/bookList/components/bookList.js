@@ -28,7 +28,7 @@ export const BookList = ({
   )
 }
 
-BookListRow.propTypes = {
+BookList.propTypes = {
   list: PropTypes.arrayOf(book).isRequired,
   onBuyPressed: PropTypes.func.isRequired,
   onRentPressed: PropTypes.func.isRequired
