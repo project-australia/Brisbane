@@ -6,7 +6,6 @@ import { BookDetailsScreen } from '../modules/bookScan/containers/bookDetailsScr
 import { BookListScreen } from '../modules/bookList/containers/bookListScreen'
 import { BookScannerScreen } from '../modules/bookScan/containers/bookScannerScreen'
 import { CheckoutScreen } from '../modules/shoppingBag/containers/checkoutScreen'
-import { ConfirmationScreen } from '../modules/shoppingBag/containers/confirmationScreen'
 import { ForgotPasswordScreen } from '../modules/authentication/containers/forgotPasswordScreen'
 import { HomeScreen } from '../modules/home/containers/homeScreen'
 import { NetworkMembersScreen } from '../modules/account/containers/networkMembersScreen'
@@ -46,9 +45,6 @@ const routeConfigs = {
   },
   ShoppingBag: {
     screen: ShoppingBagScreen
-  },
-  ConfirmationScreen: {
-    screen: ConfirmationScreen
   },
   Checkout: {
     screen: authenticated(CheckoutScreen),
