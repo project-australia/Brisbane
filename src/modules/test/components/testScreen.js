@@ -30,11 +30,10 @@ export const TestScreen = props => {
 
   return (
     <ScrollView>
+      {navigateTo('Home')}
       {navigateTo('SignIn')}
       {navigateTo('SignUp')}
-      {navigateTo('Home')}
       {navigateTo('Profile')}
-      {navigateTo('ManageAccount')}
       {navigateTo('BookScanner')}
       {navigateTo('ShoppingBag')}
       {navigateTo('ConfirmationScreen')}

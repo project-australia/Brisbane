@@ -9,7 +9,6 @@ import { CheckoutScreen } from '../modules/shoppingBag/containers/checkoutScreen
 import { ConfirmationScreen } from '../modules/shoppingBag/containers/confirmationScreen'
 import { ForgotPasswordScreen } from '../modules/authentication/containers/forgotPasswordScreen'
 import { HomeScreen } from '../modules/home/containers/homeScreen'
-import { ManageAccountScreen } from '../modules/account/containers/manageAccountScreen'
 import { NetworkMembersScreen } from '../modules/account/containers/networkMembersScreen'
 import { ProfileScreen } from '../modules/account/containers/profileScreen'
 import { ShoppingBagScreen } from '../modules/shoppingBag/containers/shoppingBagScreen'
@@ -37,10 +36,6 @@ const routeConfigs = {
   },
   Profile: {
     screen: authenticated(ProfileScreen),
-    navigationOptions: { header: null }
-  },
-  ManageAccount: {
-    screen: authenticated(ManageAccountScreen),
     navigationOptions: { header: null }
   },
   BookScanner: {
