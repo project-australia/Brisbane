@@ -16,25 +16,6 @@ export class SellingBooksContainer extends Component {
 
   state = { isModalOpen: false }
 
-  onPress = () => {
-    Alert.alert(
-      'Selling book',
-      'What do you prefer?',
-      [
-        {
-          text: 'Scan book ISBN',
-          onPress: this.props.navigateToScan
-        },
-        {
-          text: 'Type book ISBN',
-          onPress: () => this.props.navigateToSellBook('978-1451639612') // TODO: Precisa
-          // aparecer um modal para receber esse valor e depois navegar para a tela
-        }
-      ],
-      { cancelable: false }
-    )
-  }
-
   goScanBook = () => {
     this.hideModal()
     this.props.navigateToScan()
