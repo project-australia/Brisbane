@@ -7,7 +7,7 @@ import { styles } from './styles/profileItem.style'
 import { RowWithIconButton } from '../../shared/components/rowWithIconButton'
 
 export const ProfileRedirectItem = ({ title, data, onPress }) =>
-  data && data.length !== '' ? (
+  (
     <View style={styles.wrap}>
       <MenuTitle title={title} />
       <RowWithIconButton
@@ -16,4 +16,4 @@ export const ProfileRedirectItem = ({ title, data, onPress }) =>
         onPress={onPress}
       />
     </View>
-  ) : null
+  )

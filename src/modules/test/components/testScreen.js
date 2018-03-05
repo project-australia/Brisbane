@@ -98,6 +98,8 @@ class TestScreenContainer extends React.Component {
         {this.navigateTo('ShoppingBag')}
         {this.navigateTo('ShoppingBag')}
         {this.navigateTo('ClubMembership')}
+        {this.navigateTo('NetworkMembers')}
+        {this.navigateTo('MyOrders')}
         {this.navigateTo('BookList', {
           typeList: 'featured'
         })}

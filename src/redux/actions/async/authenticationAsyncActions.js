@@ -3,7 +3,9 @@ import Axios from 'axios'
 import {
   alertAction,
   updateUserProfile,
-  successRetrievedPassword
+  successRetrievedPassword,
+  updateUserNetworking,
+  updateUserOrders
 } from '../sync/authenticationActions'
 import {
   sendPasswordResetEmail,
@@ -76,6 +78,38 @@ export function requestWithdrawAction(id, walletWithPaypalAccount) {
   }
 }
 
+export function getNetworking(id) {
+  return async dispatch => {
+    try {
+      // const response = await Axios.get(
+      //   `/users/${id}/requestwithdraw`,
+      //   walletWithPaypalAccount
+      // )
+      const network = ['user', 'user1']
+      dispatch(updateUserNetworking(network))
+    } catch (error) {
+      dispatch(alertAction(error))
+    }
+  }
+}
+
+export function getOrders(id) {
+  return async dispatch => {
+    try {
+      // const response = await Axios.get(
+      //   `/users/${id}/requestwithdraw`,
+      //   walletWithPaypalAccount
+      // )
+      const order = [
+        {id: 1, date: new Date(), books: [{id: 1, name: 'book-A'}, {id: 2, name: 'book-A'}]},
+        {id: 2, date: new Date(), books: [{id: 1, name: 'book-A'}, {id: 2, name: 'book-A'}]}
+      ]
+      dispatch(updateUserOrders(order))
+    } catch (error) {
+      dispatch(alertAction(error))
+    }
+  }
+}
 export function forgotPasswordAction(email) {
   return async dispatch => {
     try {

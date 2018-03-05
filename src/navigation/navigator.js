@@ -9,6 +9,7 @@ import { CheckoutScreen } from '../modules/shoppingBag/containers/checkoutScreen
 import { ForgotPasswordScreen } from '../modules/authentication/containers/forgotPasswordScreen'
 import { HomeScreen } from '../modules/home/containers/homeScreen'
 import { NetworkMembersScreen } from '../modules/account/containers/networkMembersScreen'
+import { MyOrdersScreen } from '../modules/account/containers/myOrderScreen'
 import { ProfileScreen } from '../modules/account/containers/profileScreen'
 import { ShoppingBagScreen } from '../modules/shoppingBag/containers/shoppingBagScreen'
 import { SignInScreen } from '../modules/authentication/containers/signInScreen'
@@ -55,6 +56,9 @@ const routeConfigs = {
   },
   NetworkMembers: {
     screen: NetworkMembersScreen
+  },
+  MyOrders: {
+    screen: MyOrdersScreen
   },
   ClubMembership: {
     screen: authenticated(ClubMembershipScreen),

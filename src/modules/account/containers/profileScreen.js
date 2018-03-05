@@ -44,7 +44,7 @@ class ProfileContainer extends Component {
         user={this.props.user}
         onLogoutPress={this.props.logOut}
         navigateToNetwork={this.navigateToNetwork}
-        navigateToWallet={this.navigateToWallet}
+        navigateToMyOrders={this.navigateToMyOrders}
         showEditModal={this.showEditModal}
         isEditModalOpen={this.state.isEditModalOpen}
         modalTitle={this.state.modalTitle}
@@ -55,11 +55,8 @@ class ProfileContainer extends Component {
   }
 
   goBack = () => this.props.navigation.goBack()
-  navigateToNetwork = () =>
-    this.props.navigation.navigate('NetworkMembers', {
-      network: this.state.user.network
-    })
-  navigateToWallet = () => alert('navigate to my wallet')
+  navigateToNetwork = () => this.props.navigation.navigate('NetworkMembers', {})
+  navigateToMyOrders = () => this.props.navigation.navigate('MyOrders', {})
 }
 
 const mapDispatchToProps = dispatch => ({

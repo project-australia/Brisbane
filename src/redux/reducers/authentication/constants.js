@@ -20,7 +20,9 @@ export const NOT_LOGGED_IN = {
     ballance: null,
     status: null,
     paypalAccount: null
-  }
+  },
+  orders: [],
+  network: []
 }
 
 export const NO_ALERTS = { showAlert: false, message: '' }
