@@ -1,4 +1,5 @@
 import React from 'react'
+import { BackHandler } from 'react-native'
 import { Provider } from 'react-redux'
 import { Navigator } from './navigation'
 import {
@@ -12,6 +13,19 @@ import {
 import SplashScreen from 'react-native-splash-screen'
 
 export class App extends React.Component {
+  handleBackButtonClick = () => {
+    this.props.navigation.goBack()
+    return true
+  }
+
+  componentWillMount = () => {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick)
+  }
+
+  componentWillUnmount = () => {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick)
+  }
+
   async componentDidMount() {
     SplashScreen.hide()
     const [recently, featured] = await Promise.all([
