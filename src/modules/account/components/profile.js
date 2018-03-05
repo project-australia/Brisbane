@@ -7,7 +7,6 @@ import { Navbar } from '../../shared/components/navbar'
 import { ProfileItem } from './profileItem'
 import { ProfileItemAddress } from './profileItemAddress'
 import { ScreenTitleAndSubtitle } from './screenTitleAndSubtitle'
-import { ProfileRedirectItem } from './profileRedirectItem'
 import { ProfileButtonItem } from './profileButtonItem'
 
 import { styles } from './styles/profile.style'
@@ -23,15 +22,12 @@ const getSubscriptionText = subType => {
   }
 }
 
-const setUserNetworkNumber = network =>
-  network && network.length > 0 && `${network.length} registered members`
-
 export const Profile = ({
   onBackPress,
   user,
   modalTitle,
   navigateToNetwork,
-  navigateToWallet,
+  navigateToMyOrders,
   onLogoutPress,
   showEditModal,
   isEditModalOpen,
@@ -75,16 +71,17 @@ export const Profile = ({
           data={user.address}
           emptyDataLabel={'Add address'}
         />
-        <ProfileRedirectItem
-          title={'Network'}
-          data={setUserNetworkNumber(user.network)}
-          onPress={navigateToNetwork}
+        <ProfileButtonItem
+          secondary
+          title={'My Orders'}
+          buttonTitle={'View my Orders'}
+          onPress={navigateToMyOrders}
         />
         <ProfileButtonItem
           secondary
-          title={'My Wallet'}
-          buttonTitle={'View my Wallet'}
-          onPress={navigateToWallet}
+          title={'My Network'}
+          buttonTitle={'View my Network'}
+          onPress={navigateToNetwork}
         />
         <ProfileButtonItem buttonTitle={'Logout'} onPress={onLogoutPress} />
       </ScrollView>

@@ -2,28 +2,35 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { NetworkMembers } from '../components/networkMembers'
+import { getNetworking } from '../../../redux/actions/async/authenticationAsyncActions'
 
 class NetworkMembersContainer extends Component {
   static navigationOptions = {
-    title: 'Network members',
+    title: 'Network Members',
     header: null
   }
-
-  state = {
-    network: ['Arnold Schwazenegger', 'Adam Smith', 'Hebert Porto']
+  componentDidMount() {
+    this.props.getNetworking(this.props.userId)
   }
 
   render() {
     return (
-      <NetworkMembers network={this.state.network} navigateBack={this.goBack} />
+      <NetworkMembers network={this.props.network || []} navigateBack={this.goBack} />
     )
   }
 
   goBack = () => this.props.navigation.goBack()
 }
 
-const mapStateToProps = state => ({ items: state.books })
+const mapStateToProps = ({ authentication: { user } }) => ({
+  network: user.network,
+  userId: user.id
+})
 
-export const NetworkMembersScreen = connect(mapStateToProps)(
+const mapDispatchToProps = dispatch => ({
+  getNetworking: id => dispatch(getNetworking(id))
+})
+
+export const NetworkMembersScreen = connect(mapStateToProps, mapDispatchToProps)(
   NetworkMembersContainer
 )
