@@ -63,7 +63,6 @@ export class BuyCheckoutContainer extends Component {
     console.log(this.props)
     try {
       const order = await this.generateBuyOrder()
-      console.log('oi')
       await payWithPayPal(
         this.props.totalPrice,
         'Buying books',
@@ -85,7 +84,7 @@ export class BuyCheckoutContainer extends Component {
         selectExpediteShipping={this.props.selectExpediteShipping}
         selectStandardShipping={this.props.selectStandardShipping}
         shippingMethod={this.props.shippingMethod}
-        expediteShippingPrice={this.props.shippingPrice}
+        expediteShippingPrice={this.props.expediteShippingPrice}
         totalPrice={this.props.totalPrice}
       />
     )

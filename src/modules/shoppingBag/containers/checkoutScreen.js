@@ -146,6 +146,7 @@ class CheckoutContainer extends Component {
           shippingPrice={this.state.shippingPrice}
           shippingMethod={this.state.shippingMethod}
           navigation={this.props.navigation}
+          expediteShippingPrice={this.standardShippingPrice}
           user={this.props.user}
           generateOrder={this.generateOrder}
         />
