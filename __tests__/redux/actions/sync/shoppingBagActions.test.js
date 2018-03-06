@@ -1,3 +1,4 @@
+import { cleanWholeShoppingBag } from '../../../../src/redux/actions/sync'
 import {
   addToShoppingBag,
   buyBook,
@@ -5,6 +6,7 @@ import {
   removeFromShoppingBag,
   removeAllFromShoppingBag
 } from '../../../../src/redux/actions/sync/shoppingBagActions'
+import { CLEAN_SHOPPING_BAG } from '../../../../src/redux/types'
 import {
   ADD_TO_SHOPPING_BAG,
   REMOVE_FROM_SHOPPING_BAG,
@@ -58,6 +60,12 @@ describe('Shopping bag sync actions', () => {
   })
 
   describe('remove items from shopping bag', () => {
+    it('should create an action to clean WHOLE shopping bag', () => {
+      const expectedAction = { type: CLEAN_SHOPPING_BAG }
+      const action = cleanWholeShoppingBag()
+      expect(action).toEqual(expectedAction)
+    })
+
     it('should create and action to remove all books from shopping bag for a given type', () => {
       const expectedAction = {
         type: REMOVE_ALL_ITEMS_FOR_TYPE,

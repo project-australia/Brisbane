@@ -1,4 +1,5 @@
 import { removeAllFromShoppingBag } from '../../../src/redux/actions'
+import { cleanWholeShoppingBag } from '../../../src/redux/actions/sync'
 import {
   addToShoppingBag,
   removeFromShoppingBag
@@ -71,6 +72,18 @@ describe('Shopping bag reducer', () => {
 
       state = shoppingBagReducer(state, removeFromShoppingBag(rentingItem))
       expect(state).toEqual(secondState)
+    })
+
+    it('should clean shopping bag', async () => {
+      const initialState = [buyingItem, rentingItem]
+      const expectedState = EMPTY_SHOPPING_BAG
+
+      const state = shoppingBagReducer(
+        initialState,
+        cleanWholeShoppingBag()
+      )
+
+      expect(state).toEqual(expectedState)
     })
 
     it('should remove all items from a type', () => {
