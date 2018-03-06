@@ -41,10 +41,10 @@ class BookScannerContainer extends Component {
     }
   }
 
-  onError = err => {
+  onError = () => {
     Alert.alert(
       'Searching Book',
-      err.message,
+      'No book match with your search',
       [{ text: 'Ok', onPress: () => this.goBack() }],
       {
         onDismiss: () => this.goBack()
