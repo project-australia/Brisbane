@@ -19,6 +19,7 @@ class ClubMembershipContainer extends Component {
       title: '10% More Club',
       buttonText: 'Yes ! I Want this one FREE',
       club: 'NONE',
+      nextClub: 'TEN',
       price: 0.99
     }
   }
@@ -30,6 +31,7 @@ class ClubMembershipContainer extends Component {
       buttonText: 'Yes ! I Want this one $ 8,99/yr',
       user: this.props.user,
       club: 'TEN',
+      nextClub: 'TWENTY',
       price: 8.99
     }
   }
@@ -46,6 +48,7 @@ class ClubMembershipContainer extends Component {
   }
 
   goBack = () => this.props.navigation.goBack()
+  goHome = () => this.props.navigation.navigate('Home')
 
   clubProps = club => {
     switch (club) {
@@ -67,6 +70,7 @@ class ClubMembershipContainer extends Component {
         updateProfile={this.props.updateProfile}
         user={this.props.user}
         goBack={this.goBack}
+        goHome={this.goHome}
         {...props}
       />
     )

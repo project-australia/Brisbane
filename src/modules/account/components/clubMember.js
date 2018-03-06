@@ -10,6 +10,7 @@ export class ClubMember extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     goBack: PropTypes.func.isRequired,
+    goHome: PropTypes.func.isRequired,
     logOut: PropTypes.func.isRequired,
     updateProfile: PropTypes.func.isRequired,
     buttonText: PropTypes.string.isRequired,
@@ -36,19 +37,23 @@ export class ClubMember extends Component {
   }
 
   onClubJoinSuccess = async () => {
-    const { user, club, updateProfile, navigate } = this.props
-    await updateProfile(user.id, { club })
-    this.alert('Successfully registered', navigate('Home'))
+    const { user, nextClub, updateProfile } = this.props
+    try {
+      await updateProfile(user.id, { club: nextClub })
+      this.successAlert('Successfully registered')
+    } catch (err) {
+      console.log('error on join Club')
+    }
   }
 
-  alert = (msg, press = () => {}) =>
+  successAlert = (msg) =>
     Alert.alert(
-      this.props.title,
+      'Thanks for Join Club More',
       msg,
       [
         {
           text: 'Ok',
-          onPress: () => press
+          onPress: this.props.goHome
         }
       ],
       { cancelable: false }
