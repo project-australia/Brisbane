@@ -50,6 +50,7 @@ class CheckoutContainer extends Component {
       // FIXME: inside `generateOrder` should have case of creating selling order
       // actually this scenario is failing
       await this.generateOrder(user, books, 'IN_PERSON', screenType)
+      alert('Instructions sent by email.')
       this.onCheckoutSuccess(screenType)
     } catch (error) {
       alert('in person checkout failed')

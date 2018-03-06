@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import React from 'react'
 import { TextInput, View } from 'react-native'
 import PropTypes from 'prop-types'
@@ -26,7 +27,7 @@ export const BookSearch = props => (
       underlineColorAndroid={'transparent'}
       value={props.value}
     />
-    <Touchable
+    {!_.isEmpty(props.value) && <Touchable
       borderless
       onPress={props.onSubmit}
       style={styles.iconWrap}
@@ -37,6 +38,7 @@ export const BookSearch = props => (
         color={Colors.gray700}
       />
     </Touchable>
+    }
   </View>
 )
 
