@@ -9,6 +9,7 @@ import {
 } from '../../../redux/selectors/shoppingBagSelectors'
 import { ShoppingBag } from '../components/shoppingBag'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
+import { cleanWholeShoppingBag } from '../../../redux/actions'
 
 class ShoppingBagContainer extends Component {
   static navigationOptions = {
@@ -19,8 +20,8 @@ class ShoppingBagContainer extends Component {
   state = {
     navRightIcons: [
       {
-        name: 'cart-outline',
-        onPress: () => alert('tem que limpar o carrinho')
+        name: 'cart-off',
+        onPress: () => this.props.emptyShoppingBag()
       }
     ]
   }
@@ -61,5 +62,8 @@ const mapStateToProps = state => ({
   totalBuyingPrice: shoppingBagBuyingTotal(state),
   totalSellingPrice: shoppingBagSellingTotal(state)
 })
+const mapDispatchToProps = dispatch => ({
+  emptyShoppingBag: () => dispatch(cleanWholeShoppingBag())
+})
 
-export const ShoppingBagScreen = connect(mapStateToProps)(ShoppingBagContainer)
+export const ShoppingBagScreen = connect(mapStateToProps, mapDispatchToProps)(ShoppingBagContainer)
