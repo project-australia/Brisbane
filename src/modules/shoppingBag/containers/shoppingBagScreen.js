@@ -16,6 +16,15 @@ class ShoppingBagContainer extends Component {
     header: null
   }
 
+  state = {
+    navRightIcons: [
+      {
+        name: 'cart-outline',
+        onPress: () => alert('tem que limpar o carrinho')
+      }
+    ]
+  }
+
   render() {
     return (
       <ShoppingBag
@@ -27,6 +36,7 @@ class ShoppingBagContainer extends Component {
         navigateToBuyCheckout={this.navigateToBuyCheckout}
         totalBuyingPrice={this.props.totalBuyingPrice}
         totalSellingPrice={this.props.totalSellingPrice}
+        navRightIcons={this.state.navRightIcons}
       />
     )
   }
