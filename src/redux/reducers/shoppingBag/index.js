@@ -9,7 +9,7 @@ import {
   addShoppingBagItem,
   removeShoppingBagItem,
   removeAllItemsFromType,
-  cleanShoppingBag,
+  cleanShoppingBag
 } from './handlers'
 
 const actionHandlers = {
