@@ -28,7 +28,7 @@ export class SellingBooksContainer extends Component {
     this.props.navigateToSellBook(isbn)
   }
 
-  hideModal = async () => this.setState({ isModalOpen: false })
+  hideModal = () => this.setState({ isModalOpen: false })
 
   render() {
     const { isModalOpen } = this.state

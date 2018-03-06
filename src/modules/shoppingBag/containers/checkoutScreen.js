@@ -64,7 +64,12 @@ class CheckoutContainer extends Component {
   }
 
   onCheckoutSuccess = () => {
-    this.props.cleanShoppingBag(this.props.navigation.state.params.screenType)
+    if (this.props.navigation.state.params.screenType === 'BUY') {
+      this.props.cleanShoppingBag('BUY')
+      this.props.cleanShoppingBag('RENT')
+    } else {
+      this.props.cleanShoppingBag('SELL')
+    }
     this.props.navigation.navigate('Home')
   }
 
