@@ -18,10 +18,9 @@ export const BookSearch = props => (
       />
     </View>
     <TextInput
-      keyboardType={'numeric'}
       onChangeText={props.onChangeText}
       onSubmitEditing={props.onSubmit}
-      placeholder="Search book or scan barcode"
+      placeholder="Type author, name or ISBN"
       returnKeyType={'search'}
       style={styles.searchInput}
       underlineColorAndroid={'transparent'}

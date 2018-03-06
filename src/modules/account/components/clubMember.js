@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View, ScrollView, Text, Alert } from 'react-native'
 import { Navbar } from '../../shared/components/navbar'
-import { SolidButton } from '../../shared/components/buttons'
+import { FormOutlineButton } from '../../shared/components/buttons'
 import { payWithPayPal } from '../../../services/paypal'
 import { styles } from './styles/clubMember.style'
 
@@ -25,27 +25,32 @@ export class ClubMember extends Component {
 
   show10club = () => {
     return (
-      <ScrollView>
-        <Text style={styles.text}>• Members get 10% off of rentals and purchases as well as get 10% more on top of our buying price.</Text>
-        <Text style={styles.text}>• Can view their activity - What they bought or rented</Text>
+      <ScrollView style={styles.wrapper}>
+        <Text style={styles.text}>• Get 10% More for books you sell</Text>
+        <Text style={styles.text}>• Get 10% Off of purchases</Text>
+        <Text style={styles.text}>• Get 10% Off of rentals</Text>
       </ScrollView>
     )
   }
 
   show20club = () => {
     return (
-      <ScrollView>
-        <Text style={styles.text}>• Members get 20% off of rentals and purchases as well as get 20% more on top of our buying price.</Text>
-        <Text style={styles.text}>• Can view their activity - What they bought or rented</Text>
+      <ScrollView style={styles.wrapper}>
+        <Text style={styles.text}>• Get 20% More for books you sell</Text>
+        <Text style={styles.text}>• Get 20% Off of purchases</Text>
+        <Text style={styles.text}>• Get 20% Off of rentals</Text>
       </ScrollView>
     )
   }
 
   showRep = () => {
     return (
-      <ScrollView>
-        <Text style={styles.text}>• Members get 10% off of rentals and purchases as well as get 10% more on top of our buying price.</Text>
-        <Text style={styles.text}>• Can view their activity - What they bought or rented</Text>
+      <ScrollView style={styles.wrapper}>
+        <Text style={styles.text}>• Just sign people up to the app (friends, classmates, coworkes, teammates, etc.)</Text>
+        <Text style={styles.text}>• When they buy, sell or rent you get a commiission</Text>
+        <Text style={styles.text}>• If they become a rep too, you even get a commission from the people they sign up</Text>
+        <Text style={styles.text}>• The more you sign up the better!</Text>
+        <Text style={styles.text}>• It's so easy!</Text>
       </ScrollView>
     )
   }
@@ -61,14 +66,23 @@ export class ClubMember extends Component {
         {this.props.club === 'NONE' && this.show10club()}
         {this.props.club === 'TEN' && this.show20club()}
         {this.props.club === 'TWENTY' && this.showRep()}
-        {this.props.club !== 'TWENTY' && <SolidButton
+        {this.props.club !== 'TWENTY' && <FormOutlineButton
           title={this.props.buttonText}
           onPress={this.checkoutWithPaypal}
-        />}
+          style={styles.input}
+        />
+        }
       </View>
     )
   }
-
+//   <View style={styles.buttonGroup}>
+//   <FlatButton
+//     secondary
+//     containerStyle={styles.button}
+//     title={this.props.buttonText}
+//     onPress={this.checkoutWithPaypal}
+//   />
+// </View>
   checkoutWithPaypal = async () => {
     try {
       await payWithPayPal(
