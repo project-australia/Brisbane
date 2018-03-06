@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { BackHandler } from 'react-native'
 import { connect } from 'react-redux'
 import { Home } from '../components/home'
 
@@ -12,6 +13,15 @@ class HomeContainer extends Component {
   static propTypes = {
     displayName: PropTypes.string,
     navigation: PropTypes.object.isRequired
+  }
+
+  handleBackButtonClick = () => {
+    this.props.navigation.goBack()
+    return true
+  }
+
+  componentWillMount = () => {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick)
   }
 
   navigateTo = (screen, param = {}) => () =>
