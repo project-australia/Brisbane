@@ -23,89 +23,19 @@ export class ClubMember extends Component {
     header: null
   }
 
-  show10club = () => {
-    return (
-      <ScrollView style={styles.wrapper}>
-        <Text style={styles.text}>• Get 10% More for books you sell</Text>
-        <Text style={styles.text}>• Get 10% Off of purchases</Text>
-        <Text style={styles.text}>• Get 10% Off of rentals</Text>
-      </ScrollView>
-    )
-  }
-
-  show20club = () => {
-    return (
-      <ScrollView style={styles.wrapper}>
-        <Text style={styles.text}>• Get 20% More for books you sell</Text>
-        <Text style={styles.text}>• Get 20% Off of purchases</Text>
-        <Text style={styles.text}>• Get 20% Off of rentals</Text>
-      </ScrollView>
-    )
-  }
-
-  showRep = () => {
-    return (
-      <ScrollView style={styles.wrapper}>
-        <Text style={styles.text}>
-          • Just sign people up to the app (friends, classmates, coworkes,
-          teammates, etc.)
-        </Text>
-        <Text style={styles.text}>
-          • When they buy, sell or rent you get a commiission
-        </Text>
-        <Text style={styles.text}>
-          • If they become a rep too, you even get a commission from the people
-          they sign up
-        </Text>
-        <Text style={styles.text}>• The more you sign up the better!</Text>
-        <Text style={styles.text}>• It's so easy!</Text>
-      </ScrollView>
-    )
-  }
-
-  render() {
-    return (
-      <View style={{ flex: 1 }}>
-        <Navbar
-          title={this.props.title}
-          onBack={this.props.goBack}
-          ignoreAndroidStatusBar
-        />
-        {this.props.club === 'NONE' && this.show10club()}
-        {this.props.club === 'TEN' && this.show20club()}
-        {this.props.club === 'TWENTY' && this.showRep()}
-        {this.props.club !== 'TWENTY' && (
-          <FormOutlineButton
-            title={this.props.buttonText}
-            onPress={this.checkoutWithPaypal}
-            style={styles.input}
-          />
-        )}
-      </View>
-    )
-  }
-  //   <View style={styles.buttonGroup}>
-  //   <FlatButton
-  //     secondary
-  //     containerStyle={styles.button}
-  //     title={this.props.buttonText}
-  //     onPress={this.checkoutWithPaypal}
-  //   />
-  // </View>
   checkoutWithPaypal = async () => {
     try {
       await payWithPayPal(
         this.props.price,
         this.props.title,
-        this.onPayPalOnSuccess
+        this.onClubJoinSuccess
       )
     } catch (error) {
-      console.log('Paypal checkout failed', JSON.stringify(error))
       this.alert('Sorry. Request Failed')
     }
   }
 
-  onPayPalOnSuccess = async paypalResponse => {
+  onClubJoinSuccess = async () => {
     const { user, club, updateProfile, navigate } = this.props
     await updateProfile(user.id, { club })
     this.alert('Successfully registered', navigate('Home'))
@@ -123,4 +53,77 @@ export class ClubMember extends Component {
       ],
       { cancelable: false }
     )
+
+  show10club = () => {
+    return (
+      <ScrollView style={styles.wrapper}>
+        <Text style={styles.text}>• Get 10% More for books you sell</Text>
+        <Text style={styles.text}>• Get 10% Off of purchases</Text>
+        <Text style={styles.text}>• Get 10% Off of rentals</Text>
+        <FormOutlineButton
+          title={this.props.buttonText}
+          onPress={this.onClubJoinSuccess}
+          style={styles.input}
+        />
+      </ScrollView>
+    )
+  }
+
+  show20club = () => {
+    return (
+      <ScrollView style={styles.wrapper}>
+        <Text style={styles.text}>• Get 20% More for books you sell</Text>
+        <Text style={styles.text}>• Get 20% Off of purchases</Text>
+        <Text style={styles.text}>• Get 20% Off of rentals</Text>
+        <FormOutlineButton
+          title={this.props.buttonText}
+          onPress={this.checkoutWithPaypal}
+          style={styles.input}
+        />
+      </ScrollView>
+    )
+  }
+
+  showRep = () => {
+    return (
+      <ScrollView style={styles.wrapper}>
+        <Text style={styles.text}>
+          • Just sign people up to the app (friends, classmates, coworkes,
+          teammates, etc.)
+        </Text>
+        <Text style={styles.text}>
+          • When they buy, sell or rent you get a commission
+        </Text>
+        <Text style={styles.text}>
+          • If they become a rep too, you even get a commission from the people
+          they sign up
+        </Text>
+        <Text style={styles.text}>• The more you sign up the better!</Text>
+        <Text style={styles.text}>• It's so easy!</Text>
+      </ScrollView>
+    )
+  }
+
+  renderClubComponent = () => {
+    if (this.props.club === 'NONE') {
+      return this.show10club()
+    } else if (this.props.club === 'TEN') {
+      return this.show20club()
+    } else {
+      return this.showRep()
+    }
+  }
+
+  render() {
+    return (
+      <View style={{ flex: 1 }}>
+        <Navbar
+          title={this.props.title}
+          onBack={this.props.goBack}
+          ignoreAndroidStatusBar
+        />
+        {this.renderClubComponent()}
+      </View>
+    )
+  }
 }
