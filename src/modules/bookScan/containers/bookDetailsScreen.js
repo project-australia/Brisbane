@@ -78,7 +78,7 @@ class BookScannerContainer extends Component {
     return (
       book && (
         <BookDetails
-          membershipStatus={this.state.club}
+          membershipStatus={this.props.userClub}
           book={book}
           navigateBack={this.goBack}
           navigateToShoppingBag={this.navigateToShoppingBag}
@@ -93,7 +93,6 @@ class BookScannerContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({})
 const mapDispatchToProps = dispatch => {
   return {
     buyBook: book => dispatch(buyBook(book)),
@@ -101,6 +100,10 @@ const mapDispatchToProps = dispatch => {
     sellBook: book => dispatch(sellBook(book))
   }
 }
+
+const mapStateToProps = ({ authentication: { user } }) => ({
+  userClub: user.club
+})
 
 export const BookDetailsScreen = connect(mapStateToProps, mapDispatchToProps)(
   BookScannerContainer
