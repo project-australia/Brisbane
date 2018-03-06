@@ -10,10 +10,8 @@ import {
 const { BUY, RENT, SELL } = SHOPPING_BAG_TYPES
 
 export const buyBook = book => addToShoppingBag(new ShoppingBagItem(book, BUY))
-export const rentBook = book =>
-  addToShoppingBag(new ShoppingBagItem(book, RENT))
-export const sellBook = book =>
-  addToShoppingBag(new ShoppingBagItem(book, SELL))
+export const rentBook = book => addToShoppingBag(new ShoppingBagItem(book, RENT))
+export const sellBook = book => addToShoppingBag(new ShoppingBagItem(book, SELL))
 
 export const addToShoppingBag = item => {
   if (!(item instanceof ShoppingBagItem)) {

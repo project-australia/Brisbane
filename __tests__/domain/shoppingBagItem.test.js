@@ -33,7 +33,7 @@ describe('Shopping Bag Domain Object', () => {
 
   it('should treat same id and type items as same objects', () => {
     const anItem = new ShoppingBagItem(aBook, SHOPPING_BAG_TYPES.BUY)
-    const anotherItem = new ShoppingBagItem(anotherBook, SHOPPING_BAG_TYPES.BUY)
+    const anotherItem = new ShoppingBagItem(anotherBook, SHOPPING_BAG_TYPES.RENT)
 
     expect(anItem.equals(anotherItem)).toEqual(true)
   })
