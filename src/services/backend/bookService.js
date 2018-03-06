@@ -30,3 +30,16 @@ export const findBookByISBN = async isbn => {
     }
   }
 }
+
+export const searchBooksByAuthorIsbnTitle = async searchParam => {
+  try {
+    const bookResponse = await Axios.get(`books/search?searchParam=${searchParam}`)
+    return bookResponse.data
+  } catch (err) {
+    if (err.response && err.response.status === 404) {
+      throw new Error('ISBN Not Found')
+    } else {
+      throw new Error('Erro during searching for a book')
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { ClubMembershipScreen } from '../modules/account/containers/clubMemberSc
 import { authenticated } from '../modules/shared/decorators/authenticated'
 import { BookDetailsScreen } from '../modules/bookScan/containers/bookDetailsScreen'
 import { BookListScreen } from '../modules/bookList/containers/bookListScreen'
+import { BookListSearchScreen } from '../modules/bookList/containers/bookListSearchScreen'
 import { BookScannerScreen } from '../modules/bookScan/containers/bookScannerScreen'
 import { CheckoutScreen } from '../modules/shoppingBag/containers/checkoutScreen'
 import { ForgotPasswordScreen } from '../modules/authentication/containers/forgotPasswordScreen'
@@ -53,6 +54,9 @@ const routeConfigs = {
   },
   BookList: {
     screen: BookListScreen
+  },
+  BookListSearch: {
+    screen: BookListSearchScreen
   },
   NetworkMembers: {
     screen: NetworkMembersScreen

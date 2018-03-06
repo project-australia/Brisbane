@@ -100,6 +100,7 @@ class TestScreenContainer extends React.Component {
         {this.navigateTo('ClubMembership')}
         {this.navigateTo('NetworkMembers')}
         {this.navigateTo('MyOrders')}
+        {this.navigateTo('BookListSearch')}
         {this.navigateTo('BookList', {
           typeList: 'featured'
         })}

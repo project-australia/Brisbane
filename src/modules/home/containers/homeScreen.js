@@ -30,10 +30,9 @@ class HomeContainer extends Component {
   navigateTo = (screen, param = {}) => () =>
     this.props.navigation.navigate(screen, param)
 
-  navigateToBuyBook = isbn => {
-    this.props.navigation.navigate('BookDetails', {
-      isbn,
-      screenType: 'BUY'
+  navigateToBuyBook = searchParam => {
+    this.props.navigation.navigate('BookListSearch', {
+      searchParam
     })
   }
 
