@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ScrollView, View } from 'react-native'
+import { ScrollView, View, Text } from 'react-native'
 import { book } from '../../home/propTypes/book'
 import { Navbar } from '../../shared/components/navbar'
 import { BookListRow } from './bookListRow'
@@ -23,6 +23,11 @@ export const BookList = ({
             onBuyPressed={onBuyPressed}
           />
         ))}
+        {list.length === 0 && <View style={{
+          flex: 1
+        }}>
+          <Text style={{ textAlign: 'center', paddingTop: 30 }}>Sorry, Books not Found</Text>
+        </View>}
       </ScrollView>
     </View>
   )
