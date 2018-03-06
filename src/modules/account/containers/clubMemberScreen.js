@@ -17,9 +17,9 @@ class ClubMembershipContainer extends Component {
   clubTenProps = () => {
     return {
       title: '10% More Club',
-      buttonText: 'Get Your 10% Only U$ 2,99/y',
+      buttonText: 'Yes ! I Want this one FREE',
       club: 'NONE',
-      price: 2.99
+      price: 0.99
     }
   }
 
@@ -27,10 +27,10 @@ class ClubMembershipContainer extends Component {
     return {
       title: '20% More Club',
       goBack: this.goBack,
-      buttonText: 'Get Your 20% Only U$ 19,99/y',
+      buttonText: 'Yes ! I Want this one $ 8,99/yr',
       user: this.props.user,
       club: 'TEN',
-      price: 19.99
+      price: 8.99
     }
   }
 
@@ -38,7 +38,7 @@ class ClubMembershipContainer extends Component {
     return {
       title: 'Invite your Friends',
       goBack: this.goBack,
-      buttonText: 'Get Your 20% Only U$ 19,99/y',
+      buttonText: 'Get Your 20% Only U$ 19,99/yr',
       user: this.props.user,
       club: 'TWENTY',
       price: 19.99

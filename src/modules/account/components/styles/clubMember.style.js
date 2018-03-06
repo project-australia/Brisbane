@@ -6,6 +6,52 @@ export const styles = StyleSheet.create({
     ...Fonts.style.description,
     color: Colors.gray700,
     marginBottom: Metrics.baseMargin,
-    marginHorizontal: Metrics.section
+    marginHorizontal: Metrics.section,
+    fontSize: 17
+  },
+  input: {
+    marginHorizontal: Metrics.section,
+    marginBottom: 60
+  },
+  wrapper: {
+    paddingTop: 30
   }
 })
+
+// export const styles = StyleSheet.create({
+//   overlay: {
+//     flex: 1,
+//     backgroundColor: Colors.overlay,
+//     justifyContent: 'center'
+//   },
+//   card: {
+//     backgroundColor: Colors.white,
+//     borderRadius: Metrics.cardRadius,
+//     marginHorizontal: Metrics.section
+//   },
+//   title: {
+//     ...Fonts.style.normal,
+//     color: Colors.gray900,
+//     textAlign: 'center',
+//     marginHorizontal: Metrics.section,
+//     marginTop: Metrics.section,
+//     marginBottom: Metrics.doubleBaseMargin
+//   },
+//   input: {
+//     marginHorizontal: Metrics.section
+//   },
+//   buttonGroup: {
+//     marginVertical: Metrics.baseMargin,
+//     flexDirection: 'row'
+//   },
+//   button: {
+//     flex: 1
+//   },
+//   text: {
+//     ...Fonts.style.description,
+//     color: Colors.gray700,
+//     marginBottom: Metrics.baseMargin,
+//     marginHorizontal: Metrics.section,
+//     textAlign: 'center'
+//   }
+// })
