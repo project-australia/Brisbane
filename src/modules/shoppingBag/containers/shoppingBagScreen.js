@@ -19,7 +19,7 @@ class ShoppingBagContainer extends Component {
   state = {
     navRightIcons: [
       {
-        name: 'cart-outline',
+        name: 'cart-off',
         onPress: () => alert('tem que limpar o carrinho')
       }
     ]
