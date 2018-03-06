@@ -100,8 +100,12 @@ export class SignUpForm extends Component {
     }
   }
 
-  switchForm = () => { this.setState({ switch: !this.state.switch }) }
-  onFormChange = value => { this.setState(value) }
+  switchForm = () => {
+    this.setState({ switch: !this.state.switch })
+  }
+  onFormChange = value => {
+    this.setState(value)
+  }
   keyboardHide = () => this.setState({ keyboardHeight: 0 })
   keyboardShow = keyboard =>
     this.setState({ keyboardHeight: keyboard.endCoordinates.height })

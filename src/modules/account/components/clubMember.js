@@ -46,9 +46,17 @@ export class ClubMember extends Component {
   showRep = () => {
     return (
       <ScrollView style={styles.wrapper}>
-        <Text style={styles.text}>• Just sign people up to the app (friends, classmates, coworkes, teammates, etc.)</Text>
-        <Text style={styles.text}>• When they buy, sell or rent you get a commiission</Text>
-        <Text style={styles.text}>• If they become a rep too, you even get a commission from the people they sign up</Text>
+        <Text style={styles.text}>
+          • Just sign people up to the app (friends, classmates, coworkes,
+          teammates, etc.)
+        </Text>
+        <Text style={styles.text}>
+          • When they buy, sell or rent you get a commiission
+        </Text>
+        <Text style={styles.text}>
+          • If they become a rep too, you even get a commission from the people
+          they sign up
+        </Text>
         <Text style={styles.text}>• The more you sign up the better!</Text>
         <Text style={styles.text}>• It's so easy!</Text>
       </ScrollView>
@@ -57,7 +65,7 @@ export class ClubMember extends Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         <Navbar
           title={this.props.title}
           onBack={this.props.goBack}
@@ -66,23 +74,24 @@ export class ClubMember extends Component {
         {this.props.club === 'NONE' && this.show10club()}
         {this.props.club === 'TEN' && this.show20club()}
         {this.props.club === 'TWENTY' && this.showRep()}
-        {this.props.club !== 'TWENTY' && <FormOutlineButton
-          title={this.props.buttonText}
-          onPress={this.checkoutWithPaypal}
-          style={styles.input}
-        />
-        }
+        {this.props.club !== 'TWENTY' && (
+          <FormOutlineButton
+            title={this.props.buttonText}
+            onPress={this.checkoutWithPaypal}
+            style={styles.input}
+          />
+        )}
       </View>
     )
   }
-//   <View style={styles.buttonGroup}>
-//   <FlatButton
-//     secondary
-//     containerStyle={styles.button}
-//     title={this.props.buttonText}
-//     onPress={this.checkoutWithPaypal}
-//   />
-// </View>
+  //   <View style={styles.buttonGroup}>
+  //   <FlatButton
+  //     secondary
+  //     containerStyle={styles.button}
+  //     title={this.props.buttonText}
+  //     onPress={this.checkoutWithPaypal}
+  //   />
+  // </View>
   checkoutWithPaypal = async () => {
     try {
       await payWithPayPal(

@@ -101,8 +101,16 @@ export function getOrders(id) {
       //   walletWithPaypalAccount
       // )
       const order = [
-        {id: 1, date: new Date(), books: [{id: 1, name: 'book-A'}, {id: 2, name: 'book-A'}]},
-        {id: 2, date: new Date(), books: [{id: 1, name: 'book-A'}, {id: 2, name: 'book-A'}]}
+        {
+          id: 1,
+          date: new Date(),
+          books: [{ id: 1, name: 'book-A' }, { id: 2, name: 'book-A' }]
+        },
+        {
+          id: 2,
+          date: new Date(),
+          books: [{ id: 1, name: 'book-A' }, { id: 2, name: 'book-A' }]
+        }
       ]
       dispatch(updateUserOrders(order))
     } catch (error) {

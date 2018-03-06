@@ -21,7 +21,10 @@ class HomeContainer extends Component {
   }
 
   componentWillMount = () => {
-    BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick)
+    BackHandler.addEventListener(
+      'hardwareBackPress',
+      this.handleBackButtonClick
+    )
   }
 
   navigateTo = (screen, param = {}) => () =>

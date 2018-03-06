@@ -15,7 +15,10 @@ class NetworkMembersContainer extends Component {
 
   render() {
     return (
-      <NetworkMembers network={this.props.network || []} navigateBack={this.goBack} />
+      <NetworkMembers
+        network={this.props.network || []}
+        navigateBack={this.goBack}
+      />
     )
   }
 
@@ -31,6 +34,7 @@ const mapDispatchToProps = dispatch => ({
   getNetworking: id => dispatch(getNetworking(id))
 })
 
-export const NetworkMembersScreen = connect(mapStateToProps, mapDispatchToProps)(
-  NetworkMembersContainer
-)
+export const NetworkMembersScreen = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NetworkMembersContainer)

@@ -47,7 +47,7 @@ class ClubMembershipContainer extends Component {
 
   goBack = () => this.props.navigation.goBack()
 
-  clubProps = (club) => {
+  clubProps = club => {
     switch (club) {
       case 'NONE':
         return this.clubTenProps()

@@ -9,7 +9,10 @@ import {
 
 export const updateUserProfile = user => ({ type: UPDATE_USER_INFO, user })
 export const updateUserOrders = orders => ({ type: UPDATE_USER_ORDERS, orders })
-export const updateUserNetworking = network => ({ type: UPDATE_USER_NETWORKING, network })
+export const updateUserNetworking = network => ({
+  type: UPDATE_USER_NETWORKING,
+  network
+})
 export const successRetrievedPassword = message => ({
   type: FORGOT_PASSWORD_SUCCESS,
   message

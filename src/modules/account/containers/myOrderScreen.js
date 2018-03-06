@@ -33,4 +33,5 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export const MyOrdersScreen = connect(mapStateToProps, mapDispatchToProps)(
-  MyOrderContainer)
+  MyOrderContainer
+)

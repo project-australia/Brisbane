@@ -126,7 +126,7 @@ export class BookDetails extends Component {
     }
   ]
 
-  onPressSell = (book) => {
+  onPressSell = book => {
     if (book.condition) {
       this.props.onPressSell(book)
     } else {

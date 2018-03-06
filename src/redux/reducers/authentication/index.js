@@ -7,7 +7,12 @@ import {
   UPDATE_USER_NETWORKING
 } from '../../types/authenticationTypes'
 import { AUTH_INITIAL_STATE } from './constants'
-import { showAlertHandler, updateUserProfileHandler, updateUserOrdersHandler, updateUserNetworkingHandler } from './handlers'
+import {
+  showAlertHandler,
+  updateUserProfileHandler,
+  updateUserOrdersHandler,
+  updateUserNetworkingHandler
+} from './handlers'
 
 export const actionHandlers = {
   [SHOW_ALERT]: showAlertHandler, // FIXME: All these handlers are the same,

@@ -6,8 +6,10 @@ import { User } from '../../../domain/User'
 import { removeAllFromShoppingBag } from '../../../redux/actions'
 import {
   buyingItems,
-  calculateTotalWeight, sellingItems,
-  shoppingBagBuyingTotal, shoppingBagSellingTotal
+  calculateTotalWeight,
+  sellingItems,
+  shoppingBagBuyingTotal,
+  shoppingBagSellingTotal
 } from '../../../redux/selectors/shoppingBagSelectors'
 import { createOrder } from '../../../services/backend/orderService'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
@@ -22,7 +24,7 @@ class CheckoutContainer extends Component {
     navigation: PropTypes.object.isRequired,
     user: PropTypes.instanceOf(User),
     buyingTotal: PropTypes.number.isRequired,
-    sellingTotal: PropTypes.number.isRequired,
+    sellingTotal: PropTypes.number.isRequired
   }
 
   state = {

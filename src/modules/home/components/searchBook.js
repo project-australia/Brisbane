@@ -27,18 +27,15 @@ export const BookSearch = props => (
       underlineColorAndroid={'transparent'}
       value={props.value}
     />
-    {!_.isEmpty(props.value) && <Touchable
-      borderless
-      onPress={props.onSubmit}
-      style={styles.iconWrap}
-    >
-      <Icon
-        name={'chevron-right'}
-        size={Metrics.icons.medium}
-        color={Colors.gray700}
-      />
-    </Touchable>
-    }
+    {!_.isEmpty(props.value) && (
+      <Touchable borderless onPress={props.onSubmit} style={styles.iconWrap}>
+        <Icon
+          name={'chevron-right'}
+          size={Metrics.icons.medium}
+          color={Colors.gray700}
+        />
+      </Touchable>
+    )}
   </View>
 )
 

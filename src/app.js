@@ -1,5 +1,4 @@
 import React from 'react'
-import { BackHandler } from 'react-native'
 import { Provider } from 'react-redux'
 import { Navigator } from './navigation'
 import {
