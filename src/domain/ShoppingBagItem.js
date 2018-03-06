@@ -13,5 +13,5 @@ export class ShoppingBagItem {
 }
 
 ShoppingBagItem.prototype.equals = function(obj) {
-  return this.id === obj.id && this.type === obj.type
+  return this.id === obj.id
 }
