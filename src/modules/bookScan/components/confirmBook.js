@@ -139,7 +139,7 @@ export class BookDetails extends Component {
       isRentalTermsModalOn,
       navRightIcons
     } = this.state
-    const { aboutBook, authors, condition, images, isbn, price, title } = book
+    const { about, authors, condition, images, isbn, price, title } = book
     const isSelling = screenType === 'SELL'
     const [onPressCondition, onPressConditionTitle] = isSelling
       ? [this.showConditionModal, this.showConditionExplanationModal]
@@ -174,13 +174,13 @@ export class BookDetails extends Component {
           {this.renderMembershipData()}
           <MenuTitle title={'Details'} style={styles.titleWrap} />
           <GeneralInfoCard style={styles.standardSpacing}>
-            {aboutBook && (
+            {about && (
               <View style={{paddingBottom: 10}}>
                 <Text style={styles.description}>
                   Description
                 </Text>
                 <Text style={styles.descriptionGray}>
-                  {aboutBook}
+                  {about}
                 </Text>
               </View>
             )}
