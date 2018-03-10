@@ -25,7 +25,9 @@ export const styles = StyleSheet.create({
   },
   buttonGroup: {
     marginVertical: Metrics.baseMargin,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginHorizontal: Metrics.section,
+    marginBottom: Metrics.baseMargin
   },
   button: {
     flex: 1
@@ -36,5 +38,16 @@ export const styles = StyleSheet.create({
     marginBottom: Metrics.baseMargin,
     marginHorizontal: Metrics.section,
     textAlign: 'center'
+  },
+  searchButton: {
+    height: 36,
+    minWidth: 72,
+    flex: 1
+  },
+  cancelButton: {
+    height: 36,
+    minWidth: 72,
+    flex: 1,
+    marginRight: Metrics.section
   }
 })

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Platform, Modal, Keyboard, StyleSheet, View, Text } from 'react-native'
 import { FormTextInput } from '../../../authentication/components/formTextInput'
-import { FlatButton, FormOutlineButton } from '../buttons/index'
+import { FlatButton, FormOutlineButton, FormButton } from '../buttons/index'
 import { styles } from './styles/modalWithInput.style'
 
 export class ModalSellingHome extends Component {
@@ -43,7 +43,6 @@ export class ModalSellingHome extends Component {
     const placeHolderMsg = placeholder || 'Insert your data here'
     return (
       <FormTextInput
-        autoFocus
         style={styles.input}
         placeholder={placeHolderMsg}
         onChangeText={value => this.setInput(value)}
@@ -67,26 +66,24 @@ export class ModalSellingHome extends Component {
         <View style={overlayStyle}>
           <View style={styles.card}>
             <Text style={styles.title}>{title}</Text>
-            {this.renderInput()}
-            <Text style={styles.text}>or</Text>
             <FormOutlineButton
-              secondary
+              icon
               title={'Scan book ISBN'}
               onPress={this.props.goScanBook}
               style={styles.input}
             />
+            <Text style={styles.text}>or</Text>
+            {this.renderInput()}
             <View style={styles.buttonGroup}>
-              <FlatButton
-                secondary
-                containerStyle={styles.button}
-                title={'Search'}
-                onPress={() => onConfirm(this.state.inputValue)}
-              />
-              <FlatButton
-                secondary
-                containerStyle={styles.button}
+              <FormOutlineButton
+                style={styles.cancelButton}
                 title={'Cancel'}
                 onPress={onDismiss}
+              />
+              <FormButton
+                style={styles.searchButton}
+                title={'Search'}
+                onPress={() => onConfirm(this.state.inputValue)}
               />
             </View>
           </View>
