@@ -58,12 +58,48 @@ export const styles = StyleSheet.create({
     ...Fonts.style.normal,
     color: Colors.white
   },
+  whiteTextCenter: {
+    ...Fonts.style.normal,
+    flex: 1,
+    textAlign: 'center',
+    color: Colors.white
+  },
+  whiteSubtitleCenter: {
+    ...Fonts.style.description,
+    flex: 1,
+    textAlign: 'center',
+    color: Colors.white
+  },
   primaryText: {
     ...Fonts.style.normal,
+    flex: 1,
+    textAlign: 'center',
+    color: Colors.primary500
+  },
+  primarySubtitle: {
+    ...Fonts.style.description,
     color: Colors.primary500
   },
   secondaryText: {
     ...Fonts.style.normal,
+    flex: 1,
+    textAlign: 'center',
     color: Colors.secondary500
+  },
+  secondarySubtitle: {
+    ...Fonts.style.description,
+    color: Colors.secondary500
+  },
+  infoWrap: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  iconWrap: {
+    height: '100%',
+    width: Metrics.iconWidth,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })

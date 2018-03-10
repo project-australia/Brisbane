@@ -5,20 +5,40 @@ import { func } from 'prop-types'
 import { StyleSheet, TouchableHighlight, Text, View } from 'react-native'
 import { Colors, Metrics } from '../../../../constants'
 
+const ButtonLabel = ({title, subtitle, style}) => {
+  if (subtitle) {
+    return (
+      <View style={{ alignItems: 'center' }}>
+        <Text style={style.title}>{title}</Text>
+        <Text style={style.subtitle}>{subtitle}</Text>
+      </View>
+    )
+  }
+  return (
+    <Text style={style.title}>{title}</Text>
+  )
+}
+
 export const FormOutlineButton = props => {
   const {
     transparentButton,
     primaryOutline,
     secondaryOutline,
     primaryText,
-    secondaryText
+    primarySubtitle,
+    secondaryText,
+    secondarySubtitle,
+    infoWrap,
+    iconWrap
   } = styles
 
   const underlayColor = props.secondary
     ? Colors.secondary700
     : Colors.primary700
   const outlineStyle = props.secondary ? secondaryOutline : primaryOutline
-  const textStyle = props.secondary ? secondaryText : primaryText
+  const [textStyle, subtitleStyle, iconColor] = props.secondary
+    ? [secondaryText, secondarySubtitle, Colors.secondary500]
+    : [primaryText, primarySubtitle, Colors.primary500]
 
   const style = StyleSheet.flatten([
     transparentButton,
@@ -31,14 +51,23 @@ export const FormOutlineButton = props => {
       style={style}
       underlayColor={underlayColor}
     >
-      <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-        <Text style={textStyle}>{props.title}</Text>
-        {props.icon && <Icon
-          name={'barcode-scan'}
-          color={Colors.gray200}
-          size={Metrics.icons.large}
-          style={{marginLeft: 20}}
-        />}
+      <View style={infoWrap}>
+        <ButtonLabel
+          style={{ title: textStyle, subtitle: subtitleStyle }}
+          title={props.title}
+          subtitle={props.subtitle}
+        />
+        {
+          props.icon &&
+          <View style={iconWrap}>
+            <Icon
+              name={'barcode-scan'}
+              color={iconColor}
+              size={Metrics.icons.medium}
+              style={{ textAlign: 'center' }}
+            />
+          </View>
+        }
       </View>
     </TouchableHighlight>
   )

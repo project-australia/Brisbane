@@ -1,11 +1,27 @@
 import React from 'react'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { styles } from '../styles/buttons.styles'
-import { StyleSheet, TouchableHighlight, Text } from 'react-native'
-import { Colors } from '../../../../constants'
+import { StyleSheet, TouchableHighlight, Text, View } from 'react-native'
+import { Colors, Metrics } from '../../../../constants'
 import { func } from 'prop-types'
 
+const ButtonLabel = ({title, subtitle}) => {
+  const { whiteTextCenter, whiteSubtitleCenter } = styles
+  if (subtitle) {
+    return (
+      <View style={{ alignItems: 'center' }}>
+        <Text style={whiteTextCenter}>{title}</Text>
+        <Text style={whiteSubtitleCenter}>{subtitle}</Text>
+      </View>
+    )
+  }
+  return (
+    <Text style={whiteTextCenter}>{title}</Text>
+  )
+}
+
 export const FormButton = props => {
-  const { primaryButton, darkenOutline, whiteText } = styles
+  const { primaryButton, darkenOutline, infoWrap, iconWrap } = styles
 
   const style = StyleSheet.flatten([primaryButton, darkenOutline, props.style])
   return (
@@ -14,7 +30,23 @@ export const FormButton = props => {
       style={style}
       underlayColor={Colors.primary700}
     >
-      <Text style={whiteText}>{props.title}</Text>
+      <View style={infoWrap}>
+        <ButtonLabel
+          title={props.title}
+          subtitle={props.subtitle}
+        />
+        {
+          props.icon &&
+          <View style={iconWrap}>
+            <Icon
+              name={'barcode-scan'}
+              color={Colors.white}
+              size={Metrics.icons.medium}
+              style={{ textAlign: 'center' }}
+            />
+          </View>
+        }
+      </View>
     </TouchableHighlight>
   )
 }

@@ -31,6 +31,8 @@ export const Metrics = {
   borderWidth: 1,
   maxBorderWidth: 4,
   bookMinHeight: 55,
+  iconWidth: 48,
+  iconWidthDense: 40,
   icons: {
     tiny: 12,
     small: 18,

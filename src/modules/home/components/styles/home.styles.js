@@ -71,6 +71,11 @@ export const styles = StyleSheet.create({
     color: Colors.gray500,
     lineHeight: Metrics.textLineHeight
   },
+  priceInput: {
+    ...Fonts.style.input,
+    color: Colors.gray500,
+    lineHeight: Metrics.textLineHeight
+  },
   primaryText: {
     ...Fonts.style.normal,
     color: Colors.gray900,
@@ -84,10 +89,12 @@ export const styles = StyleSheet.create({
     width: Metrics.section / 2
   },
   bookCard: {
-    flexDirection: 'row',
     marginBottom: Metrics.section / 2,
     marginRight: Metrics.section / 2,
     padding: Metrics.section / 2
+  },
+  bookWrap: {
+    flexDirection: 'row'
   },
   bookImage: {
     aspectRatio: 3 / 4,
@@ -101,14 +108,26 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: Metrics.baseMargin
   },
-  buyButton: {
-    height: 36,
-    minWidth: 72,
+  buyButtonWrap: {
+    flex: 1
+  },
+  buyButtonWrapMargin: {
+    flex: 1,
     marginRight: Metrics.baseMargin
   },
+  buyButton: {
+    height: null,
+    minHeight: 36,
+    paddingHorizontal: Metrics.baseMargin,
+    paddingVertical: Metrics.smallMargin,
+    alignSelf: 'stretch'
+  },
   rentButton: {
-    height: 36,
-    minWidth: 56
+    height: null,
+    minHeight: 36,
+    paddingHorizontal: Metrics.baseMargin,
+    paddingVertical: Metrics.smallMargin,
+    alignSelf: 'stretch'
   },
   flatTitle: {
     marginHorizontal: 0

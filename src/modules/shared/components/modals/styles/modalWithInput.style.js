@@ -21,13 +21,13 @@ export const styles = StyleSheet.create({
     marginBottom: Metrics.doubleBaseMargin
   },
   input: {
-    marginHorizontal: Metrics.section
+    marginHorizontal: Metrics.section,
+    marginBottom: Metrics.smallMargin
   },
   buttonGroup: {
-    marginVertical: Metrics.baseMargin,
+    marginVertical: Metrics.doubleBaseMargin,
     flexDirection: 'row',
-    marginHorizontal: Metrics.section,
-    marginBottom: Metrics.baseMargin
+    marginHorizontal: Metrics.section
   },
   button: {
     flex: 1
