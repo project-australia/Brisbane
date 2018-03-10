@@ -76,30 +76,26 @@ export class BookDetails extends Component {
     const isSelling = screenType === 'SELL'
     const sellOrBuy = isSelling ? 'more money selling' : 'off buying'
     switch (membershipStatus) {
-      case 'TEN':
+      case 'NONE':
         return (
           <Touchable onPress={onPressBallardsClub}>
             <Text style={styles.footnote}>
-              Upgrade your membership and get 20% {sellOrBuy} books.
+              Club More 20% {sellOrBuy} books.
               <Text style={styles.textAccent}> LEARN MORE</Text>
             </Text>
           </Touchable>
         )
       case 'TWENTY':
         return (
-          <Text style={styles.footnote}>
-            Invite friends and earn even more.
-          </Text>
-        )
-      default:
-        return (
           <Touchable onPress={onPressBallardsClub}>
             <Text style={styles.footnote}>
-              Ballards club members gets 10% {sellOrBuy} books.
+              Be a Rep {sellOrBuy} books.
               <Text style={styles.textAccent}> LEARN MORE</Text>
             </Text>
           </Touchable>
         )
+      default:
+        return null
     }
   }
 
@@ -179,9 +175,14 @@ export class BookDetails extends Component {
           <MenuTitle title={'Details'} style={styles.titleWrap} />
           <GeneralInfoCard style={styles.standardSpacing}>
             {aboutBook && (
-              <Text style={[styles.description, styles.bottomSpacing]}>
-                {aboutBook}
-              </Text>
+              <View style={{paddingBottom: 10}}>
+                <Text style={styles.description}>
+                  Description
+                </Text>
+                <Text style={styles.descriptionGray}>
+                  {aboutBook}
+                </Text>
+              </View>
             )}
             <Text style={styles.description}>ISBN</Text>
             <Text style={styles.descriptionGray}>{isbn}</Text>
