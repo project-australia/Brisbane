@@ -21,9 +21,10 @@ const ButtonLabel = ({title, subtitle}) => {
 }
 
 export const FormButton = props => {
-  const { primaryButton, darkenOutline, infoWrap, iconWrap } = styles
+  const { primaryButton, secondaryButton, darkenOutline, infoWrap, iconWrap } = styles
 
-  const style = StyleSheet.flatten([primaryButton, darkenOutline, props.style])
+  const dynamicColor = (props.secondary) ? secondaryButton : primaryButton
+  const style = StyleSheet.flatten([dynamicColor, darkenOutline, props.style])
   return (
     <TouchableHighlight
       onPress={props.onPress}
