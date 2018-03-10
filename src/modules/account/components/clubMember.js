@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View, ScrollView, Text, Alert } from 'react-native'
 import { Navbar } from '../../shared/components/navbar'
-import { FormOutlineButton } from '../../shared/components/buttons'
+import { FormButton } from '../../shared/components/buttons'
 import { payWithPayPal } from '../../../services/paypal'
 import { styles } from './styles/clubMember.style'
 
@@ -62,11 +62,15 @@ export class ClubMember extends Component {
   show20club = () => {
     return (
       <ScrollView style={styles.wrapper}>
-        <Text style={styles.text}>• Get 20% More for books you sell</Text>
-        <Text style={styles.text}>• Get 20% Off of purchases</Text>
-        <Text style={styles.text}>• Get 20% Off of rentals</Text>
-        <FormOutlineButton
+        <Text style={styles.lastLine}>The 20% More Club is the exclusive membership club of Ballard Books.</Text>
+        <Text style={styles.text}>By join, you will be able to:</Text>
+        <Text style={styles.text}>• Get 20% more for books you sell</Text>
+        <Text style={styles.text}>• Get 20% off of purchases</Text>
+        <Text style={styles.lastLine}>• Get 20% off of rentals</Text>
+        <Text style={styles.text}>Are you ready to earn even more?</Text>
+        <FormButton
           title={this.props.buttonText}
+          subtitle={this.props.buttonSubtitle}
           onPress={this.checkoutWithPaypal}
           style={styles.input}
         />
@@ -105,6 +109,7 @@ export class ClubMember extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <View style={{ flex: 1 }}>
         <Navbar
