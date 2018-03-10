@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, View } from 'react-native'
+import { ScrollView, View, Text } from 'react-native'
 import PropTypes, { string } from 'prop-types'
 
 import { AppStatusBar } from '../../shared/components/appStatusBar'
@@ -54,33 +54,40 @@ export class ProfileForm extends Component {
         <AppStatusBar />
         <Navbar title={'Almost there...'} onBack={this.props.navigateBack} />
         <ScrollView>
-          <View style={styles.inputRow}>
-            <FormTextInput
-              style={styles.inlineInput}
-              onChangeText={this.setBirthDateDay}
-              value={this.props.form.birthDateDay}
-              placeholder="Day"
-              keyboardType="phone-pad"
-            />
-            <FormTextInput
-              style={styles.inlineInput}
-              onChangeText={this.setBirthDateMonth}
-              value={this.props.form.birthDateMonth}
-              placeholder="Month"
-              keyboardType="phone-pad"
-            />
-            <FormTextInput
-              style={styles.inlineInput}
-              onChangeText={this.setBirthDateYear}
-              value={this.props.form.birthDateYear}
-              placeholder="Year"
-              keyboardType="phone-pad"
-            />
+
+          <View>
+            <View style={styles.bdayLabel}>
+              <Text style={styles.bdayText}>Birthdate</Text>
+            </View>
+            <View style={styles.inputRow}>
+              <FormTextInput
+                style={styles.inlineInput}
+                onChangeText={this.setBirthDateDay}
+                value={this.props.form.birthDateDay}
+                placeholder="Day"
+                keyboardType="phone-pad"
+              />
+              <FormTextInput
+                style={styles.inlineInput}
+                onChangeText={this.setBirthDateMonth}
+                value={this.props.form.birthDateMonth}
+                placeholder="Month"
+                keyboardType="phone-pad"
+              />
+              <FormTextInput
+                style={styles.inlineInput}
+                onChangeText={this.setBirthDateYear}
+                value={this.props.form.birthDateYear}
+                placeholder="Year"
+                keyboardType="phone-pad"
+              />
+            </View>
           </View>
+
           <FormTextInput
             onChangeText={this.setReferredBy}
             value={this.props.form.referredBy}
-            placeholder="Indicated by someone?"
+            placeholder="Rep's email"
           />
           <FormTextInput
             onChangeText={this.setSchool}
