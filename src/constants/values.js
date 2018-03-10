@@ -22,6 +22,21 @@ const elevation1 = {
   })
 }
 
+const elevation4 = {
+  ...Platform.select({
+    android: {
+      elevation: 4
+    },
+    ios: {
+      shadowColor: Colors.gray900,
+      shadowOffset: { width: 0, height: 4 },
+      shadowRadius: 3,
+      shadowOpacity: 0.18,
+      overflow: 'visible'
+    }
+  })
+}
+
 const elevation16 = {
   ...Platform.select({
     android: {
@@ -40,5 +55,6 @@ const elevation16 = {
 export const Values = {
   BackgroundBorderlessRipple,
   elevation1,
+  elevation4,
   elevation16
 }

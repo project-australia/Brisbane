@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Fonts, Metrics } from '../../../../constants'
+import { Colors, Fonts, Metrics, Values } from '../../../../constants'
 
 export const styles = StyleSheet.create({
   text: {
@@ -9,12 +9,23 @@ export const styles = StyleSheet.create({
     marginHorizontal: Metrics.section,
     fontSize: 17
   },
-  input: {
+  lastLine: {
+    ...Fonts.style.description,
+    color: Colors.gray700,
+    marginBottom: Metrics.doubleBaseMargin,
     marginHorizontal: Metrics.section,
-    marginBottom: 60
+    fontSize: 17
+  },
+  input: {
+    height: undefined,
+    marginHorizontal: Metrics.section,
+    marginVertical: Metrics.marginVertical,
+    paddingVertical: 8,
+    borderRadius: 4,
+    ...Values.elevation4
   },
   wrapper: {
-    paddingTop: 30
+    paddingTop: Metrics.marginVertical
   }
 })
 

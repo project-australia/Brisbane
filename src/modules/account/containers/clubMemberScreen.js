@@ -18,7 +18,8 @@ class ClubMembershipContainer extends Component {
     return {
       title: '20% More Club',
       goBack: this.goBack,
-      buttonText: 'Yes ! I Want this one $ 8,99/yr',
+      buttonText: 'Yes! I want to join the Club!',
+      buttonSubtitle: '$8,99 per year',
       user: this.props.user,
       club: 'NONE',
       nextClub: 'TWENTY',
