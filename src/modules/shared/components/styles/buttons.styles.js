@@ -9,6 +9,11 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.primary500,
     height: Metrics.inputHeight
   },
+  price: {
+    ...Fonts.style.footnote,
+    fontSize: 12,
+    color: Colors.gray500
+  },
   secondaryButton: {
     flexDirection: 'column',
     alignItems: 'center',

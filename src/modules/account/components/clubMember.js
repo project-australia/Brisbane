@@ -59,21 +59,6 @@ export class ClubMember extends Component {
       { cancelable: false }
     )
 
-  show10club = () => {
-    return (
-      <ScrollView style={styles.wrapper}>
-        <Text style={styles.text}>• Get 10% More for books you sell</Text>
-        <Text style={styles.text}>• Get 10% Off of purchases</Text>
-        <Text style={styles.text}>• Get 10% Off of rentals</Text>
-        <FormOutlineButton
-          title={this.props.buttonText}
-          onPress={this.onClubJoinSuccess}
-          style={styles.input}
-        />
-      </ScrollView>
-    )
-  }
-
   show20club = () => {
     return (
       <ScrollView style={styles.wrapper}>
@@ -111,11 +96,11 @@ export class ClubMember extends Component {
 
   renderClubComponent = () => {
     if (this.props.club === 'NONE') {
-      return this.show10club()
-    } else if (this.props.club === 'TEN') {
       return this.show20club()
-    } else {
+    } else if (this.props.club === 'TWENTY') {
       return this.showRep()
+    } else {
+      return null
     }
   }
 
