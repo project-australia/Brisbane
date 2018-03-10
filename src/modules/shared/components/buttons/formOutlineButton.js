@@ -1,8 +1,9 @@
 import React from 'react'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { styles } from '../styles/buttons.styles'
 import { func } from 'prop-types'
 import { StyleSheet, TouchableHighlight, Text, View } from 'react-native'
-import { Colors } from '../../../../constants'
+import { Colors, Metrics } from '../../../../constants'
 
 const ButtonLabel = ({title, subtitle, style}) => {
   if (subtitle) {
@@ -47,12 +48,18 @@ export const FormOutlineButton = props => {
       style={style}
       underlayColor={underlayColor}
     >
-      <View>
+      <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
         <ButtonLabel
           style={{ title: textStyle, subtitle: subtitleStyle }}
           title={props.title}
           subtitle={props.subtitle}
         />
+        {props.icon && <Icon
+          name={'barcode-scan'}
+          color={Colors.gray200}
+          size={Metrics.icons.large}
+          style={{marginLeft: 20}}
+        />}
       </View>
     </TouchableHighlight>
   )

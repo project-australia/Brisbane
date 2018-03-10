@@ -17,6 +17,7 @@ import { RowValue } from '../../shared/components/rowValue'
 import { Touchable } from '../../shared/components/touchable'
 
 import { styles } from './styles/bookScanner.style'
+import { PriceRowNotMember } from '../../shared/components/priceRowNotMember'
 
 export class BookDetails extends Component {
   static propTypes = {
@@ -76,30 +77,26 @@ export class BookDetails extends Component {
     const isSelling = screenType === 'SELL'
     const sellOrBuy = isSelling ? 'more money selling' : 'off buying'
     switch (membershipStatus) {
-      case 'TEN':
+      case 'NONE':
         return (
           <Touchable onPress={onPressBallardsClub}>
             <Text style={styles.footnote}>
-              Upgrade your membership and get 20% {sellOrBuy} books.
+              Club More 20% {sellOrBuy} books.
               <Text style={styles.textAccent}> LEARN MORE</Text>
             </Text>
           </Touchable>
         )
       case 'TWENTY':
         return (
-          <Text style={styles.footnote}>
-            Invite friends and earn even more.
-          </Text>
-        )
-      default:
-        return (
           <Touchable onPress={onPressBallardsClub}>
             <Text style={styles.footnote}>
-              Ballards club members gets 10% {sellOrBuy} books.
+              Be a Rep {sellOrBuy} books.
               <Text style={styles.textAccent}> LEARN MORE</Text>
             </Text>
           </Touchable>
         )
+      default:
+        return null
     }
   }
 
@@ -143,7 +140,7 @@ export class BookDetails extends Component {
       isRentalTermsModalOn,
       navRightIcons
     } = this.state
-    const { aboutBook, authors, condition, images, isbn, price, title } = book
+    const { about, authors, condition, images, isbn, price, title } = book
     const isSelling = screenType === 'SELL'
     const [onPressCondition, onPressConditionTitle] = isSelling
       ? [this.showConditionModal, this.showConditionExplanationModal]
@@ -175,13 +172,21 @@ export class BookDetails extends Component {
             onBuy={() => onPressBuy(book)}
             onSell={() => this.onPressSell(book)}
           />
+          {(!isSelling && this.props.membershipStatus === 'NONE') && <PriceRowNotMember
+            price={price}
+          />}
           {this.renderMembershipData()}
           <MenuTitle title={'Details'} style={styles.titleWrap} />
           <GeneralInfoCard style={styles.standardSpacing}>
-            {aboutBook && (
-              <Text style={[styles.description, styles.bottomSpacing]}>
-                {aboutBook}
-              </Text>
+            {about && (
+              <View style={{paddingBottom: 10}}>
+                <Text style={styles.description}>
+                  Description
+                </Text>
+                <Text style={styles.descriptionGray}>
+                  {about}
+                </Text>
+              </View>
             )}
             <Text style={styles.description}>ISBN</Text>
             <Text style={styles.descriptionGray}>{isbn}</Text>
