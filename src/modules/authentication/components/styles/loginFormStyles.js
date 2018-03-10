@@ -30,6 +30,15 @@ export const styles = StyleSheet.create({
   content: {
     justifyContent: 'space-between'
   },
+  bdayLabel: {
+    paddingHorizontal: Metrics.marginHorizontal * 1.5,
+    marginBottom: 5
+  },
+  bdayText: {
+    flex: 1,
+    marginHorizontal: Metrics.marginHorizontal / 2,
+    color: Colors.gray500
+  },
   inputRow: {
     flexDirection: 'row',
     paddingHorizontal: Metrics.marginHorizontal * 1.5
