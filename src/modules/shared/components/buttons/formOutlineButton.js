@@ -27,15 +27,18 @@ export const FormOutlineButton = props => {
     primaryText,
     primarySubtitle,
     secondaryText,
-    secondarySubtitle
+    secondarySubtitle,
+    infoWrap,
+    iconWrap
   } = styles
 
   const underlayColor = props.secondary
     ? Colors.secondary700
     : Colors.primary700
   const outlineStyle = props.secondary ? secondaryOutline : primaryOutline
-  const textStyle = props.secondary ? secondaryText : primaryText
-  const subtitleStyle = props.secondary ? secondarySubtitle : primarySubtitle
+  const [textStyle, subtitleStyle, iconColor] = props.secondary
+    ? [secondaryText, secondarySubtitle, Colors.secondary500]
+    : [primaryText, primarySubtitle, Colors.primary500]
 
   const style = StyleSheet.flatten([
     transparentButton,
@@ -48,18 +51,23 @@ export const FormOutlineButton = props => {
       style={style}
       underlayColor={underlayColor}
     >
-      <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+      <View style={infoWrap}>
         <ButtonLabel
           style={{ title: textStyle, subtitle: subtitleStyle }}
           title={props.title}
           subtitle={props.subtitle}
         />
-        {props.icon && <Icon
-          name={'barcode-scan'}
-          color={Colors.gray200}
-          size={Metrics.icons.large}
-          style={{marginLeft: 20}}
-        />}
+        {
+          props.icon &&
+          <View style={iconWrap}>
+            <Icon
+              name={'barcode-scan'}
+              color={iconColor}
+              size={Metrics.icons.medium}
+              style={{ textAlign: 'center' }}
+            />
+          </View>
+        }
       </View>
     </TouchableHighlight>
   )

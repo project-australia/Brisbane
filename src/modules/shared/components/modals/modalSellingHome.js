@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Platform, Modal, Keyboard, StyleSheet, View, Text } from 'react-native'
 import { FormTextInput } from '../../../authentication/components/formTextInput'
-import { FlatButton, FormOutlineButton, FormButton } from '../buttons/index'
+import { FormOutlineButton, FormButton } from '../buttons/index'
 import { styles } from './styles/modalWithInput.style'
 
 export class ModalSellingHome extends Component {
@@ -66,7 +66,7 @@ export class ModalSellingHome extends Component {
         <View style={overlayStyle}>
           <View style={styles.card}>
             <Text style={styles.title}>{title}</Text>
-            <FormOutlineButton
+            <FormButton
               icon
               title={'Scan book ISBN'}
               onPress={this.props.goScanBook}
