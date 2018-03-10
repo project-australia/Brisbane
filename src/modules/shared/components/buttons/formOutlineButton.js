@@ -24,9 +24,9 @@ export const FormOutlineButton = props => {
     transparentButton,
     primaryOutline,
     secondaryOutline,
-    primaryText,
+    primaryTextCenter,
     primarySubtitle,
-    secondaryText,
+    secondaryTextCenter,
     secondarySubtitle,
     infoWrap,
     iconWrap
@@ -37,8 +37,8 @@ export const FormOutlineButton = props => {
     : Colors.primary700
   const outlineStyle = props.secondary ? secondaryOutline : primaryOutline
   const [textStyle, subtitleStyle, iconColor] = props.secondary
-    ? [secondaryText, secondarySubtitle, Colors.secondary500]
-    : [primaryText, primarySubtitle, Colors.primary500]
+    ? [secondaryTextCenter, secondarySubtitle, Colors.secondary500]
+    : [primaryTextCenter, primarySubtitle, Colors.primary500]
 
   const style = StyleSheet.flatten([
     transparentButton,

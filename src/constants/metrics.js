@@ -34,7 +34,7 @@ export const Metrics = {
   iconWidth: 48,
   iconWidthDense: 40,
   icons: {
-    tiny: 12,
+    tiny: 15,
     small: 18,
     medium: 24,
     large: 32,
