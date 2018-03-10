@@ -72,15 +72,23 @@ export const styles = StyleSheet.create({
   },
   primaryText: {
     ...Fonts.style.normal,
-    flex: 1,
-    textAlign: 'center',
+    color: Colors.primary500
+  },
+  primaryTextCenter: {
+    ...Fonts.style.normal,
     color: Colors.primary500
   },
   primarySubtitle: {
     ...Fonts.style.description,
+    flex: 1,
+    textAlign: 'center',
     color: Colors.primary500
   },
   secondaryText: {
+    ...Fonts.style.normal,
+    color: Colors.secondary500
+  },
+  secondaryTextCenter: {
     ...Fonts.style.normal,
     flex: 1,
     textAlign: 'center',

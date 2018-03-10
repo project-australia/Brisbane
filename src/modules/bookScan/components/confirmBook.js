@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Alert, Text, ScrollView, View } from 'react-native'
 import PropTypes from 'prop-types'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { book } from '../../home/propTypes/bookDetail'
 
 import { AppStatusBar } from '../../shared/components/appStatusBar'
@@ -15,9 +16,10 @@ import { Navbar } from '../../shared/components/navbar'
 import { PriceRow } from '../../shared/components/priceRow'
 import { RowValue } from '../../shared/components/rowValue'
 import { Touchable } from '../../shared/components/touchable'
-
-import { styles } from './styles/bookScanner.style'
 import { PriceRowNotMember } from '../../shared/components/priceRowNotMember'
+
+import { Fonts, Colors, Metrics } from '../../../constants';
+import { styles } from './styles/bookScanner.style'
 
 export class BookDetails extends Component {
   static propTypes = {
@@ -160,7 +162,19 @@ export class BookDetails extends Component {
           <BookTitleAndAuthor title={title} authors={authors} />
           <RowValue
             title={'Condition'}
-            subtitle={'About conditions'}
+            subtitle={
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Icon
+                  name={'help-circle'}
+                  size={Metrics.icons.tiny}
+                  color={Colors.primary500}
+                  style={{ marginRight: Metrics.smallMargin }}
+                />
+                <Text style={{ ...Fonts.style.caption, color: Colors.primary500 }}>
+                  About conditions
+                </Text>
+              </View>
+            }
             value={condition || defaultCondition}
             onPress={onPressCondition}
             onPressTitle={onPressConditionTitle}
