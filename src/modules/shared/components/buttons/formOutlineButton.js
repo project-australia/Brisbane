@@ -1,8 +1,9 @@
 import React from 'react'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { styles } from '../styles/buttons.styles'
 import { func } from 'prop-types'
-import { StyleSheet, TouchableHighlight, Text } from 'react-native'
-import { Colors } from '../../../../constants'
+import { StyleSheet, TouchableHighlight, Text, View } from 'react-native'
+import { Colors, Metrics } from '../../../../constants'
 
 export const FormOutlineButton = props => {
   const {
@@ -30,7 +31,15 @@ export const FormOutlineButton = props => {
       style={style}
       underlayColor={underlayColor}
     >
-      <Text style={textStyle}>{props.title}</Text>
+      <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+        <Text style={textStyle}>{props.title}</Text>
+        {props.icon && <Icon
+          name={'barcode-scan'}
+          color={Colors.gray200}
+          size={Metrics.icons.large}
+          style={{marginLeft: 20}}
+        />}
+      </View>
     </TouchableHighlight>
   )
 }
