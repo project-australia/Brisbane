@@ -17,6 +17,7 @@ import { RowValue } from '../../shared/components/rowValue'
 import { Touchable } from '../../shared/components/touchable'
 
 import { styles } from './styles/bookScanner.style'
+import { PriceRowNotMember } from '../../shared/components/priceRowNotMember'
 
 export class BookDetails extends Component {
   static propTypes = {
@@ -171,6 +172,9 @@ export class BookDetails extends Component {
             onBuy={() => onPressBuy(book)}
             onSell={() => this.onPressSell(book)}
           />
+          {(!isSelling && this.props.membershipStatus === 'NONE') && <PriceRowNotMember
+            price={price}
+          />}
           {this.renderMembershipData()}
           <MenuTitle title={'Details'} style={styles.titleWrap} />
           <GeneralInfoCard style={styles.standardSpacing}>
