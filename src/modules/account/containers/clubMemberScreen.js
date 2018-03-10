@@ -14,23 +14,13 @@ class ClubMembershipContainer extends Component {
     user: PropTypes.object.isRequired
   }
 
-  clubTenProps = () => {
-    return {
-      title: '10% More Club',
-      buttonText: 'Yes ! I Want this one FREE',
-      club: 'NONE',
-      nextClub: 'TEN',
-      price: 0.99
-    }
-  }
-
   clubTwentyProps = () => {
     return {
       title: '20% More Club',
       goBack: this.goBack,
       buttonText: 'Yes ! I Want this one $ 8,99/yr',
       user: this.props.user,
-      club: 'TEN',
+      club: 'NONE',
       nextClub: 'TWENTY',
       price: 8.99
     }
@@ -38,9 +28,9 @@ class ClubMembershipContainer extends Component {
 
   clubRepProps = () => {
     return {
-      title: 'Invite your Friends',
+      title: 'Be a Rep',
       goBack: this.goBack,
-      buttonText: 'Get Your 20% Only U$ 19,99/yr',
+      buttonText: 'Become a Rep',
       user: this.props.user,
       club: 'TWENTY',
       price: 19.99
@@ -53,8 +43,6 @@ class ClubMembershipContainer extends Component {
   clubProps = club => {
     switch (club) {
       case 'NONE':
-        return this.clubTenProps()
-      case 'TEN':
         return this.clubTwentyProps()
       default:
         return this.clubRepProps()
