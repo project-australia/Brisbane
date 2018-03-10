@@ -9,6 +9,13 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.primary500,
     height: Metrics.inputHeight
   },
+  primaryBackground: {
+    backgroundColor: Colors.primary500
+  },
+  simpleButton: {
+    alignSelf: 'flex-start',
+    padding: Metrics.baseMargin
+  },
   price: {
     ...Fonts.style.footnote,
     fontSize: 12,
@@ -20,6 +27,9 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: Colors.secondary500,
     height: Metrics.inputHeight
+  },
+  secondaryBackground: {
+    backgroundColor: Colors.secondary500
   },
   transparentButton: {
     flexDirection: 'column',
@@ -58,10 +68,18 @@ export const styles = StyleSheet.create({
     ...Fonts.style.normal,
     color: Colors.white
   },
+  whiteTextSmall: {
+    ...Fonts.style.description,
+    color: Colors.white
+  },
   whiteTextCenter: {
     ...Fonts.style.normal,
     flex: 1,
     textAlign: 'center',
+    color: Colors.white
+  },
+  whiteSubtitleSmall: {
+    ...Fonts.style.footnote,
     color: Colors.white
   },
   whiteSubtitleCenter: {

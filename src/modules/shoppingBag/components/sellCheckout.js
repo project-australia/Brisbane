@@ -6,7 +6,7 @@ import { Navbar } from '../../shared/components/navbar'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { OrderSummaryList } from './orderSummaryList'
 import { MenuTitle } from '../../shared/components/menuTitle'
-import { FormOutlineButton } from '../../shared/components/buttons'
+import { FormButton } from '../../shared/components/buttons'
 
 import { styles } from './styles/shoppingBagItems.style'
 
@@ -28,13 +28,13 @@ export const SellCheckout = props => {
           <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
             Choose a method to finalize your selling
           </Text>
-          <FormOutlineButton
+          <FormButton
             secondary
             title={'Delivery in Person'}
             onPress={props.inPersonCheckout}
           />
           <View style={{ height: 15 }} />
-          <FormOutlineButton
+          <FormButton
             secondary
             title={'Get a label to send it'}
             onPress={props.inGetLabelCheckout}

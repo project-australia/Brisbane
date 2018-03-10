@@ -17,8 +17,9 @@ import { PriceRow } from '../../shared/components/priceRow'
 import { RowValue } from '../../shared/components/rowValue'
 import { Touchable } from '../../shared/components/touchable'
 import { PriceRowNotMember } from '../../shared/components/priceRowNotMember'
+import { SimpleButton } from '../../shared/components/buttons'
 
-import { Fonts, Colors, Metrics } from '../../../constants';
+import { Fonts, Colors, Metrics } from '../../../constants'
 import { styles } from './styles/bookScanner.style'
 
 export class BookDetails extends Component {
@@ -81,11 +82,18 @@ export class BookDetails extends Component {
     switch (membershipStatus) {
       case 'NONE':
         return (
-          <Touchable onPress={onPressBallardsClub}>
-            <Text style={styles.footnote}>
+          <Touchable
+            onPress={onPressBallardsClub}
+            style={{ flexDirection: 'row' }}
+          >
+            <Text style={[styles.footnote, { flex: 1 }]}>
               Club More 20% {sellOrBuy} books.
-              <Text style={styles.textAccent}> LEARN MORE</Text>
             </Text>
+            <SimpleButton
+              title={'Learn more'}
+              onPress={onPressBallardsClub}
+              style={{ marginRight: Metrics.section, marginVertical: Metrics.baseMargin }}
+            />
           </Touchable>
         )
       case 'TWENTY':

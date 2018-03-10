@@ -41,7 +41,6 @@ export class BuyCheckout extends React.Component {
         : NotSelectedButton
     return (
       <Button
-        secondary
         title={'Standard Shipping - FREE'}
         onPress={this.props.selectStandardShipping}
       />
@@ -55,7 +54,6 @@ export class BuyCheckout extends React.Component {
         : NotSelectedButton
     return (
       <Button
-        secondary
         title={`Expedite Shipping - $${this.props.expediteShippingPrice}`}
         onPress={this.props.selectExpediteShipping}
       />
@@ -93,14 +91,12 @@ export class BuyCheckout extends React.Component {
             >
               Choose a method to finalize your selling
             </Text>
-            <FormOutlineButton
-              secondary
+            <FormButton
               title={'Pay localy'}
               onPress={this.props.checkoutWithInPersonPayment}
             />
             <View style={{ height: 15 }} />
-            <FormOutlineButton
-              secondary
+            <FormButton
               title={'Checkout with Paypal'}
               onPress={this.props.checkoutWithPayPal}
             />
