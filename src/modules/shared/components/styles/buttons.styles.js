@@ -53,12 +53,24 @@ export const styles = StyleSheet.create({
     ...Fonts.style.normal,
     color: Colors.white
   },
+  whiteSubtitle: {
+    ...Fonts.style.description,
+    color: Colors.white
+  },
   primaryText: {
     ...Fonts.style.normal,
     color: Colors.primary500
   },
+  primarySubtitle: {
+    ...Fonts.style.description,
+    color: Colors.primary500
+  },
   secondaryText: {
     ...Fonts.style.normal,
+    color: Colors.secondary500
+  },
+  secondarySubtitle: {
+    ...Fonts.style.description,
     color: Colors.secondary500
   }
 })
