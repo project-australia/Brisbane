@@ -46,7 +46,7 @@ export const ShoppingBagBook = ({
           </Text>
         </View>
         <View style={styles.rightContentWrap}>
-          <Text style={styles.subtitle}>{renderType(type, price)}</Text>
+          <Text style={styles.subtitleRight}>{renderType(type, price)}</Text>
           {price && <Text style={styles.title}>{`$${price}`}</Text>}
         </View>
       </View>

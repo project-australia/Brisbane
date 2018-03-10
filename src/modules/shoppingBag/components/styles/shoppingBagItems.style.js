@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
   contentWrap: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: Metrics.section,
+    paddingHorizontal: Metrics.section,
     paddingVertical: Metrics.baseMargin
   },
   rowWrap: {
@@ -65,10 +65,13 @@ export const styles = StyleSheet.create({
     ...Fonts.style.footnote,
     color: Colors.gray500
   },
+  subtitleRight: {
+    ...Fonts.style.footnote,
+    color: Colors.gray500,
+    textAlign: 'right'
+  },
   rightContentWrap: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingRight: Metrics.baseMargin
+    paddingLeft: Metrics.baseMargin
   },
   rightContentButton: {
     paddingHorizontal: Metrics.marginHorizontal
