@@ -150,6 +150,7 @@ export class BookDetails extends Component {
       isRentalTermsModalOn,
       navRightIcons
     } = this.state
+    console.log('bookkk', book)
     const { about, authors, condition, images, isbn, price, title } = book
     const isSelling = screenType === 'SELL'
     const [onPressCondition, onPressConditionTitle] = isSelling
@@ -218,7 +219,7 @@ export class BookDetails extends Component {
             onBuy={() => onPressBuy(book)}
             onSell={() => this.onPressSell(book)}
           />
-          {(!isSelling && this.props.membershipStatus === 'NONE') && <PriceRowNotMember
+          {(isSelling && this.props.membershipStatus === 'NONE') && <PriceRowNotMember
             price={price}
           />}
           {this.renderMembershipData()}
