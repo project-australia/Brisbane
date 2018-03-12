@@ -183,7 +183,31 @@ export class BookDetails extends Component {
                 </Text>
               </View>
             }
-            value={condition || defaultCondition}
+            value={
+              <View style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                flex: 1
+              }}>
+                <Text style={{
+                  flex: 1,
+                  ...Fonts.style.description,
+                  color: Colors.gray900,
+                  textAlign: 'right'
+                }}>
+                  {condition || defaultCondition}
+                </Text>
+                <Icon
+                  name={'menu-down'}
+                  size={Metrics.icons.small}
+                  color={Colors.gray700}
+                  style={{
+                    marginRight: Metrics.doubleBaseMargin,
+                    marginLeft: Metrics.baseMargin
+                  }}
+                />
+              </View>
+            }
             onPress={onPressCondition}
             onPressTitle={onPressConditionTitle}
           />
