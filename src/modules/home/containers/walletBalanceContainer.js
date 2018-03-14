@@ -14,7 +14,7 @@ class WalletContainer extends Component {
       return this.defaultAlertPopUp('You need to be logged.')
     }
     if (club === 'NONE') {
-      return this.defaultAlertPopUp('You need get 20% Club.')
+      return this.defaultAlertPopUp('You need get Elite Members Club.')
     }
     if (status !== 'NONE') {
       return this.defaultAlertPopUp('Your request is under processing')

@@ -104,5 +104,24 @@ export const styles = StyleSheet.create({
   inlineButton: {
     paddingHorizontal: Metrics.marginHorizontal,
     marginLeft: Metrics.marginHorizontal
+  },
+  wrappAddressItem: {
+    flex: 1,
+    flexDirection: 'row',
+    marginBottom: 5
+  },
+  addressItemLeft: {
+    ...Fonts.style.footnote,
+    color: Colors.gray500,
+    flex: 0.2
+  },
+  addressItemRight: {
+    ...Fonts.style.footnote,
+    color: Colors.gray700,
+    flex: 0.8
+  },
+  addressButton: {
+    flex: 1,
+    alignItems: 'flex-end'
   }
 })

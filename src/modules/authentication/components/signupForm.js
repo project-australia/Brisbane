@@ -43,8 +43,21 @@ export class EmailPasswordForm extends Component {
           placeholder="Password"
           secureTextEntry
         />
+
+        <FormTextInput
+          onChangeText={this.setSchool}
+          value={this.props.form.school}
+          placeholder="School"
+        />
+
+        <FormTextInput
+          onChangeText={this.setReferredBy}
+          value={this.props.form.referredBy}
+          placeholder="Rep's email (optional)"
+        />
+
         <FormButton
-          title={'Continue your registration'}
+          title={'Create your account'}
           onPress={this.props.onButtonPress}
           style={styles.itemSpacing}
         />

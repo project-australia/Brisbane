@@ -63,12 +63,10 @@ export class ClubMember extends Component {
     return (
       <ScrollView style={styles.wrapper}>
         <Text style={styles.lastLine}>
-          The 20% More Club is the exclusive membership club of Ballard Books.
+          The Elite Club is the exclusive membership club of Ballard Books.
         </Text>
         <Text style={styles.text}>By join, you will be able to:</Text>
         <Text style={styles.text}>• Get 20% more for books you sell</Text>
-        <Text style={styles.text}>• Get 20% off of purchases</Text>
-        <Text style={styles.lastLine}>• Get 20% off of rentals</Text>
         <Text style={styles.text}>Are you ready to earn even more?</Text>
         <FormButton
           title={this.props.buttonText}

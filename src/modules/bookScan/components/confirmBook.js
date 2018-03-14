@@ -221,8 +221,8 @@ export class BookDetails extends Component {
           />
           {(isSelling && this.props.membershipStatus === 'NONE') && <PriceRowNotMember
             price={price}
+            onPressBallardsClub={this.props.onPressBallardsClub}
           />}
-          {this.renderMembershipData()}
           <MenuTitle title={'Details'} style={styles.titleWrap} />
           <GeneralInfoCard style={styles.standardSpacing}>
             {about && (

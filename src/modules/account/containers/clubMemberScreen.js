@@ -16,10 +16,10 @@ class ClubMembershipContainer extends Component {
 
   clubTwentyProps = () => {
     return {
-      title: '20% More Club',
+      title: 'Elite Club',
       goBack: this.goBack,
       buttonText: 'Yes! I want to join the Club!',
-      buttonSubtitle: '$8,99 per year',
+      buttonSubtitle: '$26,97 per year',
       user: this.props.user,
       club: 'NONE',
       nextClub: 'TWENTY',
