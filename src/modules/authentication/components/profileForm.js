@@ -4,6 +4,7 @@ import PropTypes, { string } from 'prop-types'
 
 import { AppStatusBar } from '../../shared/components/appStatusBar'
 import { FormButton } from '../../shared/components/buttons'
+import { isANumber, isNotEmpty, isValidPhoneNumber } from '../validation'
 import { FormTextInput } from './formTextInput'
 import { Navbar } from '../../shared/components/navbar'
 
@@ -57,6 +58,7 @@ export class ProfileForm extends Component {
             </View>
             <View style={styles.inputRow}>
               <FormTextInput
+                validationCondition={isANumber}
                 style={styles.inlineInput}
                 onChangeText={this.setBirthDateDay}
                 value={this.props.form.birthDateDay}
@@ -64,6 +66,7 @@ export class ProfileForm extends Component {
                 keyboardType="phone-pad"
               />
               <FormTextInput
+                validationCondition={isANumber}
                 style={styles.inlineInput}
                 onChangeText={this.setBirthDateMonth}
                 value={this.props.form.birthDateMonth}
@@ -71,6 +74,7 @@ export class ProfileForm extends Component {
                 keyboardType="phone-pad"
               />
               <FormTextInput
+                validationCondition={isANumber}
                 style={styles.inlineInput}
                 onChangeText={this.setBirthDateYear}
                 value={this.props.form.birthDateYear}
@@ -79,18 +83,19 @@ export class ProfileForm extends Component {
               />
             </View>
           </View>
-
           <FormTextInput
             onChangeText={this.setReferredBy}
             value={this.props.form.referredBy}
             placeholder="Rep's email"
           />
           <FormTextInput
+            validationCondition={isNotEmpty}
             onChangeText={this.setSchool}
             value={this.props.form.school}
             placeholder="School"
           />
           <FormTextInput
+            validationCondition={isValidPhoneNumber}
             onChangeText={this.setTelephone}
             value={this.props.form.telephone}
             placeholder="Phone"
@@ -98,17 +103,20 @@ export class ProfileForm extends Component {
             keyboardType="phone-pad"
           />
           <FormTextInput
+            validationCondition={isNotEmpty}
             onChangeText={this.setStreet}
             value={this.props.form.street}
             placeholder="Street"
           />
           <FormTextInput
+            validationCondition={isNotEmpty}
             onChangeText={this.setCity}
             value={this.props.form.city}
             placeholder="City"
           />
           <View style={styles.inputRow}>
             <FormTextInput
+              validationCondition={isANumber}
               style={styles.inlineInput}
               onChangeText={this.setZipCode}
               value={this.props.form.zipCode}
@@ -116,6 +124,7 @@ export class ProfileForm extends Component {
               keyboardType="phone-pad"
             />
             <FormTextInput
+              validationCondition={isNotEmpty}
               style={styles.inlineInput}
               onChangeText={this.setAddressState}
               value={this.props.form.state}

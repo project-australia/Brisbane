@@ -11,5 +11,8 @@ export const styles = StyleSheet.create({
     borderRadius: Metrics.buttonRadius,
     backgroundColor: Colors.white,
     paddingHorizontal: Metrics.marginHorizontal
+  },
+  invalidInput: {
+    borderColor: Colors.fire
   }
 })
