@@ -63,5 +63,8 @@ export const styles = StyleSheet.create({
   loginButton: {
     flex: 1,
     marginVertical: Metrics.marginVertical
+  },
+  lastItemSpacing: {
+    marginHorizontal: Metrics.marginHorizontal * 2
   }
 })

@@ -1,53 +1,32 @@
 import React, { Component } from 'react'
-import { Keyboard, Platform, ScrollView } from 'react-native'
+import { Keyboard, Platform } from 'react-native'
 import { bool, func, shape, string } from 'prop-types'
 
-import { Address } from '../../../domain/Address'
-import { SignUpRequest } from '../../../domain/SignUpRequest'
 import { User } from '../../../domain/User'
-import { FormOutlineButton } from '../../shared/components/buttons'
-import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 import { EmailPasswordForm } from '../components/signupForm'
-import { ProfileForm } from './profileForm'
+import { SignUpRequest } from '../../../domain/SignUpRequest'
+import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 
 import { styles } from './styles/signInScreen.styles'
 
 const extractSignUpFormFromState = form => {
   const {
     name,
-    school,
-    telephone,
-    referredBy,
-    street,
-    zipCode,
-    state,
-    city,
     email,
     password,
-    birthDateDay,
-    birthDateMonth,
-    birthDateYear
+    school,
+    referredBy
   } = form
 
-  const address = new Address(street, city, 0, zipCode, state) // TODO: Remove number param from
-  // constructor
-
+  // TODO: Refactor this constructor
   const user = new User(
     undefined,
     referredBy,
     name,
     email,
-    new Date(
-      Number(birthDateYear),
-      Number(birthDateMonth + 1),
-      Number(birthDateDay)
-    ),
-    telephone,
-    school,
     undefined,
     undefined,
-    undefined,
-    address
+    school
   )
 
   return new SignUpRequest(email, password, user)
@@ -61,21 +40,12 @@ export class SignUpForm extends Component {
   }
 
   state = {
-    switch: true,
     name: '',
-    school: '',
-    telephone: '',
-    referredBy: '',
-    street: '',
-    zipCode: '',
-    state: '',
     email: '',
+    school: '',
     password: '',
-    city: '',
     loading: false,
-    birthDateDay: '',
-    birthDateMonth: '',
-    birthDateYear: '',
+    referredBy: '',
     keyboardHeight: 0
   }
 
@@ -99,15 +69,9 @@ export class SignUpForm extends Component {
     }
   }
 
-  switchForm = () => {
-    this.setState({ switch: !this.state.switch })
-  }
-  onFormChange = value => {
-    this.setState(value)
-  }
+  onFormChange = value => { this.setState(value) }
   keyboardHide = () => this.setState({ keyboardHeight: 0 })
-  keyboardShow = keyboard =>
-    this.setState({ keyboardHeight: keyboard.endCoordinates.height })
+  keyboardShow = keyboard => this.setState({ keyboardHeight: keyboard.endCoordinates.height })
 
   doSignUp = async () => {
     this.setState({ loading: true })
@@ -119,16 +83,6 @@ export class SignUpForm extends Component {
     } finally {
       this.setState({ loading: false })
     }
-  }
-
-  renderFooter = () => {
-    return (
-      <FormOutlineButton
-        title="Log in instead"
-        onPress={this.props.navigateToSignIn}
-        style={styles.lastItemSpacing}
-      />
-    )
   }
 
   componentWillReceiveProps(nextProps) {
@@ -146,20 +100,12 @@ export class SignUpForm extends Component {
 
     return (
       <LoadingOverlay style={overlayStyle} isLoading={this.state.loading}>
-        <ScrollView alwaysBounceVertical={false} bounces={false}>
-          <EmailPasswordForm
-            onChange={this.onFormChange}
-            form={this.state}
-            onButtonPress={this.switchForm}
-          />
-          <ProfileForm
-            footer={this.renderFooter()}
-            onChange={this.onFormChange}
-            form={this.state}
-            onButtonPress={this.doSignUp}
-            navigateBack={this.switchForm}
-          />
-        </ScrollView>
+        <EmailPasswordForm
+          form={this.state}
+          onChange={this.onFormChange}
+          onButtonPress={this.doSignUp}
+          navigateToSignIn={this.props.navigateToSignIn}
+        />
       </LoadingOverlay>
     )
   }
