@@ -68,7 +68,7 @@ export class ModalSellingHome extends Component {
             <Text style={styles.title}>{title}</Text>
             <FormButton
               icon
-              title={'Scan book ISBN'}
+              title={'Scan Book ISBN'}
               onPress={this.props.goScanBook}
               style={styles.input}
             />
