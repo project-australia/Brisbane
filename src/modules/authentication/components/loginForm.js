@@ -20,8 +20,8 @@ export class LoginForm extends Component {
   }
 
   state = {
-    email: '',
-    password: '',
+    email: 'eduardomoroni@gmail.com',
+    password: '123456',
     loading: false
   }
 

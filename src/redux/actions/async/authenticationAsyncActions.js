@@ -1,4 +1,4 @@
-import Axios from 'axios'
+import Axios from 'axios' // TODO: Remover uso de axios deste arquivo, isto fere SRP
 
 import {
   alertAction,
@@ -31,6 +31,17 @@ export function signInAction(email, password) {
   }
 }
 
+export function getUserProfileAction(user) {
+  return async dispatch => {
+    try {
+      const profile = await getUserProfile(user.uid)
+      dispatch(updateUserProfile(profile))
+    } catch (error) {
+      dispatch(alertAction(error))
+    }
+  }
+}
+
 export function signUpAction(signUpForm) {
   return async dispatch => {
     try {
@@ -45,7 +56,7 @@ export function signUpAction(signUpForm) {
 export function logOutAction(signUpForm) {
   return async dispatch => {
     try {
-      await logOut(signUpForm)
+      await logOut()
       dispatch(updateUserProfile(NOT_LOGGED_IN))
     } catch (error) {
       dispatch(alertAction(error))
