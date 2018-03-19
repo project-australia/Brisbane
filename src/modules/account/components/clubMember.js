@@ -110,7 +110,7 @@ export class ClubMember extends Component {
         <FormButton
           title='Apply Today!'
           subtitle={this.props.buttonSubtitle}
-          onPress={this.checkoutWithPaypal}
+          onPress={() => console.warn('mandar request de pedido de tornar-se rep')}
           style={styles.input}
         />
       </ScrollView>
