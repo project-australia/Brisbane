@@ -9,6 +9,13 @@ export const styles = StyleSheet.create({
     marginHorizontal: Metrics.section,
     fontSize: 17
   },
+  subtext: {
+    ...Fonts.style.description,
+    color: Colors.gray500,
+    marginBottom: 5,
+    marginHorizontal: Metrics.section,
+    fontSize: 12
+  },
   lastLine: {
     ...Fonts.style.description,
     color: Colors.gray700,
@@ -18,9 +25,10 @@ export const styles = StyleSheet.create({
   },
   input: {
     height: undefined,
+    marginTop: 40,
     marginHorizontal: Metrics.section,
-    marginVertical: Metrics.marginVertical,
     paddingVertical: 8,
+    marginBottom: 55,
     borderRadius: 4,
     ...Values.elevation4
   },

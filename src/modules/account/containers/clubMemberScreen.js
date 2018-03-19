@@ -19,22 +19,22 @@ class ClubMembershipContainer extends Component {
       title: 'Elite Club',
       goBack: this.goBack,
       buttonText: 'Yes! I want to join the Club!',
-      buttonSubtitle: '$26,97 per year',
+      buttonSubtitle: '',
       user: this.props.user,
       club: 'NONE',
       nextClub: 'TWENTY',
-      price: 8.99
+      price: 26.97
     }
   }
 
   clubRepProps = () => {
     return {
-      title: 'Be a Rep',
+      title: 'Be A Rep!',
       goBack: this.goBack,
       buttonText: 'Become a Rep',
       user: this.props.user,
       club: 'TWENTY',
-      price: 19.99
+      price: 0.01
     }
   }
 

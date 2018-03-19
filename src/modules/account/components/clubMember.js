@@ -63,17 +63,24 @@ export class ClubMember extends Component {
     return (
       <ScrollView style={styles.wrapper}>
         <Text style={styles.lastLine}>
-          The Elite Club is the exclusive membership club of Ballard Books.
+          The Elite Club is an exclusive membership club of Ballard Books.
         </Text>
-        <Text style={styles.text}>By join, you will be able to:</Text>
-        <Text style={styles.text}>• Get 20% more for books you sell</Text>
-        <Text style={styles.text}>Are you ready to earn even more?</Text>
+        <Text style={styles.text}>
+          As a member you'll get 20% extra cash
+          for books you sell for just a small membership fee of $26.97 per year!
+        </Text>
+        <Text style={styles.text} />
+        <Text style={styles.text}>Want to get more cash for college books?</Text>
         <FormButton
           title={this.props.buttonText}
           subtitle={this.props.buttonSubtitle}
           onPress={this.checkoutWithPaypal}
           style={styles.input}
         />
+        <Text style={styles.subtext}>Cancellation period: </Text>
+        <Text style={styles.subtext}>• Within 3 days after signing up</Text>
+        <Text style={styles.subtext}>• Must be unused within the cancellation period  </Text>
+
       </ScrollView>
     )
   }
@@ -82,18 +89,30 @@ export class ClubMember extends Component {
     return (
       <ScrollView style={styles.wrapper}>
         <Text style={styles.text}>
-          • Just sign people up to the app (friends, classmates, coworkes,
-          teammates, etc.)
+          Just sign people up to the app!
+          (friends, classmates, coworkers, teammates, etc.)
         </Text>
         <Text style={styles.text}>
-          • When they buy, sell or rent you get a commission
+          For example,
+          You sign up Friend1. Friend1 sells books on app = Commission for you
+          Friend1 becomes a rep. Signs up Friend2. Friend2 sells books on app = Commission for you
         </Text>
         <Text style={styles.text}>
-          • If they become a rep too, you even get a commission from the people
-          they sign up
+          To make it simple we are just doing those two levels. You don’t have to deal with books, you don’t have to deal with payments, Ballard Books does all that.
+          The more you sign up the better! You get a commission every time they sell books just because you signed them up! This is a great way to make extra cash! You don’t even have to quit your current job!
+          It’s so easy!
         </Text>
-        <Text style={styles.text}>• The more you sign up the better!</Text>
-        <Text style={styles.text}>• It's so easy!</Text>
+        <Text style={styles.text}>
+          Just answer these questions and we’ll get back to you as soon as possible.
+          What are you involved with on campus? We are looking for involved students so please list clubs, groups, etc.
+        </Text>
+        <Text style={styles.text}>Why do you think you’d be a good fit to represent Ballard Books?</Text>
+        <FormButton
+          title='Apply Today!'
+          subtitle={this.props.buttonSubtitle}
+          onPress={this.checkoutWithPaypal}
+          style={styles.input}
+        />
       </ScrollView>
     )
   }
