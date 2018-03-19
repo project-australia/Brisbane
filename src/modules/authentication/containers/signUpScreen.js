@@ -8,8 +8,7 @@ import { SignUpForm } from '../components/signUp'
 
 class SignUpContainer extends Component {
   static navigationOptions = {
-    title: 'SignUpForm',
-    header: null
+    title: 'Sign Up'
   }
 
   static propTypes = {

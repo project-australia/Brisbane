@@ -38,8 +38,7 @@ class SignInContainer extends Component {
   }
 
   static navigationOptions = {
-    title: 'SignIn',
-    header: null
+    title: 'Sign In'
   }
 
   componentWillUpdate(nextProps) {
