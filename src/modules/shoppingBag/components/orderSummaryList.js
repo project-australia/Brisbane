@@ -6,7 +6,7 @@ import { Row } from '../../shared/components/row'
 import { styles } from './styles/shoppingBagItems.style'
 import { styles as rowStyles } from '../../shared/components/styles/row.style'
 
-const renderOrders = ({ book }) => {
+const renderBuyingOrders = ({ book }) => {
   const bookPrice = book.price.buy
   const priceStyle = book.price.buy === 0 ? rowStyles.lightTitle : null
 
@@ -37,7 +37,7 @@ export const OrderSummaryList = props => {
   return (
     <View style={styles.itemsWrap}>
       <MenuTitle title={'Sale Summary'} style={styles.titleWrap} />
-      {selling ? orders.map(renderOrdersSelling) : orders.map(renderOrders)}
+      {selling ? orders.map(renderOrdersSelling) : orders.map(renderBuyingOrders)}
       <Row
         left={{ title: 'Total', style: rowStyles.darkTitle }}
         right={{ title: `$${total}`, style: rowStyles.secondaryTitle }}

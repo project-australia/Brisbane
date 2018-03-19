@@ -10,6 +10,7 @@ import {
 import { evaluateBookByISBN } from '../../../services/backend/bookService'
 import { payWithPayPal } from '../../../services/paypal'
 import { styles } from './styles/testScreen.test'
+let hasInitialized = false
 
 class TestScreenContainer extends React.Component {
   navigateTo = (routeName, params = {}, title) => {
@@ -60,13 +61,15 @@ class TestScreenContainer extends React.Component {
   }
 
   async componentDidUpdate() {
-    if (this.props.booksToSell.length === 0) {
+    if (this.props.booksToSell.length === 0 && !hasInitialized) {
       await this.addBookToSellShoppingBag()
     }
 
-    if (this.props.booksToBuy.length === 0) {
+    if (this.props.booksToBuy.length === 0 && !hasInitialized) {
       this.addBookToBuyShoppingBag()
     }
+
+    hasInitialized = true
   }
 
   render() {

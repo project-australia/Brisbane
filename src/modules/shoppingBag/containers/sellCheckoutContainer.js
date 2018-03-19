@@ -6,11 +6,11 @@ import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 
 export class SellCheckoutContainer extends Component {
   static propTypes = {
+    prices: PropTypes.object.isRequired,
     books: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
     checkoutWithInPersonPayment: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
     onCheckoutSuccess: PropTypes.func.isRequired,
-    totalPrice: PropTypes.number.isRequired,
     user: PropTypes.instanceOf(User),
     generateOrder: PropTypes.func.isRequired,
     navigateBack: PropTypes.func.isRequired
@@ -24,7 +24,7 @@ export class SellCheckoutContainer extends Component {
   inGetLabelCheckout = async () => {
     try {
       await this.generateSellOrder()
-      this.props.onCheckoutSuccess()
+      this.props.onCheckoutSuccess("You'll receive label on email")
     } catch (error) {
       alert('error during label checkout')
       console.log('label error', error)
@@ -39,7 +39,7 @@ export class SellCheckoutContainer extends Component {
         inPersonCheckout={this.props.checkoutWithInPersonPayment}
         inGetLabelCheckout={this.inGetLabelCheckout}
         navigateBack={this.props.navigateBack}
-        totalPrice={this.props.totalPrice}
+        totalPrice={this.props.prices.total}
       />
     )
   }

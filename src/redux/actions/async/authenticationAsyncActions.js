@@ -1,5 +1,4 @@
-import Axios from 'axios' // TODO: Remover uso de axios deste arquivo, isto fere SRP
-
+import { getOrder } from '../../../services/backend/orderService'
 import {
   alertAction,
   updateUserProfile,
@@ -32,17 +31,6 @@ export function signInAction(email, password) {
   }
 }
 
-export function getUserProfileAction(uid) {
-  return async dispatch => {
-    try {
-      const profile = await getUserProfile(uid)
-      dispatch(updateUserProfile(profile))
-    } catch (error) {
-      dispatch(alertAction(error))
-    }
-  }
-}
-
 export function signUpAction(signUpForm) {
   return async dispatch => {
     try {
@@ -65,6 +53,30 @@ export function logOutAction(signUpForm) {
   }
 }
 
+export function forgotPasswordAction(email) {
+  return async dispatch => {
+    try {
+      await sendPasswordResetEmail(email)
+      dispatch(successRetrievedPassword(FORGOT_PASSWORD_SUCCESS_MSG))
+    } catch (error) {
+      dispatch(alertAction(error))
+    }
+  }
+}
+
+// TODO: Below Thunks are not related to Authentication
+
+export function getUserProfileAction(uid) {
+  return async dispatch => {
+    try {
+      const profile = await getUserProfile(uid)
+      dispatch(updateUserProfile(profile))
+    } catch (error) {
+      dispatch(alertAction(error))
+    }
+  }
+}
+
 export function updateProfileAction(id, userProfile) {
   return async dispatch => {
     try {
@@ -79,11 +91,8 @@ export function updateProfileAction(id, userProfile) {
 export function requestWithdrawAction(id, walletWithPaypalAccount) {
   return async dispatch => {
     try {
-      const response = await Axios.put(
-        `/users/${id}/requestwithdraw`,
-        walletWithPaypalAccount
-      )
-      dispatch(updateUserProfile(response.data))
+      const updatedProfile = requestWithdrawAction(id, walletWithPaypalAccount)
+      dispatch(updateUserProfile(updatedProfile))
     } catch (error) {
       dispatch(alertAction(error))
     }
@@ -93,10 +102,6 @@ export function requestWithdrawAction(id, walletWithPaypalAccount) {
 export function getNetworking(id) {
   return async dispatch => {
     try {
-      // const response = await Axios.get(
-      //   `/users/${id}/requestwithdraw`,
-      //   walletWithPaypalAccount
-      // )
       const network = ['user', 'user1']
       dispatch(updateUserNetworking(network))
     } catch (error) {
@@ -108,33 +113,8 @@ export function getNetworking(id) {
 export function getOrders(id) {
   return async dispatch => {
     try {
-      // const response = await Axios.get(
-      //   `/users/${id}/requestwithdraw`,
-      //   walletWithPaypalAccount
-      // )
-      const order = [
-        {
-          id: 1,
-          date: new Date(),
-          books: [{ id: 1, name: 'book-A' }, { id: 2, name: 'book-A' }]
-        },
-        {
-          id: 2,
-          date: new Date(),
-          books: [{ id: 1, name: 'book-A' }, { id: 2, name: 'book-A' }]
-        }
-      ]
+      const order = getOrder(id)
       dispatch(updateUserOrders(order))
-    } catch (error) {
-      dispatch(alertAction(error))
-    }
-  }
-}
-export function forgotPasswordAction(email) {
-  return async dispatch => {
-    try {
-      await sendPasswordResetEmail(email)
-      dispatch(successRetrievedPassword(FORGOT_PASSWORD_SUCCESS_MSG))
     } catch (error) {
       dispatch(alertAction(error))
     }

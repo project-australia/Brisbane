@@ -52,8 +52,7 @@ class CheckoutContainer extends Component {
       // FIXME: inside `generateOrder` should have case of creating selling order
       // actually this scenario is failing
       await this.generateOrder(user, books, 'IN_PERSON', screenType)
-      alert('Instructions sent by email.')
-      this.onCheckoutSuccess(screenType)
+      this.onCheckoutSuccess('Instructions sent by email.')
     } catch (error) {
       alert('in person checkout failed')
       console.log('In Person checkout failed')
@@ -61,16 +60,6 @@ class CheckoutContainer extends Component {
     } finally {
       this.setState({ isLoading: false })
     }
-  }
-
-  onCheckoutSuccess = () => {
-    if (this.props.navigation.state.params.screenType === 'BUY') {
-      this.props.cleanShoppingBag('BUY')
-      this.props.cleanShoppingBag('RENT')
-    } else {
-      this.props.cleanShoppingBag('SELL')
-    }
-    this.props.navigation.navigate('Home')
   }
 
   confirmInPersonCheckout = () => {
@@ -90,8 +79,16 @@ class CheckoutContainer extends Component {
     )
   }
 
-  get totalPrice() {
-    return Number(this.state.total) + Number(this.state.shippingPrice)
+  onCheckoutSuccess = (alertMessage) => {
+    if (this.props.navigation.state.params.screenType === 'BUY') {
+      this.props.cleanShoppingBag('BUY')
+      this.props.cleanShoppingBag('RENT')
+    } else {
+      this.props.cleanShoppingBag('SELL')
+    }
+    this.props.navigation.navigate('Home')
+
+    alert(alertMessage)
   }
 
   get standardShippingPrice() {
@@ -129,6 +126,36 @@ class CheckoutContainer extends Component {
     }
   }
 
+  userClubBonus = () => {
+    const { screenType } = this.props.navigation.state.params
+    const { club } = this.props.user
+
+    if (screenType === 'BUY') {
+      return 0
+    }
+
+    if (club === 'NONE') {
+      return 0.2
+    } else if (club === 'TWENTY') {
+      return 0.2
+    }
+  }
+
+  calculatePrices = () => {
+    const shoppingBagPriceSum = this.state.total
+    const shipping = this.state.shippingPrice
+    const bonus = shoppingBagPriceSum * this.userClubBonus()
+    const subTotal = Number((shoppingBagPriceSum + bonus).toPrecision(4))
+    const total = shipping + subTotal
+
+    return {
+      shipping,
+      bonus,
+      subTotal,
+      total
+    }
+  }
+
   render() {
     const { screenType } = this.props.navigation.state.params
 
@@ -140,10 +167,9 @@ class CheckoutContainer extends Component {
           navigateBack={this.navigateBack}
           selectExpediteShipping={this.changeToExpediteShippingMethod}
           selectStandardShipping={this.changeToStandardShippingMethod}
-          totalPrice={this.totalPrice}
+          prices={this.calculatePrices()}
           onCheckoutSuccess={this.onCheckoutSuccess}
           isLoading={this.state.isLoading}
-          shippingPrice={this.state.shippingPrice}
           shippingMethod={this.state.shippingMethod}
           navigation={this.props.navigation}
           expediteShippingPrice={this.standardShippingPrice}
@@ -159,7 +185,7 @@ class CheckoutContainer extends Component {
           books={this.state.books}
           checkoutWithInPersonPayment={this.confirmInPersonCheckout}
           navigateBack={this.navigateBack}
-          totalPrice={this.totalPrice}
+          prices={this.calculatePrices()}
           onCheckoutSuccess={this.onCheckoutSuccess}
           isLoading={this.state.isLoading}
           user={this.props.user}

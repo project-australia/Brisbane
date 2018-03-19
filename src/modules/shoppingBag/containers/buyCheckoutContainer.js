@@ -9,6 +9,7 @@ import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 
 export class BuyCheckoutContainer extends Component {
   static propTypes = {
+    prices: PropTypes.object.isRequired,
     isLoading: PropTypes.bool.isRequired,
     checkoutWithInPersonPayment: PropTypes.func.isRequired,
     navigation: PropTypes.object.isRequired,
@@ -17,8 +18,6 @@ export class BuyCheckoutContainer extends Component {
     navigateBack: PropTypes.func.isRequired,
     selectExpediteShipping: PropTypes.func.isRequired,
     selectStandardShipping: PropTypes.func.isRequired,
-    totalPrice: PropTypes.number.isRequired,
-    shippingPrice: PropTypes.number.isRequired,
     onCheckoutSuccess: PropTypes.func.isRequired,
     shippingMethod: PropTypes.oneOf(['EXPEDITE', 'STANDARD', 'IN_PERSON'])
       .isRequired,
@@ -64,7 +63,7 @@ export class BuyCheckoutContainer extends Component {
     try {
       const order = await this.generateBuyOrder()
       await payWithPayPal(
-        this.props.totalPrice,
+        this.props.prices.total,
         'Buying books',
         this.onPayPalOnSuccess(order)
       )
@@ -74,6 +73,7 @@ export class BuyCheckoutContainer extends Component {
   }
 
   render() {
+    console.log('ae', this.props.prices)
     return (
       <BuyCheckout
         books={this.props.books}
@@ -85,7 +85,8 @@ export class BuyCheckoutContainer extends Component {
         selectStandardShipping={this.props.selectStandardShipping}
         shippingMethod={this.props.shippingMethod}
         expediteShippingPrice={this.props.expediteShippingPrice}
-        totalPrice={this.props.totalPrice}
+        shippingPrice={this.props.prices.shipping}
+        totalPrice={this.props.prices.total}
       />
     )
   }

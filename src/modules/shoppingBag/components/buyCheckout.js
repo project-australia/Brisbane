@@ -10,8 +10,7 @@ import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 import { FormButton, FormOutlineButton, SimpleButton } from '../../shared/components/buttons'
 
 import { styles } from './styles/shoppingBagItems.style'
-
-import { Fonts, Colors, Metrics } from '../../../constants'
+import { Metrics } from '../../../constants'
 
 const SelectedButton = FormButton
 const NotSelectedButton = FormOutlineButton
@@ -23,6 +22,7 @@ export class BuyCheckout extends React.Component {
   }
 
   static propTypes = {
+    shippingPrice: PropTypes.number.isRequired,
     checkoutWithPayPal: PropTypes.func.isRequired,
     checkoutWithInPersonPayment: PropTypes.func.isRequired,
     books: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
@@ -61,6 +61,8 @@ export class BuyCheckout extends React.Component {
       />
     )
   }
+
+  // TODO: Isso parece ser um component a parte
   renderShippingAddress = () => {
     return (
       <View style={styles.wrappingCard}>
@@ -123,6 +125,7 @@ export class BuyCheckout extends React.Component {
         <ScrollView>
           <OrderSummaryList
             orders={this.props.books}
+            shippingPrice={this.props.shippingPrice}
             total={this.props.totalPrice}
           />
 
