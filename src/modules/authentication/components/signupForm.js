@@ -1,18 +1,12 @@
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { View } from 'react-native'
-import { FormButton } from '../../shared/components/buttons'
 import { FormHeader } from './formHeader'
 import { FormTextInput } from './formTextInput'
 import { signupFormType } from './profileForm'
 import { styles } from './styles/loginFormStyles'
 
 export class EmailPasswordForm extends Component {
-  static defaultProps = { footer: <View /> }
   static propTypes = {
-    footer: PropTypes.object,
-    onButtonPress: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
     form: signupFormType
   }
 
@@ -43,25 +37,16 @@ export class EmailPasswordForm extends Component {
           placeholder="Password"
           secureTextEntry
         />
-
         <FormTextInput
           onChangeText={this.setSchool}
           value={this.props.form.school}
           placeholder="School"
         />
-
         <FormTextInput
           onChangeText={this.setReferredBy}
           value={this.props.form.referredBy}
           placeholder="Rep's email (optional)"
         />
-
-        <FormButton
-          title={'Create your account'}
-          onPress={this.props.onButtonPress}
-          style={styles.itemSpacing}
-        />
-        {this.props.footer}
       </View>
     )
   }

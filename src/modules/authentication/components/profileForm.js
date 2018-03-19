@@ -15,7 +15,6 @@ export const signupFormType = PropTypes.shape({
   telephone: string.isRequired,
   referredBy: string.isRequired,
   street: string.isRequired,
-  number: string.isRequired,
   zipCode: string.isRequired,
   state: string.isRequired,
   email: string.isRequired,
@@ -39,7 +38,6 @@ export class ProfileForm extends Component {
   setCity = city => this.props.onChange({ city })
   setSchool = school => this.props.onChange({ school })
   setStreet = street => this.props.onChange({ street })
-  setNumber = number => this.props.onChange({ number })
   setZipCode = zipCode => this.props.onChange({ zipCode })
   setAddressState = state => this.props.onChange({ state })
   setTelephone = telephone => this.props.onChange({ telephone })
@@ -52,7 +50,6 @@ export class ProfileForm extends Component {
     return (
       <View style={styles.container}>
         <AppStatusBar />
-        <Navbar title={'Almost there...'} onBack={this.props.navigateBack} />
         <ScrollView>
           <View>
             <View style={styles.bdayLabel}>
@@ -105,28 +102,18 @@ export class ProfileForm extends Component {
             value={this.props.form.street}
             placeholder="Street"
           />
+          <FormTextInput
+            onChangeText={this.setCity}
+            value={this.props.form.city}
+            placeholder="City"
+          />
           <View style={styles.inputRow}>
-            <FormTextInput
-              style={styles.inlineInput}
-              onChangeText={this.setNumber}
-              value={this.props.form.number}
-              placeholder="Number"
-              keyboardType="phone-pad"
-            />
             <FormTextInput
               style={styles.inlineInput}
               onChangeText={this.setZipCode}
               value={this.props.form.zipCode}
               placeholder="Zip Code"
               keyboardType="phone-pad"
-            />
-          </View>
-          <View style={styles.inputRow}>
-            <FormTextInput
-              style={styles.inlineInputTriple}
-              onChangeText={this.setCity}
-              value={this.props.form.city}
-              placeholder="City"
             />
             <FormTextInput
               style={styles.inlineInput}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Keyboard, Platform } from 'react-native'
+import { Keyboard, Platform, ScrollView } from 'react-native'
 import { bool, func, shape, string } from 'prop-types'
 
 import { Address } from '../../../domain/Address'
@@ -19,7 +19,6 @@ const extractSignUpFormFromState = form => {
     telephone,
     referredBy,
     street,
-    number,
     zipCode,
     state,
     city,
@@ -30,7 +29,8 @@ const extractSignUpFormFromState = form => {
     birthDateYear
   } = form
 
-  const address = new Address(street, city, number, zipCode, state)
+  const address = new Address(street, city, 0, zipCode, state) // TODO: Remove number param from
+  // constructor
 
   const user = new User(
     undefined,
@@ -67,7 +67,6 @@ export class SignUpForm extends Component {
     telephone: '',
     referredBy: '',
     street: '',
-    number: '',
     zipCode: '',
     state: '',
     email: '',
@@ -139,39 +138,28 @@ export class SignUpForm extends Component {
     }
   }
 
-  userProfileForm = () => (
-    <ProfileForm
-      footer={this.renderFooter()}
-      onChange={this.onFormChange}
-      form={this.state}
-      onButtonPress={this.doSignUp}
-      navigateBack={this.switchForm}
-    />
-  )
-
-  userPasswordForm = () => (
-    <EmailPasswordForm
-      footer={this.renderFooter()}
-      onChange={this.onFormChange}
-      form={this.state}
-      onButtonPress={this.switchForm}
-    />
-  )
-
   render() {
-    console.log('state', this.state)
     const overlayStyle = [
       styles.container,
       { paddingBottom: this.state.keyboardHeight }
     ]
 
-    const formToRender = this.state.switch
-      ? this.userPasswordForm()
-      : this.userProfileForm()
-
     return (
       <LoadingOverlay style={overlayStyle} isLoading={this.state.loading}>
-        {formToRender}
+        <ScrollView alwaysBounceVertical={false} bounces={false}>
+          <EmailPasswordForm
+            onChange={this.onFormChange}
+            form={this.state}
+            onButtonPress={this.switchForm}
+          />
+          <ProfileForm
+            footer={this.renderFooter()}
+            onChange={this.onFormChange}
+            form={this.state}
+            onButtonPress={this.doSignUp}
+            navigateBack={this.switchForm}
+          />
+        </ScrollView>
       </LoadingOverlay>
     )
   }
