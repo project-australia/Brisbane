@@ -15,7 +15,8 @@ import {
 import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../constants/messages'
 import {
   signUpUser,
-  getUserProfile
+  getUserProfile,
+  putUserProfile
 } from '../../../services/backend/userService'
 import { NOT_LOGGED_IN } from '../../reducers/authentication/constants'
 
@@ -31,10 +32,10 @@ export function signInAction(email, password) {
   }
 }
 
-export function getUserProfileAction(user) {
+export function getUserProfileAction(uid) {
   return async dispatch => {
     try {
-      const profile = await getUserProfile(user.uid)
+      const profile = await getUserProfile(uid)
       dispatch(updateUserProfile(profile))
     } catch (error) {
       dispatch(alertAction(error))
@@ -67,8 +68,8 @@ export function logOutAction(signUpForm) {
 export function updateProfileAction(id, userProfile) {
   return async dispatch => {
     try {
-      const response = await Axios.put(`/users/${id}/profile`, userProfile)
-      dispatch(updateUserProfile(response.data))
+      const updatedProfile = putUserProfile(id, userProfile)
+      dispatch(updateUserProfile(updatedProfile))
     } catch (error) {
       dispatch(alertAction(error))
     }

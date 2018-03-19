@@ -111,3 +111,5 @@ export const wakeUpBackEnd = () => Axios.get('/health').catch(console.info)
 
 export const requestWithdraw = (userId, walletPaypalAccount) =>
   Axios.put(`/users/${userId}/profile`, walletPaypalAccount).catch(console.info)
+
+export const putUserProfile = (id, profile) => Axios.put(`/users/${id}/profile`, profile)

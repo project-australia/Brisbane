@@ -69,10 +69,6 @@ class TestScreenContainer extends React.Component {
     }
   }
 
-  async componentDidMount() {
-    await this.props.signIn('eduardomoroni@gmail.com', '123456')
-  }
-
   render() {
     return (
       <ScrollView>
