@@ -73,7 +73,6 @@ export class BuyCheckoutContainer extends Component {
   }
 
   render() {
-    console.log('ae', this.props.prices)
     return (
       <BuyCheckout
         books={this.props.books}
@@ -85,8 +84,7 @@ export class BuyCheckoutContainer extends Component {
         selectStandardShipping={this.props.selectStandardShipping}
         shippingMethod={this.props.shippingMethod}
         expediteShippingPrice={this.props.expediteShippingPrice}
-        shippingPrice={this.props.prices.shipping}
-        totalPrice={this.props.prices.total}
+        prices={this.props.prices}
       />
     )
   }

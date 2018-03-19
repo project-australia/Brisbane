@@ -22,12 +22,11 @@ export class BuyCheckout extends React.Component {
   }
 
   static propTypes = {
-    shippingPrice: PropTypes.number.isRequired,
+    prices: PropTypes.object.isRequired,
     checkoutWithPayPal: PropTypes.func.isRequired,
     checkoutWithInPersonPayment: PropTypes.func.isRequired,
     books: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
     navigateBack: PropTypes.func.isRequired,
-    totalPrice: PropTypes.number.isRequired,
     expediteShippingPrice: PropTypes.number.isRequired,
     selectExpediteShipping: PropTypes.func.isRequired,
     selectStandardShipping: PropTypes.func.isRequired,
@@ -125,8 +124,7 @@ export class BuyCheckout extends React.Component {
         <ScrollView>
           <OrderSummaryList
             orders={this.props.books}
-            shippingPrice={this.props.shippingPrice}
-            total={this.props.totalPrice}
+            prices={this.props.prices}
           />
 
           <MenuTitle title={'Shipping Address'} style={styles.titleWrap} />

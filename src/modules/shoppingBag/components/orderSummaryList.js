@@ -32,16 +32,39 @@ const renderOrdersSelling = ({ book }) => {
   )
 }
 
+const OrderSummaryRows = props => {
+  const { orders, prices, selling } = props
+  return (
+    <View>
+      {selling ? orders.map(renderOrdersSelling) : orders.map(renderBuyingOrders)}
+      <Row
+        left={{ title: 'Sub total', style: rowStyles.darkTitle }}
+        right={{ title: `$${prices.subTotal}`, style: rowStyles.secondaryTitle }}
+      />
+      { prices.bonus ?
+        <Row
+          left={{ title: 'Bonus', style: rowStyles.darkTitle }}
+          right={{ title: `$${prices.bonus}`, style: rowStyles.secondaryTitle }}
+        /> : null
+      }
+      <Row
+        left={{ title: 'Shipping Price', style: rowStyles.darkTitle }}
+        right={{ title: `$${prices.shipping}`, style: rowStyles.secondaryTitle }}
+      />
+      <Row
+        bold
+        left={{ title: 'Total', style: rowStyles.darkTitle }}
+        right={{ title: `$${prices.total}`, style: rowStyles.secondaryTitle }}
+      />
+    </View>
+  )
+}
+
 export const OrderSummaryList = props => {
-  const { orders, total, selling } = props
   return (
     <View style={styles.itemsWrap}>
       <MenuTitle title={'Sale Summary'} style={styles.titleWrap} />
-      {selling ? orders.map(renderOrdersSelling) : orders.map(renderBuyingOrders)}
-      <Row
-        left={{ title: 'Total', style: rowStyles.darkTitle }}
-        right={{ title: `$${total}`, style: rowStyles.secondaryTitle }}
-      />
+      <OrderSummaryRows {...props} />
     </View>
   )
 }

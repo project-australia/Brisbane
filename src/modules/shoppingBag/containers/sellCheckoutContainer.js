@@ -39,7 +39,7 @@ export class SellCheckoutContainer extends Component {
         inPersonCheckout={this.props.checkoutWithInPersonPayment}
         inGetLabelCheckout={this.inGetLabelCheckout}
         navigateBack={this.props.navigateBack}
-        totalPrice={this.props.prices.total}
+        prices={this.props.prices}
       />
     )
   }

@@ -20,7 +20,7 @@ export const SellCheckout = props => {
       <ScrollView>
         <OrderSummaryList
           orders={props.books}
-          total={props.totalPrice}
+          prices={props.prices}
           selling
         />
         <MenuTitle title={'Checkout'} style={styles.titleWrap} />
@@ -46,6 +46,7 @@ export const SellCheckout = props => {
 }
 
 SellCheckout.propTypes = {
+  prices: PropTypes.object.isRequired,
   inPersonCheckout: PropTypes.func.isRequired,
   inGetLabelCheckout: PropTypes.func.isRequired,
   books: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired

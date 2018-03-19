@@ -130,23 +130,21 @@ class CheckoutContainer extends Component {
     const { screenType } = this.props.navigation.state.params
     const { club } = this.props.user
 
-    if (screenType === 'BUY') {
+    if (club === 'NONE') {
       return 0
+    } else if (club === 'TWENTY' && screenType === 'SELL') {
+      return 0.2
     }
 
-    if (club === 'NONE') {
-      return 0.2
-    } else if (club === 'TWENTY') {
-      return 0.2
-    }
+    return 0
   }
 
   calculatePrices = () => {
     const shoppingBagPriceSum = this.state.total
     const shipping = this.state.shippingPrice
-    const bonus = shoppingBagPriceSum * this.userClubBonus()
-    const subTotal = Number((shoppingBagPriceSum + bonus).toPrecision(4))
-    const total = shipping + subTotal
+    const bonus = Number((shoppingBagPriceSum * this.userClubBonus()).toFixed(2))
+    const subTotal = Number((shoppingBagPriceSum).toFixed(2))
+    const total = shipping + subTotal + bonus
 
     return {
       shipping,
