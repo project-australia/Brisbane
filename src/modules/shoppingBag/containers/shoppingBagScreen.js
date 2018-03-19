@@ -66,4 +66,6 @@ const mapDispatchToProps = dispatch => ({
   emptyShoppingBag: () => dispatch(cleanWholeShoppingBag())
 })
 
-export const ShoppingBagScreen = connect(mapStateToProps, mapDispatchToProps)(ShoppingBagContainer)
+export const ShoppingBagScreen = connect(mapStateToProps, mapDispatchToProps)(
+  ShoppingBagContainer
+)

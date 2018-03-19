@@ -92,7 +92,10 @@ export class BookDetails extends Component {
             <SimpleButton
               title={'Learn more'}
               onPress={onPressBallardsClub}
-              style={{ marginRight: Metrics.section, marginVertical: Metrics.baseMargin }}
+              style={{
+                marginRight: Metrics.section,
+                marginVertical: Metrics.baseMargin
+              }}
             />
           </Touchable>
         )
@@ -179,23 +182,29 @@ export class BookDetails extends Component {
                   color={Colors.primary500}
                   style={{ marginRight: Metrics.smallMargin }}
                 />
-                <Text style={{ ...Fonts.style.caption, color: Colors.primary500 }}>
+                <Text
+                  style={{ ...Fonts.style.caption, color: Colors.primary500 }}
+                >
                   About conditions
                 </Text>
               </View>
             }
             value={
-              <View style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                flex: 1
-              }}>
-                <Text style={{
-                  flex: 1,
-                  ...Fonts.style.description,
-                  color: Colors.gray900,
-                  textAlign: 'right'
-                }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  flex: 1
+                }}
+              >
+                <Text
+                  style={{
+                    flex: 1,
+                    ...Fonts.style.description,
+                    color: Colors.gray900,
+                    textAlign: 'right'
+                  }}
+                >
                   {condition || defaultCondition}
                 </Text>
                 <Icon
@@ -219,20 +228,19 @@ export class BookDetails extends Component {
             onBuy={() => onPressBuy(book)}
             onSell={() => this.onPressSell(book)}
           />
-          {(isSelling && this.props.membershipStatus === 'NONE') && <PriceRowNotMember
-            price={price}
-            onPressBallardsClub={this.props.onPressBallardsClub}
-          />}
+          {isSelling &&
+            this.props.membershipStatus === 'NONE' && (
+              <PriceRowNotMember
+                price={price}
+                onPressBallardsClub={this.props.onPressBallardsClub}
+              />
+            )}
           <MenuTitle title={'Details'} style={styles.titleWrap} />
           <GeneralInfoCard style={styles.standardSpacing}>
             {about && (
-              <View style={{paddingBottom: 10}}>
-                <Text style={styles.description}>
-                  Description
-                </Text>
-                <Text style={styles.descriptionGray}>
-                  {about}
-                </Text>
+              <View style={{ paddingBottom: 10 }}>
+                <Text style={styles.description}>Description</Text>
+                <Text style={styles.descriptionGray}>{about}</Text>
               </View>
             )}
             <Text style={styles.description}>ISBN</Text>

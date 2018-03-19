@@ -5,8 +5,10 @@ const sameItem = item => element => element.equals(item)
 const hasBookType = type => element => element.type === SHOPPING_BAG_TYPES[type]
 
 export const cleanShoppingBag = (state, action) => EMPTY_SHOPPING_BAG
-export const removeShoppingBagItem = (state, { item }) => reject(state, sameItem(item))
-export const removeAllItemsFromType = (state, { bookType }) => reject(state, hasBookType(bookType))
+export const removeShoppingBagItem = (state, { item }) =>
+  reject(state, sameItem(item))
+export const removeAllItemsFromType = (state, { bookType }) =>
+  reject(state, hasBookType(bookType))
 
 export const addShoppingBagItem = (state, { item }) => {
   const items = cloneDeep(state)

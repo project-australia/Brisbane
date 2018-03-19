@@ -8,22 +8,26 @@ import { SimpleButton } from './buttons'
 
 export const PriceRowNotMember = props => {
   const price = props.price.sell
-  const discontPrice = price + (price * 0.20)
-  return price > 0
-    ? (
-      <View style={styles.row}>
-        <View style={styles.rowInfo}>
-          <Text style={styles.description}>Elite Members Get 20% Extra</Text>
-          {discontPrice > 0 && <Text style={styles.title}>{`$${discontPrice.toFixed(2)}`}</Text>}
-        </View>
-        <SimpleButton
-          title={'Learn more'}
-          onPress={props.onPressBallardsClub}
-          style={{ marginRight: Metrics.section, marginVertical: Metrics.baseMargin, padding: 7 }}
-        />
+  const discontPrice = price + price * 0.2
+  return price > 0 ? (
+    <View style={styles.row}>
+      <View style={styles.rowInfo}>
+        <Text style={styles.description}>Elite Members Get 20% Extra</Text>
+        {discontPrice > 0 && (
+          <Text style={styles.title}>{`$${discontPrice.toFixed(2)}`}</Text>
+        )}
       </View>
-    )
-    : null
+      <SimpleButton
+        title={'Learn more'}
+        onPress={props.onPressBallardsClub}
+        style={{
+          marginRight: Metrics.section,
+          marginVertical: Metrics.baseMargin,
+          padding: 7
+        }}
+      />
+    </View>
+  ) : null
 }
 
 PriceRowNotMember.propsType = {

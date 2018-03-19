@@ -23,11 +23,17 @@ export const BookList = ({
             onBuyPressed={onBuyPressed}
           />
         ))}
-        {list.length === 0 && <View style={{
-          flex: 1
-        }}>
-          <Text style={{ textAlign: 'center', paddingTop: 30 }}>Sorry, Books not Found</Text>
-        </View>}
+        {list.length === 0 && (
+          <View
+            style={{
+              flex: 1
+            }}
+          >
+            <Text style={{ textAlign: 'center', paddingTop: 30 }}>
+              Sorry, Books not Found
+            </Text>
+          </View>
+        )}
       </ScrollView>
     </View>
   )

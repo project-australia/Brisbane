@@ -36,20 +36,28 @@ const OrderSummaryRows = props => {
   const { orders, prices, selling } = props
   return (
     <View>
-      {selling ? orders.map(renderOrdersSelling) : orders.map(renderBuyingOrders)}
+      {selling
+        ? orders.map(renderOrdersSelling)
+        : orders.map(renderBuyingOrders)}
       <Row
         left={{ title: 'Sub total', style: rowStyles.darkTitle }}
-        right={{ title: `$${prices.subTotal}`, style: rowStyles.secondaryTitle }}
+        right={{
+          title: `$${prices.subTotal}`,
+          style: rowStyles.secondaryTitle
+        }}
       />
-      { prices.bonus ?
+      {prices.bonus ? (
         <Row
           left={{ title: 'Bonus', style: rowStyles.darkTitle }}
           right={{ title: `$${prices.bonus}`, style: rowStyles.secondaryTitle }}
-        /> : null
-      }
+        />
+      ) : null}
       <Row
         left={{ title: 'Shipping Price', style: rowStyles.darkTitle }}
-        right={{ title: `$${prices.shipping}`, style: rowStyles.secondaryTitle }}
+        right={{
+          title: `$${prices.shipping}`,
+          style: rowStyles.secondaryTitle
+        }}
       />
       <Row
         bold

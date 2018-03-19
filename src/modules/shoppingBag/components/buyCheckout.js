@@ -7,7 +7,11 @@ import { Navbar } from '../../shared/components/navbar'
 import { MenuTitle } from '../../shared/components/menuTitle'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { LoadingOverlay } from '../../shared/components/loadingOverlay'
-import { FormButton, FormOutlineButton, SimpleButton } from '../../shared/components/buttons'
+import {
+  FormButton,
+  FormOutlineButton,
+  SimpleButton
+} from '../../shared/components/buttons'
 
 import { styles } from './styles/shoppingBagItems.style'
 import { Metrics } from '../../../constants'
@@ -65,49 +69,42 @@ export class BuyCheckout extends React.Component {
   renderShippingAddress = () => {
     return (
       <View style={styles.wrappingCard}>
-
         <View style={styles.wrappAddressItem}>
-          <Text style={styles.addressItemLeft}>
-            Street:
+          <Text style={styles.addressItemLeft}>Street:</Text>
+          <Text style={styles.addressItemRight}>
+            475 LENFANT PLZ SW RM 10022
           </Text>
-          <Text style={styles.addressItemRight}>475 LENFANT PLZ SW RM 10022</Text>
         </View>
 
         <View style={styles.wrappAddressItem}>
-          <Text style={styles.addressItemLeft}>
-            City:
-          </Text>
+          <Text style={styles.addressItemLeft}>City:</Text>
           <Text style={styles.addressItemRight}>Washington</Text>
         </View>
 
         <View style={styles.wrappAddressItem}>
-          <Text style={styles.addressItemLeft}>
-            State:
-          </Text>
+          <Text style={styles.addressItemLeft}>State:</Text>
           <Text style={styles.addressItemRight}>DC</Text>
         </View>
 
         <View style={styles.wrappAddressItem}>
-          <Text style={styles.addressItemLeft}>
-            Zipcode:
-          </Text>
+          <Text style={styles.addressItemLeft}>Zipcode:</Text>
           <Text style={styles.addressItemRight}>20260-0010</Text>
         </View>
 
         <View style={styles.wrappAddressItem}>
-          <Text style={styles.addressItemLeft}>
-            Phone:
-          </Text>
+          <Text style={styles.addressItemLeft}>Phone:</Text>
           <Text style={styles.addressItemRight}>(541) 754-3010</Text>
         </View>
 
         <View style={styles.addressButton}>
-
           <SimpleButton
             secondary
             title={'Change Address'}
             onPress={() => console.warn('change address')}
-            style={{ marginRight: Metrics.section, marginVertical: Metrics.baseMargin }}
+            style={{
+              marginRight: Metrics.section,
+              marginVertical: Metrics.baseMargin
+            }}
           />
         </View>
       </View>

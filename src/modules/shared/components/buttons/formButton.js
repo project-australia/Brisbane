@@ -5,7 +5,7 @@ import { StyleSheet, TouchableHighlight, Text, View } from 'react-native'
 import { Colors, Metrics } from '../../../../constants'
 import { func } from 'prop-types'
 
-const ButtonLabel = ({title, subtitle}) => {
+const ButtonLabel = ({ title, subtitle }) => {
   const { whiteTextCenter, whiteSubtitleCenter } = styles
   if (subtitle) {
     return (
@@ -15,15 +15,19 @@ const ButtonLabel = ({title, subtitle}) => {
       </View>
     )
   }
-  return (
-    <Text style={whiteTextCenter}>{title}</Text>
-  )
+  return <Text style={whiteTextCenter}>{title}</Text>
 }
 
 export const FormButton = props => {
-  const { primaryButton, secondaryButton, darkenOutline, infoWrap, iconWrap } = styles
+  const {
+    primaryButton,
+    secondaryButton,
+    darkenOutline,
+    infoWrap,
+    iconWrap
+  } = styles
 
-  const dynamicColor = (props.secondary) ? secondaryButton : primaryButton
+  const dynamicColor = props.secondary ? secondaryButton : primaryButton
   const style = StyleSheet.flatten([dynamicColor, darkenOutline, props.style])
   return (
     <TouchableHighlight
@@ -32,12 +36,8 @@ export const FormButton = props => {
       underlayColor={Colors.primary700}
     >
       <View style={infoWrap}>
-        <ButtonLabel
-          title={props.title}
-          subtitle={props.subtitle}
-        />
-        {
-          props.icon &&
+        <ButtonLabel title={props.title} subtitle={props.subtitle} />
+        {props.icon && (
           <View style={iconWrap}>
             <Icon
               name={'barcode-scan'}
@@ -46,7 +46,7 @@ export const FormButton = props => {
               style={{ textAlign: 'center' }}
             />
           </View>
-        }
+        )}
       </View>
     </TouchableHighlight>
   )

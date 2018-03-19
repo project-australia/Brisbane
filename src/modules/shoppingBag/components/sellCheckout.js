@@ -18,11 +18,7 @@ export const SellCheckout = props => {
         onBack={props.navigateBack}
       />
       <ScrollView>
-        <OrderSummaryList
-          orders={props.books}
-          prices={props.prices}
-          selling
-        />
+        <OrderSummaryList orders={props.books} prices={props.prices} selling />
         <MenuTitle title={'Checkout'} style={styles.titleWrap} />
         <View style={styles.wrappingCard}>
           <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>

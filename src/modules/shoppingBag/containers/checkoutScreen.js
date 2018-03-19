@@ -79,7 +79,7 @@ class CheckoutContainer extends Component {
     )
   }
 
-  onCheckoutSuccess = (alertMessage) => {
+  onCheckoutSuccess = alertMessage => {
     if (this.props.navigation.state.params.screenType === 'BUY') {
       this.props.cleanShoppingBag('BUY')
       this.props.cleanShoppingBag('RENT')
@@ -142,8 +142,10 @@ class CheckoutContainer extends Component {
   calculatePrices = () => {
     const shoppingBagPriceSum = this.state.total
     const shipping = this.state.shippingPrice
-    const bonus = Number((shoppingBagPriceSum * this.userClubBonus()).toFixed(2))
-    const subTotal = Number((shoppingBagPriceSum).toFixed(2))
+    const bonus = Number(
+      (shoppingBagPriceSum * this.userClubBonus()).toFixed(2)
+    )
+    const subTotal = Number(shoppingBagPriceSum.toFixed(2))
     const total = shipping + subTotal + bonus
 
     return {

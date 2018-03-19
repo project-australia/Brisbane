@@ -48,4 +48,5 @@ export const currentUserUid = async () => {
 
 export const sendEmailVerification = async user => user.sendEmailVerification()
 export const getUserToken = async () => Firebase.auth().currentUser.getIdToken()
-export const sendPasswordResetEmail = async email => Firebase.auth().sendPasswordResetEmail(email)
+export const sendPasswordResetEmail = async email =>
+  Firebase.auth().sendPasswordResetEmail(email)

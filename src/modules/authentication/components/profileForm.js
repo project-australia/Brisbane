@@ -54,7 +54,6 @@ export class ProfileForm extends Component {
         <AppStatusBar />
         <Navbar title={'Almost there...'} onBack={this.props.navigateBack} />
         <ScrollView>
-
           <View>
             <View style={styles.bdayLabel}>
               <Text style={styles.bdayText}>Birthdate</Text>

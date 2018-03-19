@@ -11,13 +11,7 @@ import { styles } from './styles/home.styles'
 export const Book = ({
   onBuyPressed,
   onRentPressed,
-  book: {
-    title,
-    authors,
-    edition,
-    images,
-    price: { buy, rent }
-  }
+  book: { title, authors, edition, images, price: { buy, rent } }
 }) => {
   const imageSource = images
     ? { uri: images.medium }

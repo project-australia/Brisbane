@@ -27,7 +27,7 @@ class BookListSearchContainer extends Component {
     const { searchParam } = this.props.navigation.state.params
     try {
       const list = await searchBooksByAuthorIsbnTitle(searchParam)
-      this.setState({list})
+      this.setState({ list })
     } catch (err) {
       console.log('error na busca', err)
     }
@@ -74,6 +74,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export const BookListSearchScreen = connect(mapStateToProps, mapDispatchToProps)(
-  BookListSearchContainer
-)
+export const BookListSearchScreen = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BookListSearchContainer)

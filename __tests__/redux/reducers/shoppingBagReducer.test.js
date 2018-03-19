@@ -78,10 +78,7 @@ describe('Shopping bag reducer', () => {
       const initialState = [buyingItem, rentingItem]
       const expectedState = EMPTY_SHOPPING_BAG
 
-      const state = shoppingBagReducer(
-        initialState,
-        cleanWholeShoppingBag()
-      )
+      const state = shoppingBagReducer(initialState, cleanWholeShoppingBag())
 
       expect(state).toEqual(expectedState)
     })

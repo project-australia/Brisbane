@@ -5,7 +5,7 @@ import { func } from 'prop-types'
 import { StyleSheet, TouchableHighlight, Text, View } from 'react-native'
 import { Colors, Metrics } from '../../../../constants'
 
-const ButtonLabel = ({title, subtitle, style}) => {
+const ButtonLabel = ({ title, subtitle, style }) => {
   if (subtitle) {
     return (
       <View style={{ alignItems: 'center' }}>
@@ -14,9 +14,7 @@ const ButtonLabel = ({title, subtitle, style}) => {
       </View>
     )
   }
-  return (
-    <Text style={style.title}>{title}</Text>
-  )
+  return <Text style={style.title}>{title}</Text>
 }
 
 export const FormOutlineButton = props => {
@@ -57,8 +55,7 @@ export const FormOutlineButton = props => {
           title={props.title}
           subtitle={props.subtitle}
         />
-        {
-          props.icon &&
+        {props.icon && (
           <View style={iconWrap}>
             <Icon
               name={'barcode-scan'}
@@ -67,7 +64,7 @@ export const FormOutlineButton = props => {
               style={{ textAlign: 'center' }}
             />
           </View>
-        }
+        )}
       </View>
     </TouchableHighlight>
   )

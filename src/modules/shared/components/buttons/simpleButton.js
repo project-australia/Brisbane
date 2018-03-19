@@ -7,7 +7,7 @@ import { Touchable } from '../touchable'
 
 import { styles } from '../styles/buttons.styles'
 
-const ButtonLabel = ({title, subtitle}) => {
+const ButtonLabel = ({ title, subtitle }) => {
   const { whiteTextSmall, whiteSubtitleSmall } = styles
   if (subtitle) {
     return (
@@ -17,26 +17,28 @@ const ButtonLabel = ({title, subtitle}) => {
       </View>
     )
   }
-  return (
-    <Text style={whiteTextSmall}>{title}</Text>
-  )
+  return <Text style={whiteTextSmall}>{title}</Text>
 }
 
 export const SimpleButton = props => {
-  const { primaryBackground, secondaryBackground, darkenOutline, simpleButton } = styles
+  const {
+    primaryBackground,
+    secondaryBackground,
+    darkenOutline,
+    simpleButton
+  } = styles
 
-  const dynamicColor = (props.secondary) ? secondaryBackground : primaryBackground
-  const style = StyleSheet.flatten([dynamicColor, simpleButton, darkenOutline, props.style])
+  const dynamicColor = props.secondary ? secondaryBackground : primaryBackground
+  const style = StyleSheet.flatten([
+    dynamicColor,
+    simpleButton,
+    darkenOutline,
+    props.style
+  ])
   return (
-    <Touchable
-      onPress={props.onPress}
-      style={style}
-    >
+    <Touchable onPress={props.onPress} style={style}>
       <View>
-        <ButtonLabel
-          title={props.title}
-          subtitle={props.subtitle}
-        />
+        <ButtonLabel title={props.title} subtitle={props.subtitle} />
       </View>
     </Touchable>
   )

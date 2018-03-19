@@ -46,7 +46,7 @@ export const updateOrder = async (userId, orderId, transactionId, status) => {
     .catch(err => throwResponseBody(err))
 }
 
-export const getOrder = (id) => {
+export const getOrder = id => {
   return [
     {
       id: 1,
