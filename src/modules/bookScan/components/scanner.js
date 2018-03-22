@@ -16,6 +16,7 @@ export class Scanner extends Component {
 
   onRead = isbn => {
     if (!this.state.isReading) {
+      this.setState({ isReading: false })
       this.getSellingPrice(isbn)
     }
   }
