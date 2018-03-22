@@ -12,7 +12,7 @@ export const signupFormType = PropTypes.shape({
   school: string.isRequired,
   referredBy: string.isRequired,
   email: string.isRequired,
-  password: string.isRequired,
+  password: string.isRequired
 }).isRequired
 
 export class EmailPasswordForm extends Component {

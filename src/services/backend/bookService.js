@@ -14,7 +14,7 @@ export const evaluateBookByISBN = async isbn => {
     if (err.response && err.response.status === 404) {
       throw new Error('ISBN Not Found')
     } else {
-      throw new Error('Erro during searching for a book')
+      throw new Error('Error during searching for a book')
     }
   }
 }
@@ -27,7 +27,7 @@ export const findBookByISBN = async isbn => {
     if (err.response && err.response.status === 404) {
       throw new Error('ISBN Not Found')
     } else {
-      throw new Error('Erro during searching for a book')
+      throw new Error('Error during searching for a book')
     }
   }
 }
@@ -42,7 +42,7 @@ export const searchBooksByAuthorIsbnTitle = async searchParam => {
     if (err.response && err.response.status === 404) {
       throw new Error('ISBN Not Found')
     } else {
-      throw new Error('Erro during searching for a book')
+      throw new Error('Error during searching for a book')
     }
   }
 }

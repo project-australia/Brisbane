@@ -30,13 +30,14 @@ export class ModalSellingHome extends Component {
     }
   }
 
-  setInput = inputValue => this.setState({ inputValue })
-
   keyboardShow = keyboardData =>
     this.setState({
       keyboardHeight: keyboardData.endCoordinates.height
     })
+
   keyboardHide = () => this.setState({ keyboardHeight: 0 })
+
+  setInput = inputValue => this.setState({ inputValue })
 
   renderInput = inputType => {
     const { placeholder } = this.props

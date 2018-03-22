@@ -12,13 +12,10 @@ import { styles } from './styles/modalWithInputProfile.style'
 import { FormTextInput } from '../../../authentication/components/formTextInput'
 import { FlatButton } from '../buttons'
 
-export class ModalWithInputProfile extends Component {
+export class UpdateAddressModal extends Component {
   state = {
     keyboardHeight: 0,
-    school: '',
-    telephone: '',
     street: '',
-    number: '',
     zipCode: '',
     state: '',
     city: ''
@@ -54,23 +51,17 @@ export class ModalWithInputProfile extends Component {
     })
 
   keyboardHide = () => this.setState({ keyboardHeight: 0 })
-  setSchool = school => this.setState({ school })
-  setTelephone = telephone => this.setState({ telephone })
   setStreet = street => this.setState({ street })
-  setNumber = number => this.setState({ number })
   setZipCode = zipCode => this.setState({ zipCode })
   setAddressState = state => this.setState({ state })
   setCity = city => this.setState({ city })
 
   fillForm = () => {
     const { user } = this.props
-    this.setSchool(user.school)
-    this.setTelephone(user.telephone)
+    this.setCity(user.address.city)
     this.setStreet(user.address.street)
-    this.setNumber(user.address.number)
     this.setZipCode(user.address.zipCode)
     this.setAddressState(user.address.state)
-    this.setCity(user.address.city)
   }
 
   handleConfirm = () => {
@@ -78,15 +69,13 @@ export class ModalWithInputProfile extends Component {
     const profile = {
       address: {}
     }
-    profile.school = this.state.school
-    profile.telephone = this.state.telephone
     profile.address.street = this.state.street
-    profile.address.number = this.state.number
     profile.address.zipCode = this.state.zipCode
     profile.address.state = this.state.state
     profile.address.city = this.state.city
     return onConfirm(user.id, profile)
   }
+
   render() {
     const { onDismiss, visible } = this.props
     const overlayStyle = StyleSheet.flatten([
@@ -106,27 +95,9 @@ export class ModalWithInputProfile extends Component {
             <ScrollView>
               <FormTextInput
                 style={styles.input}
-                value={this.state.school}
-                onChangeText={value => this.setSchool(value)}
-                placeholder="School"
-              />
-              <FormTextInput
-                style={styles.input}
-                value={this.state.telephone}
-                onChangeText={value => this.setTelephone(value)}
-                placeholder="Phone"
-              />
-              <FormTextInput
-                style={styles.input}
                 value={this.state.street}
                 onChangeText={value => this.setStreet(value)}
                 placeholder="Street"
-              />
-              <FormTextInput
-                style={styles.input}
-                value={this.state.number}
-                onChangeText={value => this.setNumber(value)}
-                placeholder="Number"
               />
               <FormTextInput
                 style={styles.input}
@@ -158,7 +129,7 @@ export class ModalWithInputProfile extends Component {
                 secondary
                 containerStyle={styles.button}
                 title={'Confirm'}
-                onPress={() => this.handleConfirm()}
+                onPress={this.handleConfirm}
               />
             </View>
           </View>

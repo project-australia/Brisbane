@@ -10,13 +10,7 @@ import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 import { styles } from './styles/signInScreen.styles'
 
 const extractSignUpFormFromState = form => {
-  const {
-    name,
-    email,
-    password,
-    school,
-    referredBy
-  } = form
+  const { name, email, password, school, referredBy } = form
 
   // TODO: Refactor this constructor
   const user = new User(
@@ -69,9 +63,12 @@ export class SignUpForm extends Component {
     }
   }
 
-  onFormChange = value => { this.setState(value) }
+  onFormChange = value => {
+    this.setState(value)
+  }
   keyboardHide = () => this.setState({ keyboardHeight: 0 })
-  keyboardShow = keyboard => this.setState({ keyboardHeight: keyboard.endCoordinates.height })
+  keyboardShow = keyboard =>
+    this.setState({ keyboardHeight: keyboard.endCoordinates.height })
 
   doSignUp = async () => {
     this.setState({ loading: true })
