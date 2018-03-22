@@ -120,8 +120,12 @@ export const styles = StyleSheet.create({
     color: Colors.gray700,
     flex: 0.8
   },
-  addressButton: {
+  addressButtonContainer: {
     flex: 1,
     alignItems: 'flex-end'
+  },
+  addressButton: {
+    marginRight: Metrics.section,
+    marginVertical: Metrics.baseMargin
   }
 })

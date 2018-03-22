@@ -13,7 +13,7 @@ export class BuyCheckoutContainer extends Component {
     isLoading: PropTypes.bool.isRequired,
     checkoutWithInPersonPayment: PropTypes.func.isRequired,
     navigation: PropTypes.object.isRequired,
-    user: PropTypes.instanceOf(User),
+    user: PropTypes.instanceOf(User).isRequired,
     generateOrder: PropTypes.func.isRequired,
     navigateBack: PropTypes.func.isRequired,
     selectExpediteShipping: PropTypes.func.isRequired,
@@ -74,6 +74,7 @@ export class BuyCheckoutContainer extends Component {
   render() {
     return (
       <BuyCheckout
+        user={this.props.user}
         books={this.props.books}
         checkoutWithPayPal={this.payPalCheckout}
         checkoutWithInPersonPayment={this.props.checkoutWithInPersonPayment}

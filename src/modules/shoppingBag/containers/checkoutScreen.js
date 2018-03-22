@@ -22,7 +22,7 @@ class CheckoutContainer extends Component {
     sellingBooks: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
     cleanShoppingBag: PropTypes.func.isRequired,
     navigation: PropTypes.object.isRequired,
-    user: PropTypes.instanceOf(User),
+    user: PropTypes.instanceOf(User).isRequired,
     buyingTotal: PropTypes.number.isRequired,
     sellingTotal: PropTypes.number.isRequired
   }

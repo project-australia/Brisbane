@@ -1,21 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, ScrollView, Text, View } from 'react-native'
-import { AddressModal } from '../../shared/containers/AddressModal'
+import { User } from '../../../domain/User'
+import { CheckoutAddress } from './checkoutAddress'
 
 import { OrderSummaryList } from './orderSummaryList'
 import { Navbar } from '../../shared/components/navbar'
 import { MenuTitle } from '../../shared/components/menuTitle'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { LoadingOverlay } from '../../shared/components/loadingOverlay'
-import {
-  FormButton,
-  SimpleButton,
-  FormOutlineButton
-} from '../../shared/components/buttons'
+import { FormButton, FormOutlineButton } from '../../shared/components/buttons'
 
 import { styles } from './styles/shoppingBagItems.style'
-import { Metrics } from '../../../constants'
 
 const SelectedButton = FormButton
 const NotSelectedButton = FormOutlineButton
@@ -28,6 +24,7 @@ export class BuyCheckout extends React.Component {
 
   static propTypes = {
     prices: PropTypes.object.isRequired,
+    user: PropTypes.instanceOf(User).isRequired,
     checkoutWithPayPal: PropTypes.func.isRequired,
     checkoutWithInPersonPayment: PropTypes.func.isRequired,
     books: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
@@ -70,68 +67,9 @@ export class BuyCheckout extends React.Component {
     )
   }
 
-  // TODO: Isso parece ser um component a parte
-  renderShippingAddress = () => {
-    return (
-      <View style={styles.wrappingCard}>
-        <View style={styles.wrappAddressItem}>
-          <Text style={styles.addressItemLeft}>Street:</Text>
-          <Text style={styles.addressItemRight}>
-            475 LENFANT PLZ SW RM 10022
-          </Text>
-        </View>
-
-        <View style={styles.wrappAddressItem}>
-          <Text style={styles.addressItemLeft}>City:</Text>
-          <Text style={styles.addressItemRight}>Washington</Text>
-        </View>
-
-        <View style={styles.wrappAddressItem}>
-          <Text style={styles.addressItemLeft}>State:</Text>
-          <Text style={styles.addressItemRight}>DC</Text>
-        </View>
-
-        <View style={styles.wrappAddressItem}>
-          <Text style={styles.addressItemLeft}>Zipcode:</Text>
-          <Text style={styles.addressItemRight}>20260-0010</Text>
-        </View>
-
-        <View style={styles.wrappAddressItem}>
-          <Text style={styles.addressItemLeft}>Phone:</Text>
-          <Text style={styles.addressItemRight}>(541) 754-3010</Text>
-        </View>
-
-        <View style={styles.addressButton}>
-          <SimpleButton
-            secondary
-            title={'Change Address'}
-            onPress={this.showModal}
-            style={{
-              marginRight: Metrics.section,
-              marginVertical: Metrics.baseMargin
-            }}
-          />
-        </View>
-      </View>
-    )
-  }
-
-  showModal = () => {
-    this.setState({ isModalVisible: true })
-  }
-
-  hideModal = () => {
-    this.setState({ isModalVisible: false })
-  }
-
   render() {
     return (
       <LoadingOverlay style={styles.container} isLoading={this.props.isLoading}>
-        <AddressModal
-          visible={this.state.isModalVisible}
-          onShowModal={this.showModal}
-          onHideModal={this.hideModal}
-        />
         <Navbar
           title={`Buying ${this.props.books.length} Books`}
           onBack={this.props.navigateBack}
@@ -141,10 +79,7 @@ export class BuyCheckout extends React.Component {
             orders={this.props.books}
             prices={this.props.prices}
           />
-
-          <MenuTitle title={'Shipping Address'} style={styles.titleWrap} />
-          {this.renderShippingAddress()}
-
+          <CheckoutAddress address={this.props.user.address} />
           <MenuTitle title={'Shipping Method'} style={styles.titleWrap} />
           <View style={styles.wrappingCard}>
             <Text

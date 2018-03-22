@@ -7,10 +7,20 @@ const SIGNUP_ERROR_MESSAGE =
 const SIGNUP_BAD_REQUEST_MESSAGE = 'Please Check your form inputs'
 
 export const wakeUpBackEnd = () => Axios.get('/health').catch(console.warn)
-export const requestWithdraw = (userId, wallet) => Axios.put(`/users/${userId}/profile`, wallet).catch(handleError)
-export const signUpUser = async signUpForm => Axios.post('/users', signUpForm).then(mapToUserProfile).catch(handleError)
-export const getUserProfile = async userId => Axios.get(`/users/${userId}/profile`).then(mapToUserProfile).catch(handleError)
-export const putUserProfile = async (id, profile) => Axios.put(`/users/${id}/profile`, profile).then(mapToUserProfile).catch(handleError)
+export const requestWithdraw = (userId, wallet) =>
+  Axios.put(`/users/${userId}/profile`, wallet).catch(handleError)
+export const signUpUser = async signUpForm =>
+  Axios.post('/users', signUpForm)
+    .then(mapToUserProfile)
+    .catch(handleError)
+export const getUserProfile = async userId =>
+  Axios.get(`/users/${userId}/profile`)
+    .then(mapToUserProfile)
+    .catch(handleError)
+export const putUserProfile = async (id, profile) =>
+  Axios.put(`/users/${id}/profile`, profile)
+    .then(mapToUserProfile)
+    .catch(handleError)
 
 const handleError = err => {
   if (!err.response) {
