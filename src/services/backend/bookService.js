@@ -8,6 +8,7 @@ export const recentlyAddedBooks = async () =>
 export const evaluateBookByISBN = async isbn => {
   try {
     const bookResponse = await Axios.get(`books/${isbn}/evaluation`)
+    bookResponse.data.price = bookResponse.data.prices // TODO: Isso é preguica de refatorar
     return bookResponse.data
   } catch (err) {
     if (err.response && err.response.status === 404) {
