@@ -80,7 +80,7 @@ export function getUserProfileAction(uid) {
 export function updateProfileAction(id, userProfile) {
   return async dispatch => {
     try {
-      const updatedProfile = putUserProfile(id, userProfile)
+      const updatedProfile = await putUserProfile(id, userProfile)
       dispatch(updateUserProfile(updatedProfile))
     } catch (error) {
       dispatch(alertAction(error))
@@ -91,7 +91,10 @@ export function updateProfileAction(id, userProfile) {
 export function requestWithdrawAction(id, walletWithPaypalAccount) {
   return async dispatch => {
     try {
-      const updatedProfile = requestWithdrawAction(id, walletWithPaypalAccount)
+      const updatedProfile = await requestWithdrawAction(
+        id,
+        walletWithPaypalAccount
+      )
       dispatch(updateUserProfile(updatedProfile))
     } catch (error) {
       dispatch(alertAction(error))
@@ -113,7 +116,7 @@ export function getNetworking(id) {
 export function getOrders(id) {
   return async dispatch => {
     try {
-      const order = getOrder(id)
+      const order = await getOrder(id)
       dispatch(updateUserOrders(order))
     } catch (error) {
       dispatch(alertAction(error))

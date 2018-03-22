@@ -59,7 +59,6 @@ export class BuyCheckoutContainer extends Component {
   }
 
   payPalCheckout = async () => {
-    console.log(this.props)
     try {
       const order = await this.generateBuyOrder()
       await payWithPayPal(

@@ -6,7 +6,7 @@ import { ModalWithInput } from '../../shared/components/modals/modalWithInput'
 
 import { requestWithdrawAction } from '../../../redux/actions/async/authenticationAsyncActions'
 class WalletContainer extends Component {
-  state = { isEditModalOpen: false }
+  state = { isModalOpen: false }
 
   showEditModal = () => {
     const { status, club } = this.props
@@ -20,11 +20,11 @@ class WalletContainer extends Component {
       return this.defaultAlertPopUp('Your request is under processing')
     }
     return this.setState({
-      isEditModalOpen: true
+      isModalOpen: true
     })
   }
 
-  hideEditModal = async () => this.setState({ isEditModalOpen: false })
+  hideEditModal = async () => this.setState({ isModalOpen: false })
 
   confirmModal = async paypalAccount => {
     const { id } = this.props

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, ScrollView, Text, View } from 'react-native'
+import { AddressModal } from '../../shared/containers/AddressModal'
 
 import { OrderSummaryList } from './orderSummaryList'
 import { Navbar } from '../../shared/components/navbar'
@@ -9,8 +10,8 @@ import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 import {
   FormButton,
-  FormOutlineButton,
-  SimpleButton
+  SimpleButton,
+  FormOutlineButton
 } from '../../shared/components/buttons'
 
 import { styles } from './styles/shoppingBagItems.style'
@@ -37,6 +38,10 @@ export class BuyCheckout extends React.Component {
     isLoading: PropTypes.bool.isRequired,
     shippingMethod: PropTypes.oneOf(['STANDARD', 'EXPEDITE', 'IN_PERSON'])
       .isRequired
+  }
+
+  state = {
+    isModalVisible: false
   }
 
   renderStandardShippingButton = () => {
@@ -100,7 +105,7 @@ export class BuyCheckout extends React.Component {
           <SimpleButton
             secondary
             title={'Change Address'}
-            onPress={() => console.warn('change address')}
+            onPress={this.showModal}
             style={{
               marginRight: Metrics.section,
               marginVertical: Metrics.baseMargin
@@ -111,9 +116,22 @@ export class BuyCheckout extends React.Component {
     )
   }
 
+  showModal = () => {
+    this.setState({ isModalVisible: true })
+  }
+
+  hideModal = () => {
+    this.setState({ isModalVisible: false })
+  }
+
   render() {
     return (
       <LoadingOverlay style={styles.container} isLoading={this.props.isLoading}>
+        <AddressModal
+          visible={this.state.isModalVisible}
+          onShowModal={this.showModal}
+          onHideModal={this.hideModal}
+        />
         <Navbar
           title={`Buying ${this.props.books.length} Books`}
           onBack={this.props.navigateBack}

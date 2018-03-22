@@ -1,44 +1,74 @@
-import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ModalWithInputProfile } from '../components/modals/modalWithInputProfile'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import { Keyboard, Platform } from 'react-native'
 import { updateProfileAction } from '../../../redux/actions/async/authenticationAsyncActions'
+import { UpdateAddressModal } from '../components/modals/updateAddressModal'
 
-class ProfileContainer extends Component {
+class AddressModalContainer extends Component {
   static navigationOptions = { header: null }
 
-  state = {
-    isEditModalOpen: false,
-    isModalInputMultiline: false,
-    modalTitle: ''
+  static propTypes = {
+    onShowModal: PropTypes.func.isRequired,
+    visible: PropTypes.bool.isRequired,
+    onHideModal: PropTypes.func
   }
 
-  showEditModal = modalTitle =>
+  static defaultProps = {
+    onHideModal: () => {}
+  }
+
+  state = { keyboardHeight: 0 }
+
+  componentWillMount() {
+    if (Platform.OS === 'ios') {
+      this.keyboardWillShowListener = Keyboard.addListener(
+        'keyboardWillShow',
+        this.keyboardShow
+      )
+      this.keyboardWillHideListener = Keyboard.addListener(
+        'keyboardWillHide',
+        this.keyboardHide
+      )
+    }
+  }
+
+  componentWillUnmount() {
+    if (Platform.OS === 'ios') {
+      this.keyboardWillShowListener.remove()
+      this.keyboardWillHideListener.remove()
+    }
+  }
+
+  keyboardShow = keyboardData =>
     this.setState({
-      modalTitle,
-      isEditModalOpen: true,
-      isModalInputMultiline: modalTitle === 'Address'
+      keyboardHeight: keyboardData.endCoordinates.height
     })
 
-  hideEditModal = () =>
-    this.setState({
-      modalTitle: '',
-      isEditModalOpen: false,
-      isModalInputMultiline: false
-    })
+  keyboardHide = () => this.setState({ keyboardHeight: 0 })
 
-  updateData = (userId, data) => {
-    this.props.updateProfile(userId, data)
-    this.hideEditModal()
+  updateUserAddress = address => {
+    const user = this.props.user
+    user.address = address
+    this.props.updateProfile(user.id, user)
+    this.hideModal()
+  }
+
+  hideModal = () => {
+    this.props.onHideModal()
+  }
+
+  showModal = () => {
+    this.props.onShowModal()
   }
 
   render() {
     return (
-      <ModalWithInputProfile
-        visible={this.state.isEditModalOpen}
-        title={this.state.modalTitle}
-        user={this.props.user}
-        onConfirm={this.updateData}
-        onDismiss={this.hideEditModal}
+      <UpdateAddressModal
+        onDismiss={this.hideModal}
+        visible={this.props.visible}
+        address={this.props.user.address}
+        updateUserAddress={this.updateUserAddress}
       />
     )
   }
@@ -52,6 +82,6 @@ const mapStateToProps = ({ authentication: { user } }) => ({
   user
 })
 
-export const ProfileScreen = connect(mapStateToProps, mapDispatchToProps)(
-  ProfileContainer
+export const AddressModal = connect(mapStateToProps, mapDispatchToProps)(
+  AddressModalContainer
 )

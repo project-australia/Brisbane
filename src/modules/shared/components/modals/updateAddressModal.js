@@ -1,79 +1,38 @@
 import React, { Component } from 'react'
-import {
-  Platform,
-  Modal,
-  Keyboard,
-  StyleSheet,
-  View,
-  Text,
-  ScrollView
-} from 'react-native'
-import { styles } from './styles/modalWithInputProfile.style'
+import { Modal, StyleSheet, View, Text, ScrollView } from 'react-native'
+import { styles } from './styles/updateAddressModal.style'
 import { FormTextInput } from '../../../authentication/components/formTextInput'
 import { FlatButton } from '../buttons'
 
 export class UpdateAddressModal extends Component {
   state = {
-    keyboardHeight: 0,
     street: '',
     zipCode: '',
     state: '',
     city: ''
   }
 
-  componentWillMount() {
-    if (Platform.OS === 'ios') {
-      this.keyboardWillShowListener = Keyboard.addListener(
-        'keyboardWillShow',
-        this.keyboardShow
-      )
-      this.keyboardWillHideListener = Keyboard.addListener(
-        'keyboardWillHide',
-        this.keyboardHide
-      )
-    }
-  }
+  setAddressState = state => this.setState({ state })
+  setZipCode = zipCode => this.setState({ zipCode })
+  setStreet = street => this.setState({ street })
+  setCity = city => this.setState({ city })
 
   componentDidMount() {
     this.fillForm()
   }
 
-  componentWillUnmount() {
-    if (Platform.OS === 'ios') {
-      this.keyboardWillShowListener.remove()
-      this.keyboardWillHideListener.remove()
-    }
-  }
-
-  keyboardShow = keyboardData =>
-    this.setState({
-      keyboardHeight: keyboardData.endCoordinates.height
-    })
-
-  keyboardHide = () => this.setState({ keyboardHeight: 0 })
-  setStreet = street => this.setState({ street })
-  setZipCode = zipCode => this.setState({ zipCode })
-  setAddressState = state => this.setState({ state })
-  setCity = city => this.setState({ city })
-
   fillForm = () => {
-    const { user } = this.props
-    this.setCity(user.address.city)
-    this.setStreet(user.address.street)
-    this.setZipCode(user.address.zipCode)
-    this.setAddressState(user.address.state)
+    const { address } = this.props
+    this.setCity(address.city)
+    this.setStreet(address.street)
+    this.setZipCode(address.zipCode)
+    this.setAddressState(address.state)
   }
 
-  handleConfirm = () => {
-    const { onConfirm, user } = this.props
-    const profile = {
-      address: {}
-    }
-    profile.address.street = this.state.street
-    profile.address.zipCode = this.state.zipCode
-    profile.address.state = this.state.state
-    profile.address.city = this.state.city
-    return onConfirm(user.id, profile)
+  updateAddress = () => {
+    const { updateUserAddress } = this.props
+    const { zipCode, street, state, city } = this.state
+    updateUserAddress({ zipCode, street, state, city })
   }
 
   render() {
@@ -91,7 +50,7 @@ export class UpdateAddressModal extends Component {
       >
         <View style={overlayStyle}>
           <View style={styles.card}>
-            <Text style={styles.title}>Edit your Profile</Text>
+            <Text style={styles.title}>Update Address</Text>
             <ScrollView>
               <FormTextInput
                 style={styles.input}
@@ -129,7 +88,7 @@ export class UpdateAddressModal extends Component {
                 secondary
                 containerStyle={styles.button}
                 title={'Confirm'}
-                onPress={this.handleConfirm}
+                onPress={this.updateAddress}
               />
             </View>
           </View>

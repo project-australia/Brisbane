@@ -18,7 +18,7 @@ export const ProfileItemAddress = ({
   emptyDataLabel,
   onPress
 }) => {
-  const { street, state, number, zipCode, city } = data
+  const { street, state, zipCode, city } = data // FIXME: O que é esse data?
   const hasStreet = typeof street === 'string' && street !== ''
   return (
     <View style={styles.wrap}>
@@ -26,7 +26,6 @@ export const ProfileItemAddress = ({
       {hasStreet ? (
         <View style={styles.wrapView}>
           <Text style={styles.title}>Street: {street}</Text>
-          <Text style={styles.title}>Number: {number}</Text>
           <Text style={styles.title}>Zipcode: {zipCode}</Text>
           <Text style={styles.title}>City: {city}</Text>
           <Text style={styles.title}>State: {state}</Text>

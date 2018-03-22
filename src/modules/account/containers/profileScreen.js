@@ -13,7 +13,7 @@ class ProfileContainer extends Component {
   }
 
   state = {
-    isEditModalOpen: false,
+    isModalOpen: false,
     isModalInputMultiline: false,
     modalTitle: ''
   }
@@ -21,14 +21,14 @@ class ProfileContainer extends Component {
   showEditModal = modalTitle =>
     this.setState({
       modalTitle,
-      isEditModalOpen: true,
+      isModalOpen: true,
       isModalInputMultiline: modalTitle === 'Address'
     })
 
   hideEditModal = () =>
     this.setState({
       modalTitle: '',
-      isEditModalOpen: false,
+      isModalOpen: false,
       isModalInputMultiline: false
     })
 
@@ -46,7 +46,7 @@ class ProfileContainer extends Component {
         navigateToNetwork={this.navigateToNetwork}
         navigateToMyOrders={this.navigateToMyOrders}
         showEditModal={this.showEditModal}
-        isEditModalOpen={this.state.isEditModalOpen}
+        isEditModalOpen={this.state.isModalOpen}
         modalTitle={this.state.modalTitle}
         onConfirmModal={this.updateData}
         onDismissModal={this.hideEditModal}
