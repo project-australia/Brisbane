@@ -46,7 +46,7 @@ class WalletContainer extends Component {
 
   render() {
     const { ballance } = this.props
-    const { isEditModalOpen } = this.state
+    const { isModalOpen } = this.state
     return (
       <View>
         <WalletBalance
@@ -55,7 +55,7 @@ class WalletContainer extends Component {
           onWalletViewPressed={() => alert('🛶 navigate to wallet')}
         />
         <ModalWithInput
-          visible={isEditModalOpen}
+          visible={isModalOpen}
           placeholder={'Inform your paypal account'}
           title={'Withdraw Solicitation'}
           onConfirm={value => this.confirmModal(value)}
