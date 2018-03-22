@@ -11,7 +11,7 @@ class WalletContainer extends Component {
   showEditModal = () => {
     const { status, club } = this.props
     if (!club) {
-      return this.defaultAlertPopUp('You need to be logged.')
+      return this.defaultAlertPopUp('You must be to be logged in.')
     }
     if (club === 'NONE') {
       return this.defaultAlertPopUp('You need get Elite Members Club.')
@@ -24,12 +24,12 @@ class WalletContainer extends Component {
     })
   }
 
-  hideEditModal = async () => this.setState({ isModalOpen: false })
+  hideModal = async () => this.setState({ isModalOpen: false })
 
   confirmModal = async paypalAccount => {
     const { id } = this.props
     await this.props.requestWithdraw(id, { paypalAccount })
-    await this.hideEditModal()
+    await this.hideModal()
   }
 
   defaultAlertPopUp = msg =>
@@ -59,7 +59,7 @@ class WalletContainer extends Component {
           placeholder={'Inform your paypal account'}
           title={'Withdraw Solicitation'}
           onConfirm={value => this.confirmModal(value)}
-          onDismiss={this.hideEditModal}
+          onDismiss={this.hideModal}
         />
       </View>
     )

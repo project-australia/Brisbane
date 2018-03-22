@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { Alert } from 'react-native'
+import { Alert, BackHandler } from 'react-native'
 import { connect } from 'react-redux'
 import { buyBook, rentBook, sellBook } from '../../../redux/actions'
 import {
@@ -27,6 +27,18 @@ class BookScannerContainer extends Component {
     buyBook: PropTypes.func.isRequired,
     rentBook: PropTypes.func.isRequired,
     sellBook: PropTypes.func.isRequired
+  }
+
+  handleBackButtonClick = () => {
+    this.goBack()
+    return true
+  }
+
+  componentWillMount = () => {
+    BackHandler.addEventListener(
+      'hardwareBackPress',
+      this.handleBackButtonClick
+    )
   }
 
   componentDidMount = async () => {

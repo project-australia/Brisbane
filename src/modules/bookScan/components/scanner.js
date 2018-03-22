@@ -1,40 +1,25 @@
 import React, { Component } from 'react'
 import Camera from 'react-native-camera'
 import PropTypes from 'prop-types'
-import { View } from 'react-native'
+import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 
 import { styles } from './styles/bookScanner.style'
 
 export class Scanner extends Component {
   static propTypes = {
-    showBook: PropTypes.func.isRequired
-  }
-
-  state = {
-    isReading: false
-  }
-
-  onRead = isbn => {
-    if (!this.state.isReading) {
-      this.setState({ isReading: false })
-      this.getSellingPrice(isbn)
-    }
-  }
-
-  getSellingPrice = async isbn => {
-    await this.setState({ isReading: true })
-    this.props.showBook(isbn)
+    onRead: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired
   }
 
   render() {
     return (
-      <View style={styles.container}>
+      <LoadingOverlay isLoading={this.props.isLoading} style={styles.container}>
         <Camera
           style={styles.scanner}
           aspect={Camera.constants.Aspect.fill}
-          onBarCodeRead={e => this.onRead(e.data)}
+          onBarCodeRead={e => this.props.onRead(e.data)}
         />
-      </View>
+      </LoadingOverlay>
     )
   }
 }

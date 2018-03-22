@@ -7,11 +7,27 @@ class BookScanner extends Component {
   static navigationOptions = {
     title: 'Book Scan'
   }
-  navigateToBookSelling = isbn =>
-    this.props.navigation.navigate('BookDetails', { isbn, screenType: 'SELL' })
+
+  state = {
+    isReading: false,
+    isbn: null
+  }
+
+  onRead = isbn => {
+    if (!this.state.isReading) {
+      this.setState({ isReading: true })
+      this.navigateToBookDetails(isbn)
+      this.setState({ isReading: false })
+    }
+  }
+
+  navigateToBookDetails = (isbn) => this.props.navigation.navigate('BookDetails', {
+    isbn,
+    screenType: 'SELL'
+  })
 
   render() {
-    return <Scanner showBook={this.navigateToBookSelling} />
+    return <Scanner onRead={this.onRead} isLoading={this.state.isReading} />
   }
 }
 
