@@ -7,8 +7,8 @@ import { styles } from './styles/shoppingBagItems.style'
 import { styles as rowStyles } from '../../shared/components/styles/row.style'
 
 const renderBuyingOrders = ({ book }) => {
-  const bookPrice = book.price.buy
-  const priceStyle = book.price.buy === 0 ? rowStyles.lightTitle : null
+  const bookPrice = book.prices.buy
+  const priceStyle = book.prices.buy === 0 ? rowStyles.lightTitle : null
 
   return (
     <Row
@@ -20,8 +20,8 @@ const renderBuyingOrders = ({ book }) => {
 }
 
 const renderOrdersSelling = ({ book }) => {
-  const bookPrice = book.price.sell === 0 ? 'Donate' : `$${book.price.sell}`
-  const priceStyle = book.price.sell === 0 ? rowStyles.lightTitle : null
+  const bookPrice = book.prices.sell === 0 ? 'Donate' : `$${book.prices.sell}`
+  const priceStyle = book.prices.sell === 0 ? rowStyles.lightTitle : null
 
   return (
     <Row

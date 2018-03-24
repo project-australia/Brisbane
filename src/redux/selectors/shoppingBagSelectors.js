@@ -10,14 +10,14 @@ export const sellingItems = ({ shoppingBag }) =>
 export const shoppingBagBuyingTotal = state => {
   const booksToBuy = buyingItems(state)
   return booksToBuy.reduce((total, item) => {
-    return total + item.book.price.buy
+    return total + item.book.prices.buy
   }, 0)
 }
 
 export const shoppingBagSellingTotal = state => {
   const booksToSell = sellingItems(state)
   const sellTotal = booksToSell.reduce((total, item) => {
-    return total + item.book.price.sell
+    return total + item.book.prices.sell
   }, 0)
   return Number(sellTotal.toFixed(2))
 }

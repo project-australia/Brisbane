@@ -18,7 +18,7 @@ const renderBook = ({ book, type, quantity, id }) => (
     quantity={quantity}
     subtitleOne={book.author}
     subtitleTwo={book.edition}
-    price={book.price.sell || book.price.buy}
+    price={book.prices.sell || book.prices.buy}
     type={type}
   />
 )
