@@ -23,7 +23,7 @@ export const createOrder = async (
 
   const order = {
     orderType,
-    items: books.map(book => book.id),
+    items: books,
     shippingMethod,
     shippingAddress
   }

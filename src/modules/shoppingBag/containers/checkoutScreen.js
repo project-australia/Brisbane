@@ -40,7 +40,7 @@ class CheckoutContainer extends Component {
   }
 
   generateOrder = async (user, books, shippingMethod, type) =>
-    createOrder(type, shippingMethod, books, user.address, user.id)
+    createOrder(type, shippingMethod, books, user.address, user.id).catch(console.log)
 
   inPersonCheckout = async () => {
     const { screenType } = this.props.navigation.state.params
@@ -56,7 +56,7 @@ class CheckoutContainer extends Component {
     } catch (error) {
       alert('in person checkout failed')
       console.log('In Person checkout failed')
-      console.log(error)
+      console.log(JSON.stringify(error))
     } finally {
       this.setState({ isLoading: false })
     }
