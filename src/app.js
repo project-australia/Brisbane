@@ -15,8 +15,13 @@ import SplashScreen from 'react-native-splash-screen'
 
 export class App extends React.Component {
   async componentDidMount() {
-    await Promise.all([this.fetchBooks(), this.checkIfThereIsUserLoggedIn()])
-    SplashScreen.hide()
+    try {
+      await Promise.all([this.fetchBooks(), this.checkIfThereIsUserLoggedIn()])
+    } catch (e) {
+      console.warn(e)
+    } finally {
+      SplashScreen.hide()
+    }
   }
 
   async fetchBooks() {

@@ -9,7 +9,7 @@ import { styles } from '../../shoppingBag/components/styles/shoppingBagItems.sty
 import { FlatButton } from '../../shared/components/buttons/index'
 
 export const BookListRow = props => {
-  const { id, images, title, author, edition, price } = props.book
+  const { id, images, title, author, edition, prices } = props.book
   const imageSource = images
     ? { uri: images.small }
     : require('../../../assets/images/book-placeholder.png')
@@ -39,14 +39,14 @@ export const BookListRow = props => {
             title={'Buy'}
             onPress={() => props.onBuyPressed(props.book)}
             containerStyle={styles.rightContentButton}
-            price={price.buy}
+            price={prices.buy}
           />
           <FlatButton
             showPrice
             title={'Rent'}
             onPress={() => props.onRentPressed(props.book)}
             containerStyle={styles.rightContentButton}
-            price={price.rent}
+            price={prices.rent}
           />
         </View>
       </View>

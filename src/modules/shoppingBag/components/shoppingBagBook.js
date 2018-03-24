@@ -23,10 +23,9 @@ const setLeftBorderColor = type =>
 
 const renderBookPrice = (type, prices) => {
   const price =
-    type === 'SELL' ? prices.sell
-      : type === 'BUY' ? prices.buy
-      : type === 'RENT' ? prices.rent
-      : undefined
+    type === 'SELL'
+      ? prices.sell
+      : type === 'BUY' ? prices.buy : type === 'RENT' ? prices.rent : undefined
 
   return <Text style={styles.title}>{`$${price}`}</Text>
 }
