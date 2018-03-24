@@ -39,8 +39,10 @@ class CheckoutContainer extends Component {
     header: null
   }
 
-  generateOrder = async (user, books, shippingMethod, type) =>
-    createOrder(type, shippingMethod, books, user.address, user.id).catch(console.log)
+  generateOrder = async (user, books, shippingMethod, type) => {
+    const { total } = this.calculatePrices()
+    return createOrder(type, shippingMethod, books, user.address, user.id, total)
+  }
 
   inPersonCheckout = async () => {
     const { screenType } = this.props.navigation.state.params
@@ -51,7 +53,7 @@ class CheckoutContainer extends Component {
     try {
       // FIXME: inside `generateOrder` should have case of creating selling order
       // actually this scenario is failing
-      await this.generateOrder(user, books, 'IN_PERSON', screenType)
+      await this.generateOrder(user, books, 'IN_PERSON', screenType, total)
       this.onCheckoutSuccess('Instructions sent by email.')
     } catch (error) {
       alert('in person checkout failed')

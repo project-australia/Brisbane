@@ -15,7 +15,8 @@ export const createOrder = async (
   shippingMethod,
   books,
   shippingAddress,
-  userId
+  userId,
+  total
 ) => {
   if (!validShippingMethods.includes(shippingMethod)) {
     throw new Error('Invalid Shipping Method')
@@ -25,7 +26,8 @@ export const createOrder = async (
     orderType,
     items: books,
     shippingMethod,
-    shippingAddress
+    shippingAddress,
+    total
   }
 
   return Axios.post(`users/${userId}/orders`, order)
