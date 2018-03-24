@@ -146,13 +146,13 @@ class CheckoutContainer extends Component {
       (shoppingBagPriceSum * this.userClubBonus()).toFixed(2)
     )
     const subTotal = Number(shoppingBagPriceSum.toFixed(2))
-    const total = shipping + subTotal + bonus
+    const total = Number(shipping + subTotal + bonus).toFixed(2)
 
     return {
       shipping,
       bonus,
       subTotal,
-      total
+      total: Number(total)
     }
   }
 

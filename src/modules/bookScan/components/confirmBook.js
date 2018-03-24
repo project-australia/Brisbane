@@ -153,7 +153,6 @@ export class BookDetails extends Component {
       isRentalTermsModalOn,
       navRightIcons
     } = this.state
-    console.log('bookkk', book)
     const { about, authors, condition, images, isbn, price, title } = book
     const isSelling = screenType === 'SELL'
     const [onPressCondition, onPressConditionTitle] = isSelling

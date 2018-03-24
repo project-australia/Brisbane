@@ -5,14 +5,14 @@ import { Image, Text, View } from 'react-native'
 import { styles } from './styles/shoppingBagItems.style'
 import { Colors } from '../../../constants'
 
-const renderType = (type, price) => {
+const renderType = (type, prices) => {
   switch (type) {
     case 'BUY':
       return 'Buying '
     case 'RENT':
       return 'Renting '
     case 'SELL':
-      return price ? 'Selling ' : 'Donating '
+      return prices.sell ? 'Selling ' : 'Donating '
     default:
       return ''
   }
@@ -21,12 +21,22 @@ const renderType = (type, price) => {
 const setLeftBorderColor = type =>
   type === 'BUY' || type === 'RENT' ? Colors.primary500 : Colors.secondary500
 
+const renderBookPrice = (type, prices) => {
+  const price =
+    type === 'SELL' ? prices.sell
+      : type === 'BUY' ? prices.buy
+      : type === 'RENT' ? prices.rent
+      : undefined
+
+  return <Text style={styles.title}>{`$${price}`}</Text>
+}
+
 export const ShoppingBagBook = ({
   image,
   title,
   subtitleOne,
   subtitleTwo,
-  price,
+  prices,
   type
 }) => {
   const cardStyle = [styles.card, { borderColor: setLeftBorderColor(type) }]
@@ -46,8 +56,8 @@ export const ShoppingBagBook = ({
           </Text>
         </View>
         <View style={styles.rightContentWrap}>
-          <Text style={styles.subtitleRight}>{renderType(type, price)}</Text>
-          {price && <Text style={styles.title}>{`$${price}`}</Text>}
+          <Text style={styles.subtitleRight}>{renderType(type, prices)}</Text>
+          {renderBookPrice(type, prices)}
         </View>
       </View>
     </View>
@@ -60,5 +70,5 @@ ShoppingBagBook.propTypes = {
   title: PropTypes.string.isRequired,
   subtitleOne: PropTypes.string,
   subtitleTwo: PropTypes.string,
-  price: PropTypes.number
+  prices: PropTypes.object.isRequired
 }

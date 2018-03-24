@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Alert } from 'react-native'
 import { User } from '../../../domain/User'
 import { SellCheckout } from '../components/sellCheckout'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
@@ -21,6 +22,23 @@ export class SellCheckoutContainer extends Component {
     await this.props.generateOrder(user, books, 'SHIPPO', 'SELL')
   }
 
+  confirmShippingCheckout = () => {
+    Alert.alert(
+      'Shipping a Book',
+      'Do you wanna proceed to a shipped checkout',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel'
+        },
+        {
+          text: 'Sure thing',
+          onPress: this.inGetLabelCheckout
+        }
+      ]
+    )
+  }
+
   inGetLabelCheckout = async () => {
     try {
       await this.generateSellOrder()
@@ -37,7 +55,7 @@ export class SellCheckoutContainer extends Component {
         books={this.props.books}
         isLoading={this.props.isLoading}
         inPersonCheckout={this.props.checkoutWithInPersonPayment}
-        inGetLabelCheckout={this.inGetLabelCheckout}
+        inGetLabelCheckout={this.confirmShippingCheckout}
         navigateBack={this.props.navigateBack}
         prices={this.props.prices}
       />
