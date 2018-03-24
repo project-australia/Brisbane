@@ -5,6 +5,7 @@ import {
   updateProfileAction,
   logOutAction
 } from '../../../redux/actions/async/authenticationAsyncActions'
+import { beARepresentantRequest } from '../../../services/backend/userService'
 import { ClubMember } from '../components/clubMember'
 
 class ClubMembershipContainer extends Component {
@@ -50,6 +51,8 @@ class ClubMembershipContainer extends Component {
     }
   }
 
+  beARepresentant = () => beARepresentantRequest()
+
   render() {
     const props = this.clubProps(this.props.user.club)
 
@@ -60,6 +63,7 @@ class ClubMembershipContainer extends Component {
         user={this.props.user}
         goBack={this.goBack}
         goHome={this.goHome}
+        requestToBeARep={this.beARepresentant}
         {...props}
       />
     )

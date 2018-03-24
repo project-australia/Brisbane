@@ -11,6 +11,7 @@ export class ClubMember extends Component {
     title: PropTypes.string.isRequired,
     goBack: PropTypes.func.isRequired,
     goHome: PropTypes.func.isRequired,
+    beARepresentant: PropTypes.func.isRequired,
     logOut: PropTypes.func.isRequired,
     updateProfile: PropTypes.func.isRequired,
     buttonText: PropTypes.string.isRequired,
@@ -119,9 +120,7 @@ export class ClubMember extends Component {
         <FormButton
           title="Apply Today!"
           subtitle={this.props.buttonSubtitle}
-          onPress={() =>
-            console.warn('mandar request de pedido de tornar-se rep')
-          }
+          onPress={this.props.beARepresentant}
           style={styles.input}
         />
       </ScrollView>
