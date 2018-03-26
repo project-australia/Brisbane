@@ -37,6 +37,7 @@ export function signUpAction(signUpForm) {
       const user = await signUpUser(signUpForm)
       dispatch(signInAction(user.email, signUpForm.password))
     } catch (error) {
+      console.log('OI', error)
       dispatch(alertAction(error))
     }
   }

@@ -32,12 +32,15 @@ const handleError = err => {
   }
 
   const { data, status } = err.response
+  console.log('handleError', err)
+  console.log('data', data)
+  console.log('status', status)
 
   if (status === 400) {
     throw new Error(SIGNUP_BAD_REQUEST_MESSAGE)
   }
 
-  throw new Error(data)
+  throw new Error(data.userMessage)
 }
 
 const mapToUserProfile = response => {
