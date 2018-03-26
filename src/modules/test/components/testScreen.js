@@ -54,6 +54,7 @@ class TestScreenContainer extends React.Component {
   addBookToSellShoppingBag = async () => {
     try {
       const bookToSell = await evaluateBookByISBN('978-0201616224')
+      bookToSell.condition = 'Used – Very Good'
       this.props.sellBook(bookToSell)
     } catch (err) {
       console.log('No item added to selling shopping bag')
