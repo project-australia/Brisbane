@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, ScrollView, Text, View } from 'react-native'
+import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 
 import { Navbar } from '../../shared/components/navbar'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
@@ -12,7 +13,7 @@ import { styles } from './styles/shoppingBagItems.style'
 
 export const SellCheckout = props => {
   return (
-    <View>
+    <LoadingOverlay style={styles.container} isLoading={props.isLoading}>
       <Navbar
         title={`Selling ${props.books.length} Books`}
         onBack={props.navigateBack}
@@ -37,7 +38,7 @@ export const SellCheckout = props => {
           />
         </View>
       </ScrollView>
-    </View>
+    </LoadingOverlay>
   )
 }
 
