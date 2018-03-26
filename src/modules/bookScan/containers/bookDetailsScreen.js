@@ -80,6 +80,11 @@ class BookScannerContainer extends Component {
     this.props.navigation.navigate('ClubMembership')
   }
 
+  setConditionAndAddToShoppingBag = (book) => {
+    this.props.sellBook(book)
+    this.navigateToShoppingBag()
+  }
+
   toShoppingBag = callback => {
     callback(this.state.book)
     this.navigateToShoppingBag()
@@ -97,7 +102,7 @@ class BookScannerContainer extends Component {
           onPressBallardsClub={this.navigateToClubMember}
           onPressBuy={() => this.toShoppingBag(this.props.buyBook)}
           onPressRent={() => this.toShoppingBag(this.props.rentBook)}
-          onPressSell={() => this.toShoppingBag(this.props.sellBook)}
+          onPressSell={this.setConditionAndAddToShoppingBag}
           screenType={screenType}
         />
       )
