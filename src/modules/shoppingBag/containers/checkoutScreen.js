@@ -40,6 +40,12 @@ class CheckoutContainer extends Component {
   }
 
   generateOrder = async (user, books, shippingMethod, type) => {
+    if (isInvalidAddress(user.address)) {
+      alert('You have to fill your address first')
+      const errorMessage = 'You have to fill your address first'
+      throw new Error(errorMessage)
+    }
+
     try {
       this.setState({ isLoading: true })
       const { total } = this.calculatePrices()
@@ -203,6 +209,10 @@ class CheckoutContainer extends Component {
 
     return null
   }
+}
+
+const isInvalidAddress = (address = {}) => {
+  return !address.state || !address.city || !address.state || !address.zipCode
 }
 
 const mapStateToProps = state => {
