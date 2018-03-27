@@ -40,8 +40,15 @@ class CheckoutContainer extends Component {
   }
 
   generateOrder = async (user, books, shippingMethod, type) => {
-    const { total } = this.calculatePrices()
-    return createOrder(type, shippingMethod, books, user.address, user.id, total)
+    try {
+      this.setState({ isLoading: true })
+      const { total } = this.calculatePrices()
+      return createOrder(type, shippingMethod, books, user.address, user.id, total)
+    } catch (error) {
+      console.warn('Error during generate an order', error)
+    } finally {
+      this.setState({ isLoading: false })
+    }
   }
 
   inPersonCheckout = async () => {

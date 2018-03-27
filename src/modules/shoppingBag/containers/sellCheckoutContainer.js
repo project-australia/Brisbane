@@ -17,9 +17,20 @@ export class SellCheckoutContainer extends Component {
     navigateBack: PropTypes.func.isRequired
   }
 
+  state = {
+    isLoading: false
+  }
+
   generateSellOrder = async () => {
-    const { user, books } = this.props
-    await this.props.generateOrder(user, books, 'SHIPPO', 'SELL')
+    try {
+      this.setState({ isLoading: true })
+      const { user, books } = this.props
+      await this.props.generateOrder(user, books, 'SHIPPO', 'SELL')
+    } catch (error) {
+      console.warn('Error during generate a selling order', error)
+    } finally {
+      this.setState({ isLoading: false })
+    }
   }
 
   confirmShippingCheckout = () => {
@@ -53,7 +64,7 @@ export class SellCheckoutContainer extends Component {
     return (
       <SellCheckout
         books={this.props.books}
-        isLoading={this.props.isLoading}
+        isLoading={this.props.isLoading || this.state.isLoading}
         inPersonCheckout={this.props.checkoutWithInPersonPayment}
         inGetLabelCheckout={this.confirmShippingCheckout}
         navigateBack={this.props.navigateBack}
