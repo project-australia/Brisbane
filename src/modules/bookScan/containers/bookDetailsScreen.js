@@ -90,6 +90,11 @@ class BookScannerContainer extends Component {
     this.navigateToShoppingBag()
   }
 
+  get isUndesiredBook () {
+    const { screenType } = this.props.navigation.state.params
+    return screenType === 'SELL' && !this.state.book.prices.sell
+  }
+
   render() {
     const { book, screenType } = this.state
     return (
@@ -97,6 +102,7 @@ class BookScannerContainer extends Component {
         <BookDetails
           membershipStatus={this.props.userClub}
           book={book}
+          isUndesiredBook={this.isUndesiredBook}
           navigateBack={this.goBack}
           navigateToShoppingBag={this.navigateToShoppingBag}
           onPressBallardsClub={this.navigateToClubMember}

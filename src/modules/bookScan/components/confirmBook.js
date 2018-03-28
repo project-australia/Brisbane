@@ -26,6 +26,7 @@ export class BookDetails extends Component {
   static propTypes = {
     book: book,
     screenType: PropTypes.oneOf(['SELL', 'BUY', 'RENT']).isRequired,
+    isUndesiredBook: PropTypes.bool.isRequired,
     onPressSell: PropTypes.func.isRequired,
     onPressRent: PropTypes.func.isRequired,
     onPressBuy: PropTypes.func.isRequired
@@ -144,8 +145,70 @@ export class BookDetails extends Component {
     }
   }
 
+  conditionRow = () => {
+    const { screenType } = this.props
+    const { condition } = book
+    const isSelling = screenType === 'SELL'
+    const [onPressCondition, onPressConditionTitle] = isSelling
+      ? [this.showConditionModal, this.showConditionExplanationModal]
+      : [this.showConditionExplanationModal, undefined]
+    const defaultCondition = 'Select a condition'
+
+    return (
+      <RowValue
+        title={ 'Condition' }
+        subtitle={
+          <View style={ { flexDirection: 'row', alignItems: 'center' } }>
+            <Icon
+              name={ 'help-circle' }
+              size={ Metrics.icons.tiny }
+              color={ Colors.primary500 }
+              style={ { marginRight: Metrics.smallMargin } }
+            />
+            <Text
+              style={ { ...Fonts.style.caption, color: Colors.primary500 } }
+            >
+              About conditions
+            </Text>
+          </View>
+        }
+        value={
+          <View
+            style={ {
+              flexDirection: 'row',
+              alignItems: 'center',
+              flex: 1
+            } }
+          >
+            <Text
+              style={ {
+                flex: 1,
+                ...Fonts.style.description,
+                color: Colors.gray900,
+                textAlign: 'right'
+              } }
+            >
+              { condition || defaultCondition }
+            </Text>
+            <Icon
+              name={ 'menu-down' }
+              size={ Metrics.icons.small }
+              color={ Colors.gray700 }
+              style={ {
+                marginRight: Metrics.doubleBaseMargin,
+                marginLeft: Metrics.baseMargin
+              } }
+            />
+          </View>
+        }
+        onPress={ onPressCondition }
+        onPressTitle={ onPressConditionTitle }
+      />
+    )
+  }
+
   render() {
-    const { onPressBuy, screenType } = this.props
+    const { onPressBuy, screenType, isUndesiredBook } = this.props
     const {
       book,
       isConditionExplanationModalOn,
@@ -153,12 +216,8 @@ export class BookDetails extends Component {
       isRentalTermsModalOn,
       navRightIcons
     } = this.state
-    const { about, authors, condition, images, isbn, price, title } = book
+    const { about, authors, images, isbn, price, title } = book
     const isSelling = screenType === 'SELL'
-    const [onPressCondition, onPressConditionTitle] = isSelling
-      ? [this.showConditionModal, this.showConditionExplanationModal]
-      : [this.showConditionExplanationModal, undefined]
-    const defaultCondition = 'Select a condition'
 
     return (
       <View style={styles.container}>
@@ -171,56 +230,9 @@ export class BookDetails extends Component {
         <ScrollView>
           <CoverImage source={{ uri: images.large }} />
           <BookTitleAndAuthor title={title} authors={authors} />
-          <RowValue
-            title={'Condition'}
-            subtitle={
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Icon
-                  name={'help-circle'}
-                  size={Metrics.icons.tiny}
-                  color={Colors.primary500}
-                  style={{ marginRight: Metrics.smallMargin }}
-                />
-                <Text
-                  style={{ ...Fonts.style.caption, color: Colors.primary500 }}
-                >
-                  About conditions
-                </Text>
-              </View>
-            }
-            value={
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  flex: 1
-                }}
-              >
-                <Text
-                  style={{
-                    flex: 1,
-                    ...Fonts.style.description,
-                    color: Colors.gray900,
-                    textAlign: 'right'
-                  }}
-                >
-                  {condition || defaultCondition}
-                </Text>
-                <Icon
-                  name={'menu-down'}
-                  size={Metrics.icons.small}
-                  color={Colors.gray700}
-                  style={{
-                    marginRight: Metrics.doubleBaseMargin,
-                    marginLeft: Metrics.baseMargin
-                  }}
-                />
-              </View>
-            }
-            onPress={onPressCondition}
-            onPressTitle={onPressConditionTitle}
-          />
+          {isUndesiredBook || this.conditionRow()}
           <PriceRow
+            isUndesiredBook={isUndesiredBook}
             screenType={screenType}
             price={price}
             onRent={() => this.confirmRent(book)}

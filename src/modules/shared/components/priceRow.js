@@ -53,11 +53,20 @@ export const PriceRow = props => {
     props
   )
 
+  if (props.isUndesiredBook) {
+    return (
+      <View style={styles.row}>
+        <View style={styles.rowInfo}>
+          <Text style={styles.description}>We're not taking this book at this moment</Text>
+        </View>
+      </View>
+    )
+  }
+
   return (
     <View style={styles.row}>
       <View style={styles.rowInfo}>
         <Text style={styles.description}>{title}</Text>
-        {price > 0 && <Text style={styles.title}>{`$${price}`}</Text>}
       </View>
       <FlatButton secondary title={buttonTitle} onPress={callback} />
     </View>
@@ -66,6 +75,7 @@ export const PriceRow = props => {
 
 PriceRow.propsType = {
   screenType: PropTypes.oneOf(['SELL', 'BUY', 'RENT']).isRequired,
+  isUndesiredBook: PropTypes.bool.isRequired,
   price: PropTypes.shape({
     buy: PropTypes.number,
     rent: PropTypes.number,
