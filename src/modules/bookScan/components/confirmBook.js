@@ -147,7 +147,7 @@ export class BookDetails extends Component {
 
   conditionRow = () => {
     const { screenType } = this.props
-    const { condition } = book
+    const { condition } = this.state.book
     const isSelling = screenType === 'SELL'
     const [onPressCondition, onPressConditionTitle] = isSelling
       ? [this.showConditionModal, this.showConditionExplanationModal]
@@ -242,7 +242,7 @@ export class BookDetails extends Component {
           {isSelling &&
             this.props.membershipStatus === 'NONE' && (
               <PriceRowNotMember
-                price={price}
+                price={prices}
                 onPressBallardsClub={this.props.onPressBallardsClub}
               />
             )}
