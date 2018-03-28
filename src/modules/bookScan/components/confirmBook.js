@@ -216,7 +216,7 @@ export class BookDetails extends Component {
       isRentalTermsModalOn,
       navRightIcons
     } = this.state
-    const { about, authors, images, isbn, price, title } = book
+    const { about, authors, images, isbn, prices, title } = book
     const isSelling = screenType === 'SELL'
 
     return (
@@ -234,7 +234,7 @@ export class BookDetails extends Component {
           <PriceRow
             isUndesiredBook={isUndesiredBook}
             screenType={screenType}
-            price={price}
+            price={prices}
             onRent={() => this.confirmRent(book)}
             onBuy={() => onPressBuy(book)}
             onSell={() => this.onPressSell(book)}
