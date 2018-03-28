@@ -92,7 +92,8 @@ class BookScannerContainer extends Component {
 
   get isUndesiredBook () {
     const { screenType } = this.props.navigation.state.params
-    return screenType === 'SELL' && !this.state.book.prices.sell
+    const { sell } = this.state.book.prices
+    return screenType === 'SELL' && (sell === undefined || sell === null)
   }
 
   render() {
