@@ -46,6 +46,7 @@ export class ModalSellingHome extends Component {
       <FormTextInput
         style={styles.input}
         placeholder={placeHolderMsg}
+        keyboardType='numeric'
         onChangeText={value => this.setInput(value)}
       />
     )
