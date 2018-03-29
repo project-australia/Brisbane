@@ -67,9 +67,8 @@ class CheckoutContainer extends Component {
       await this.generateOrder(user, books, 'IN_PERSON', screenType)
       this.onCheckoutSuccess('Instructions sent by email.')
     } catch (error) {
-      alert('in person checkout failed')
-      console.log('In Person checkout failed')
-      console.log(JSON.stringify(error))
+      const defaultMessage = 'In Person checkout failed'
+      alert(error.message || defaultMessage)
     } finally {
       this.setState({ isLoading: false })
     }

@@ -32,7 +32,7 @@ export const createOrder = async (
 
   return Axios.post(`users/${userId}/orders`, order)
     .then(res => res.data)
-    .catch(err => throwResponseBody(err))
+    .catch(throwResponseBody)
 }
 
 export const updateOrder = async (userId, orderId, transactionId, status) => {
