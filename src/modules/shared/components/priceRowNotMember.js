@@ -7,7 +7,7 @@ import { Metrics } from '../../../constants'
 import { SimpleButton } from './buttons'
 
 export const PriceRowNotMember = props => {
-  const price = props.prices.sell
+  const price = props.prices ? props.prices.sell : 0
   const discontPrice = price + price * 0.2
   return price > 0 ? (
     <View style={styles.row}>
