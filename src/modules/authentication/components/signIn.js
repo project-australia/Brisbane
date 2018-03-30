@@ -8,6 +8,7 @@ import { FormOutlineButton } from '../../shared/components/buttons'
 
 export class SignIn extends Component {
   static propTypes = {
+    navigateBack: func.isRequired,
     onButtonPress: func.isRequired,
     navigateToSignUp: func.isRequired,
     navigateToForgotPassword: func.isRequired,
@@ -43,6 +44,7 @@ export class SignIn extends Component {
         alert={this.props.alert}
         footer={this.renderFooter()}
         onButtonPress={this.props.onButtonPress}
+        navigateBack={this.props.navigateBack}
       />
     )
   }

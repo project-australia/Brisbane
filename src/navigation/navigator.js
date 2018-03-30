@@ -17,17 +17,24 @@ import { SignInScreen } from '../modules/authentication/containers/signInScreen'
 import { SignUpScreen } from '../modules/authentication/containers/signUpScreen'
 import { TestScreen } from '../modules/test/components/testScreen'
 
+import { Values } from '../constants'
+
 export const initialRouteName = __DEV__ ? 'Test' : 'Home'
-const stackNavigatorConfig = { initialRouteName }
+const stackNavigatorConfig = {
+  initialRouteName,
+  ...Values.navBar.transparent
+}
 const routeConfigs = {
   Home: {
     screen: HomeScreen
   },
   SignIn: {
-    screen: SignInScreen
+    screen: SignInScreen,
+    ...Values.navBar.transparent
   },
   SignUp: {
-    screen: SignUpScreen
+    screen: SignUpScreen,
+    ...Values.navBar.transparent
   },
   ForgotPassword: {
     screen: ForgotPasswordScreen
