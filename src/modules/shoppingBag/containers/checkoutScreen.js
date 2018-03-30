@@ -5,12 +5,17 @@ import { connect } from 'react-redux'
 import { User } from '../../../domain/User'
 import { removeAllFromShoppingBag } from '../../../redux/actions'
 import {
+  updateFeaturedBooks,
+  updateRecentlyAddedBooks
+} from '../../../redux/actions/sync/bookActions'
+import {
   buyingItems,
   calculateTotalWeight,
   sellingItems,
   shoppingBagBuyingTotal,
   shoppingBagSellingTotal
 } from '../../../redux/selectors/shoppingBagSelectors'
+import { featuredBooks, recentlyAddedBooks } from '../../../services/backend/bookService'
 import { createOrder } from '../../../services/backend/orderService'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { BuyCheckoutContainer } from './buyCheckoutContainer'
@@ -21,6 +26,8 @@ class CheckoutContainer extends Component {
     buyingBooks: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
     sellingBooks: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
     cleanShoppingBag: PropTypes.func.isRequired,
+    refreshRecentlyBooks: PropTypes.func.isRequired,
+    refreshFeaturedBooks: PropTypes.func.isRequired,
     navigation: PropTypes.object.isRequired,
     user: PropTypes.instanceOf(User).isRequired,
     buyingTotal: PropTypes.number.isRequired,
@@ -49,12 +56,23 @@ class CheckoutContainer extends Component {
     try {
       this.setState({ isLoading: true })
       const { total } = this.calculatePrices()
-      return createOrder(type, shippingMethod, books, user.address, user.id, total)
+      await createOrder(type, shippingMethod, books, user.address, user.id, total)
+      await this.updateHomeBooks()
     } catch (error) {
       console.warn('Error during generate an order', error)
     } finally {
       this.setState({ isLoading: false })
     }
+  }
+
+  updateHomeBooks = async () => {
+    const [recently, featured] = await Promise.all([
+      recentlyAddedBooks(),
+      featuredBooks()
+    ])
+    
+    this.props.refreshRecentlyBooks(recently)
+    this.props.refreshFeaturedBooks(featured)
   }
 
   inPersonCheckout = async () => {
@@ -225,7 +243,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  cleanShoppingBag: type => dispatch(removeAllFromShoppingBag(type))
+  cleanShoppingBag: type => dispatch(removeAllFromShoppingBag(type)),
+  refreshRecentlyBooks: (books) => dispatch(updateRecentlyAddedBooks(books)),
+  refreshFeaturedBooks: (books) => dispatch(updateFeaturedBooks(books))
 })
 
 export const CheckoutScreen = connect(mapStateToProps, mapDispatchToProps)(
