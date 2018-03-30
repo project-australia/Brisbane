@@ -9,8 +9,15 @@ export const sellingItems = ({ shoppingBag }) =>
 
 export const shoppingBagBuyingTotal = state => {
   const booksToBuy = buyingItems(state)
+
   return booksToBuy.reduce((total, item) => {
-    return total + item.book.prices.buy
+    if (item.type === BUY) {
+      return total + item.book.prices.buy
+    }
+
+    if (item.type === RENT) {
+      return total + item.book.prices.rent
+    }
   }, 0)
 }
 
