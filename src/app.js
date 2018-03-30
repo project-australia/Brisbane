@@ -13,10 +13,13 @@ import {
 } from './redux/actions/sync/bookActions'
 import SplashScreen from 'react-native-splash-screen'
 
+const ONE_MINUTE = 60000
+
 export class App extends React.Component {
-  async componentDidMount() {
+  componentDidMount = async () => {
     try {
-      await Promise.all([this.fetchBooks(), this.checkIfThereIsUserLoggedIn()])
+      this._asyncRequest = await Promise.all([this.fetchBooks(), this.checkIfThereIsUserLoggedIn()])
+      this._asyncRequest = null
     } catch (e) {
       console.warn(e)
     } finally {
@@ -24,7 +27,17 @@ export class App extends React.Component {
     }
   }
 
-  async fetchBooks() {
+  componentWillMount() {
+    this._intervalID = setInterval(this.fetchBooks, ONE_MINUTE)
+  }
+
+  componentWillUnmount() {
+    if (this._intervalID) {
+      clearInterval(this._intervalID)
+    }
+  }
+
+  fetchBooks = async () => {
     const { dispatch } = this.props.store
     const [recently, featured] = await Promise.all([
       recentlyAddedBooks(),
