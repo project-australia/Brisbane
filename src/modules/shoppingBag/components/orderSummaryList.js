@@ -6,30 +6,34 @@ import { Row } from '../../shared/components/row'
 import { styles } from './styles/shoppingBagItems.style'
 import { styles as rowStyles } from '../../shared/components/styles/row.style'
 
-const renderBuyingOrders = ({ book }) => {
-  const bookPrice = book.prices.buy
-  const priceStyle = book.prices.buy === 0 ? rowStyles.lightTitle : null
+const renderItem = (id, title, price, style) => (
+  <Row
+    key={id}
+    left={{ title }}
+    right={{ title: price, style }}
+  />
+)
 
-  return (
-    <Row
-      key={book.id}
-      left={{ title: book.title }}
-      right={{ title: bookPrice, style: priceStyle }}
-    />
-  )
+const renderBuyingOrders = (item) => {
+  const { book, type } = item
+  const { id, title, prices } = book
+
+  if (type === 'BUY') {
+    return renderItem(id, title, prices.buy)
+  }
+
+  if (type === 'RENT') {
+    return renderItem(id, title, prices.rent, rowStyles.lightTitle)
+  }
+
+  return null
 }
 
 const renderOrdersSelling = ({ book }) => {
   const bookPrice = book.prices.sell === 0 ? 'Donate' : `$${book.prices.sell}`
   const priceStyle = book.prices.sell === 0 ? rowStyles.lightTitle : null
 
-  return (
-    <Row
-      key={book.id}
-      left={{ title: book.title }}
-      right={{ title: bookPrice, style: priceStyle }}
-    />
-  )
+  return renderItem(book.id, book.title, bookPrice, priceStyle)
 }
 
 const OrderSummaryRows = props => {
