@@ -6,6 +6,7 @@ import { User } from '../../../domain/User'
 import { EmailPasswordForm } from '../components/signupForm'
 import { SignUpRequest } from '../../../domain/SignUpRequest'
 import { LoadingOverlay } from '../../shared/components/loadingOverlay'
+import { BackButtonFloating } from '../../shared/components/buttons/backButtonFloating'
 
 import { styles } from './styles/signInScreen.styles'
 
@@ -30,7 +31,8 @@ export class SignUpForm extends Component {
   static propTypes = {
     signUpUser: func.isRequired,
     navigateToSignIn: func.isRequired,
-    alert: shape({ showAlert: bool.isRequired, message: string }).isRequired
+    alert: shape({ showAlert: bool.isRequired, message: string }).isRequired,
+    navigateBack: func.isRequired
   }
 
   state = {
@@ -94,7 +96,6 @@ export class SignUpForm extends Component {
       styles.container,
       { paddingBottom: this.state.keyboardHeight }
     ]
-
     return (
       <LoadingOverlay style={overlayStyle} isLoading={this.state.loading}>
         <EmailPasswordForm
@@ -103,6 +104,7 @@ export class SignUpForm extends Component {
           onButtonPress={this.doSignUp}
           navigateToSignIn={this.props.navigateToSignIn}
         />
+        <BackButtonFloating onPress={this.props.navigateBack} />
       </LoadingOverlay>
     )
   }

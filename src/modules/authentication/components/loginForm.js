@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { View } from 'react-native'
+import PropTypes from 'prop-types'
+
 import { FormHeader } from './formHeader'
-import { styles } from './styles/loginFormStyles'
-import { Colors } from '../../../constants'
 import { FormTextInput } from './formTextInput'
 import { FormButton } from '../../shared/components/buttons'
 import { LoadingOverlay } from '../../shared/components/loadingOverlay'
+import { BackButtonFloating } from '../../shared/components/buttons/backButtonFloating'
+
+import { styles } from './styles/loginFormStyles'
+import { Colors } from '../../../constants'
 
 export class LoginForm extends Component {
   static defaultProps = { footer: <View /> }
@@ -16,7 +19,8 @@ export class LoginForm extends Component {
     alert: PropTypes.shape({
       showAlert: PropTypes.bool.isRequired,
       message: PropTypes.string
-    }).isRequired
+    }).isRequired,
+    navigateBack: PropTypes.func.isRequired
   }
 
   state = {
@@ -69,6 +73,7 @@ export class LoginForm extends Component {
           style={styles.itemSpacing}
         />
         {this.props.footer}
+        <BackButtonFloating onPress={this.props.navigateBack} />
       </LoadingOverlay>
     )
   }

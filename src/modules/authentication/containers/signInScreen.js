@@ -7,6 +7,7 @@ import { NOT_LOGGED_IN } from '../../../redux/reducers/authentication/constants'
 import { SignIn } from '../components/signIn'
 import { UserPropTypes } from '../propTypes/user'
 
+const navigateBack = goBack => () => goBack()
 const navigateToSignUp = navigate => () => {
   navigate('SignUp', {})
 }
@@ -38,7 +39,7 @@ class SignInContainer extends Component {
   }
 
   static navigationOptions = {
-    title: 'Sign In'
+    header: null
   }
 
   componentWillUpdate(nextProps) {
@@ -53,6 +54,7 @@ class SignInContainer extends Component {
       <SignIn
         alert={this.props.alert}
         onButtonPress={onSignIn(this.props)}
+        navigateBack={navigateBack(this.props.navigation.goBack)}
         navigateToSignUp={navigateToSignUp(this.props.navigation.navigate)}
         navigateToForgotPassword={navigateToForgotPasswordScreen(
           this.props.navigation.navigate

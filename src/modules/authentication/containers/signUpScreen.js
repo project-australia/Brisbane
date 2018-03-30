@@ -8,7 +8,7 @@ import { SignUpForm } from '../components/signUp'
 
 class SignUpContainer extends Component {
   static navigationOptions = {
-    title: 'Sign Up'
+    header: null
   }
 
   static propTypes = {
@@ -33,6 +33,10 @@ class SignUpContainer extends Component {
   navigateToSignInScreen = () => {
     this.props.navigation.navigate('SignIn')
   }
+  
+  navigateBack = () => {
+    this.props.navigation.goBack()
+  }
 
   render() {
     return (
@@ -41,6 +45,7 @@ class SignUpContainer extends Component {
         alert={this.props.alert}
         signUpUser={this.onSignUp}
         navigateToSignIn={this.navigateToSignInScreen}
+        navigateBack={this.navigateBack}
       />
     )
   }
