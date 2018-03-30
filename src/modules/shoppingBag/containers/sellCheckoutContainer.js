@@ -64,6 +64,7 @@ export class SellCheckoutContainer extends Component {
     return (
       <SellCheckout
         books={this.props.books}
+        user={this.props.user}
         isLoading={this.props.isLoading || this.state.isLoading}
         inPersonCheckout={this.props.checkoutWithInPersonPayment}
         inGetLabelCheckout={this.confirmShippingCheckout}
