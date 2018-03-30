@@ -156,53 +156,51 @@ export class BookDetails extends Component {
 
     return (
       <RowValue
-        title={ 'Condition' }
+        title={'Condition'}
         subtitle={
-          <View style={ { flexDirection: 'row', alignItems: 'center' } }>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Icon
-              name={ 'help-circle' }
-              size={ Metrics.icons.tiny }
-              color={ Colors.primary500 }
-              style={ { marginRight: Metrics.smallMargin } }
+              name={'help-circle'}
+              size={Metrics.icons.tiny}
+              color={Colors.primary500}
+              style={{ marginRight: Metrics.smallMargin }}
             />
-            <Text
-              style={ { ...Fonts.style.caption, color: Colors.primary500 } }
-            >
+            <Text style={{ ...Fonts.style.caption, color: Colors.primary500 }}>
               About conditions
             </Text>
           </View>
         }
         value={
           <View
-            style={ {
+            style={{
               flexDirection: 'row',
               alignItems: 'center',
               flex: 1
-            } }
+            }}
           >
             <Text
-              style={ {
+              style={{
                 flex: 1,
                 ...Fonts.style.description,
                 color: Colors.gray900,
                 textAlign: 'right'
-              } }
+              }}
             >
-              { condition || defaultCondition }
+              {condition || defaultCondition}
             </Text>
             <Icon
-              name={ 'menu-down' }
-              size={ Metrics.icons.small }
-              color={ Colors.gray700 }
-              style={ {
+              name={'menu-down'}
+              size={Metrics.icons.small}
+              color={Colors.gray700}
+              style={{
                 marginRight: Metrics.doubleBaseMargin,
                 marginLeft: Metrics.baseMargin
-              } }
+              }}
             />
           </View>
         }
-        onPress={ onPressCondition }
-        onPressTitle={ onPressConditionTitle }
+        onPress={onPressCondition}
+        onPressTitle={onPressConditionTitle}
       />
     )
   }
@@ -218,12 +216,16 @@ export class BookDetails extends Component {
     } = this.state
     const { about, authors, images, isbn, prices, title } = book
     const isSelling = screenType === 'SELL'
+    const isBuying = screenType === 'BUY'
+    const screenTitle = isSelling
+      ? 'Sell your book'
+      : isBuying ? 'Buy a book' : 'Rent a Book'
 
     return (
       <View style={styles.container}>
         <AppStatusBar />
         <Navbar
-          title={isSelling ? 'Sell your book' : 'Buy a book'}
+          title={screenTitle}
           rightIcons={navRightIcons}
           onBack={this.props.navigateBack}
         />
