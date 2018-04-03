@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native'
-import { BallardBooks } from './src'
+import { Ballards } from './src'
 
-AppRegistry.registerComponent('brisbane', () => BallardBooks)
+AppRegistry.registerComponent('brisbane', () => Ballards)
