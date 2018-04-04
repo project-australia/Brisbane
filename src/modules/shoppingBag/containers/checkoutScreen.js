@@ -70,7 +70,7 @@ class CheckoutContainer extends Component {
       recentlyAddedBooks(),
       featuredBooks()
     ])
-    
+
     this.props.refreshRecentlyBooks(recently)
     this.props.refreshFeaturedBooks(featured)
   }

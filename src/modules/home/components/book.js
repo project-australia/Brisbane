@@ -9,7 +9,6 @@ import { FormButton, FormOutlineButton } from '../../shared/components/buttons'
 
 import { styles } from './styles/home.styles'
 
-
 const ellipsizeText = text => truncate(text, {'length': 24})
 
 export const Book = ({

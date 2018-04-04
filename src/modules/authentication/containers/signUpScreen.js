@@ -33,7 +33,7 @@ class SignUpContainer extends Component {
   navigateToSignInScreen = () => {
     this.props.navigation.navigate('SignIn')
   }
-  
+
   navigateBack = () => {
     this.props.navigation.goBack()
   }
