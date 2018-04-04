@@ -241,13 +241,12 @@ export class BookDetails extends Component {
             onBuy={() => onPressBuy(book)}
             onSell={() => this.onPressSell(book)}
           />
-          {isSelling &&
-            this.props.membershipStatus === 'NONE' && (
-              <PriceRowNotMember
-                price={prices}
-                onPressBallardsClub={this.props.onPressBallardsClub}
-              />
-            )}
+          {(isSelling && (!this.props.membershipStatus || this.props.membershipStatus === 'NONE')) && (
+            <PriceRowNotMember
+              prices={prices}
+              onPressBallardsClub={this.props.onPressBallardsClub}
+            />
+          )}
           <MenuTitle title={'Details'} style={styles.titleWrap} />
           <GeneralInfoCard style={styles.standardSpacing}>
             {about && (
