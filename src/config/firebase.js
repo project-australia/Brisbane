@@ -10,13 +10,12 @@ const ERROR = {
 }
 
 const firebaseConfig = {
-  apiKey: Config.API_KEY || 'AIzaSyD6tp9IzTlBucVCnlMnxEJNeEdE1KQ-lEM',
-  authDomain: Config.AUTH_DOMAIN || 'testing-firebase-env.firebaseapp.com',
-  databaseURL:
-    Config.DATABASE_URL || 'https://testing-firebase-env.firebaseio.com',
-  storageBucket: Config.STORAGE_BUCKET || '',
-  messagingSenderId: Config.MSG_SENDER_ID || '1088175970844',
-  projectId: Config.PROJECT_ID || 'testing-firebase-env'
+  apiKey: Config.FIREBASE_API_KEY,
+  authDomain: Config.FIREBASE_AUTH_DOMAIN,
+  databaseURL: Config.FIREBASE_DATABASE_URL,
+  storageBucket: Config.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: Config.FIREBASE_MSG_SENDER_ID,
+  projectId: Config.FIREBASE_PROJECT_ID
 }
 
 export const initializeFirebase = () => {
