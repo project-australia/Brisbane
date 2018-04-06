@@ -44,6 +44,17 @@ export class BookDetails extends Component {
       }
     ]
   }
+  renderAbout = (about) => {
+    if (about && about !== '') {
+      return (
+        <View style={{ paddingBottom: 10 }}>
+          <Text style={styles.description}>Description</Text>
+          <Text style={styles.descriptionGray}>{about}</Text>
+        </View>
+      )
+    }
+    return null
+  }
 
   showConditionModal = () => this.setState({ isConditionModalOn: true })
   hideConditionModal = () => this.setState({ isConditionModalOn: false })
@@ -249,12 +260,7 @@ export class BookDetails extends Component {
           )}
           <MenuTitle title={'Details'} style={styles.titleWrap} />
           <GeneralInfoCard style={styles.standardSpacing}>
-            {about && (
-              <View style={{ paddingBottom: 10 }}>
-                <Text style={styles.description}>Description</Text>
-                <Text style={styles.descriptionGray}>{about}</Text>
-              </View>
-            )}
+            {this.renderAbout(about)}
             <Text style={styles.description}>ISBN</Text>
             <Text style={styles.descriptionGray}>{isbn}</Text>
           </GeneralInfoCard>
