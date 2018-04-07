@@ -5,6 +5,8 @@ import { User } from '../../../domain/User'
 import { SellCheckout } from '../components/sellCheckout'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 
+const errorMessage = 'You have to fill your address first'
+
 const isInvalidAddress = (address = {}) => {
   return !address.state || !address.city || !address.state || !address.zipCode
 }
@@ -31,7 +33,7 @@ export class SellCheckoutContainer extends Component {
 
     // FIXME: Duplicated code
     if (isInvalidAddress(this.props.user.address)) {
-      const errorMessage = 'You have to fill your address first'
+      this.setState({ isLoading: false })
       alert(errorMessage)
       throw new Error(errorMessage)
     }
@@ -67,6 +69,10 @@ export class SellCheckoutContainer extends Component {
       await this.generateSellOrder()
       this.props.onCheckoutSuccess("You'll receive label on email")
     } catch (error) {
+      if (error.message === errorMessage) {
+        return
+      }
+
       alert('error during label checkout')
       console.log('label error', error)
     }

@@ -16,10 +16,10 @@ import {
   shoppingBagSellingTotal
 } from '../../../redux/selectors/shoppingBagSelectors'
 import { featuredBooks, recentlyAddedBooks } from '../../../services/backend/bookService'
-import { createOrder } from '../../../services/backend/orderService'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
-import { BuyCheckoutContainer } from './buyCheckoutContainer'
+import { createOrder } from '../../../services/backend/orderService'
 import { SellCheckoutContainer } from './sellCheckoutContainer'
+import { BuyCheckoutContainer } from './buyCheckoutContainer'
 
 class CheckoutContainer extends Component {
   static propTypes = {
