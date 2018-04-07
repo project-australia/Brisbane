@@ -10,11 +10,11 @@ const renderOrder = order => (
     <Text numberOfLines={1} style={styles.title}>
       {order.id}
     </Text>
-    {order.books.map(book => (
+    {/* {order.books.map(book => (
       <Text key={book.id} numberOfLines={1} style={styles.title}>
         {book.name}
       </Text>
-    ))}
+    ))} */}
   </View>
 )
 

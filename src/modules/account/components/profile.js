@@ -13,10 +13,8 @@ import { styles } from './styles/profile.style'
 
 const getSubscriptionText = subType => {
   switch (subType) {
-    case 'TEN':
-      return '10% off'
     case 'TWENTY':
-      return '20% off'
+      return 'Elite Club'
     default:
       return 'Standard'
   }

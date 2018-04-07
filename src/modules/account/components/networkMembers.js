@@ -6,9 +6,15 @@ import { Navbar } from '../../shared/components/navbar'
 import { styles } from './styles/networkMembers.style'
 
 const renderMember = member => (
-  <View key={member} style={styles.wrap}>
+  <View key={member.id} style={styles.wrap}>
     <Text numberOfLines={1} style={styles.title}>
-      {member}
+      Name: {member.name}
+    </Text>
+    <Text numberOfLines={1} style={styles.title}>
+      e-mail: {member.email}
+    </Text>
+    <Text numberOfLines={1} style={styles.title}>
+      School: {member.school}
     </Text>
   </View>
 )

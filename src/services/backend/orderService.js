@@ -47,25 +47,3 @@ export const updateOrder = async (userId, orderId, transactionId, status) => {
     .then(res => res.data)
     .catch(err => throwResponseBody(err))
 }
-
-export const getUserOrders = userId => {
-  console.log('orders')
-  // return [
-  //   {
-  //     id: 1,
-  //     date: new Date(),
-  //     books: [{ id, name: 'book-A' }, { id: 2, name: 'book-A' }]
-  //   },
-  //   {
-  //     id: 2,
-  //     date: new Date(),
-  //     books: [{ id: 1, name: 'book-A' }, { id: 2, name: 'book-A' }]
-  //   }
-  // ]
-  return Axios.get(`users/${userId}/order`)
-    .then(res => {
-      console.log('orders', res.date)
-      return res.data
-    })
-    .catch(err => throwResponseBody(err))
-}

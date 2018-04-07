@@ -1,4 +1,3 @@
-import { getUserOrders } from '../../../services/backend/orderService'
 import {
   alertAction,
   updateUserProfile,
@@ -15,7 +14,9 @@ import { FORGOT_PASSWORD_SUCCESS_MSG } from '../../../constants/messages'
 import {
   signUpUser,
   getUserProfile,
-  putUserProfile
+  putUserProfile,
+  getUserOrders,
+  getUserNetwork
 } from '../../../services/backend/userService'
 import { NOT_LOGGED_IN } from '../../reducers/authentication/constants'
 
@@ -105,7 +106,7 @@ export function requestWithdrawAction(id, walletWithPaypalAccount) {
 export function getNetworking(id) {
   return async dispatch => {
     try {
-      const network = ['user', 'user1']
+      const network = await getUserNetwork(id)
       dispatch(updateUserNetworking(network))
     } catch (error) {
       dispatch(alertAction(error))
@@ -116,8 +117,8 @@ export function getNetworking(id) {
 export function getOrders(id) {
   return async dispatch => {
     try {
-      const order = await getUserOrders(id)
-      dispatch(updateUserOrders(order))
+      const orders = await getUserOrders(id)
+      dispatch(updateUserOrders(orders))
     } catch (error) {
       dispatch(alertAction(error))
     }

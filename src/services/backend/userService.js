@@ -26,6 +26,16 @@ export const beARepresentantRequest = async id =>
     .then(res => res.data)
     .catch(handleError)
 
+export const getUserOrders = async userId =>
+  Axios.get(`/users/${userId}/order`)
+    .then(res => res.data)
+    .catch(handleError)
+
+export const getUserNetwork = async userId =>
+  Axios.get(`/users/${userId}/network`)
+    .then(res => res.data)
+    .catch(handleError)
+
 const handleError = err => {
   if (!err.response) {
     throw new Error(SIGNUP_ERROR_MESSAGE)
