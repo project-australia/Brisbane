@@ -17,7 +17,7 @@ export const NOT_LOGGED_IN = {
     state: null
   },
   wallet: {
-    ballance: null,
+    balance: null,
     status: null,
     paypalAccount: null
   },
