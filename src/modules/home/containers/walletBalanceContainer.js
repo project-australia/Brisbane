@@ -9,11 +9,11 @@ class WalletContainer extends Component {
   state = { isModalOpen: false }
 
   showEditModal = () => {
-    const { status, club, ballance } = this.props
+    const { status, club, balance } = this.props
     if (!club) {
       return this.defaultAlertPopUp('You must be to be logged in.')
     }
-    if (!ballance || ballance <= 0) {
+    if (!balance || balance <= 0) {
       return this.defaultAlertPopUp('There are currently no funds to withdraw. The funds become available here after we receive and inspect the books you are selling. Reps will also see the funds become available here to withdraw for commissions made.')
     }
     if (status !== 'NONE') {
@@ -45,12 +45,12 @@ class WalletContainer extends Component {
     )
 
   render() {
-    const { ballance } = this.props
+    const { balance } = this.props
     const { isModalOpen } = this.state
     return (
       <View>
         <WalletBalance
-          balance={ballance || 0.0}
+          balance={balance || 0.0}
           onWithDrawPressed={this.showEditModal}
           onWalletViewPressed={() => alert('🛶 navigate to wallet')}
         />
@@ -72,7 +72,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = ({ authentication: { user } }) => ({
-  ballance: user.wallet.ballance,
+  balance: user.wallet.balance,
   status: user.wallet.status,
   paypalAccount: user.wallet.paypalAccount,
   club: user.club,
