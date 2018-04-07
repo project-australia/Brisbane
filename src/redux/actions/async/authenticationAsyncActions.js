@@ -1,4 +1,4 @@
-import { getOrder } from '../../../services/backend/orderService'
+import { getUserOrders } from '../../../services/backend/orderService'
 import {
   alertAction,
   updateUserProfile,
@@ -116,7 +116,7 @@ export function getNetworking(id) {
 export function getOrders(id) {
   return async dispatch => {
     try {
-      const order = await getOrder(id)
+      const order = await getUserOrders(id)
       dispatch(updateUserOrders(order))
     } catch (error) {
       dispatch(alertAction(error))
