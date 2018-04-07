@@ -48,8 +48,8 @@ class CheckoutContainer extends Component {
 
   generateOrder = async (user, books, shippingMethod, type) => {
     if (isInvalidAddress(user.address)) {
-      alert('You have to fill your address first')
       const errorMessage = 'You have to fill your address first'
+      alert(errorMessage)
       throw new Error(errorMessage)
     }
 

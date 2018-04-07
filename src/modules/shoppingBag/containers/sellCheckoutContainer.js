@@ -5,6 +5,10 @@ import { User } from '../../../domain/User'
 import { SellCheckout } from '../components/sellCheckout'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 
+const isInvalidAddress = (address = {}) => {
+  return !address.state || !address.city || !address.state || !address.zipCode
+}
+
 export class SellCheckoutContainer extends Component {
   static propTypes = {
     prices: PropTypes.object.isRequired,
@@ -22,9 +26,17 @@ export class SellCheckoutContainer extends Component {
   }
 
   generateSellOrder = async () => {
+    this.setState({ isLoading: true })
+    const { user, books } = this.props
+
+    // FIXME: Duplicated code
+    if (isInvalidAddress(this.props.user.address)) {
+      const errorMessage = 'You have to fill your address first'
+      alert(errorMessage)
+      throw new Error(errorMessage)
+    }
+
     try {
-      this.setState({ isLoading: true })
-      const { user, books } = this.props
       await this.props.generateOrder(user, books, 'SHIPPO', 'SELL')
     } catch (error) {
       console.warn('Error during generate a selling order', error)
