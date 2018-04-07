@@ -41,14 +41,15 @@ export class BuyCheckoutContainer extends Component {
       [
         {
           text: 'OK',
-          onPress: this.props.onCheckoutSuccess
+          onPress: () => this.props.onCheckoutSuccess('Instructions sent by email.')
         }
       ],
-      { onDismiss: this.props.onCheckoutSuccess }
+      { onDismiss: () => this.props.onCheckoutSuccess('Instructions sent by email.') }
     )
   }
 
   onPayPalOnSuccess = order => async paypalResponse => {
+    this.props.onCheckoutSuccess('Instructions sent by email.')
     await updateOrder(
       this.props.user.id,
       order.id,

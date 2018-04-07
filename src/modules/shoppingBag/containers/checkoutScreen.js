@@ -110,6 +110,7 @@ class CheckoutContainer extends Component {
   }
 
   onCheckoutSuccess = alertMessage => {
+    console.log('---------> HELLO')
     if (this.props.navigation.state.params.screenType === 'BUY') {
       this.props.cleanShoppingBag('BUY')
       this.props.cleanShoppingBag('RENT')
