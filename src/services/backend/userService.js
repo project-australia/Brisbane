@@ -28,7 +28,9 @@ export const beARepresentantRequest = async id =>
 
 export const getUserOrders = async userId =>
   Axios.get(`/users/${userId}/order`)
-    .then(res => res.data)
+    .then(res => {
+      return res.data
+    })
     .catch(handleError)
 
 export const getUserNetwork = async userId =>
