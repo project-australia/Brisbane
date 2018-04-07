@@ -9,15 +9,15 @@ class WalletContainer extends Component {
   state = { isModalOpen: false }
 
   showEditModal = () => {
-    const { status, club } = this.props
+    const { status, club, ballance } = this.props
     if (!club) {
       return this.defaultAlertPopUp('You must be to be logged in.')
     }
-    if (club === 'NONE') {
-      return this.defaultAlertPopUp('You need get Elite Members Club.')
+    if (!ballance || ballance <= 0) {
+      return this.defaultAlertPopUp('There are currently no funds to withdraw. The funds become available here after we receive and inspect the books you are selling. Reps will also see the funds become available here to withdraw for commissions made.')
     }
     if (status !== 'NONE') {
-      return this.defaultAlertPopUp('Your request is under processing')
+      return this.defaultAlertPopUp('Your funds will be transferred to your PayPal account. Please note that it may take around 72 hours to process.')
     }
     return this.setState({
       isModalOpen: true
@@ -34,7 +34,7 @@ class WalletContainer extends Component {
 
   defaultAlertPopUp = msg =>
     Alert.alert(
-      'Withdraw Solicitation',
+      'Withdraw from My Wallet',
       msg,
       [
         {

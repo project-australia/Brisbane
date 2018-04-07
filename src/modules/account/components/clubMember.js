@@ -27,6 +27,7 @@ export class ClubMember extends Component {
 
   checkoutWithPaypal = async () => {
     try {
+      this.props.goBack()
       await payWithPayPal(
         this.props.price,
         this.props.title,
