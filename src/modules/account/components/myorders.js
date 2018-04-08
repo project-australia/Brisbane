@@ -1,5 +1,13 @@
 import React from 'react'
-import { ScrollView, View } from 'react-native'
+import {
+  AlertIOS,
+  Clipboard,
+  Platform,
+  ToastAndroid,
+  TouchableOpacity,
+  ScrollView,
+  View
+} from 'react-native'
 import moment from 'moment'
 
 import { Navbar } from '../../shared/components/navbar'
@@ -20,6 +28,32 @@ export const formatEdition = editionNumber => {
     default:
       return `${editionNumber}th edition`
   }
+}
+
+const copyOrderCode = code => {
+  Platform.select({
+    android: () => {
+      Clipboard.setString(code)
+      ToastAndroid.show('Order code copied to clipboard', ToastAndroid.SHORT)
+    },
+    ios: () => {
+      AlertIOS.alert(
+        'Copy order code',
+        'The order code will be copied to the clipboard',
+        [
+          {
+            text: 'Cancel',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel'
+          },
+          {
+            text: 'Copy',
+            onPress: () => Clipboard.setString(code)
+          }
+        ]
+      )
+    }
+  })()
 }
 
 const renderBook = (
@@ -49,13 +83,15 @@ const renderOrder = order => {
   const formatedDate = moment(order.createdAt).format('MMMM Do, YYYY [at] h:mma')
   return (
     <View key={order.id} style={styles.itemWrap}>
-      <MyOrderHeader
-        title={formatedDate}
-        properties={[
-          { title: 'Order', property: order.id },
-          { title: 'Status', property: order.status }
-        ]}
-      />
+      <TouchableOpacity activeOpacity={1} onPress={() => copyOrderCode(order.id)}>
+        <MyOrderHeader
+          title={formatedDate}
+          properties={[
+            { title: 'Order', property: order.id },
+            { title: 'Status', property: order.status }
+          ]}
+        />
+      </TouchableOpacity>
       {order.items.map(item => renderBook(item, order.orderType))}
     </View>
   )
