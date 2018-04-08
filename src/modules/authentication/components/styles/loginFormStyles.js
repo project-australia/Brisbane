@@ -11,6 +11,11 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.screen,
     justifyContent: 'center'
   },
+  signUpContainer: {
+    flex: 1,
+    backgroundColor: Colors.screen,
+    paddingTop: Metrics.section
+  },
   header: {
     alignItems: 'center',
     justifyContent: 'center',

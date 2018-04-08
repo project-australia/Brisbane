@@ -46,26 +46,35 @@ export class LoginForm extends Component {
     }
   }
 
+  focusPassword = () => this.passwordInput.focus()
+
   render() {
     return (
       <LoadingOverlay style={styles.screen} isLoading={this.state.loading}>
         <FormHeader />
         <FormTextInput
-          onChangeText={this.setEmail}
-          value={this.state.email}
-          placeholder="Email address"
           autoCapitalize="none"
+          autoFocus
+          blurOnSubmit={false}
+          keyboardType="email-address"
+          onChangeText={this.setEmail}
+          onSubmitEditing={this.focusPassword}
+          placeholder="Email address"
+          returnKeyType={'next'}
           selectionColor={Colors.secondary500}
           style={styles.itemSpacing}
-          keyboardType="email-address"
+          value={this.state.email}
         />
         <FormTextInput
           onChangeText={this.setPassword}
-          value={this.state.password}
+          onSubmitEditing={this.onButtonPress}
           placeholder="Password"
+          ref={(ref) => { this.passwordInput = ref }}
+          returnKeyType={'done'}
           secureTextEntry
           selectionColor={Colors.secondary500}
           style={styles.itemSpacing}
+          value={this.state.password}
         />
         <FormButton
           title={this.props.buttonText}

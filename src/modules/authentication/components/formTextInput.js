@@ -1,29 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { TextInput, StyleSheet } from 'react-native'
 import { Colors } from '../../../constants'
 
 import { styles } from './styles/formTextInput.style'
 import { styles as loginStyles } from './styles/loginFormStyles'
 
-export const FormTextInput = props => {
-  const isValidInput = props.validationCondition(props.value)
-  const styleArray = [loginStyles.itemSpacing, styles.textInput, props.style]
-
-  if (!isValidInput) {
-    styleArray.push(styles.invalidInput)
+export class FormTextInput extends Component {
+  static defaultProps = {
+    validationCondition: () => true
   }
 
-  return (
-    <TextInput
-      {...props}
-      style={StyleSheet.flatten(styleArray)}
-      selectionColor={Colors.secondary500}
-      autoCapitalize="words"
-      underlineColorAndroid={'transparent'}
-    />
-  )
-}
+  focus = () => this.input.focus()
 
-FormTextInput.defaultProps = {
-  validationCondition: () => true
+  render () {
+    const isValidInput = this.props.validationCondition(this.props.value)
+    const styleArray = [loginStyles.itemSpacing, styles.textInput, this.props.style]
+
+    if (!isValidInput) {
+      styleArray.push(styles.invalidInput)
+    }
+
+    return (
+      <TextInput
+        autoCapitalize="words"
+        {...this.props}
+        ref={(ref) => { this.input = ref }}
+        style={StyleSheet.flatten(styleArray)}
+        selectionColor={Colors.secondary500}
+        underlineColorAndroid={'transparent'}
+      />
+    )
+  }
 }
