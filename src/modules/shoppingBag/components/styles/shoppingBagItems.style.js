@@ -28,7 +28,8 @@ export const styles = StyleSheet.create({
   wrappingCard: {
     backgroundColor: Colors.white,
     paddingVertical: Metrics.baseMargin,
-    paddingHorizontal: Metrics.section,
+    paddingLeft: Metrics.section - Metrics.maxBorderWidth,
+    paddingRight: Metrics.section,
     borderBottomWidth: Metrics.borderWidth,
     borderColor: Colors.divider
   },
@@ -54,8 +55,8 @@ export const styles = StyleSheet.create({
     marginLeft: Metrics.baseMargin
   },
   title: {
-    ...Fonts.style.normal,
-    color: Colors.gray900
+    ...Fonts.style.heavyDescription,
+    color: Colors.gray700
   },
   titleLight: {
     ...Fonts.style.normal,

@@ -6,15 +6,32 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.screen
   },
+  itemWrap: {
+    borderBottomWidth: Metrics.borderWidth,
+    borderColor: Colors.divider,
+    marginBottom: Metrics.marginVertical
+  },
   wrap: {
     backgroundColor: Colors.white,
     borderBottomWidth: Metrics.borderWidth,
     borderColor: Colors.divider
   },
+  standardCardPadding: {
+    paddingHorizontal: Metrics.section,
+    paddingVertical: Metrics.marginVertical
+  },
   title: {
-    ...Fonts.style.normal,
-    color: Colors.gray900,
-    marginHorizontal: Metrics.section,
-    marginVertical: Metrics.baseMargin
+    color: Colors.gray700,
+    ...Fonts.style.heavyDescription
+  },
+  textBlockWrap: {
+    marginTop: Metrics.smallMargin
+  },
+  propertyTitle: {
+    color: Colors.gray700,
+    ...Fonts.style.footnote
+  },
+  propertyText: {
+    color: Colors.gray500
   }
 })

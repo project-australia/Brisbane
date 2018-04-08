@@ -7,6 +7,7 @@ import { ShoppingBagBook } from './shoppingBagBook'
 import { AddBookRow } from './addBookRow'
 import { SolidButton } from '../../shared/components/buttons'
 
+import { formatEdition } from '../../account/components/myorders'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { styles } from './styles/shoppingBagItems.style'
 
@@ -17,7 +18,7 @@ const renderBook = ({ book, type, quantity, id }) => (
     title={book.title}
     quantity={quantity}
     subtitleOne={book.author}
-    subtitleTwo={book.edition}
+    subtitleTwo={formatEdition(book.edition)}
     prices={book.prices}
     type={type}
   />
