@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Keyboard, Platform } from 'react-native'
 import { bool, func, shape, string } from 'prop-types'
 
 import { User } from '../../../domain/User'
@@ -9,6 +8,7 @@ import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 import { BackButtonFloating } from '../../shared/components/buttons/backButtonFloating'
 
 import { styles } from './styles/signInScreen.styles'
+import { ViewHandlingKeyboard } from '../../shared/components/viewHandlingKeyboard';
 
 const extractSignUpFormFromState = form => {
   const { name, email, password, school, referredBy } = form
@@ -42,35 +42,15 @@ export class SignUpForm extends Component {
     password: '',
     loading: false,
     referredBy: '',
-    keyboardHeight: 0
+    hasKeyboard: false
   }
 
-  componentWillMount() {
-    if (Platform.OS === 'ios') {
-      this.keyboardShowListener = Keyboard.addListener(
-        'keyboardWillShow',
-        this.keyboardShow
-      )
-      this.keyboardHideListener = Keyboard.addListener(
-        'keyboardWillHide',
-        this.keyboardHide
-      )
-    }
-  }
-
-  componentWillUnmount() {
-    if (Platform.OS === 'ios') {
-      this.keyboardShowListener.remove()
-      this.keyboardHideListener.remove()
-    }
-  }
+  keyboardDidShow = () => this.setState({ hasKeyboard: true })
+  keyboardDidHide = () => this.setState({ hasKeyboard: false })
 
   onFormChange = value => {
     this.setState(value)
   }
-  keyboardHide = () => this.setState({ keyboardHeight: 0 })
-  keyboardShow = keyboard =>
-    this.setState({ keyboardHeight: keyboard.endCoordinates.height })
 
   doSignUp = async () => {
     this.setState({ loading: true })
@@ -92,20 +72,23 @@ export class SignUpForm extends Component {
   }
 
   render() {
-    const overlayStyle = [
-      styles.container,
-      { paddingBottom: this.state.keyboardHeight }
-    ]
     return (
-      <LoadingOverlay style={overlayStyle} isLoading={this.state.loading}>
-        <EmailPasswordForm
-          form={this.state}
-          onChange={this.onFormChange}
-          onButtonPress={this.doSignUp}
-          navigateToSignIn={this.props.navigateToSignIn}
-        />
-        <BackButtonFloating onPress={this.props.navigateBack} />
-      </LoadingOverlay>
+      <ViewHandlingKeyboard
+        onKeyboardShow={this.keyboardDidShow}
+        onKeyboardHide={this.keyboardDidHide}
+        style={{ flex: 1 }}
+      >
+        <LoadingOverlay style={styles.container} isLoading={this.state.loading}>
+          <EmailPasswordForm
+            hasKeyboard={this.state.hasKeyboard}
+            form={this.state}
+            onChange={this.onFormChange}
+            onButtonPress={this.doSignUp}
+            navigateToSignIn={this.props.navigateToSignIn}
+          />
+          <BackButtonFloating onPress={this.props.navigateBack} />
+        </LoadingOverlay>
+      </ViewHandlingKeyboard>
     )
   }
 }
