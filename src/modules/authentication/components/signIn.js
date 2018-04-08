@@ -5,6 +5,7 @@ import { Text, View, TouchableWithoutFeedback } from 'react-native'
 import { styles } from './styles/signInScreen.styles'
 import { LoginForm } from '../components/loginForm'
 import { FormOutlineButton } from '../../shared/components/buttons'
+import { ViewHandlingKeyboard } from '../../shared/components/viewHandlingKeyboard';
 
 export class SignIn extends Component {
   static propTypes = {
@@ -14,6 +15,10 @@ export class SignIn extends Component {
     navigateToForgotPassword: func.isRequired,
     alert: shape({ showAlert: bool.isRequired, message: string }).isRequired
   }
+
+  state = { hasKeyboard: false }
+  keyboardDidShow = () => this.setState({ hasKeyboard: true })
+  keyboardDidHide = () => this.setState({ hasKeyboard: false })
 
   renderFooter = () => {
     return (
@@ -28,24 +33,32 @@ export class SignIn extends Component {
             </View>
           </TouchableWithoutFeedback>
         </View>
-        <FormOutlineButton
-          title="Create an Account"
-          onPress={this.props.navigateToSignUp}
-          style={styles.lastItemSpacing}
-        />
+        {!this.state.hasKeyboard &&
+          <FormOutlineButton
+            title="Create an Account"
+            onPress={this.props.navigateToSignUp}
+            style={styles.lastItemSpacing}
+          />
+        }
       </View>
     )
   }
 
   render() {
     return (
-      <LoginForm
-        buttonText="Log In"
-        alert={this.props.alert}
-        footer={this.renderFooter()}
-        onButtonPress={this.props.onButtonPress}
-        navigateBack={this.props.navigateBack}
-      />
+      <ViewHandlingKeyboard
+        onKeyboardShow={this.keyboardDidShow}
+        onKeyboardHide={this.keyboardDidHide}
+        style={{ flex: 1 }}
+      >
+        <LoginForm
+          buttonText="Log In"
+          alert={this.props.alert}
+          footer={this.renderFooter()}
+          onButtonPress={this.props.onButtonPress}
+          navigateBack={this.props.navigateBack}
+        />
+      </ViewHandlingKeyboard>
     )
   }
 }
