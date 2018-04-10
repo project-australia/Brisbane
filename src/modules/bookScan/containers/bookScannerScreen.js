@@ -8,7 +8,8 @@ let intervalID = 0
 
 class BookScanner extends Component {
   static navigationOptions = {
-    title: 'Book Scan'
+    title: 'Book scan',
+    header: null
   }
 
   state = {
@@ -33,13 +34,15 @@ class BookScanner extends Component {
     }
   }
 
+  navigateBack = () => this.props.navigation.goBack()
+
   navigateToBookDetails = (isbn) => this.props.navigation.navigate('BookDetails', {
     isbn,
     screenType: 'SELL'
   })
 
   render() {
-    return <Scanner onRead={this.onRead} isLoading={this.state.isReading} />
+    return <Scanner onCancel={this.navigateBack} onRead={this.onRead} isLoading={this.state.isReading} />
   }
 }
 

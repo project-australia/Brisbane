@@ -12,12 +12,36 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center'
   },
+  darkTopOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    bottom: undefined,
+    backgroundColor: Colors.overlay,
+    padding: Metrics.section,
+    paddingTop: Metrics.section + Metrics.statusBarHeight
+  },
+  darkBottomOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    top: undefined,
+    backgroundColor: Colors.overlay
+  },
   titleWrap: {
     marginHorizontal: Metrics.section
+  },
+  overlayTitle: {
+    color: Colors.white,
+    ...Fonts.style.bold
+  },
+  overlayDescription: {
+    color: Colors.white,
+    ...Fonts.style.description
   },
   description: {
     color: Colors.gray900,
     ...Fonts.style.description
+  },
+  cancelButtonTouchArea: {
+    alignSelf: 'flex-end',
+    padding: Metrics.section
   },
   descriptionGray: {
     color: Colors.gray500,
