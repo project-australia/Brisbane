@@ -14,7 +14,9 @@ export const styles = StyleSheet.create({
   wrap: {
     backgroundColor: Colors.white,
     borderBottomWidth: Metrics.borderWidth,
-    borderColor: Colors.divider
+    borderColor: Colors.divider,
+    paddingHorizontal: Metrics.section,
+    paddingVertical: Metrics.marginVertical
   },
   standardCardPadding: {
     paddingHorizontal: Metrics.section,
@@ -23,6 +25,10 @@ export const styles = StyleSheet.create({
   title: {
     color: Colors.gray700,
     ...Fonts.style.heavyDescription
+  },
+  subtitle: {
+    color: Colors.gray500,
+    ...Fonts.style.footnote
   },
   textBlockWrap: {
     marginTop: Metrics.smallMargin

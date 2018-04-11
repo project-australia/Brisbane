@@ -76,7 +76,7 @@ const style = {
         fontFamily: 'sans-serif-medium'
       },
       ios: {
-        fontWeight: '600'
+        fontWeight: '700'
       }
     }),
     fontSize: size.medium
