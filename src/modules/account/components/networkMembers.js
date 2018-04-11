@@ -8,13 +8,13 @@ import { styles } from './styles/networkMembers.style'
 const renderMember = member => (
   <View key={member.id} style={styles.wrap}>
     <Text numberOfLines={1} style={styles.title}>
-      Name: {member.name}
+      {member.name}
     </Text>
-    <Text numberOfLines={1} style={styles.title}>
-      e-mail: {member.email}
+    <Text numberOfLines={1} style={styles.subtitle}>
+      {member.school}
     </Text>
-    <Text numberOfLines={1} style={styles.title}>
-      School: {member.school}
+    <Text numberOfLines={1} style={styles.subtitle}>
+      {member.email}
     </Text>
   </View>
 )
