@@ -17,6 +17,7 @@ import { PriceRow } from '../../shared/components/priceRow'
 import { RowValue } from '../../shared/components/rowValue'
 import { Touchable } from '../../shared/components/touchable'
 import { PriceRowNotMember } from '../../shared/components/priceRowNotMember'
+import { InviteToRep } from '../../shared/components/inviteToRep'
 import { SimpleButton } from '../../shared/components/buttons'
 
 import { Fonts, Colors, Metrics } from '../../../constants'
@@ -255,6 +256,11 @@ export class BookDetails extends Component {
           {(isSelling && (!this.props.membershipStatus || this.props.membershipStatus === 'NONE')) && (
             <PriceRowNotMember
               prices={prices}
+              onPressBallardsClub={this.props.onPressBallardsClub}
+            />
+          )}
+          {(isSelling && (!this.props.membershipStatus || this.props.membershipStatus === 'TWENTY')) && (
+            <InviteToRep
               onPressBallardsClub={this.props.onPressBallardsClub}
             />
           )}
