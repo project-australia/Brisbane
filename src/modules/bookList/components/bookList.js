@@ -9,7 +9,8 @@ export const BookList = ({
   navigateBack,
   list,
   onBuyPressed,
-  onRentPressed
+  onRentPressed,
+  navigateToBook
 }) => {
   return (
     <View style={{ flex: 1 }}>
@@ -21,6 +22,7 @@ export const BookList = ({
             book={book}
             onRentPressed={onRentPressed}
             onBuyPressed={onBuyPressed}
+            navigateToBook={navigateToBook}
           />
         ))}
         {list.length === 0 && (
@@ -42,5 +44,6 @@ export const BookList = ({
 BookList.propTypes = {
   list: PropTypes.arrayOf(book).isRequired,
   onBuyPressed: PropTypes.func.isRequired,
-  onRentPressed: PropTypes.func.isRequired
+  onRentPressed: PropTypes.func.isRequired,
+  navigateToBook: PropTypes.func.isRequired
 }

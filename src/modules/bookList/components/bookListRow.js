@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import { Image, Text, View } from 'react-native'
 import { book } from '../../home/propTypes/book'
 
-import { Touchable } from '../../shared/components/touchable'
-
 import { styles } from '../../shoppingBag/components/styles/shoppingBagItems.style'
 import { FlatButton } from '../../shared/components/buttons/index'
 
@@ -15,8 +13,7 @@ export const BookListRow = props => {
     : require('../../../assets/images/book-placeholder.png')
 
   return (
-    <Touchable
-      onPress={() => console.warn('Go to book: ', title)}
+    <View
       key={id}
       style={styles.cardWithoutBorder}
     >
@@ -37,20 +34,20 @@ export const BookListRow = props => {
           <FlatButton
             showPrice
             title={'Buy'}
-            onPress={() => props.onBuyPressed(props.book)}
+            onPress={() => props.navigateToBook(props.book, 'BUY')}
             containerStyle={styles.rightContentButton}
             price={prices.buy}
           />
           <FlatButton
             showPrice
             title={'Rent'}
-            onPress={() => props.onRentPressed(props.book)}
+            onPress={() => props.navigateToBook(props.book, 'RENT')}
             containerStyle={styles.rightContentButton}
             price={prices.rent}
           />
         </View>
       </View>
-    </Touchable>
+    </View>
   )
 }
 
