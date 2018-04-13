@@ -10,7 +10,8 @@ export const InviteToRep = props => {
   return (
     <View style={styles.row}>
       <View style={styles.rowInfo}>
-        <Text style={styles.description}>Be a Rep !</Text>
+        <Text style={styles.description}>Make Extra Cash</Text>
+        <Text style={styles.description}>Just Refer Friends</Text>
       </View>
       <SimpleButton
         title={'Learn more'}
