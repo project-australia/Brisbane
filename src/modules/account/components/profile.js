@@ -62,7 +62,9 @@ export const Profile = ({
         />
         <ProfileItem
           title={'Birth date'}
-          data={user.birthDate ? moment(user.birthDate).format('MMM Do YYYY') : '-'}
+          data={
+            user.birthDate ? moment(user.birthDate).format('MMM Do YYYY') : '-'
+          }
           emptyDataLabel={'Add birth date'}
           onPress={() => showEditModal('Birth date')}
         />

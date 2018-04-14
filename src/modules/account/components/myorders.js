@@ -57,14 +57,7 @@ const copyOrderCode = code => {
 }
 
 const renderBook = (
-  {
-    authors,
-    edition,
-    id,
-    images,
-    prices,
-    title
-  },
+  { authors, edition, id, images, prices, title },
   orderType
 ) => (
   <ShoppingBagBook
@@ -80,10 +73,15 @@ const renderBook = (
 
 const renderOrder = order => {
   console.log(order)
-  const formatedDate = moment(order.createdAt).format('MMMM Do, YYYY [at] h:mma')
+  const formatedDate = moment(order.createdAt).format(
+    'MMMM Do, YYYY [at] h:mma'
+  )
   return (
     <View key={order.id} style={styles.itemWrap}>
-      <TouchableOpacity activeOpacity={1} onPress={() => copyOrderCode(order.id)}>
+      <TouchableOpacity
+        activeOpacity={1}
+        onPress={() => copyOrderCode(order.id)}
+      >
         <MyOrderHeader
           title={formatedDate}
           properties={[

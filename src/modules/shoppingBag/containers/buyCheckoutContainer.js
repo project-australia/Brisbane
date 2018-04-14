@@ -41,10 +41,14 @@ export class BuyCheckoutContainer extends Component {
       [
         {
           text: 'OK',
-          onPress: () => this.props.onCheckoutSuccess('Instructions sent by email.')
+          onPress: () =>
+            this.props.onCheckoutSuccess('Instructions sent by email.')
         }
       ],
-      { onDismiss: () => this.props.onCheckoutSuccess('Instructions sent by email.') }
+      {
+        onDismiss: () =>
+          this.props.onCheckoutSuccess('Instructions sent by email.')
+      }
     )
   }
 

@@ -7,19 +7,31 @@ import { Touchable } from '../touchable'
 
 import { Metrics, Colors } from '../../../../constants'
 
-const [backButtonName, backButtonSize, backButtonStyle] = Platform.OS === 'ios'
-  ? ['chevron-left', Metrics.icons.xl, { backgroundColor: 'transparent', right: Metrics.baseMargin }]
-  : ['arrow-left', Metrics.icons.medium, {}]
+const [backButtonName, backButtonSize, backButtonStyle] =
+  Platform.OS === 'ios'
+    ? [
+      'chevron-left',
+      Metrics.icons.xl,
+      { backgroundColor: 'transparent', right: Metrics.baseMargin }
+    ]
+    : ['arrow-left', Metrics.icons.medium, {}]
 
-const floatingBackButtonStyle = androidNavbarFix => (
-  [
-    styles.floatingBackButton,
-    { top: (Platform.OS === 'android' && androidNavbarFix) ? 4 : Metrics.statusBarHeight }
-  ]
-)
+const floatingBackButtonStyle = androidNavbarFix => [
+  styles.floatingBackButton,
+  {
+    top:
+      Platform.OS === 'android' && androidNavbarFix
+        ? 4
+        : Metrics.statusBarHeight
+  }
+]
 
 export const BackButtonFloating = ({ androidNavbarFix, onPress }) => (
-  <Touchable borderless onPress={onPress} style={floatingBackButtonStyle(androidNavbarFix)}>
+  <Touchable
+    borderless
+    onPress={onPress}
+    style={floatingBackButtonStyle(androidNavbarFix)}
+  >
     <Icon
       color={Colors.gray700}
       name={backButtonName}

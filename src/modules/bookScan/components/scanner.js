@@ -27,10 +27,15 @@ export class Scanner extends Component {
         />
         <View style={styles.darkTopOverlay}>
           <Text style={styles.overlayTitle}>Scan the book ISBN</Text>
-          <Text style={styles.overlayDescription}>Place the full barcode on the center of the screen</Text>
+          <Text style={styles.overlayDescription}>
+            Place the full barcode on the center of the screen
+          </Text>
         </View>
         <View style={styles.darkBottomOverlay}>
-          <Touchable onPress={this.props.onCancel} style={styles.cancelButtonTouchArea}>
+          <Touchable
+            onPress={this.props.onCancel}
+            style={styles.cancelButtonTouchArea}
+          >
             <Text style={styles.overlayTitle}>Cancel</Text>
           </Touchable>
         </View>

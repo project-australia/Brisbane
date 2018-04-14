@@ -18,7 +18,9 @@ class BookScanner extends Component {
 
   componentDidMount() {
     // FIXME: Por algum motivo, o Scanner chama o navigate varias vezes
-    intervalID = setInterval(() => { gambiarra = false }, 1500)
+    intervalID = setInterval(() => {
+      gambiarra = false
+    }, 1500)
   }
 
   componentWillUnmount() {
@@ -36,13 +38,20 @@ class BookScanner extends Component {
 
   navigateBack = () => this.props.navigation.goBack()
 
-  navigateToBookDetails = (isbn) => this.props.navigation.navigate('BookDetails', {
-    isbn,
-    screenType: 'SELL'
-  })
+  navigateToBookDetails = isbn =>
+    this.props.navigation.navigate('BookDetails', {
+      isbn,
+      screenType: 'SELL'
+    })
 
   render() {
-    return <Scanner onCancel={this.navigateBack} onRead={this.onRead} isLoading={this.state.isReading} />
+    return (
+      <Scanner
+        onCancel={this.navigateBack}
+        onRead={this.onRead}
+        isLoading={this.state.isReading}
+      />
+    )
   }
 }
 

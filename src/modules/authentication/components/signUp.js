@@ -8,7 +8,7 @@ import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 import { BackButtonFloating } from '../../shared/components/buttons/backButtonFloating'
 
 import { styles } from './styles/signInScreen.styles'
-import { ViewHandlingKeyboard } from '../../shared/components/viewHandlingKeyboard';
+import { ViewHandlingKeyboard } from '../../shared/components/viewHandlingKeyboard'
 
 const extractSignUpFormFromState = form => {
   const { name, email, password, school, referredBy } = form

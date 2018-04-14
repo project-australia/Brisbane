@@ -22,7 +22,7 @@ export const showAlertHandler = (state, { message }) => ({
   alert: { showAlert: true, message }
 })
 
-export const clearAlertHandler = (state) => ({
+export const clearAlertHandler = state => ({
   ...state,
   alert: NO_ALERTS
 })

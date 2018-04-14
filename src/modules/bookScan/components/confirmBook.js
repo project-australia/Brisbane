@@ -45,7 +45,7 @@ export class BookDetails extends Component {
       }
     ]
   }
-  renderAbout = (about) => {
+  renderAbout = about => {
     if (about && about !== '') {
       return (
         <View style={{ paddingBottom: 10 }}>
@@ -253,17 +253,21 @@ export class BookDetails extends Component {
             onBuy={() => onPressBuy(book)}
             onSell={() => this.onPressSell(book)}
           />
-          {(isSelling && (!this.props.membershipStatus || this.props.membershipStatus === 'NONE')) && (
-            <PriceRowNotMember
-              prices={prices}
-              onPressBallardsClub={this.props.onPressBallardsClub}
-            />
-          )}
-          {(isSelling && (this.props.membershipStatus && this.props.membershipStatus === 'TWENTY')) && (
-            <InviteToRep
-              onPressBallardsClub={this.props.onPressBallardsClub}
-            />
-          )}
+          {isSelling &&
+            (!this.props.membershipStatus ||
+              this.props.membershipStatus === 'NONE') && (
+              <PriceRowNotMember
+                prices={prices}
+                onPressBallardsClub={this.props.onPressBallardsClub}
+              />
+            )}
+          {isSelling &&
+            (this.props.membershipStatus &&
+              this.props.membershipStatus === 'TWENTY') && (
+              <InviteToRep
+                onPressBallardsClub={this.props.onPressBallardsClub}
+              />
+            )}
           <MenuTitle title={'Details'} style={styles.titleWrap} />
           <GeneralInfoCard style={styles.standardSpacing}>
             {this.renderAbout(about)}

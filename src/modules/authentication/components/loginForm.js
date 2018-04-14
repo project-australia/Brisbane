@@ -71,7 +71,9 @@ export class LoginForm extends Component {
           onChangeText={this.setPassword}
           onSubmitEditing={this.onButtonPress}
           placeholder="Password"
-          ref={(ref) => { this.passwordInput = ref }}
+          ref={ref => {
+            this.passwordInput = ref
+          }}
           returnKeyType={'done'}
           secureTextEntry
           selectionColor={Colors.secondary500}

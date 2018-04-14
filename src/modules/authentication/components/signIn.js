@@ -5,7 +5,7 @@ import { Text, View, TouchableWithoutFeedback } from 'react-native'
 import { styles } from './styles/signInScreen.styles'
 import { LoginForm } from '../components/loginForm'
 import { FormOutlineButton } from '../../shared/components/buttons'
-import { ViewHandlingKeyboard } from '../../shared/components/viewHandlingKeyboard';
+import { ViewHandlingKeyboard } from '../../shared/components/viewHandlingKeyboard'
 
 export class SignIn extends Component {
   static propTypes = {
@@ -34,13 +34,13 @@ export class SignIn extends Component {
             </View>
           </TouchableWithoutFeedback>
         </View>
-        {!this.state.hasKeyboard &&
+        {!this.state.hasKeyboard && (
           <FormOutlineButton
             title="Create an Account"
             onPress={this.props.navigateToSignUp}
             style={styles.lastItemSpacing}
           />
-        }
+        )}
       </View>
     )
   }

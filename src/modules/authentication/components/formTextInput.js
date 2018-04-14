@@ -12,9 +12,13 @@ export class FormTextInput extends Component {
 
   focus = () => this.input.focus()
 
-  render () {
+  render() {
     const isValidInput = this.props.validationCondition(this.props.value)
-    const styleArray = [loginStyles.itemSpacing, styles.textInput, this.props.style]
+    const styleArray = [
+      loginStyles.itemSpacing,
+      styles.textInput,
+      this.props.style
+    ]
 
     if (!isValidInput) {
       styleArray.push(styles.invalidInput)
@@ -24,7 +28,9 @@ export class FormTextInput extends Component {
       <TextInput
         autoCapitalize="words"
         {...this.props}
-        ref={(ref) => { this.input = ref }}
+        ref={ref => {
+          this.input = ref
+        }}
         style={StyleSheet.flatten(styleArray)}
         selectionColor={Colors.secondary500}
         underlineColorAndroid={'transparent'}

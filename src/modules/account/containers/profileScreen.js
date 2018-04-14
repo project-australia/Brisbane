@@ -59,8 +59,10 @@ class ProfileContainer extends Component {
   goBack = () => this.props.navigation.goBack()
   navigateToNetwork = () => this.props.navigation.navigate('NetworkMembers', {})
   navigateToMyOrders = () => this.props.navigation.navigate('MyOrders', {})
-  navigateToFeedbackForm = () => this.props.navigation.navigate('WebView', { uri: 'www.google.com' })
-  navigateToBugReportForm = () => this.props.navigation.navigate('WebView', { uri: 'www.google.com' })
+  navigateToFeedbackForm = () =>
+    this.props.navigation.navigate('WebView', { uri: 'www.google.com' })
+  navigateToBugReportForm = () =>
+    this.props.navigation.navigate('WebView', { uri: 'www.google.com' })
 }
 
 const mapDispatchToProps = dispatch => ({

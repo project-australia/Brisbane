@@ -49,7 +49,9 @@ export class EmailPasswordForm extends Component {
             onChangeText={this.setEmail}
             onSubmitEditing={() => this.focusInput('passwordInput')}
             placeholder="Email address"
-            ref={(ref) => { this.emailInput = ref }}
+            ref={ref => {
+              this.emailInput = ref
+            }}
             returnKeyType={'next'}
             style={styles.itemSpacing}
             validationCondition={isValidEmail}
@@ -61,7 +63,9 @@ export class EmailPasswordForm extends Component {
             onSubmitEditing={() => this.focusInput('schoolInput')}
             value={this.props.form.password}
             placeholder="Password"
-            ref={(ref) => { this.passwordInput = ref }}
+            ref={ref => {
+              this.passwordInput = ref
+            }}
             returnKeyType={'next'}
             secureTextEntry
           />
@@ -71,7 +75,9 @@ export class EmailPasswordForm extends Component {
             onSubmitEditing={() => this.focusInput('repInput')}
             value={this.props.form.school}
             placeholder="School"
-            ref={(ref) => { this.schoolInput = ref }}
+            ref={ref => {
+              this.schoolInput = ref
+            }}
             returnKeyType={'next'}
           />
           <FormTextInput
@@ -80,11 +86,13 @@ export class EmailPasswordForm extends Component {
             onSubmitEditing={this.props.onButtonPress}
             value={this.props.form.referredBy}
             placeholder="Rep's email (optional)"
-            ref={(ref) => { this.repInput = ref }}
+            ref={ref => {
+              this.repInput = ref
+            }}
             returnKeyType={'done'}
           />
         </ScrollView>
-        {!this.props.hasKeyboard &&
+        {!this.props.hasKeyboard && (
           <View style={styles.buttonsSpacing}>
             <FormButton
               title={'Create your account'}
@@ -97,7 +105,7 @@ export class EmailPasswordForm extends Component {
               style={styles.lastItemSpacing}
             />
           </View>
-        }
+        )}
       </View>
     )
   }

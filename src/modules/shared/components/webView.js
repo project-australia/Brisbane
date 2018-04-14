@@ -6,7 +6,7 @@ export class WebView extends React.PureComponent {
     uri: null
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.setState({ uri: this.props.uri })
   }
@@ -26,8 +26,6 @@ export class WebView extends React.PureComponent {
       return null
     }
 
-    return (
-      <RNWebView source={{ uri }} />
-    )
+    return <RNWebView source={{ uri }} />
   }
 }

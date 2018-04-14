@@ -80,7 +80,7 @@ class BookScannerContainer extends Component {
     this.props.navigation.navigate('ClubMembership')
   }
 
-  setConditionAndAddToShoppingBag = (book) => {
+  setConditionAndAddToShoppingBag = book => {
     this.props.sellBook(book)
     this.navigateToShoppingBag()
   }
@@ -90,7 +90,7 @@ class BookScannerContainer extends Component {
     this.navigateToShoppingBag()
   }
 
-  get isUndesiredBook () {
+  get isUndesiredBook() {
     const { screenType } = this.props.navigation.state.params
     const { sell } = this.state.book.prices
     return screenType === 'SELL' && (sell === undefined || sell === null)

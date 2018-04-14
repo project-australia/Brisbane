@@ -57,7 +57,9 @@ export const PriceRow = props => {
     return (
       <View style={styles.row}>
         <View style={styles.rowInfo}>
-          <Text style={styles.description}>We're not taking this book at this moment</Text>
+          <Text style={styles.description}>
+            We're not taking this book at this moment
+          </Text>
         </View>
       </View>
     )

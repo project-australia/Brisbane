@@ -11,8 +11,6 @@ const property = ({ title, property }) => (
 export const MyOrderHeader = ({ title, properties }) => (
   <View style={[styles.wrap, styles.standardCardPadding]}>
     <Text style={styles.title}>{title}</Text>
-    <View style={styles.textBlockWrap}>
-      {properties.map(property)}
-    </View>
+    <View style={styles.textBlockWrap}>{properties.map(property)}</View>
   </View>
 )

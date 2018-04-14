@@ -18,7 +18,10 @@ const ONE_MINUTE = 60000
 export class App extends React.Component {
   componentDidMount = async () => {
     try {
-      this._asyncRequest = await Promise.all([this.fetchBooks(), this.checkIfThereIsUserLoggedIn()])
+      this._asyncRequest = await Promise.all([
+        this.fetchBooks(),
+        this.checkIfThereIsUserLoggedIn()
+      ])
       this._asyncRequest = null
     } catch (e) {
       console.warn(e)

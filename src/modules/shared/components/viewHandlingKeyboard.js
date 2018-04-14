@@ -1,11 +1,5 @@
 import React, { PureComponent } from 'react'
-import {
-  Keyboard,
-  LayoutAnimation,
-  Platform,
-  StyleSheet,
-  ViewPropTypes
-} from 'react-native'
+import { Keyboard, Platform, StyleSheet, ViewPropTypes } from 'react-native'
 import { func, node } from 'prop-types'
 import { ViewDismissKeyboard } from './viewDismissKeyboard'
 
@@ -23,22 +17,33 @@ export class ViewHandlingKeyboard extends PureComponent {
     style: ViewPropTypes.style
   }
 
-  state={ height: 0 }
+  state = { height: 0 }
 
-  componentDidMount = () => (
+  componentDidMount = () =>
     Platform.select({
       ios: () => {
-        this.keyboardWillShow = Keyboard.addListener('keyboardWillShow', this.keyboardWillShow)
-        this.keyboardWillHide = Keyboard.addListener('keyboardWillHide', this.keyboardWillHide)
+        this.keyboardWillShow = Keyboard.addListener(
+          'keyboardWillShow',
+          this.keyboardWillShow
+        )
+        this.keyboardWillHide = Keyboard.addListener(
+          'keyboardWillHide',
+          this.keyboardWillHide
+        )
       },
       android: () => {
-        this.keyboardDidShow = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow)
-        this.keyboardDidHide = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide)
+        this.keyboardDidShow = Keyboard.addListener(
+          'keyboardDidShow',
+          this.keyboardDidShow
+        )
+        this.keyboardDidHide = Keyboard.addListener(
+          'keyboardDidHide',
+          this.keyboardDidHide
+        )
       }
     })()
-  )
 
-  componentWillUnmount = () => (
+  componentWillUnmount = () =>
     Platform.select({
       ios: () => {
         this.keyboardWillShow.remove()
@@ -49,7 +54,6 @@ export class ViewHandlingKeyboard extends PureComponent {
         this.keyboardDidHide.remove()
       }
     })()
-  )
 
   keyboardWillShow = ({ duration, easing, endCoordinates: { height } }) => {
     // LayoutAnimation.configureNext(LayoutAnimation.create(
@@ -74,7 +78,10 @@ export class ViewHandlingKeyboard extends PureComponent {
     const { height } = this.state
     const { children, style, ...rest } = this.props
     return (
-      <ViewDismissKeyboard style={StyleSheet.flatten([style, { paddingBottom: height }])} {...rest} >
+      <ViewDismissKeyboard
+        style={StyleSheet.flatten([style, { paddingBottom: height }])}
+        {...rest}
+      >
         {children}
       </ViewDismissKeyboard>
     )

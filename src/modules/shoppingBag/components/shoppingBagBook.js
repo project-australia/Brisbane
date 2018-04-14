@@ -52,16 +52,16 @@ export const ShoppingBagBook = ({
           <Text numberOfLines={1} style={styles.title}>
             {title}
           </Text>
-          {subtitleOne &&
+          {subtitleOne && (
             <Text numberOfLines={1} style={styles.subtitle}>
               {returnListIfArray(subtitleOne)}
             </Text>
-          }
-          {subtitleTwo &&
+          )}
+          {subtitleTwo && (
             <Text numberOfLines={1} style={styles.subtitle}>
               {returnListIfArray(subtitleTwo)}
             </Text>
-          }
+          )}
         </View>
         <View style={styles.rightContentWrap}>
           <Text style={styles.subtitleRight}>{renderType(type, prices)}</Text>
@@ -76,13 +76,7 @@ ShoppingBagBook.propTypes = {
   type: PropTypes.oneOf(['BUY', 'RENT', 'SELL']).isRequired,
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  subtitleOne: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array
-  ]),
-  subtitleTwo: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array
-  ]),
+  subtitleOne: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  subtitleTwo: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   prices: PropTypes.object.isRequired
 }

@@ -13,10 +13,7 @@ export const BookListRow = props => {
     : require('../../../assets/images/book-placeholder.png')
 
   return (
-    <View
-      key={id}
-      style={styles.cardWithoutBorder}
-    >
+    <View key={id} style={styles.cardWithoutBorder}>
       <View style={styles.contentWrap}>
         <Image style={styles.image} source={imageSource} />
         <View style={styles.detailsWrap}>

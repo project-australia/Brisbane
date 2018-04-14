@@ -7,7 +7,11 @@ import { clearAlert } from '../../../redux/actions/sync'
 import { ForgotPassword } from '../components/forgotPassword'
 
 export const ForgotPasswordContainer = props => (
-  <ForgotPassword resetPassword={props.resetPassword} alert={props.alert} clearAlerts={props.clearAlerts} />
+  <ForgotPassword
+    resetPassword={props.resetPassword}
+    alert={props.alert}
+    clearAlerts={props.clearAlerts}
+  />
 )
 
 const mapStateToProps = state => ({

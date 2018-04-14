@@ -15,7 +15,10 @@ import {
   shoppingBagBuyingTotal,
   shoppingBagSellingTotal
 } from '../../../redux/selectors/shoppingBagSelectors'
-import { featuredBooks, recentlyAddedBooks } from '../../../services/backend/bookService'
+import {
+  featuredBooks,
+  recentlyAddedBooks
+} from '../../../services/backend/bookService'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { createOrder } from '../../../services/backend/orderService'
 import { SellCheckoutContainer } from './sellCheckoutContainer'
@@ -56,7 +59,14 @@ class CheckoutContainer extends Component {
     try {
       this.setState({ isLoading: true })
       const { total } = this.calculatePrices()
-      await createOrder(type, shippingMethod, books, user.address, user.id, total)
+      await createOrder(
+        type,
+        shippingMethod,
+        books,
+        user.address,
+        user.id,
+        total
+      )
       await this.updateHomeBooks()
     } catch (error) {
       console.warn('Error during generate an order', error)
@@ -245,8 +255,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   cleanShoppingBag: type => dispatch(removeAllFromShoppingBag(type)),
-  refreshRecentlyBooks: (books) => dispatch(updateRecentlyAddedBooks(books)),
-  refreshFeaturedBooks: (books) => dispatch(updateFeaturedBooks(books))
+  refreshRecentlyBooks: books => dispatch(updateRecentlyAddedBooks(books)),
+  refreshFeaturedBooks: books => dispatch(updateFeaturedBooks(books))
 })
 
 export const CheckoutScreen = connect(mapStateToProps, mapDispatchToProps)(

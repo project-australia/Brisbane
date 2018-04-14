@@ -42,10 +42,11 @@ class BookListContainer extends Component {
     )
   }
 
-  navigateToBook = (book, screenType) => this.props.navigation.navigate('BookDetails', {
-    book,
-    screenType
-  })
+  navigateToBook = (book, screenType) =>
+    this.props.navigation.navigate('BookDetails', {
+      book,
+      screenType
+    })
 
   onBuyPressed = book => {
     this.props.addBuyItemToShoppingBag(book)

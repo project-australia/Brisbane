@@ -9,7 +9,7 @@ import { FormButton, FormOutlineButton } from '../../shared/components/buttons'
 
 import { styles } from './styles/home.styles'
 
-const ellipsizeText = text => truncate(text, {'length': 24})
+const ellipsizeText = text => truncate(text, { length: 24 })
 
 export const Book = ({
   onBuyPressed,
@@ -29,7 +29,9 @@ export const Book = ({
           <Image style={styles.bookImage} source={imageSource} />
           <View style={styles.bookInfoWrap}>
             <Text style={styles.primaryText}>{ellipsizeText(title)}</Text>
-            <Text style={styles.secondaryInput}>{ellipsizeText(groupAuthors)}</Text>
+            <Text style={styles.secondaryInput}>
+              {ellipsizeText(groupAuthors)}
+            </Text>
             <Text style={styles.secondaryInput}>{edition && 'First'}</Text>
             <View style={styles.bookButtonsGroup}>
               <View style={styles.buyButtonWrapMargin}>

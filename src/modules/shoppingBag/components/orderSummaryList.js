@@ -7,14 +7,10 @@ import { styles } from './styles/shoppingBagItems.style'
 import { styles as rowStyles } from '../../shared/components/styles/row.style'
 
 const renderItem = (id, title, price, style) => (
-  <Row
-    key={id}
-    left={{ title }}
-    right={{ title: price, style }}
-  />
+  <Row key={id} left={{ title }} right={{ title: price, style }} />
 )
 
-const renderBuyingOrders = (item) => {
+const renderBuyingOrders = item => {
   const { book, type } = item
   const { id, title, prices } = book
 
