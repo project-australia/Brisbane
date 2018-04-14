@@ -259,7 +259,7 @@ export class BookDetails extends Component {
               onPressBallardsClub={this.props.onPressBallardsClub}
             />
           )}
-          {(isSelling && (!this.props.membershipStatus || this.props.membershipStatus === 'TWENTY')) && (
+          {(isSelling && (this.props.membershipStatus && this.props.membershipStatus === 'TWENTY')) && (
             <InviteToRep
               onPressBallardsClub={this.props.onPressBallardsClub}
             />

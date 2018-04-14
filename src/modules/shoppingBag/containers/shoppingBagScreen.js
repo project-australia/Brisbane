@@ -31,7 +31,7 @@ class ShoppingBagContainer extends Component {
       <ShoppingBag
         booksToBuy={this.props.booksToBuy}
         booksToSell={this.props.booksToSell}
-        navigateBack={this.goBack}
+        navigateBack={this.navigateToHome}
         navigateToHome={this.navigateToHome}
         navigateToSellCheckout={this.navigateToSellCheckout}
         navigateToBuyCheckout={this.navigateToBuyCheckout}
