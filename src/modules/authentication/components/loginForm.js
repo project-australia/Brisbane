@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
-import PropTypes from 'prop-types'
+import PropTypes, { func } from 'prop-types'
 
 import { FormHeader } from './formHeader'
 import { FormTextInput } from './formTextInput'
@@ -20,7 +20,8 @@ export class LoginForm extends Component {
       showAlert: PropTypes.bool.isRequired,
       message: PropTypes.string
     }).isRequired,
-    navigateBack: PropTypes.func.isRequired
+    navigateBack: PropTypes.func.isRequired,
+    clearAlerts: func.isRequired
   }
 
   state = {
@@ -43,6 +44,7 @@ export class LoginForm extends Component {
     const { showAlert, message } = nextProps.alert
     if (showAlert) {
       alert(message)
+      this.props.clearAlerts()
     }
   }
 

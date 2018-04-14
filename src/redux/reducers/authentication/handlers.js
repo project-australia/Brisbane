@@ -1,4 +1,4 @@
-import { AUTH_INITIAL_STATE } from './constants'
+import { AUTH_INITIAL_STATE, NO_ALERTS } from './constants'
 
 export const updateUserProfileHandler = (state, { user }) => ({
   ...AUTH_INITIAL_STATE,
@@ -20,4 +20,9 @@ export const updateUserOrdersHandler = (state, { orders }) => {
 export const showAlertHandler = (state, { message }) => ({
   ...AUTH_INITIAL_STATE,
   alert: { showAlert: true, message }
+})
+
+export const clearAlertHandler = (state) => ({
+  ...state,
+  alert: NO_ALERTS
 })

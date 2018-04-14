@@ -1,4 +1,4 @@
-import PropTypes, { string } from 'prop-types'
+import PropTypes, { func, string } from 'prop-types'
 import React, { Component } from 'react'
 import { View, ScrollView } from 'react-native'
 import { FormButton, FormOutlineButton } from '../../shared/components/buttons'
@@ -17,7 +17,8 @@ export const signupFormType = PropTypes.shape({
 
 export class EmailPasswordForm extends Component {
   static propTypes = {
-    form: signupFormType
+    form: signupFormType,
+    clearAlerts: func.isRequired
   }
 
   setUserName = name => this.props.onChange({ name })

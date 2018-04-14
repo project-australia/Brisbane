@@ -32,7 +32,8 @@ export class SignUpForm extends Component {
     signUpUser: func.isRequired,
     navigateToSignIn: func.isRequired,
     alert: shape({ showAlert: bool.isRequired, message: string }).isRequired,
-    navigateBack: func.isRequired
+    navigateBack: func.isRequired,
+    clearAlerts: func.isRequired
   }
 
   state = {
@@ -83,6 +84,7 @@ export class SignUpForm extends Component {
             hasKeyboard={this.state.hasKeyboard}
             form={this.state}
             onChange={this.onFormChange}
+            clearAlerts={this.props.clearAlerts}
             onButtonPress={this.doSignUp}
             navigateToSignIn={this.props.navigateToSignIn}
           />

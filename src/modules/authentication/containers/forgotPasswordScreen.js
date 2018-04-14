@@ -3,10 +3,11 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { forgotPasswordAction } from '../../../redux/actions'
+import { clearAlert } from '../../../redux/actions/sync'
 import { ForgotPassword } from '../components/forgotPassword'
 
 export const ForgotPasswordContainer = props => (
-  <ForgotPassword resetPassword={props.resetPassword} alert={props.alert} />
+  <ForgotPassword resetPassword={props.resetPassword} alert={props.alert} clearAlerts={props.clearAlerts} />
 )
 
 const mapStateToProps = state => ({
@@ -14,7 +15,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  resetPassword: email => dispatch(forgotPasswordAction(email))
+  resetPassword: email => dispatch(forgotPasswordAction(email)),
+  clearAlerts: () => dispatch(clearAlert())
 })
 
 ForgotPasswordContainer.propTypes = {

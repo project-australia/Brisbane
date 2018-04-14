@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { bool, func, shape, string } from 'prop-types'
 
 import { signUpAction } from '../../../redux/actions/async/authenticationAsyncActions'
+import { clearAlert } from '../../../redux/actions/sync'
 import { NOT_LOGGED_IN } from '../../../redux/reducers/authentication/constants'
 import { SignUpForm } from '../components/signUp'
 
@@ -16,7 +17,8 @@ class SignUpContainer extends Component {
     alert: shape({
       showAlert: bool.isRequired,
       message: string
-    }).isRequired
+    }).isRequired,
+    clearAlerts: func.isRequired
   }
 
   componentWillUpdate(nextProps) {
@@ -43,6 +45,7 @@ class SignUpContainer extends Component {
       <SignUpForm
         buttonText="SIGN UP"
         alert={this.props.alert}
+        clearAlerts={this.props.clearAlerts}
         signUpUser={this.onSignUp}
         navigateToSignIn={this.navigateToSignInScreen}
         navigateBack={this.navigateBack}
@@ -57,7 +60,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  signUp: form => dispatch(signUpAction(form))
+  signUp: form => dispatch(signUpAction(form)),
+  clearAlerts: () => dispatch(clearAlert())
 })
 
 export const SignUpScreen = connect(mapStateToProps, mapDispatchToProps)(

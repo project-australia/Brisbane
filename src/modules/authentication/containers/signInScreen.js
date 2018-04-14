@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bool, func, shape, string } from 'prop-types'
 
 import { signInAction } from '../../../redux/actions/async/authenticationAsyncActions'
+import { clearAlert } from '../../../redux/actions/sync'
 import { NOT_LOGGED_IN } from '../../../redux/reducers/authentication/constants'
 import { SignIn } from '../components/signIn'
 import { UserPropTypes } from '../propTypes/user'
@@ -31,7 +32,8 @@ class SignInContainer extends Component {
     alert: shape({
       showAlert: bool.isRequired,
       message: string
-    }).isRequired
+    }).isRequired,
+    clearAlerts: func.isRequired
   }
 
   static defaultProps = {
@@ -54,6 +56,7 @@ class SignInContainer extends Component {
       <SignIn
         alert={this.props.alert}
         onButtonPress={onSignIn(this.props)}
+        clearAlerts={this.props.clearAlerts}
         navigateBack={navigateBack(this.props.navigation.goBack)}
         navigateToSignUp={navigateToSignUp(this.props.navigation.navigate)}
         navigateToForgotPassword={navigateToForgotPasswordScreen(
@@ -70,7 +73,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  signIn: (email, password) => dispatch(signInAction(email, password))
+  signIn: (email, password) => dispatch(signInAction(email, password)),
+  clearAlerts: () => dispatch(clearAlert())
 })
 
 export const SignInScreen = connect(mapStateToProps, mapDispatchToProps)(

@@ -1,3 +1,4 @@
+import { CLEAR_ALERT } from '../../types'
 import {
   AUTH_FAILED_ALERT,
   FORGOT_PASSWORD_SUCCESS,
@@ -11,7 +12,8 @@ import {
   showAlertHandler,
   updateUserProfileHandler,
   updateUserOrdersHandler,
-  updateUserNetworkingHandler
+  updateUserNetworkingHandler,
+  clearAlertHandler
 } from './handlers'
 
 export const actionHandlers = {
@@ -20,7 +22,8 @@ export const actionHandlers = {
   [FORGOT_PASSWORD_SUCCESS]: showAlertHandler,
   [UPDATE_USER_INFO]: updateUserProfileHandler,
   [UPDATE_USER_ORDERS]: updateUserOrdersHandler,
-  [UPDATE_USER_NETWORKING]: updateUserNetworkingHandler
+  [UPDATE_USER_NETWORKING]: updateUserNetworkingHandler,
+  [CLEAR_ALERT]: clearAlertHandler
 }
 
 export const authReducerConfig = {

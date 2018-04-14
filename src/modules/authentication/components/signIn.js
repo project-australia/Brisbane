@@ -13,7 +13,8 @@ export class SignIn extends Component {
     onButtonPress: func.isRequired,
     navigateToSignUp: func.isRequired,
     navigateToForgotPassword: func.isRequired,
-    alert: shape({ showAlert: bool.isRequired, message: string }).isRequired
+    alert: shape({ showAlert: bool.isRequired, message: string }).isRequired,
+    clearAlerts: func.isRequired
   }
 
   state = { hasKeyboard: false }
@@ -55,6 +56,7 @@ export class SignIn extends Component {
           buttonText="Log In"
           alert={this.props.alert}
           footer={this.renderFooter()}
+          clearAlerts={this.props.clearAlerts}
           onButtonPress={this.props.onButtonPress}
           navigateBack={this.props.navigateBack}
         />

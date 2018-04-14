@@ -8,7 +8,8 @@ import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 export class ForgotPassword extends React.Component {
   static propTypes = {
     email: PropTypes.string,
-    resetPassword: PropTypes.func.isRequired
+    resetPassword: PropTypes.func.isRequired,
+    clearAlerts: PropTypes.func.isRequired
   }
 
   static defaultProps = {
