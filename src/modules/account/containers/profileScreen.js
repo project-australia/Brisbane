@@ -6,6 +6,9 @@ import {
   logOutAction
 } from '../../../redux/actions/async/authenticationAsyncActions'
 
+const FEEDBACK_URI = 'https://docs.google.com/forms/d/e/1FAIpQLSd6TleZE_XzhCzBGvG_AeMMeWGteMFokLzjLZw-9g3yGNlhkQ/viewform'
+const BUG_REPORT_URI = 'https://docs.google.com/forms/d/e/1FAIpQLSd6TleZE_XzhCzBGvG_AeMMeWGteMFokLzjLZw-9g3yGNlhkQ/viewform'
+
 class ProfileContainer extends Component {
   static navigationOptions = {
     title: 'Profile',
@@ -60,9 +63,9 @@ class ProfileContainer extends Component {
   navigateToNetwork = () => this.props.navigation.navigate('NetworkMembers', {})
   navigateToMyOrders = () => this.props.navigation.navigate('MyOrders', {})
   navigateToFeedbackForm = () =>
-    this.props.navigation.navigate('WebView', { uri: 'www.google.com' })
+    this.props.navigation.navigate('WebView', { uri: FEEDBACK_URI })
   navigateToBugReportForm = () =>
-    this.props.navigation.navigate('WebView', { uri: 'www.google.com' })
+    this.props.navigation.navigate('WebView', { uri: BUG_REPORT_URI })
 }
 
 const mapDispatchToProps = dispatch => ({

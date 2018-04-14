@@ -88,7 +88,7 @@ export const Profile = ({
         <ProfileButtonItem
           secondary
           title={'Feedback'}
-          buttonTitle={"We'd love to hear you"}
+          buttonTitle={"We'd love to hear from you"}
           onPress={navigateToFeedbackForm}
         />
         <ProfileButtonItem
