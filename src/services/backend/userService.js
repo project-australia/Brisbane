@@ -22,7 +22,7 @@ export const putUserProfile = async (id, profile) =>
     .then(mapToUserProfile)
     .catch(handleError)
 export const beARepresentantRequest = async id =>
-  Axios.post(`/users/${id}/representant`)
+  Axios.put(`/users/${id}/representant`)
     .then(res => res.data)
     .catch(handleError)
 

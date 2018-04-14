@@ -51,7 +51,14 @@ class ClubMembershipContainer extends Component {
     }
   }
 
-  beARepresentant = () => beARepresentantRequest()
+  beARepresentant = async () => {
+    try {
+      await beARepresentantRequest(this.props.user.id)
+      alert('We received your request, please check your email for more info.')
+    } catch (e) {
+      alert('Something wrong happened, try again in few moments')
+    }
+  }
 
   render() {
     const props = this.clubProps(this.props.user.club)
@@ -63,7 +70,7 @@ class ClubMembershipContainer extends Component {
         user={this.props.user}
         goBack={this.goBack}
         goHome={this.goHome}
-        requestToBeARep={this.beARepresentant}
+        beARepresentant={this.beARepresentant}
         {...props}
       />
     )
