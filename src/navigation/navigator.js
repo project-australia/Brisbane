@@ -1,6 +1,7 @@
 import { StackNavigator as Navigator } from 'react-navigation'
 import { ClubMembershipScreen } from '../modules/account/containers/clubMemberScreen'
 
+import { WebView } from '../modules/shared/components/webView'
 import { authenticated } from '../modules/shared/decorators/authenticated'
 import { BookDetailsScreen } from '../modules/bookScan/containers/bookDetailsScreen'
 import { BookListScreen } from '../modules/bookList/containers/bookListScreen'
@@ -70,6 +71,9 @@ const routeConfigs = {
   },
   MyOrders: {
     screen: MyOrdersScreen
+  },
+  WebView: {
+    screen: WebView
   },
   ClubMembership: {
     screen: authenticated(ClubMembershipScreen),

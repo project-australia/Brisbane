@@ -30,7 +30,9 @@ export const Profile = ({
   showEditModal,
   isEditModalOpen,
   onConfirmModal,
-  onDismissModal
+  onDismissModal,
+  navigateToBugReportForm,
+  navigateToFeedbackForm
 }) => {
   const rightIcon = [
     {
@@ -80,6 +82,18 @@ export const Profile = ({
           title={'My Network'}
           buttonTitle={'View my Network'}
           onPress={navigateToNetwork}
+        />
+        <ProfileButtonItem
+          secondary
+          title={'Feedback'}
+          buttonTitle={"We'd love to hear you"}
+          onPress={navigateToFeedbackForm}
+        />
+        <ProfileButtonItem
+          secondary
+          title={'Bugs'}
+          buttonTitle={'Catch a bug? Please let us know'}
+          onPress={navigateToBugReportForm}
         />
         <ProfileButtonItem buttonTitle={'Logout'} onPress={onLogoutPress} />
       </ScrollView>

@@ -45,6 +45,8 @@ class ProfileContainer extends Component {
         onLogoutPress={this.props.logOut}
         navigateToNetwork={this.navigateToNetwork}
         navigateToMyOrders={this.navigateToMyOrders}
+        navigateToFeedbackForm={this.navigateToFeedbackForm}
+        navigateToBugReportForm={this.navigateToBugReportForm}
         showEditModal={this.showEditModal}
         isEditModalOpen={this.state.isModalOpen}
         modalTitle={this.state.modalTitle}
@@ -57,6 +59,8 @@ class ProfileContainer extends Component {
   goBack = () => this.props.navigation.goBack()
   navigateToNetwork = () => this.props.navigation.navigate('NetworkMembers', {})
   navigateToMyOrders = () => this.props.navigation.navigate('MyOrders', {})
+  navigateToFeedbackForm = () => this.props.navigation.navigate('WebView', { uri: 'www.google.com' })
+  navigateToBugReportForm = () => this.props.navigation.navigate('WebView', { uri: 'www.google.com' })
 }
 
 const mapDispatchToProps = dispatch => ({
