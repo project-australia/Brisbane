@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
+import { BackHandler } from 'react-native'
 import { connect } from 'react-redux'
+import { throttle } from 'lodash'
 
 import { Scanner } from '../components/scanner'
 
+const waitingDelay = 1000
 let gambiarra = false
 let intervalID = 0
 
@@ -16,11 +19,23 @@ class BookScanner extends Component {
     isReading: false
   }
 
+  handleBackButtonClick = () => {
+    this.navigateBack()
+    return true
+  }
+
+  componentWillMount = () => {
+    BackHandler.addEventListener(
+      'hardwareBackPress',
+      this.handleBackButtonClick
+    )
+  }
+
   componentDidMount() {
     // FIXME: Por algum motivo, o Scanner chama o navigate varias vezes
     intervalID = setInterval(() => {
       gambiarra = false
-    }, 1500)
+    }, waitingDelay)
   }
 
   componentWillUnmount() {
@@ -28,10 +43,11 @@ class BookScanner extends Component {
   }
 
   onRead = isbn => {
+    const throttledNavigation = throttle(this.navigateToBookDetails, waitingDelay)
     if (!this.state.isReading && !gambiarra) {
       gambiarra = true
       this.setState({ isReading: true })
-      gambiarra && this.navigateToBookDetails(isbn)
+      gambiarra && throttledNavigation(isbn)
       this.setState({ isReading: false })
     }
   }
