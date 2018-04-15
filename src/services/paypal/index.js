@@ -1,4 +1,4 @@
-import PayPal from 'react-native-paypal-wrapper'
+import { pay } from '../../config/paypal'
 
 const defaultErrorCallback = paypalResponse => {
   console.log(`Transaction failed`, paypalResponse)
@@ -11,16 +11,8 @@ export const payWithPayPal = async (
   onSuccess,
   onError = defaultErrorCallback
 ) => {
-  const price = amount.toString()
-  if (!price) {
-    throw new Error('Attemptive to pay with PayPal without any price')
-  }
   try {
-    const response = await PayPal.pay({
-      price,
-      description,
-      currency: 'USD'
-    })
+    const response = await pay(amount, description)
     return onSuccess(response)
   } catch (err) {
     if (err.code === 'USER_CANCELLED') {
