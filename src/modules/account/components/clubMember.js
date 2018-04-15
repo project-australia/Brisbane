@@ -94,29 +94,21 @@ export class ClubMember extends Component {
     return (
       <ScrollView style={styles.wrapper}>
         <Text style={styles.text}>
-          Just sign people up to the app! (friends, classmates, coworkers,
-          teammates, etc.)
+          Be A Rep!
+          Only offered to our Elite Club members!
         </Text>
         <Text style={styles.text}>
-          For example, You sign up Friend1. Friend1 sells books on app =
-          Commission for you Friend1 becomes a rep. Signs up Friend2. Friend2
-          sells books on app = Commission for you
+          You can be a rep and make commissions just by signing people up to the app.  (friends, classmates, coworkers, teammates, etc.)
         </Text>
         <Text style={styles.text}>
-          To make it simple we are just doing those two levels. You don’t have
-          to deal with books, you don’t have to deal with payments, Ballard
-          Books does all that. The more you sign up the better! You get a
-          commission every time they sell books just because you signed them up!
-          This is a great way to make extra cash! You don’t even have to quit
-          your current job! It’s so easy!
+          For example,
+          If you're a rep, every time the person you signed up sells us books, you get a commission. If that person also becomes a rep then you both get a commission.
         </Text>
         <Text style={styles.text}>
-          Just answer these questions and we’ll get back to you as soon as
-          possible. What are you involved with on campus? We are looking for
-          involved students so please list clubs, groups, etc.
+          To make it simple we are just doing two levels. You don't have to deal with books or payments since Ballard Books does all that.
         </Text>
         <Text style={styles.text}>
-          Why do you think you’d be a good fit to represent Ballard Books?
+          The more you sign up the better. It's a very easy way to make extra income.
         </Text>
         <FormButton
           title="Apply Today!"
