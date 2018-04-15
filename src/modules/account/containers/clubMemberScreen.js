@@ -54,9 +54,11 @@ class ClubMembershipContainer extends Component {
   beARepresentant = async () => {
     try {
       await beARepresentantRequest(this.props.user.id)
-      alert('Thank you for your interest!\n' +
-        '\n' +
-        'We have received your request. We’ll email you as soon as possible to set up a time for us to get to know you a little bit.')
+      alert(
+        'Thank you for your interest!\n' +
+          '\n' +
+          'We have received your request. We’ll email you as soon as possible to set up a time for us to get to know you a little bit.'
+      )
     } catch (e) {
       alert('Something wrong happened, try again in few moments')
     }

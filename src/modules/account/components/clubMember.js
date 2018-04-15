@@ -94,21 +94,24 @@ export class ClubMember extends Component {
     return (
       <ScrollView style={styles.wrapper}>
         <Text style={styles.text}>
-          Be A Rep!
-          Only offered to our Elite Club members!
+          Be A Rep! Only offered to our Elite Club members!
         </Text>
         <Text style={styles.text}>
-          You can be a rep and make commissions just by signing people up to the app.  (friends, classmates, coworkers, teammates, etc.)
+          You can be a rep and make commissions just by signing people up to the
+          app. (friends, classmates, coworkers, teammates, etc.)
         </Text>
         <Text style={styles.text}>
-          For example,
-          If you're a rep, every time the person you signed up sells us books, you get a commission. If that person also becomes a rep then you both get a commission.
+          For example, If you're a rep, every time the person you signed up
+          sells us books, you get a commission. If that person also becomes a
+          rep then you both get a commission.
         </Text>
         <Text style={styles.text}>
-          To make it simple we are just doing two levels. You don't have to deal with books or payments since Ballard Books does all that.
+          To make it simple we are just doing two levels. You don't have to deal
+          with books or payments since Ballard Books does all that.
         </Text>
         <Text style={styles.text}>
-          The more you sign up the better. It's a very easy way to make extra income.
+          The more you sign up the better. It's a very easy way to make extra
+          income.
         </Text>
         <FormButton
           title="Apply Today!"

@@ -43,7 +43,10 @@ class BookScanner extends Component {
   }
 
   onRead = isbn => {
-    const throttledNavigation = throttle(this.navigateToBookDetails, waitingDelay)
+    const throttledNavigation = throttle(
+      this.navigateToBookDetails,
+      waitingDelay
+    )
     if (!this.state.isReading && !gambiarra) {
       gambiarra = true
       this.setState({ isReading: true })

@@ -6,8 +6,10 @@ import {
   logOutAction
 } from '../../../redux/actions/async/authenticationAsyncActions'
 
-const FEEDBACK_URI = 'https://docs.google.com/forms/d/e/1FAIpQLSd6TleZE_XzhCzBGvG_AeMMeWGteMFokLzjLZw-9g3yGNlhkQ/viewform'
-const BUG_REPORT_URI = 'https://docs.google.com/forms/d/e/1FAIpQLSchtW8kSfzjrqIdFgon9KC_8F-ezHN3I9rqCtKe7c4nwHmRgA/viewform'
+const FEEDBACK_URI =
+  'https://docs.google.com/forms/d/e/1FAIpQLSd6TleZE_XzhCzBGvG_AeMMeWGteMFokLzjLZw-9g3yGNlhkQ/viewform'
+const BUG_REPORT_URI =
+  'https://docs.google.com/forms/d/e/1FAIpQLSchtW8kSfzjrqIdFgon9KC_8F-ezHN3I9rqCtKe7c4nwHmRgA/viewform'
 
 class ProfileContainer extends Component {
   static navigationOptions = {
