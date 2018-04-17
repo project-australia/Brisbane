@@ -16,7 +16,8 @@ import {
   getUserProfile,
   putUserProfile,
   getUserOrders,
-  getUserNetwork
+  getUserNetwork,
+  requestWithdraw
 } from '../../../services/backend/userService'
 import { NOT_LOGGED_IN } from '../../reducers/authentication/constants'
 
@@ -92,11 +93,11 @@ export function updateProfileAction(id, userProfile) {
 export function requestWithdrawAction(id, walletWithPaypalAccount) {
   return async dispatch => {
     try {
-      const updatedProfile = await requestWithdrawAction(
+      const updatedProfile = await requestWithdraw(
         id,
         walletWithPaypalAccount
       )
-      dispatch(updateUserProfile(updatedProfile))
+      dispatch(updateUserProfile(updatedProfile.data))
     } catch (error) {
       dispatch(alertAction(error))
     }

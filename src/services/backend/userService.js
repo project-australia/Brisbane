@@ -8,7 +8,7 @@ const SIGNUP_BAD_REQUEST_MESSAGE = 'Please Check your form inputs'
 
 export const wakeUpBackEnd = () => Axios.get('/health').catch(console.warn)
 export const requestWithdraw = (userId, wallet) =>
-  Axios.put(`/users/${userId}/profile`, wallet).catch(handleError)
+  Axios.put(`/users/${userId}/requestwithdraw`, wallet).catch(handleError)
 export const signUpUser = async signUpForm =>
   Axios.post('/users', signUpForm)
     .then(mapToUserProfile)
