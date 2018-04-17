@@ -26,17 +26,17 @@ export const SellCheckout = props => {
         <MenuTitle title={'Checkout'} style={styles.titleWrap} />
         <View style={styles.wrappingCard}>
           <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
-            Choose a method to finalize your selling
+            Choose a method to finalize your transaction
           </Text>
           <FormButton
             secondary
-            title={'Delivery in Person'}
+            title={'Local Pick Up near Provo and Orem'}
             onPress={props.inPersonCheckout}
           />
           <View style={{ height: 15 }} />
           <FormButton
             secondary
-            title={'Get a label to send it'}
+            title={'Receive a Prepaid Shipping Labe'}
             onPress={props.inGetLabelCheckout}
           />
         </View>

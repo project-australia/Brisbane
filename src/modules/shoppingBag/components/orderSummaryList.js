@@ -48,7 +48,7 @@ const OrderSummaryRows = props => {
       />
       {prices.bonus ? (
         <Row
-          left={{ title: 'Bonus', style: rowStyles.darkTitle }}
+          left={{ title: 'Elite Club Bonus', style: rowStyles.darkTitle }}
           right={{ title: `$${prices.bonus}`, style: rowStyles.secondaryTitle }}
         />
       ) : null}
