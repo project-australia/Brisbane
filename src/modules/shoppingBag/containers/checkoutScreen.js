@@ -104,15 +104,15 @@ class CheckoutContainer extends Component {
 
   confirmInPersonCheckout = () => {
     Alert.alert(
-      'In Person Payment',
-      'Do you wanna proceed to in person checkout',
+      'In Person checkout',
+      'Do you want to proceed to in person checkout?',
       [
         {
           text: 'Cancel',
           style: 'cancel'
         },
         {
-          text: 'Sure thing',
+          text: 'Yes',
           onPress: this.inPersonCheckout
         }
       ]
@@ -120,7 +120,6 @@ class CheckoutContainer extends Component {
   }
 
   onCheckoutSuccess = alertMessage => {
-    console.log('---------> HELLO')
     if (this.props.navigation.state.params.screenType === 'BUY') {
       this.props.cleanShoppingBag('BUY')
       this.props.cleanShoppingBag('RENT')

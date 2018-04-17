@@ -50,7 +50,7 @@ export class ClubMember extends Component {
 
   successAlert = msg =>
     Alert.alert(
-      'Thanks for Join Club More',
+      'Thank you for Joining the Elite Club! You will now get 20% extra cash on books you sell!',
       msg,
       [
         {

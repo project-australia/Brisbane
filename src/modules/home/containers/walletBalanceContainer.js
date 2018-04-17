@@ -38,7 +38,7 @@ class WalletContainer extends Component {
 
   defaultAlertPopUp = msg =>
     Alert.alert(
-      'Withdraw from My Wallet',
+      'Enter your PayPal email',
       msg,
       [
         {

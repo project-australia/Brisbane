@@ -97,10 +97,10 @@ export class BuyCheckout extends React.Component {
             <Text
               style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}
             >
-              Choose a method to finalize your selling
+              Choose a method to finalize your order
             </Text>
             <FormButton
-              title={'Pay localy'}
+              title={'Pay locally'}
               onPress={this.props.checkoutWithInPersonPayment}
             />
             <View style={{ height: 15 }} />
