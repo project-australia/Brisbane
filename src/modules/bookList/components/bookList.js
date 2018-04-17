@@ -32,7 +32,7 @@ export const BookList = ({
             }}
           >
             <Text style={{ textAlign: 'center', paddingTop: 30 }}>
-              Sorry, Books not Found
+              Sorry, this book is out of stock.
             </Text>
           </View>
         )}
