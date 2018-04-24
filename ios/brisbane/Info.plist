@@ -25,7 +25,7 @@
 		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>com.paypal.ppclient.touch.v1</string>
@@ -46,15 +46,11 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Ballard Books needs access to your camera</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Ballard Books needs acces to your location</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Ballar Books needs access to you microphone</string>
+	<string>Ballard Book's uses your camera to scan book's ISBN.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Ballard Books needs access to your camera</string>
+	<string>Ballard Book's uses your Photo Library to scan book's ISBN.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Ballard Books needs access to your photos</string>
+	<string>Ballard Book's uses your Photo Library to scan book's ISBN.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>kefa.ttf</string>
