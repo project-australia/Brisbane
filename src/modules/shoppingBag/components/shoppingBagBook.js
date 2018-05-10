@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Image, Text, View } from 'react-native'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { styles } from './styles/shoppingBagItems.style'
-import { Colors } from '../../../constants'
+import { Colors, Metrics } from '../../../constants'
 
 const renderType = (type, prices) => {
   switch (type) {
@@ -35,18 +36,21 @@ const returnListIfArray = item => {
   if (typeof item === 'object') return item.join(', ')
 }
 
-export const ShoppingBagBook = ({
-  image,
-  title,
-  subtitleOne,
-  subtitleTwo,
-  prices,
-  type
-}) => {
+export const ShoppingBagBook = props => {
+  const {
+    image,
+    title,
+    shoppingBagItem,
+    subtitleOne,
+    subtitleTwo,
+    prices,
+    removeItemFromShoppingBag,
+    type
+  } = props
   const cardStyle = [styles.card, { borderColor: setLeftBorderColor(type) }]
   return (
     <View style={cardStyle}>
-      <View style={styles.contentWrap}>
+      <View style={[styles.contentWrap, styles.noRightPadding]}>
         <Image style={styles.image} source={{ uri: image }} />
         <View style={styles.detailsWrap}>
           <Text numberOfLines={1} style={styles.title}>
@@ -63,10 +67,19 @@ export const ShoppingBagBook = ({
             </Text>
           )}
         </View>
-        <View style={styles.rightContentWrap}>
+        <View>
           <Text style={styles.subtitleRight}>{renderType(type, prices)}</Text>
           {renderBookPrice(type, prices)}
         </View>
+        <TouchableOpacity
+          onPress={() => removeItemFromShoppingBag(shoppingBagItem)}
+        >
+          <Icon
+            name={'delete'}
+            color={Colors.gray200}
+            size={Metrics.icons.large}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   )
@@ -74,8 +87,10 @@ export const ShoppingBagBook = ({
 
 ShoppingBagBook.propTypes = {
   type: PropTypes.oneOf(['BUY', 'RENT', 'SELL']).isRequired,
+  removeItemFromShoppingBag: PropTypes.func.isRequired,
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  shoppingBagItem: PropTypes.object.isRequired,
   subtitleOne: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   subtitleTwo: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   prices: PropTypes.object.isRequired

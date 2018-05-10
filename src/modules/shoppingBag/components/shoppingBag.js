@@ -24,6 +24,7 @@ export const ShoppingBag = props => {
             onPress: props.navigateToBuyCheckout
           }}
           totalPrice={props.totalBuyingPrice}
+          removeItemFromShoppingBag={props.removeItemFromShoppingBag}
         />
         <ShoppingBagItems
           isSellingBooks
@@ -36,6 +37,7 @@ export const ShoppingBag = props => {
             onPress: props.navigateToSellCheckout
           }}
           totalPrice={props.totalSellingPrice}
+          removeItemFromShoppingBag={props.removeItemFromShoppingBag}
         />
       </ScrollView>
     </View>
@@ -44,6 +46,7 @@ export const ShoppingBag = props => {
 
 ShoppingBag.propTypes = {
   navigateToHome: PropTypes.func.isRequired,
+  removeItemFromShoppingBag: PropTypes.func.isRequired,
   booksToSell: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
   booksToBuy: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
   totalBuyingPrice: PropTypes.number.isRequired,

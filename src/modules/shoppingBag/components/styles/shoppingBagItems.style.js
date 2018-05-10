@@ -39,6 +39,10 @@ export const styles = StyleSheet.create({
     paddingHorizontal: Metrics.section,
     paddingVertical: Metrics.baseMargin
   },
+  noRightPadding: {
+    paddingHorizontal: 0,
+    paddingLeft: Metrics.section
+  },
   rowWrap: {
     flexDirection: 'row',
     alignItems: 'center'
