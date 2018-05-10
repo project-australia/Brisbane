@@ -76,7 +76,7 @@ const routeConfigs = {
     screen: WebView
   },
   ClubMembership: {
-    screen: authenticated(ClubMembershipScreen),
+    screen: ClubMembershipScreen,
     navigationOptions: { header: null }
   }
 }

@@ -26,17 +26,22 @@ export class ClubMember extends Component {
   }
 
   checkoutWithPaypal = async () => {
-    try {
-      this.props.goBack()
-      await payWithPayPal(
-        this.props.price,
-        this.props.title,
-        this.onClubJoinSuccess
-      )
-    } catch (error) {
-      this.alert('Sorry. Request Failed')
+    if (this.props.user.id) {
+      try {
+        this.props.goBack()
+        await payWithPayPal(
+          this.props.price,
+          this.props.title,
+          this.onClubJoinSuccess
+        )
+      } catch (error) {
+        this.alert('Sorry. Request Failed')
+      }
+    } else {
+      this.goLogin()
     }
   }
+  goLogin = () => this.props.goLogin()
 
   onClubJoinSuccess = async () => {
     const { user, nextClub, updateProfile } = this.props

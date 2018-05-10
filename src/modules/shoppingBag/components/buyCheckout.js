@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, ScrollView, Text, View } from 'react-native'
+import { StyleSheet, ScrollView, Text, View, Alert } from 'react-native'
 import { User } from '../../../domain/User'
 import { CheckoutAddress } from './checkoutAddress'
 
@@ -12,6 +12,7 @@ import { LoadingOverlay } from '../../shared/components/loadingOverlay'
 import { FormButton, FormOutlineButton } from '../../shared/components/buttons'
 
 import { styles } from './styles/shoppingBagItems.style'
+import { ModalTermsConditions } from '../../shared/components/modals/modalTermsConditions'
 
 const SelectedButton = FormButton
 const NotSelectedButton = FormOutlineButton
@@ -38,7 +39,52 @@ export class BuyCheckout extends React.Component {
   }
 
   state = {
-    isModalVisible: false
+    isModalVisible: false,
+    isTermsConditionsModalOn: false,
+    paymentChoose: ''
+  }
+  showTermsConditionsModal = async () => this.setState({ isTermsConditionsModalOn: true })
+  hideTermsConditionsModal = async () => this.setState({ isTermsConditionsModalOn: false })
+  chooseLocally = () => {
+    this.setState({paymentChoose: 'locally'})
+    Alert.alert(
+      'Terms and Conditions',
+      'By confirming you agree to our Terms and Conditions, do you confirm?',
+      [
+        { text: 'Check terms', onPress: this.showTermsConditionsModal },
+        { text: 'Decline', onPress: () => {}, style: 'cancel' },
+        { text: 'Agree', onPress: this.props.checkoutWithInPersonPayment }
+      ],
+      { cancelable: true }
+    )
+  }
+
+  choosePaypal = () => {
+    this.setState({paymentChoose: 'paypal'})
+    Alert.alert(
+      'Terms and Conditions',
+      'By confirming you agree to our Terms and Conditions, do you confirm?',
+      [
+        { text: 'Check terms', onPress: this.showTermsConditionsModal },
+        { text: 'Decline', onPress: () => {}, style: 'cancel' },
+        { text: 'Agree', onPress: this.props.checkoutWithPayPal }
+      ],
+      { cancelable: true }
+    )
+  }
+
+  agreedWithTerms = async () => {
+    await this.setState({ isTermsConditionsModalOn: false })
+    if (this.state.paymentChoose === 'locally') {
+      setTimeout(() => {
+        this.props.checkoutWithInPersonPayment()
+      }, 1000)
+    }
+    if (this.state.paymentChoose === 'paypal') {
+      setTimeout(() => {
+        this.props.checkoutWithPayPal()
+      }, 1000)
+    }
   }
 
   renderStandardShippingButton = () => {
@@ -101,12 +147,18 @@ export class BuyCheckout extends React.Component {
             </Text>
             <FormButton
               title={'Pay locally'}
-              onPress={this.props.checkoutWithInPersonPayment}
+              onPress={this.chooseLocally}
             />
             <View style={{ height: 15 }} />
             <FormButton
               title={'Checkout with Paypal'}
-              onPress={this.props.checkoutWithPayPal}
+              onPress={this.choosePaypal}
+            />
+            <ModalTermsConditions
+              isVisible={this.state.isTermsConditionsModalOn}
+              onCancel={this.hideTermsConditionsModal}
+              buttonTitle={'Agree with the terms'}
+              onPressButton={this.agreedWithTerms}
             />
           </View>
         </ScrollView>

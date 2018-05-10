@@ -44,9 +44,25 @@ class SignInContainer extends Component {
     header: null
   }
 
+  state = {
+    customRedirectTo: false
+  }
+
+  componentDidMount () {
+    const { redirectTo } = this.props.navigation.state.params
+    if (redirectTo) {
+      this.setState({
+        customRedirectTo: redirectTo
+      })
+    }
+  }
+
   componentWillUpdate(nextProps) {
     const isUserLoggedIn = nextProps.user && nextProps.user !== NOT_LOGGED_IN
     if (isUserLoggedIn) {
+      if (this.state.customRedirectTo) {
+        return nextProps.navigation.navigate(this.state.customRedirectTo)
+      }
       nextProps.navigation.navigate(nextProps.redirectTo)
     }
   }

@@ -41,13 +41,14 @@ class ClubMembershipContainer extends Component {
 
   goBack = () => this.props.navigation.goBack()
   goHome = () => this.props.navigation.navigate('Home')
+  goLogin = () => this.props.navigation.navigate('SignIn', {redirectTo: 'ClubMembership'})
 
   clubProps = club => {
     switch (club) {
-      case 'NONE':
-        return this.clubTwentyProps()
-      default:
+      case 'TWENTY':
         return this.clubRepProps()
+      default:
+        return this.clubTwentyProps()
     }
   }
 
@@ -74,6 +75,7 @@ class ClubMembershipContainer extends Component {
         user={this.props.user}
         goBack={this.goBack}
         goHome={this.goHome}
+        goLogin={this.goLogin}
         beARepresentant={this.beARepresentant}
         {...props}
       />
