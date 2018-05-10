@@ -11,18 +11,24 @@ import { formatEdition } from '../../account/components/myorders'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { styles } from './styles/shoppingBagItems.style'
 
-const renderBook = ({ book, type, quantity, id }) => (
-  <ShoppingBagBook
-    key={id}
-    image={book.images && book.images.medium}
-    title={book.title}
-    quantity={quantity}
-    subtitleOne={book.author}
-    subtitleTwo={formatEdition(book.edition)}
-    prices={book.prices}
-    type={type}
-  />
-)
+const renderBook = removeItemFromShoppingBag => shoppingBagItem => {
+  const { book, type, quantity, id } = shoppingBagItem
+
+  return (
+    <ShoppingBagBook
+      key={ id }
+      shoppingBagItem={ shoppingBagItem }
+      image={ book.images && book.images.medium }
+      title={ book.title }
+      quantity={ quantity }
+      subtitleOne={ book.author }
+      subtitleTwo={ formatEdition(book.edition) }
+      prices={ book.prices }
+      removeItemFromShoppingBag={ removeItemFromShoppingBag }
+      type={ type }
+    />
+  )
+}
 
 const setAddBookTitle = isSelling =>
   isSelling ? 'Sell more books' : 'Buy more books'
@@ -37,7 +43,8 @@ export const ShoppingBagItems = props => {
     checkoutButton,
     isSellingBooks,
     onPressMoreBooks,
-    totalPrice
+    totalPrice,
+    removeItemFromShoppingBag
   } = props
   if (items.length === 0) {
     return null
@@ -45,7 +52,7 @@ export const ShoppingBagItems = props => {
   return (
     <View style={styles.itemsWrap}>
       <MenuTitle title={title} style={styles.titleWrap} />
-      {items.map(renderBook)}
+      {items.map(renderBook(removeItemFromShoppingBag))}
       <AddBookRow
         title={setAddBookTitle(isSellingBooks)}
         onPress={onPressMoreBooks}
@@ -74,6 +81,7 @@ export const ShoppingBagItems = props => {
 
 ShoppingBagItems.propTypes = {
   items: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
+  removeItemFromShoppingBag: PropTypes.func.isRequired,
   totalPrice: PropTypes.number.isRequired,
   onPress: PropTypes.func,
   onPressMoreBooks: PropTypes.func.isRequired

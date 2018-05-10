@@ -9,7 +9,10 @@ import {
 } from '../../../redux/selectors/shoppingBagSelectors'
 import { ShoppingBag } from '../components/shoppingBag'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
-import { cleanWholeShoppingBag } from '../../../redux/actions'
+import {
+  cleanWholeShoppingBag,
+  removeFromShoppingBag
+} from '../../../redux/actions'
 
 class ShoppingBagContainer extends Component {
   static navigationOptions = {
@@ -36,6 +39,7 @@ class ShoppingBagContainer extends Component {
         navigateToSellCheckout={this.navigateToSellCheckout}
         navigateToBuyCheckout={this.navigateToBuyCheckout}
         totalBuyingPrice={this.props.totalBuyingPrice}
+        removeItemFromShoppingBag={this.props.removeItemFromShoppingBag}
         totalSellingPrice={this.props.totalSellingPrice}
         navRightIcons={this.state.navRightIcons}
       />
@@ -52,6 +56,7 @@ class ShoppingBagContainer extends Component {
 
 ShoppingBagContainer.propTypes = {
   booksToBuy: PropTypes.arrayOf(ShoppingBagItemPropType),
+  removeItemFromShoppingBag: PropTypes.func.isRequired,
   totalBuyingPrice: PropTypes.number.isRequired,
   totalSellingPrice: PropTypes.number.isRequired
 }
@@ -62,8 +67,10 @@ const mapStateToProps = state => ({
   totalBuyingPrice: shoppingBagBuyingTotal(state),
   totalSellingPrice: shoppingBagSellingTotal(state)
 })
+
 const mapDispatchToProps = dispatch => ({
-  emptyShoppingBag: () => dispatch(cleanWholeShoppingBag())
+  emptyShoppingBag: () => dispatch(cleanWholeShoppingBag()),
+  removeItemFromShoppingBag: book => dispatch(removeFromShoppingBag(book))
 })
 
 export const ShoppingBagScreen = connect(mapStateToProps, mapDispatchToProps)(
