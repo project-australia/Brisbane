@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Alert, View } from 'react-native'
 import { connect } from 'react-redux'
 import { WalletBalance } from '../components/walletBalance'
-import { ModalWithInput } from '../../shared/components/modals/modalWithInput'
+import { ModalWithInputWallet } from '../../shared/components/modals/modalWithInputWallet'
 
 import { requestWithdrawAction } from '../../../redux/actions/async/authenticationAsyncActions'
 class WalletContainer extends Component {
@@ -49,7 +49,7 @@ class WalletContainer extends Component {
     )
 
   render() {
-    const { balance } = this.props
+    const { balance, paypalAccount, venmoAccount } = this.props
     const { isModalOpen } = this.state
     return (
       <View>
@@ -58,10 +58,11 @@ class WalletContainer extends Component {
           onWithDrawPressed={this.showEditModal}
           onWalletViewPressed={() => alert('🛶 navigate to wallet')}
         />
-        <ModalWithInput
+        <ModalWithInputWallet
           visible={isModalOpen}
-          placeholder={'Inform your paypal account'}
           title={'Withdraw Solicitation'}
+          paypalAccount={paypalAccount}
+          venmoAccount={venmoAccount}
           onConfirm={value => this.confirmModal(value)}
           onDismiss={this.hideModal}
         />
@@ -79,6 +80,7 @@ const mapStateToProps = ({ authentication: { user } }) => ({
   balance: user.wallet.balance,
   status: user.wallet.status,
   paypalAccount: user.wallet.paypalAccount,
+  venmoAccount: user.wallet.venmoAccount,
   club: user.club,
   id: user.id
 })

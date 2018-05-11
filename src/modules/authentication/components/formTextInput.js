@@ -34,6 +34,7 @@ export class FormTextInput extends Component {
         style={StyleSheet.flatten(styleArray)}
         selectionColor={Colors.secondary500}
         underlineColorAndroid={'transparent'}
+        editable={this.props.editable ? this.props.editable : true}
       />
     )
   }
