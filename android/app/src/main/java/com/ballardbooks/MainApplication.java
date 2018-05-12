@@ -3,6 +3,7 @@ package com.ballardbooks;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import org.reactnative.camera.RNCameraPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.taessina.paypal.RNPaypalWrapperPackage;
 import org.reactnative.camera.RNCameraPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNCameraPackage(),
             new SplashScreenReactPackage(),
             new RNPaypalWrapperPackage(),
             new VectorIconsPackage(),
