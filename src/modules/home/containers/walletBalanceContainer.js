@@ -11,16 +11,16 @@ class WalletContainer extends Component {
   showEditModal = () => {
     const { status, club, balance } = this.props
     if (!club) {
-      return this.defaultAlertPopUp('You must be to be logged in.')
+      return this.defaultAlertPopUp('You must be logged in to view and withdraw from My Wallet.')
     }
     if (!balance || balance <= 0) {
       return this.defaultAlertPopUp(
-        'There are currently no funds to withdraw. The funds become available here after we receive and inspect the books you are selling. Reps will also see the funds become available here to withdraw for commissions made.'
+        'There are currently no funds to withdraw. The funds become available here after we receive and inspect the books you are selling.'
       )
     }
     if (status !== 'NONE') {
       return this.defaultAlertPopUp(
-        'Your funds will be transferred to your PayPal account. Please note that it may take around 72 hours to process.'
+        'Your funds will now be transferred to your PayPal or Venmo account. Please note that it may take up to 72 hours to show up on your account.'
       )
     }
     return this.setState({
@@ -38,7 +38,7 @@ class WalletContainer extends Component {
 
   defaultAlertPopUp = msg =>
     Alert.alert(
-      'Enter your PayPal email',
+      'Withdraw from My Wallet',
       msg,
       [
         {
