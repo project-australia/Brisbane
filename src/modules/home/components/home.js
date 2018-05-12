@@ -60,7 +60,7 @@ export class Home extends Component {
           title={`Hi, ${this.props.userName}`}
           rightIcons={this.state.navRightIcons}
         />
-        <ScrollView bounces={false}>
+        <ScrollView bounces={false} keyboardShouldPersistTaps={'handled'}>
           <BookSearch
             onSubmit={() => this.props.searchBook(this.state.bookSearchValue)}
             onScanPress={this.props.navigateToScan}
