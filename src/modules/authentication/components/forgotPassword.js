@@ -1,9 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { styles } from './styles/forgotPasswordScreen.styles'
-import { Button, TextInput, View } from 'react-native'
+import { FormButton } from '../../shared/components/buttons'
+import { FormTextInput } from './formTextInput'
 import { LoadingOverlay } from '../../shared/components/loadingOverlay'
+
+// import { styles } from './styles/loginFormStyles'
+import { styles } from './styles/forgotPasswordScreen.styles'
+
+import { Colors } from '../../../constants'
 
 export class ForgotPassword extends React.Component {
   static propTypes = {
@@ -21,6 +26,11 @@ export class ForgotPassword extends React.Component {
     this.state = { email: props.email, loading: false }
   }
 
+  setEmail = (emailValue) => {
+    const email = emailValue.trim()
+    this.setState({ email })
+  }
+
   onButtonPress = async () => {
     this.setState({ loading: true })
     await this.props.resetPassword(this.state.email)
@@ -30,20 +40,25 @@ export class ForgotPassword extends React.Component {
   render() {
     return (
       <LoadingOverlay isLoading={this.state.loading} style={styles.screen}>
-        <TextInput
-          onChangeText={email => {
-            this.setState({ email })
-          }}
-          value={this.state.email}
+        <FormTextInput
           autoCapitalize="none"
+          autoFocus
+          blurOnSubmit={false}
+          keyboardType="email-address"
+          onChangeText={this.setEmail}
+          onSubmitEditing={this.focusPassword}
+          placeholder="Your email address"
+          returnKeyType={'done'}
+          selectionColor={Colors.secondary500}
+          style={styles.topSpacing}
+          value={this.state.email}
         />
-        <View style={styles.centralized}>
-          <Button
-            title="reset password"
-            style={styles.loginButton}
-            onPress={this.onButtonPress}
-          />
-        </View>
+        <FormButton
+          title="Reset Password"
+          style={styles.loginButton}
+          onPress={this.onButtonPress}
+          style={styles.itemSpacing}
+        />
       </LoadingOverlay>
     )
   }

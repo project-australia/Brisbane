@@ -38,7 +38,8 @@ const routeConfigs = {
     ...Values.navBar.transparent
   },
   ForgotPassword: {
-    screen: ForgotPasswordScreen
+    screen: ForgotPasswordScreen,
+    navigationOptions: { title: 'Password Recovery' }
   },
   Test: {
     screen: TestScreen
