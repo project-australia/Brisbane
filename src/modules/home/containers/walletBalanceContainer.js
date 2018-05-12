@@ -30,9 +30,9 @@ class WalletContainer extends Component {
 
   hideModal = async () => this.setState({ isModalOpen: false })
 
-  confirmModal = async paypalAccount => {
+  confirmModal = async ({ paypalAccount, venmoAccount }) => {
     const { id } = this.props
-    await this.props.requestWithdraw(id, { paypalAccount })
+    await this.props.requestWithdraw(id, { paypalAccount, venmoAccount })
     await this.hideModal()
   }
 
@@ -60,10 +60,10 @@ class WalletContainer extends Component {
         />
         <ModalWithInputWallet
           visible={isModalOpen}
-          title={'Withdraw Solicitation'}
+          title={'Withdraw from My Wallet'}
           paypalAccount={paypalAccount}
           venmoAccount={venmoAccount}
-          onConfirm={value => this.confirmModal(value)}
+          onConfirm={accounts => this.confirmModal(accounts)}
           onDismiss={this.hideModal}
         />
       </View>

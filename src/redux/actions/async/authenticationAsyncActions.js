@@ -90,12 +90,12 @@ export function updateProfileAction(id, userProfile) {
   }
 }
 
-export function requestWithdrawAction(id, walletWithPaypalAccount) {
+export function requestWithdrawAction(id, walletAccounts) {
   return async dispatch => {
     try {
       const updatedProfile = await requestWithdraw(
         id,
-        walletWithPaypalAccount
+        walletAccounts
       )
       dispatch(updateUserProfile(updatedProfile.data))
     } catch (error) {

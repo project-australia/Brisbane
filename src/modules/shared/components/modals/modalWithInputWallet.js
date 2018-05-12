@@ -52,7 +52,7 @@ export class ModalWithInputWallet extends Component {
         <FormTextInput
           value={this.state.paypalAccount}
           style={styles.input}
-          placeholder='Inform your Account'
+          placeholder='Enter email'
           onChangeText={value => this.setInput({paypalAccount: value})}
         />
         <Text style={styles.textDivisor}>or</Text>
@@ -60,16 +60,20 @@ export class ModalWithInputWallet extends Component {
         <FormTextInput
           value={this.state.venmoAccount}
           style={styles.input}
-          placeholder='Phone Number or Username'
+          placeholder='Enter @username or phone'
           onChangeText={value => this.setInput({venmoAccount: value})}
-          editable={this.state.paypalAccount || false} // TODO need to be fixed
         />
       </View>
     )
   }
 
+  onConfirm = () => {
+    const { paypalAccount, venmoAccount } = this.state
+    this.props.onConfirm({paypalAccount, venmoAccount})
+  }
+
   render() {
-    const { onConfirm, onDismiss, visible, title } = this.props
+    const { onDismiss, visible, title } = this.props
     const overlayStyle = StyleSheet.flatten([
       styles.overlay,
       { paddingBottom: this.state.keyboardHeight }
@@ -96,7 +100,7 @@ export class ModalWithInputWallet extends Component {
                 secondary
                 containerStyle={styles.button}
                 title={'Confirm'}
-                onPress={() => onConfirm(this.state.inputValue)}
+                onPress={() => this.onConfirm()}
               />
             </View>
           </View>
