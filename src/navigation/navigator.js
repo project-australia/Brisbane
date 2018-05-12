@@ -39,7 +39,7 @@ const routeConfigs = {
   },
   ForgotPassword: {
     screen: ForgotPasswordScreen,
-    navigationOptions: { title: 'Password Recovery' }
+    navigationOptions: { title: 'Reset Password' }
   },
   Test: {
     screen: TestScreen
