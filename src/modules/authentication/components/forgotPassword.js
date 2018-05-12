@@ -46,7 +46,7 @@ export class ForgotPassword extends React.Component {
           blurOnSubmit={false}
           keyboardType="email-address"
           onChangeText={this.setEmail}
-          onSubmitEditing={this.focusPassword}
+          onSubmitEditing={this.onButtonPress}
           placeholder="Your email address"
           returnKeyType={'done'}
           selectionColor={Colors.secondary500}
