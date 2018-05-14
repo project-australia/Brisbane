@@ -1,0 +1,3 @@
+- Remove individual items from cart
+ - Access Elite Club info without login
+ - Confirm Terms and Conditions before checkout

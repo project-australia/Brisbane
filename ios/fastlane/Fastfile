@@ -1,0 +1,29 @@
+default_platform(:ios)
+
+before_all do
+  ensure_git_branch
+  ensure_git_status_clean
+  git_pull
+end
+
+platform :ios do
+  desc 'Fetch certificates and provisioning profiles'
+  lane :certificates do
+    match(app_identifier: 'org.reactjs.native.example.brisbane', type: 'development', readonly: true)
+    match(app_identifier: 'org.reactjs.native.example.brisbane', type: 'appstore', readonly: true)
+  end
+
+  desc 'Build the iOS application.'
+  private_lane :build do
+    certificates
+    increment_build_number(xcodeproj: './brisbane.xcodeproj')
+    gym(scheme: 'brisbane', project: './brisbane.xcodeproj')
+  end
+
+  desc "Push a new release build to the App Store"
+  lane :release do
+    increment_build_number(xcodeproj: "brisbane.xcodeproj")
+    build_app(scheme: "brisbane")
+    upload_to_app_store
+  end
+end
