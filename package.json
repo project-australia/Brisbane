@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "ios:beta": "fastlane ios beta",
-    "android:beta": "fastlane android beta",
+    "ios:release": "fastlane ios release",
+    "android:release": "fastlane android release",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:update-snapshot": "jest -u -t snapshot",
