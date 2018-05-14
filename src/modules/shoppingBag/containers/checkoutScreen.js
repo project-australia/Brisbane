@@ -24,6 +24,8 @@ import { createOrder } from '../../../services/backend/orderService'
 import { SellCheckoutContainer } from './sellCheckoutContainer'
 import { BuyCheckoutContainer } from './buyCheckoutContainer'
 
+const errorMessage = 'You have to fill your address first'
+
 class CheckoutContainer extends Component {
   static propTypes = {
     buyingBooks: PropTypes.arrayOf(ShoppingBagItemPropType).isRequired,
@@ -51,7 +53,6 @@ class CheckoutContainer extends Component {
 
   generateOrder = async (user, books, shippingMethod, type) => {
     if (isInvalidAddress(user.address)) {
-      const errorMessage = 'You have to fill your address first'
       alert(errorMessage)
       throw new Error(errorMessage)
     }
@@ -95,6 +96,10 @@ class CheckoutContainer extends Component {
       await this.generateOrder(user, books, 'IN_PERSON', screenType)
       this.onCheckoutSuccess('Instructions sent by email.')
     } catch (error) {
+      if (error.message === errorMessage) {
+        return
+      }
+
       const defaultMessage = 'In Person checkout failed'
       alert(error.message || defaultMessage)
     } finally {
