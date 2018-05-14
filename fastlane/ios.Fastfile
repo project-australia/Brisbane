@@ -22,8 +22,7 @@ platform :ios do
   desc "Push a new release build to the App Store"
   lane :release do
     increment_build_number(xcodeproj: "./ios/brisbane.xcodeproj")
-    build_app(scheme: "brisbane")
-    xcarchive
+    build_app(scheme: "brisbane", project: './ios/brisbane.xcodeproj')
     upload_to_app_store
   end
 end

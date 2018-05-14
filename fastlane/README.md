@@ -15,20 +15,6 @@ Install _fastlane_ using
 or alternatively using `brew cask install fastlane`
 
 # Available Actions
-## iOS
-### ios certificates
-```
-fastlane ios certificates
-```
-Fetch certificates and provisioning profiles
-### ios release
-```
-fastlane ios release
-```
-Push a new release build to the App Store
-
-----
-
 ## Android
 ### android test
 ```
@@ -40,6 +26,20 @@ Runs all the tests
 fastlane android deploy
 ```
 Deploy a new version to the Google Play
+
+----
+
+## iOS
+### ios certificates
+```
+fastlane ios certificates
+```
+Fetch certificates and provisioning profiles
+### ios release
+```
+fastlane ios release
+```
+Push a new release build to the App Store
 
 ----
 
