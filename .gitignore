@@ -55,6 +55,7 @@ buck-out/
 
 fastlane/report.xml
 fastlane/Preview.html
+fastlane/README.md
 fastlane/screenshots
 *.dSYM.zip
 Preview.html

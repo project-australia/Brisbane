@@ -9,6 +9,7 @@ platform :ios do
   private_lane :clean do
     clear_derived_data
     xcclean
+    clean_build_artifacts
   end
 
   desc 'Build the iOS application.'
