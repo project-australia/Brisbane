@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Alert, View } from 'react-native'
 import { connect } from 'react-redux'
 import { WalletBalance } from '../components/walletBalance'
-import { ModalWithInput } from '../../shared/components/modals/modalWithInput'
+import { ModalWithInputWallet } from '../../shared/components/modals/modalWithInputWallet'
 
 import { requestWithdrawAction } from '../../../redux/actions/async/authenticationAsyncActions'
 class WalletContainer extends Component {
@@ -11,16 +11,16 @@ class WalletContainer extends Component {
   showEditModal = () => {
     const { status, club, balance } = this.props
     if (!club) {
-      return this.defaultAlertPopUp('You must be to be logged in.')
+      return this.defaultAlertPopUp('You must be logged in to view and withdraw from My Wallet.')
     }
     if (!balance || balance <= 0) {
       return this.defaultAlertPopUp(
-        'There are currently no funds to withdraw. The funds become available here after we receive and inspect the books you are selling. Reps will also see the funds become available here to withdraw for commissions made.'
+        'There are currently no funds to withdraw. The funds become available here after we receive and inspect the books you are selling.'
       )
     }
     if (status !== 'NONE') {
       return this.defaultAlertPopUp(
-        'Your funds will be transferred to your PayPal account. Please note that it may take around 72 hours to process.'
+        'Your funds will now be transferred to your PayPal or Venmo account. Please note that it may take up to 72 hours to show up on your account.'
       )
     }
     return this.setState({
@@ -30,15 +30,15 @@ class WalletContainer extends Component {
 
   hideModal = async () => this.setState({ isModalOpen: false })
 
-  confirmModal = async paypalAccount => {
+  confirmModal = async ({ paypalAccount, venmoAccount }) => {
     const { id } = this.props
-    await this.props.requestWithdraw(id, { paypalAccount })
+    await this.props.requestWithdraw(id, { paypalAccount, venmoAccount })
     await this.hideModal()
   }
 
   defaultAlertPopUp = msg =>
     Alert.alert(
-      'Enter your PayPal email',
+      'Withdraw from My Wallet',
       msg,
       [
         {
@@ -49,7 +49,7 @@ class WalletContainer extends Component {
     )
 
   render() {
-    const { balance } = this.props
+    const { balance, paypalAccount, venmoAccount } = this.props
     const { isModalOpen } = this.state
     return (
       <View>
@@ -58,11 +58,12 @@ class WalletContainer extends Component {
           onWithDrawPressed={this.showEditModal}
           onWalletViewPressed={() => alert('🛶 navigate to wallet')}
         />
-        <ModalWithInput
+        <ModalWithInputWallet
           visible={isModalOpen}
-          placeholder={'Inform your paypal account'}
-          title={'Withdraw Solicitation'}
-          onConfirm={value => this.confirmModal(value)}
+          title={'Withdraw from My Wallet'}
+          paypalAccount={paypalAccount}
+          venmoAccount={venmoAccount}
+          onConfirm={accounts => this.confirmModal(accounts)}
           onDismiss={this.hideModal}
         />
       </View>
@@ -79,6 +80,7 @@ const mapStateToProps = ({ authentication: { user } }) => ({
   balance: user.wallet.balance,
   status: user.wallet.status,
   paypalAccount: user.wallet.paypalAccount,
+  venmoAccount: user.wallet.venmoAccount,
   club: user.club,
   id: user.id
 })
