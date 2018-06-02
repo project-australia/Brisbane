@@ -6,7 +6,7 @@ import { MenuTitle } from '../../shared/components/menuTitle'
 import { ShoppingBagBook } from './shoppingBagBook'
 import { AddBookRow } from './addBookRow'
 import { SolidButton } from '../../shared/components/buttons'
-
+import { capitalizeText } from '../../../services/app/textFormatService'
 import { formatEdition } from '../../account/components/myorders'
 import { ShoppingBagItemPropType } from '../propTypes/ShoppingBagItem'
 import { styles } from './styles/shoppingBagItems.style'
@@ -19,7 +19,7 @@ const renderBook = removeItemFromShoppingBag => shoppingBagItem => {
       key={ id }
       shoppingBagItem={ shoppingBagItem }
       image={ book.images && book.images.medium }
-      title={ book.title }
+      title={ capitalizeText(book.title) }
       quantity={ quantity }
       subtitleOne={ book.author }
       subtitleTwo={ formatEdition(book.edition) }

@@ -81,7 +81,7 @@ export class Home extends Component {
           <BookList
             navigation={this.props.navigation}
             books={this.props.recentlyAddedBooks}
-            title={'Recently added'}
+            title={'Recently Added'}
             button={recentlyAddedButton}
           />
           <BookList

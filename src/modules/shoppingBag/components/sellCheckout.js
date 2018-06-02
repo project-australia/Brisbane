@@ -73,20 +73,20 @@ export class SellCheckout extends React.Component {
         <ScrollView>
           <OrderSummaryList orders={this.props.books} prices={this.props.prices} selling />
           <CheckoutAddress address={this.props.user.address} />
-          <MenuTitle title={'Checkout'} style={styles.titleWrap} />
+          <MenuTitle title={'Payment Method'} style={styles.titleWrap} />
           <View style={styles.wrappingCard}>
             <Text style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}>
-              Choose a method to finalize your transaction
+              Choose payment method
             </Text>
             <FormButton
               secondary
-              title={'Local Pick Up near Provo and Orem'}
+              title={'Request Pick Up Near Provo/Orem'}
               onPress={this.chooseInPerson}
             />
             <View style={{ height: 15 }} />
             <FormButton
               secondary
-              title={'Receive a Prepaid Shipping Labe'}
+              title={'Receive a Prepaid Shipping Label'}
               onPress={this.chooseByShipping}
             />
           </View>

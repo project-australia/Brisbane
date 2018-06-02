@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { View, Alert } from 'react-native'
 import PropTypes, { func } from 'prop-types'
 
 import { FormHeader } from './formHeader'
@@ -43,7 +43,15 @@ export class LoginForm extends Component {
   componentWillReceiveProps(nextProps) {
     const { showAlert, message } = nextProps.alert
     if (showAlert) {
-      alert(message)
+      // alert(message)
+      Alert.alert(
+        'Reset Password',
+        message,
+        [
+          { text: 'Ok', onPress: () => {}, style: 'cancel' }
+        ],
+        { cancelable: true }
+      )
       this.props.clearAlerts()
     }
   }

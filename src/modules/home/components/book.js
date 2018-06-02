@@ -6,10 +6,14 @@ import { Text, View, Image, TouchableOpacity } from 'react-native'
 
 import { Card } from '../../shared/components/card'
 import { FormButton, FormOutlineButton } from '../../shared/components/buttons'
-
+import { capitalizeText } from '../../../services/app/textFormatService'
 import { styles } from './styles/home.styles'
 
 const ellipsizeText = text => truncate(text, { length: 24 })
+const formatText = (text) => {
+  const capitalizedText = capitalizeText(text)
+  return ellipsizeText(capitalizedText)
+}
 
 export const Book = ({
   onBuyPressed,
@@ -28,9 +32,9 @@ export const Book = ({
         <View style={styles.bookWrap}>
           <Image style={styles.bookImage} source={imageSource} />
           <View style={styles.bookInfoWrap}>
-            <Text style={styles.primaryText}>{ellipsizeText(title)}</Text>
+            <Text style={styles.primaryText}>{formatText(title)}</Text>
             <Text style={styles.secondaryInput}>
-              {ellipsizeText(groupAuthors)}
+              {formatText(groupAuthors)}
             </Text>
             <Text style={styles.secondaryInput}>{edition && 'First'}</Text>
             <View style={styles.bookButtonsGroup}>

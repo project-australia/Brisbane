@@ -1,4 +1,4 @@
-export const FORGOT_PASSWORD_SUCCESS_MSG = 'Success to recover password'
+export const FORGOT_PASSWORD_SUCCESS_MSG = 'An email has been sent to reset your password'
 
 export const RENT_CONDITIONS = [
   'Por conseguinte, o desenvolvimento contínuo de distintas formas de atuação é uma das consequências dos procedimentos normalmente adotados.',

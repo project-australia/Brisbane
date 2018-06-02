@@ -34,6 +34,9 @@ class WalletContainer extends Component {
     const { id } = this.props
     await this.props.requestWithdraw(id, { paypalAccount, venmoAccount })
     await this.hideModal()
+    setTimeout(() => {
+      this.defaultAlertPopUp('Your funds will now be transferred to your PayPal or Venmo account. Please note that it may take up to 72 hours to show up on your account.')
+    }, 800)
   }
 
   defaultAlertPopUp = msg =>

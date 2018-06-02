@@ -26,9 +26,9 @@ export const ProfileItemAddress = ({
       {hasStreet ? (
         <View style={styles.wrapView}>
           <Text style={styles.title}>Street: {street}</Text>
-          <Text style={styles.title}>Zipcode: {zipCode}</Text>
           <Text style={styles.title}>City: {city}</Text>
           <Text style={styles.title}>State: {state}</Text>
+          <Text style={styles.title}>Zip Code: {zipCode}</Text>
         </View>
       ) : (
         <RowAdd title={emptyDataLabel} onPress={onPress} />

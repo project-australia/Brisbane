@@ -43,7 +43,7 @@ export class CheckoutAddress extends React.Component {
           {this.renderAddressLine('Street', street)}
           {this.renderAddressLine('City', city)}
           {this.renderAddressLine('State', state)}
-          {this.renderAddressLine('Zipcode', zipCode)}
+          {this.renderAddressLine('Zip Code', zipCode)}
           <View style={styles.addressButtonContainer}>
             <SimpleButton
               secondary

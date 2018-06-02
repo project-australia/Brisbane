@@ -134,16 +134,26 @@ export class BuyCheckout extends React.Component {
               Choose shipping method
             </Text>
             {this.renderStandardShippingButton()}
+            <Text
+              style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}
+            >
+              4-8 Business Days
+            </Text>
             {/* TODO: Isso deveria ser uma margem? */}
             <View style={{ height: 15 }} />
             {this.renderExpediteShippingButton()}
+            <Text
+              style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}
+            >
+              2-4 Business Days
+            </Text>
           </View>
-          <MenuTitle title={'Checkout'} style={styles.titleWrap} />
+          <MenuTitle title={'Payment Method'} style={styles.titleWrap} />
           <View style={styles.wrappingCard}>
             <Text
               style={StyleSheet.flatten([styles.footnote, styles.itemsWrap])}
             >
-              Choose a method to finalize your order
+              Choose payment method
             </Text>
             <FormButton
               title={'Pay locally'}

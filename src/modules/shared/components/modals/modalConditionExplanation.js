@@ -13,15 +13,40 @@ export const ModalConditionExplanation = ({ isVisible, onCancel }) => (
       ignoreAndroidStatusBar
     />
     <ScrollView>
+      <Text style={styles.firstTitle}>New</Text>
+      <Text style={styles.text}>
+        Just like it sounds. A brand-new, unused, unread copy in perfect condition. The dust cover and original protective plastic wrapping are intact. All supplementary materials are included and all access codes for electronic material, if applicable, are valid and/or in working condition. 
+      </Text>
+
+      <Text style={styles.firstTitle}>​Used - Like New</Text>
+      <Text style={styles.text}>
+        Dust cover, if any, is intact, with no nicks or tears. Spine has no signs of creasing. Pages are clean and not marred by notes or folds of any kind.
+      </Text>
+
+      <Text style={styles.firstTitle}>Used - Very Good</Text>
+      <Text style={styles.text}>
+        Pages are intact. May have some limited notes or highlighting and some limited signs of wear. The spine is undamaged.
+      </Text>
+
+      <Text style={styles.firstTitle}>Used - Good</Text>
+      <Text style={styles.text}>
+        All pages and cover are intact. Spine may show signs of wear. Pages may include notes and highlighting.
+      </Text>
+
       <Text style={styles.firstTitle}>Used - Acceptable</Text>
+      <Text style={styles.text}>
+        The item is fairly worn. Signs of wear can include light water stain and/or aesthetic issues such as scratches, dents, minor rips, and worn corners. Pages may include notes and highlighting or show other signs of previous use.
+      </Text>
+
+      {/* <Text style={styles.firstTitle}>Used - Acceptable</Text>
       <Text style={styles.subtitle}>If no CD or Access Code</Text>
       <Text style={styles.text}>
         Ballard Books is a family business. We appreciate doing business with
         you. Book in acceptable condition. Might have wear, tear, writing,
         liquid damage, etc. May not contain supplements such as CD or access
         codes. Free tracking number. Expedited shipping available.
-      </Text>
-      <Text style={styles.subtitle}>If with Access Code</Text>
+      </Text> */}
+      {/* <Text style={styles.subtitle}>If with Access Code</Text>
       <Text style={styles.text}>
         INCLUDES ACCESS CODE. Ballard Books is a family business. We appreciate
         doing business with you. Book in acceptable condition. Might have wear,
@@ -115,7 +140,7 @@ export const ModalConditionExplanation = ({ isVisible, onCancel }) => (
         Ballard Books is a family business. We appreciate doing business with
         you. Sealed Access Code. Free tracking number. Expedited shipping
         available.
-      </Text>
+      </Text> */}
     </ScrollView>
   </Modal>
 )

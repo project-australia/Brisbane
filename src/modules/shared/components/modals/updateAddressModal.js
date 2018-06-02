@@ -60,12 +60,6 @@ export class UpdateAddressModal extends Component {
               />
               <FormTextInput
                 style={styles.input}
-                value={this.state.zipCode}
-                onChangeText={value => this.setZipCode(value)}
-                placeholder="Zipcode"
-              />
-              <FormTextInput
-                style={styles.input}
                 value={this.state.city}
                 onChangeText={value => this.setCity(value)}
                 placeholder="City"
@@ -75,6 +69,12 @@ export class UpdateAddressModal extends Component {
                 value={this.state.state}
                 onChangeText={value => this.setAddressState(value)}
                 placeholder="State"
+              />
+              <FormTextInput
+                style={styles.input}
+                value={this.state.zipCode}
+                onChangeText={value => this.setZipCode(value)}
+                placeholder="Zipcode"
               />
             </ScrollView>
             <View style={styles.buttonGroup}>

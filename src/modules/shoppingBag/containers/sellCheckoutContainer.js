@@ -57,7 +57,7 @@ export class SellCheckoutContainer extends Component {
           style: 'cancel'
         },
         {
-          text: 'Sure thing',
+          text: 'Yes',
           onPress: this.inGetLabelCheckout
         }
       ]

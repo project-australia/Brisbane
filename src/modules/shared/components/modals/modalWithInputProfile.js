@@ -102,7 +102,7 @@ export class ModalWithInputProfile extends Component {
       >
         <View style={overlayStyle}>
           <View style={styles.card}>
-            <Text style={styles.title}>Edit your Profile</Text>
+            <Text style={styles.title}>Edit Your Profile</Text>
             <ScrollView>
               <FormTextInput
                 style={styles.input}
@@ -124,18 +124,6 @@ export class ModalWithInputProfile extends Component {
               />
               <FormTextInput
                 style={styles.input}
-                value={this.state.number}
-                onChangeText={value => this.setNumber(value)}
-                placeholder="Number"
-              />
-              <FormTextInput
-                style={styles.input}
-                value={this.state.zipCode}
-                onChangeText={value => this.setZipCode(value)}
-                placeholder="Zipcode"
-              />
-              <FormTextInput
-                style={styles.input}
                 value={this.state.city}
                 onChangeText={value => this.setCity(value)}
                 placeholder="City"
@@ -146,6 +134,19 @@ export class ModalWithInputProfile extends Component {
                 onChangeText={value => this.setAddressState(value)}
                 placeholder="State"
               />
+              {/* <FormTextInput
+                style={styles.input}
+                value={this.state.number}
+                onChangeText={value => this.setNumber(value)}
+                placeholder="Number"
+              /> */}
+              <FormTextInput
+                style={styles.input}
+                value={this.state.zipCode}
+                onChangeText={value => this.setZipCode(value)}
+                placeholder="Zip Code"
+              />
+
             </ScrollView>
             <View style={styles.buttonGroup}>
               <FlatButton

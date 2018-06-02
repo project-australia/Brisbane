@@ -118,12 +118,12 @@ export const styles = StyleSheet.create({
   addressItemLeft: {
     ...Fonts.style.footnote,
     color: Colors.gray500,
-    flex: 0.2
+    flex: 0.3
   },
   addressItemRight: {
     ...Fonts.style.footnote,
     color: Colors.gray700,
-    flex: 0.8
+    flex: 0.7
   },
   addressButtonContainer: {
     flex: 1,

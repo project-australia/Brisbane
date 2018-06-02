@@ -2,6 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import { MenuTitle } from '../../shared/components/menuTitle'
 import { Row } from '../../shared/components/row'
+import { capitalizeText } from '../../../services/app/textFormatService'
 
 import { styles } from './styles/shoppingBagItems.style'
 import { styles as rowStyles } from '../../shared/components/styles/row.style'
@@ -13,13 +14,13 @@ const renderItem = (id, title, price, style) => (
 const renderBuyingOrders = item => {
   const { book, type } = item
   const { id, title, prices } = book
-
+  const formattedTitle = capitalizeText(title)
   if (type === 'BUY') {
-    return renderItem(id, title, prices.buy)
+    return renderItem(id, formattedTitle, prices.buy)
   }
 
   if (type === 'RENT') {
-    return renderItem(id, title, prices.rent, rowStyles.lightTitle)
+    return renderItem(id, formattedTitle, prices.rent, rowStyles.lightTitle)
   }
 
   return null

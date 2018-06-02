@@ -14,7 +14,7 @@ export const BookList = ({
 }) => {
   return (
     <View style={{ flex: 1 }}>
-      <Navbar title={'Book list'} onBack={navigateBack} />
+      <Navbar title={'Book List'} onBack={navigateBack} />
       <ScrollView>
         {list.map(book => (
           <BookListRow

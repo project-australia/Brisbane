@@ -5,6 +5,7 @@ import { book } from '../../home/propTypes/book'
 
 import { styles } from '../../shoppingBag/components/styles/shoppingBagItems.style'
 import { FlatButton } from '../../shared/components/buttons/index'
+import { capitalizeText } from '../../../services/app/textFormatService'
 
 export const BookListRow = props => {
   const { id, images, title, author, edition, prices } = props.book
@@ -18,10 +19,10 @@ export const BookListRow = props => {
         <Image style={styles.image} source={imageSource} />
         <View style={styles.detailsWrap}>
           <Text numberOfLines={1} style={styles.title}>
-            {title}
+            {capitalizeText(title)}
           </Text>
           <Text numberOfLines={1} style={styles.subtitle}>
-            {author}
+            {capitalizeText(author)}
           </Text>
           <Text numberOfLines={1} style={styles.subtitle}>
             {edition}

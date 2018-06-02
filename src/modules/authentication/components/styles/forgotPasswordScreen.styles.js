@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   topSpacing: {
-    marginTop: Metrics.marginVertical
+    marginTop: Metrics.marginVertical * 3
   },
   itemSpacing: {
     marginHorizontal: Metrics.marginHorizontal * 2,
