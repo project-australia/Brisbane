@@ -41,7 +41,7 @@ const OrderSummaryRows = props => {
         ? orders.map(renderOrdersSelling)
         : orders.map(renderBuyingOrders)}
       <Row
-        left={{ title: 'Sub total', style: rowStyles.darkTitle }}
+        left={{ title: 'Sub Total', style: rowStyles.darkTitle }}
         right={{
           title: `$${prices.subTotal}`,
           style: rowStyles.secondaryTitle

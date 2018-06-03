@@ -74,7 +74,7 @@ export class UpdateAddressModal extends Component {
                 style={styles.input}
                 value={this.state.zipCode}
                 onChangeText={value => this.setZipCode(value)}
-                placeholder="Zipcode"
+                placeholder="Zip Code"
               />
             </ScrollView>
             <View style={styles.buttonGroup}>

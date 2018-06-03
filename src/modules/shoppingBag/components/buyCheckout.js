@@ -156,7 +156,7 @@ export class BuyCheckout extends React.Component {
               Choose payment method
             </Text>
             <FormButton
-              title={'Pay locally'}
+              title={'Pay Locally'}
               onPress={this.chooseLocally}
             />
             <View style={{ height: 15 }} />

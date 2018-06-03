@@ -22,7 +22,7 @@ const renderMember = member => (
 export const NetworkMembers = ({ navigateBack, network }) => {
   return (
     <View style={styles.container}>
-      <Navbar title={'Network members'} onBack={navigateBack} />
+      <Navbar title={'Network Members'} onBack={navigateBack} />
       <ScrollView>{network.map(renderMember)}</ScrollView>
     </View>
   )

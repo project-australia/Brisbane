@@ -60,14 +60,14 @@ export const Profile = ({
           emptyDataLabel={'Add phone number'}
           onPress={() => showEditModal('Phone')}
         />
-        <ProfileItem
+        {/* <ProfileItem
           title={'Birth date'}
           data={
             user.birthDate ? moment(user.birthDate).format('MMM Do YYYY') : '-'
           }
           emptyDataLabel={'Add birth date'}
           onPress={() => showEditModal('Birth date')}
-        />
+        /> */}
         <ProfileItemAddress
           title={'Address'}
           data={user.address}
