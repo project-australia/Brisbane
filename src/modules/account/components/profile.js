@@ -1,6 +1,6 @@
 import React from 'react'
 import { ScrollView, View } from 'react-native'
-import moment from 'moment'
+// import moment from 'moment'
 
 import { ModalWithInputProfile } from '../../shared/components/modals/modalWithInputProfile'
 import { Navbar } from '../../shared/components/navbar'

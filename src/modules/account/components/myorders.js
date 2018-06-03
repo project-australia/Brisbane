@@ -12,7 +12,7 @@ import moment from 'moment'
 
 import { Navbar } from '../../shared/components/navbar'
 import { MyOrderHeader } from './myorderHeader'
-import { ShoppingBagBook } from '../../shoppingBag/components/shoppingBagBook'
+import { OrderBookItem } from '../../shoppingBag/components/orderBookItem'
 
 import { styles } from './styles/networkMembers.style'
 
@@ -60,7 +60,7 @@ const renderBook = (
   { authors, edition, id, images, prices, title },
   orderType
 ) => (
-  <ShoppingBagBook
+  <OrderBookItem
     key={id}
     image={images && images.medium}
     title={title}
