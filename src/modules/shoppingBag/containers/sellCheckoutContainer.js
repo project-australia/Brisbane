@@ -50,7 +50,7 @@ export class SellCheckoutContainer extends Component {
   confirmShippingCheckout = () => {
     Alert.alert(
       'Shipping a Book',
-      'Do you wanna proceed to a shipped checkout',
+      'Do you wanna proceed to a shipped checkout ?',
       [
         {
           text: 'Cancel',

@@ -4,6 +4,7 @@ import { Image, Text, View } from 'react-native'
 
 import { styles } from './styles/shoppingBagItems.style'
 import { Colors } from '../../../constants'
+import { capitalizeText } from '../../../services/app/textFormatService'
 
 const renderType = (type, prices) => {
   switch (type) {
@@ -31,8 +32,8 @@ const renderBookPrice = (type, prices) => {
 }
 
 const returnListIfArray = item => {
-  if (typeof item === 'string') return item
-  if (typeof item === 'object') return item.join(', ')
+  if (typeof item === 'string') return capitalizeText(item)
+  if (typeof item === 'object') return capitalizeText(item.join(', '))
 }
 
 export const OrderBookItem = props => {
@@ -51,7 +52,7 @@ export const OrderBookItem = props => {
         <Image style={styles.image} source={{ uri: image }} />
         <View style={styles.detailsWrap}>
           <Text numberOfLines={1} style={styles.title}>
-            {title}
+            {capitalizeText(title)}
           </Text>
           {subtitleOne && (
             <Text numberOfLines={1} style={styles.subtitle}>

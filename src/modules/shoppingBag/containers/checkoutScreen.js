@@ -100,7 +100,7 @@ class CheckoutContainer extends Component {
         return
       }
 
-      const defaultMessage = 'In Person checkout failed'
+      const defaultMessage = 'In Person Checkout failed'
       alert(error.message || defaultMessage)
     } finally {
       this.setState({ isLoading: false })
@@ -109,7 +109,7 @@ class CheckoutContainer extends Component {
 
   confirmInPersonCheckout = () => {
     Alert.alert(
-      'In Person checkout',
+      'In Person Checkout',
       'Do you want to proceed to in person checkout?',
       [
         {

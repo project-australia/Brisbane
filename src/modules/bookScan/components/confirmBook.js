@@ -73,7 +73,7 @@ export class BookDetails extends Component {
 
   confirmRent = () =>
     Alert.alert(
-      'Rental agreement',
+      'Rental Agreement',
       'By confirming you agree to our Rental Terms of Agreement, do you confirm?',
       [
         { text: 'Check terms', onPress: this.showRentalTermsModal },
