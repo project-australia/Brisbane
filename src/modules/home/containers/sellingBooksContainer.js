@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import { SellingBookAmount } from '../components/sellingBooks'
 import { shoppingBagSellingQuantityBooks } from '../../../redux/selectors/shoppingBagSelectors'
 import { ModalSellingHome } from '../../shared/components/modals/modalSellingHome'
+import { ModalMaintenance } from '../../shared/components/modals/modalMaintenance'
 
 export class SellingBooksContainer extends Component {
   static propTypes = {
@@ -40,12 +41,16 @@ export class SellingBooksContainer extends Component {
           onAddBookPressed={this.openModal}
         />
         <ModalSellingHome
-          visible={isModalOpen}
+          visible={false} // use isModalOpen when maintenance mode is off
           placeholder={'Type ISBN (978... w/o dashes)'}
           title={'Sell Your Book'}
           onConfirm={isbn => this.searchByIsbn(isbn)}
           onDismiss={this.hideModal}
           goScanBook={this.goScanBook}
+        />
+        <ModalMaintenance // TODO: Remove when maintenance mode was off
+          visible={isModalOpen}
+          onDismiss={this.hideModal}
         />
       </View>
     )

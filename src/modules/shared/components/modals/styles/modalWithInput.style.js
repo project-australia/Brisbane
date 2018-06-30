@@ -39,6 +39,13 @@ export const styles = StyleSheet.create({
     marginHorizontal: Metrics.section,
     textAlign: 'center'
   },
+  textAlignLeft: {
+    ...Fonts.style.description,
+    color: Colors.gray700,
+    marginBottom: Metrics.baseMargin,
+    marginHorizontal: Metrics.section,
+    textAlign: 'left'
+  },
   searchButton: {
     height: 36,
     minWidth: 72,
